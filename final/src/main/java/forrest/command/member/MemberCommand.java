@@ -14,24 +14,23 @@ import lombok.Data;
 
 @Data
 public class MemberCommand {
-	@Size(min = 4, max = 12,message = "아이디를 입력하여 주세요.")
-	String userId;
-	@NotEmpty
-	String userPw;
-	@NotBlank
-	String userPwCon;
-	@Email
-	String userEmail;
-	@NotEmpty
-	@Size(min = 15, max = 50)
-	String userAddr;
-	@NotNull
-	@Size(min = 5, max = 13)
-	String userPh;
-	
+
+	   String memId;
+	   
+	   String memName;
+
+	   String memPass;
+
+	   String memPassCon;
+
+	   String memEmail;
+
+	   String memAddr;
+	   
+	   String memPh;
 	
 	public boolean isUserPwEqualToUserPwCon() {
-		if(userPw.equals(userPwCon)) {
+		if(memPass.equals(memPassCon)) {
 			return true;
 		}
 		return false;

@@ -1,0 +1,46 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title>MemberAgree</title>
+    
+    <link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+    <link rel="stylesheet" th:href="@{/static/css/memberAgreeStyle.css}">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    
+    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script th:src="@{/static/js/jquery.js}"></script>
+  </head>
+  <body>
+
+    <!--topMenu인클루드 영역 -->
+	  <div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+      <!--동의콘텐츠 영역-->
+
+    <div class="loginTitle">
+      <h2 class="loginH2">동의</h2>
+    </div>
+
+    <div class="login-area">
+		
+					<div class="inner">
+						<div class="form-group">
+              <h5>회원가입 약관</h5>
+							<div class="agreeContent">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </div>
+						</div>
+
+
+						<div class="form-group">
+							<a href="regist"><input type="button" class="submit" value="동의"/></a>
+						</div>
+
+					</div>
+				
+			</div>
+
+  </body>
+</html>

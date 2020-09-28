@@ -1,0 +1,49 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome! FOR'RESTDOGGY</title>
+    
+    <link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+    <link rel="stylesheet" th:href="@{/static/css/mainStyle.css}">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    
+    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script th:src="@{/static/js/jquery.js}"></script>
+    
+  </head>
+  <body>
+
+    <div class="main clearfix" id="main">
+
+      <!--topMenu인클루드 영역 -->
+	  <div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+      <!--메인콘텐츠 영역-->
+	   
+      <a href="/staypark/main" class="aaa">
+      <div class="menu" id="toStayPark">
+        <h3 id="stp"><div class="title-box">StayPark</div></h3>
+      </div></a>
+
+      <a href="dogVillageMain.html" class="aaa">
+      <div class="menu" id="toDogVillage">
+        <h3 id="dvg"><div class="title-box">DogVillage</div></h3>
+      </div>
+      </a>
+
+      <a href="eatSomePlaceMain.html" class="aaa">
+      <div class="menu" id="toEatSomePlace">
+        <h3 id="esp"><div class="title-box">EatSomePlace</div></h3>
+      </div>
+      </a>
+
+      <a href="dogMallMain.html" class="aaa">
+      <div class="menu" id="toDogMall">
+        <h3 id="dgm"><div class="title-box">DogMall</div></h3>
+      </div>
+      </a>
+    </div>
+  </body>
+</html>

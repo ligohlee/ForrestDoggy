@@ -1,109 +1,53 @@
 
-*{
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-ul,li,ol{ list-style: none;}
-a, a:hover{text-decoration: none; color: #000;}
-table, th, tr, td{ border-collapse: collapse;}
-img{display: block;}
-
-body{
-  font-family: 'Nanum Gothic', sans-serif;
-  background-image: url('../images/bg_texture.jpg');
-  background-repeat: repeat;
-  width: 100%;
-}
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-} */
 body{
   width: 100%;
   height: 100vh;
   overflow: hidden;
 }
+
 #main{
   width: 100%;
   height: 100vh;
-  overflow: hidden;
-}
-#top{
-  width: 100%;
-  height: 50px;
-  border-bottom: 1px solid #ddd;
-  position: relative;
-}
-#logo{
-  text-align: center;
-  float: left;
-  height: 6vh;
-  position: absolute;
-  top:44%;
-  left: 50%;
-  line-height: 1.5;
-  transform: translate(-50%,-50%);
-  color: rgb(23, 69, 84);
-}
-#h1{
-  color: rgb(23, 69, 84);
-  font-size: 26px;
-}
-#topMenu{
-  float: left;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.topUl{
+  overflow: hidden;}
 
-}
-#topMenu > ul >li{
-  float: left;
-}
-.bar{
-  display: block;
-  padding-right: 15px;
-  padding-left: 15px;
-  border-right: 2px solid #ddd;
-  font-size: 12px;
-}
-.bar_1{
-  display: block;
-  padding-right: 15px;
-  padding-left: 15px;
-  border-right: 2px solid #fff;
-  font-size: 12px;
-}
 .menu{
   width: 25%;
   height: 94vh;
   float: left;
   position: relative;
-
+  font-family: 'Quicksand', sans-serif;
 }
 
-.clearfix:after{ content: ""; display: block; clear: both }
+#toStayPark{
+  background-image: url("../images/stp_main_1.jpg");
+  background-repeat : no-repeat;
+  background-size : cover;
+}
+#toDogVillage{
+  background-image: url("../images/dvl_main_3.jpg");
+  background-repeat : no-repeat;
+  background-size : cover;
+}
+#toEatSomePlace{
+  background-image: url("../images/esp_main.jpg");
+  background-repeat : no-repeat;
+  background-size : cover;
+}
+#toDogMall{
+  background-image: url("../images/dgm_main.jpg");
+  background-repeat : no-repeat;
+  background-size : cover;
+}
+
+.title-box{
+  background-color: rgba(0,0,0,0.5);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 200px;
+  text-align: center;
+  color: #fff;
+
+}
 
 h3{
   position: absolute;
@@ -111,22 +55,7 @@ h3{
   top:50%;
   transform: translate(-50%,-50%);
 }
-#toStayPark{
-  background-color: rgb(23, 69, 84);
-}
 
-#toDogVillage{
-  background-color: rgb(60, 143, 125);
-
-}
-
-#toEatSomePlace{
-  background-color: rgb(23, 69, 84);
-
-}
-#toDogMall{
-  background-color: rgb(60, 143, 125);
-}
 .aaa{
   color: #fff;
   font-weight: normal;

@@ -1,0 +1,76 @@
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Forrest Doggy Intranet</title>
+    <link rel="stylesheet" th:href="@{/static/css/total_management_style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="top clearfix" id="top">
+    	<h1 id="logo">
+    		<a href="/main" id="h1"><img th:src="@{/static/images/logo-white.png}"
+    			class="logo_img" /></a>
+    	</h1>
+    	<div id="topMenu">
+    		<h2 class="h2_title">포레스트도기 통합관리시스템</h2>
+    	</div>
+    </div>
+    <div class="content">
+
+      <!-- 로그인 전 -->
+      <!--  <div class="login">
+        <div class="loginTitle">
+          <h2 class="loginH2">로그인</h2>
+        </div>
+
+        <div class="login-area">
+    				<form action="#" method="post" name="frm" id="frm">
+    					<div class="inner">
+    						<div class="form-group">
+    							<input type="text" class="input" name="userId" id="" value="" placeholder="ID" />
+    						</div>
+    						<div class="form-group">
+    							<input type="password" class="input" name="userPw" id="" value="" placeholder="PASSWORD" />
+    						</div>
+    						<div class="form-group">
+    							<input type="submit" class="submit" value="로그인"/>
+    						</div>
+    						<label for="ic1">아이디저장</label>
+    						<input type="checkbox" name="saveId" id="ic1" class="checkbox" value="" />
+    						<a href="memberAgree.html" class="login-link">회원가입</a>
+    					</div>
+    				</form>
+    			</div>
+      </div>-->
+
+      <!-- 로그인 후 -->
+
+      <div class="total_menu">
+        <a href="#"><div class="menu">
+          직원인트라넷
+        </div></a>
+        <a href="/memberback/main"><div class="menu">
+          회원 관리자
+        </div></a>
+        <a href="/stpback/main"><div class="menu">
+          스테이파크 관리자
+        </div></a>
+        <a href="/dvlback/main"><div class="menu">
+          도그빌리지 관리자
+        </div></a>
+        <a href="/espback/main"><div class="menu">
+          잇썸플레이스 관리자
+        </div></a>
+        <a href="/dgmback/main"><div class="menu">
+          도그몰 관리자
+        </div></a>
+
+      </div>
+
+
+
+    </div>
+
+  </body>
+</html>

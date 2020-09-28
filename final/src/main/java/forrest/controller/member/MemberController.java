@@ -20,21 +20,21 @@ public class MemberController {
 
 	@RequestMapping(value = "agree", method = RequestMethod.GET)
 	public String agree() {
-		return "thymeleaf/html/memberAgree";
+		return "thymeleaf/frontPage/html/memberAgree";
 	}
 
 	@RequestMapping(value = "regist", method = RequestMethod.GET)
 	public String memberForm() {
-		return "thymeleaf/html/memberForm";
+		return "thymeleaf/frontPage/html/memberForm";
 	}
 	
 	@RequestMapping(value= "memberJoinAction",method = RequestMethod.POST)
 	public String memberJoinAction(@Validated MemberCommand Command) throws Exception {
 		Integer i = memberInsertService.insertMember(Command);
 		if (i == 1) {
-			return "thymeleaf/html/success";
+			return "thymeleaf/frontPage/html/success";
 		}else {
-			return "thymeleaf/html/memberForm";	
+			return "thymeleaf/frontPage/html/memberForm";	
 		}
 	}
 }

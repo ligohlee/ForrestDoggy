@@ -1,0 +1,36 @@
+#login_menu{
+  position: absolute;
+  top:50%;
+  right: 10px;
+  overflow: hidden;
+  transform: translateY(-50%);
+}
+
+
+
+.login_menu_li{
+  list-style-type: none;
+  float: left;
+
+}
+.login_menu_li_a{
+  color: #fff;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: 'Noto Sans KR', sans-serif;
+
+}
+.login_menu_li_a:hover{
+  color: #fff;
+}
+
+.page-header{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+#footer-content{
+  color: #888;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}

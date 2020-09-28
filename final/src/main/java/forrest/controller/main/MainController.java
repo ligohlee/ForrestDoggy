@@ -9,6 +9,6 @@ public class MainController {
 	@RequestMapping(value = "main")
 	public String home() {
 		
-		return "thymeleaf/main";
+		return "thymeleaf/frontPage/html/main";
 	}
 }

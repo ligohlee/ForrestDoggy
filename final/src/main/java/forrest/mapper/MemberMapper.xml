@@ -15,20 +15,29 @@
 
 
 
+	<resultMap type="forrest.domain.MemberDTO" id="baseMember" >
+		<id column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
+		<result column="MEM_NAME" jdbcType="VARCHAR" property="memName"/>
+		<result column="MEM_PASS" jdbcType="VARCHAR" property="memPass"/>
+		<result column="MEM_ADDR" jdbcType="VARCHAR" property="memEmail"/>
+		<result column="MEM_EMAIL" jdbcType="VARCHAR" property="memAddr"/>
+		<result column="MEM_PH" jdbcType="VARCHAR" property="memPh"/>
+	</resultMap>
 
 
 
+<select id="selectMember" parameterType="string" resultMap="baseMember" >
 
+	select MEM_ID, MEM_NAME, MEM_PASS , MEM_ADDR , MEM_EMAIL , MEM_PH  
+	from member
+	where mem_id = #{memId}
+</select>
 
+<select id="selectMemberAll" parameterType="string" resultMap="baseMember" >
 
-
-
-
-
-
-
-
-
+	select MEM_ID, MEM_NAME, MEM_PASS , MEM_ADDR , MEM_EMAIL , MEM_PH  
+	from member
+</select>
 
 
 

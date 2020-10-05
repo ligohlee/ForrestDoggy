@@ -64,36 +64,36 @@
 	width: 100%;
 }
 </style>
-							<form action="#" method="post" name="frm">
+							<form th:action="@{/edit/memberModifyPro}" method="post" name="frm">
     <div class="memberDetail-area">
       <div class="form-group">     
-        <span class="bar">회원아이디</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="redred">* 수정불가</span>
+        <span class="bar">회원아이디</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${memberCommand.memId}]]<span class="redred">* 수정불가</span>
       </div>
       <div class="form-group">
-        <span class="bar">회원이름 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="email" name ="memEmail" 
-	        value = ""  class="inputBox"/>
+        <span class="bar">회원이름 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="name" name ="memName" 
+	        th:value = "${memberCommand.memName}"  class="inputBox"/>
       </div>
       <div class="form-group">
-        <span class="bar bar2">회원연락처</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="email" name ="memEmail" 
-	        value = ""  class="inputBox"/>
+        <span class="bar bar2">회원연락처</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="ph" name ="memPh" 
+	        th:value = "${memberCommand.memPh }"  class="inputBox"/>
       </div>
       <div class="form-group">
-      <span class="bar bar2">회원주소 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="email" name ="memEmail" 
-	        value = ""  class="inputBox"/>
+      <span class="bar bar2">회원주소 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="addr" name ="memAddr" 
+	        th:value = "${memberCommand.memAddr}"  class="inputBox"/>
       </div>
       <div class="form-group">
         <span class="bar bar2">회원이메일</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="email" name ="memEmail" 
-	        value = "" class="inputBox"/>
-      </div>
+	        th:value = "${memberCommand.memEmail}"/>
       
       
       
-      <div class="clearfix formBtn">
+     
+	
+    </div>
+     <div class="clearfix formBtn">
         <input type="submit" name="modify" value="수정" class="btn btn2">
         
       </div>
-	
-    </div>
     </form>
 
 								

@@ -10,8 +10,6 @@ img{display: block;}
 
 body{
   font-family: 'Nanum Gothic', sans-serif;
-  background-image: url('../images/bg_texture.jpg');
-  background-repeat: repeat;
   width: 100%;
 }
 article, aside, details, figcaption, figure,
@@ -45,6 +43,10 @@ body{
   padding-right: 15px;
   padding-left: 15px;
   border-right: 1px solid #ddd;
+  font-weight: bold;
+}
+.bar2{
+	
 }
 
 
@@ -52,6 +54,7 @@ body{
   width: 100%;
   margin-top: 120px;
   margin-bottom: 50px;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 .loginH2{
   text-align: center;
@@ -74,7 +77,10 @@ body{
   box-sizing:border-box;
   line-height: 2;
   margin-top: 8px;
+  position: relative;
 }
+
+
 .login-area .form-group {
   margin-top: 8px;
 }
@@ -118,4 +124,33 @@ h5{
   font-size: 16px;
   color:#fff;
   margin-top: 8px;
+}
+
+.btn2{
+	width: 100%;
+}
+
+.inputBox{
+    font-size: 16px;
+    
+}
+
+.password{
+	text-align: center;
+	padding: 30px;
+}
+
+.passBox{
+	padding: 5px;
+	padding-left: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+.redred{
+	color: red;
+	font-size: 12px;
+	position: absolute;
+	right: 5%;
+	top: 50%;
+	transform: translateY(-50%);
 }

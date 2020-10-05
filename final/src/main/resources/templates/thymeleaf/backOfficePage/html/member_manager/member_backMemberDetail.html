@@ -88,7 +88,7 @@
 								</div>
 								 <div class="clearfix formBtn">
       <input type="button" name="modify" value="수정" class="btn" th:onclick="'javascript:location.href=\'memberModify?memId=' + ${memberCommand.memId} + '\''" />
-       <a> <input type="button" name="delete" value="삭제" class="btn">   </a>
+       <a> <input type="button" name="delete" value="삭제" class="btn" th:onclick="'javascript:location.href=\'memberDelete?memId=' + ${memberCommand.memId} + '\''">   </a>
       </div>
 
 								

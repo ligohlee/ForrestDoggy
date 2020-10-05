@@ -39,9 +39,17 @@
 	from member
 </select>
 
+<update id="updateMember" parameterType="forrest.domain.MemberDTO">
+	update member
+	set MEM_NAME = #{memName}, MEM_ADDR = #{memAddr}, MEM_EMAIL = #{memEmail} , MEM_PH = #{memPh}
+	where mem_id = #{memId}
 
+</update>
 
-
+<delete id="deleteMember"  parameterType="string"  >
+	delete member
+	where mem_id = #{memId}
+</delete>
 
 
 

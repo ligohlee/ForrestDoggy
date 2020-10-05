@@ -15,6 +15,10 @@ public interface MemberMapper {
 
 	MemberDTO selectMember(String memId);
 	List<MemberDTO>   selectMemberAll();
+
+	void updateMember(MemberDTO dto);
+
+	void deleteMember(String memId);
 	
 
 }

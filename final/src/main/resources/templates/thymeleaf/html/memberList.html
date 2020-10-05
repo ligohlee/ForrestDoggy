@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>MemberList</title>
-    <link rel="stylesheet" href="../css/memberListStyle.css">
+    <link rel="stylesheet" href="@{/static/css/memberListStyle.css}">
   </head>
   <body>
     <div class="memberList-area">
@@ -18,14 +18,16 @@
           <th>회원이름</th>
           <th>회원연락처</th>
         </tr>
-
+     
+		<th:block th:each="dto , aaa : ${list}">
         <tr>
-          <td>1</td>
-          <td><a href="memberView.html">forest_doggy</a></td>
-          <td>홍길동</td>
-          <td>010-1111-1111</td>
+          <td>[[${aaa.count}]]</td>
+          <td><a th:href="@{/register/memberView(memId=${dto.memId})}">[[${dto.memId}]]</a></td>
+          <td>[[
+          ${dto.memName}]]</td>
+          <td>[[${dto.memPh}]]</td>
         </tr>
-
+		</th:block>
         <tr>
           <td colspan="4">
             <input type="button" name="memberIn" value="회원추가" class="btn">

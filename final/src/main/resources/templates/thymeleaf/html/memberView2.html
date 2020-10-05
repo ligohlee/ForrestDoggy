@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MemberList</title>
+    <link rel="stylesheet" th:href="@{/static/css/memberViewStyle.css}">
+  </head>
+  <body>
+
+    <div class="loginTitle">
+      <h2 class="loginH2">수정</h2>
+    </div>
+
+
+    <div class="memberDetail-area">
+    <form name ="frm" id ="frm" method = "post" 
+	th:action ="@{/edit/memberModifyPro}" th:object="${memberCommand}">
+  
+
+    <input type ="hidden" name ="memId" th:value="${memberCommand.memId}" />
+     <input type ="hidden" name ="memName" th:value="${memberCommand.memName}" />
+    
+     <div class="form-group">
+      <span class="bar">회원정보 수정</span>
+      </div>
+      
+       <div class="form-group">
+        <span class="bar">아이디와 비번</span>
+      </div>
+       
+        <div class="form-group">
+        <span class="bar">사용자 ID:</span>
+        <span class="bar" th:text="${memberCommand.memId }"></span>
+      </div>
+      
+      <div class="form-group">
+     <span class="bar">사용자 이메일</span>
+     <span class="bar"> <input type ="text" id ="email" name ="memEmail" 
+	        th:value = "${memberCommand.memEmail }"/></span>
+	  
+	  </div>
+      
+ 
+      <div class="clearfix formBtn">
+        <input type="button" name="modify" value="수정" class="btn" 
+        th:onclick="'javascript:location.href=\'memberModify?memId=' + ${memberCommand.memId} + '\''">
+        <input type="button" name="delete" value="삭제" class="btn">
+      </div>
+      
+      
+</form>
+	
+    </div>
+  </body>
+</html>

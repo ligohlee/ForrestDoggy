@@ -15,15 +15,21 @@
         <div id="topMenu">
           <ul class="clearfix topUl">
             <!--로그인전-->
-            <li><a href="login.html"><span class="bar">로그인</span></a></li>
-            <li><a href="register/agree"><span class="bar">회원가입</span></a></li>
-            <li><a href="#"><span class="bar_1">문의하기</span></a></li>
+            <span th:if="${session.login == null}">
+            <li class="topMenuLi"><a href="register/login"><span class="bar">로그인</span></a></li>
+            <li class="topMenuLi"><a href="register/list"><span class="bar">리스트미스트비스트게스트베스트</span></a></li>
+            <li class="topMenuLi"><a href="register/agree"><span class="bar">회원가입</span></a></li>
+            <li class="topMenuLi"><a href="#"><span class="bar_1">문의하기</span></a></li>
+            </span>
+            
+            
             <!--로그인후-->
-            <!--
-            <li><a href="#">로그아웃</a></li>
-            <li><a href="#">내정보</a></li>
-            <li><a href="#">문의내역</a></li>
-            -->
+            <span th:if="${session.login != null}">
+            
+            <li class="topMenuLi"><a href="#"><span class="bar">로그아웃</span></a></li>
+            <li class="topMenuLi"><a href="#"><span class="bar">내정보</span></a></li>
+            <li class="topMenuLi"><a href="#"><span class="bar_1">문의내역</span></a></li>
+            </span>
           </ul>
         </div>
       </div>

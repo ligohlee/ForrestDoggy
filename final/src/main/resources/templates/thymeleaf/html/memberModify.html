@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" 
+	src="http://code.jquery.com/jquery-latest.js" ></script>
+<script type="text/javascript">
+$(function(){
+	$("#modify").click(function(){
+		if($("#pw").val()==""){
+			alert("비밀번호 입력하세요");
+			$("#pw").focus();
+			return false;
+		}
+		$("#frm").submit();
+	});
+	$("#memPw").click(function(){
+		location.href="memPw";
+	})
+});
+</script>
+</head>
+<body>
+<form name ="frm" id ="frm" method = "post" 
+	th:action ="@{/edit/memberModifyPro}" th:object="${memberCommand}">
+<table border = 1  width = 600 align = "center" cellpadding = 3 >
+    <input type ="hidden" name ="memId" th:value="${memberCommand.memId}" />
+     <input type ="hidden" name ="memName" th:value="${memberCommand.memName}" />
+	<tr><td colspan=2> 회원정보 수정 </td></tr>
+	<tr><td >아이디와 비번</td>
+		<td >&nbsp;</td></tr>
+	<tr><td>사용자 ID</td><td><span th:text="${memberCommand.memId }"></span></td></tr>
+	<tr><td>비밀번호</td>
+		<td><input type="password" id="pw" name ="memPass" />
+			<span th:text="${valid_Pw}"> </span>
+		  <div></div>
+		  </td>
+	</tr>
+	<tr><td >기본정보 입력</td>
+		<td >&nbsp;</td></tr>
+	<tr><td>사용자 이름</td>
+		<td><span th:text="${memberCommand.memName }"></span></td>
+	</tr>
+
+	<tr><td>사용자 이메일</td>
+	    <td><input type ="text" id ="email" name ="memEmail" 
+	        th:value = "${memberCommand.memEmail }"/></td></tr>
+	<tr><td>사용자 주소</td>
+	    <td>
+	    <input type ="text" id ="addr" name ="memAddr" 
+	        th:value = "${memberCommand.memAddr }"/>
+	    </td>
+	</tr>
+	<tr><td>연락처</td>
+	    <td>
+	    <input type ="text" id ="memPh" name ="memPh" 
+	        th:value = "${memberCommand.memPh }"/>
+	    </td>
+	</tr>
+	<tr>
+		<td colspan=2>
+		<input type="button" name="modify" id ="modify" 
+				value="수   정" >
+		<input type="button" value="취  소" 
+			onclick = "javascript:history.back();" />
+		<!-- onclick = "javascript:location.href='main.jsp';" -->
+		<input type="button" value="비밀번호 변경" id ="memPass"/>
+		</td>
+	</tr>
+</table>
+
+</form>
+</body>
+</html>

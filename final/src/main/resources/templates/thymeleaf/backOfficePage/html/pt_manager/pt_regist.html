@@ -41,7 +41,7 @@
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                        	협력업체
+                        	협력계약등록
                         </h1>
                     </div>
                 </div>
@@ -58,8 +58,80 @@
 					    		.submit {
 					    			width: 100%;
 					    		}
+					    		table{
+					    		    width: 90%;
+					    		    text-align: center;
+					    		    margin: 0 auto;
+					    		}
+					    		th{
+					    		    text-align: center;
+					    		    border: 1px solid #ddd;
+					    		}
+					    		td{ 
+					    		    font-size: 15px;
+					    		    border: 1px solid #ddd;
+					    		}
+					    		input{
+					    		   width: 100%;
+					    		}
+					    		textarea{
+					    		   width: 100%;
+					    		}
 					    	</style>
 					    	<div>
+					    	<form action="">
+					    	   <table>
+					    	    <colgroup>
+                               <col width="15%" >
+                               <col width="20%" >
+                               <col width="15%">
+                               <col width="20%" >
+                               <col width="10%" >
+                               <col width="20%">
+                               </colgroup>
+                               
+					    	     <tr>
+					    	       <td>업체명</td> 
+					    	       <td><input type="text" name="ptName"></td> 
+					    	       <td >계약이름</td>
+					    	       <td colspan="3"><input type="text" name="ctName"></td> 
+					    	    
+					    	     </tr>
+					    	     
+					    	     <tr>
+					               <td>계약일</td>
+					               <td><input type="text" name="ctDate"></td> 
+					               <td >계약기간</td> 
+					               <td ><input type="text" name="ctTerm"></td> 
+					               <td>계약 직원</td>
+					               <td><input type="text" name="ptName"></td> 
+					    	     </tr>
+					    	       
+					    	     <tr>
+					                <td>업체 담당자</td> 
+					                <td><input type="text" name="workName"></td>  
+					                <td>업체 당당자 연락처</td> 
+					                <td><input type="text" name="ctPtPh"></td>
+					                <td>계약서 사본</td>
+					    	        <td><input type="text" name="ctPtName"></td>  
+					    	     </tr>
+					    	       
+					    	     <tr>
+					    	       <td>계약내용</td>  
+					    	       <td colspan="5" ><textarea  name="ctContent" cols="100" rows="5"></textarea></td> 
+					    	     </tr>
+					    	     <tr>
+					    	        
+					    	       <td colspan="6" style="text-align:right">
+					    	       <button type="submit">등록</button> 
+					    	       <button onclick="javascript:history.back()">취소</button>
+					    	       </td> 
+					    	   
+					    	     </tr>
+					    	
+					    	   </table>
+					    	      
+					    	      </form>
 					    		
 					    	</div>
 						</div>

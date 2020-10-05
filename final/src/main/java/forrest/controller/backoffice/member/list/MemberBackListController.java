@@ -40,4 +40,6 @@ public class MemberBackListController {
 		memberDetailService.detailService(memId,model,command);
 		return "thymeleaf/backOfficePage/html/member_manager/member_backMemberModifyPro";
 	}
+	
+	
 }

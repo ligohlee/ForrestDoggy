@@ -5,7 +5,7 @@
     <title></title>
     <head>
     <meta charset="UTF-8">
-    <title>Partner BackOffice</title>
+    <title>STP BackOffice</title>
     <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
     <!-- Bootstrap Styles-->
     <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -29,9 +29,9 @@
 	<div id="wrapper">
 
     <!-- stp header 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_partner/back_pt_header.html"></div>
+	<div th:include="thymeleaf/backOfficePage/html/layout_stayPark/back_stp_header.html"></div>
     <!-- stp seideNav 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_partner/back_pt_sideNav.html"></div>
+	<div th:include="thymeleaf/backOfficePage/html/layout_stayPark/back_stp_sideNav.html"></div>
 
     <!--페이지래퍼-->
 		<div id="page-wrapper">
@@ -41,7 +41,7 @@
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                        	협력업체
+                        	옵션리스트
                         </h1>
                     </div>
                 </div>
@@ -58,24 +58,45 @@
 					    		.submit {
 					    			width: 100%;
 					    		}
+					    		.table{
+					    			width: 80%;
+					    			text-align: center;
+					    			margin: 0 auto;
+					    		}
+					    		th{
+					    			text-align: center;
+					    			border: 1px solid #ddd;
+
+					    		}
+					    		td{
+					    			font-size: 14px;
+					    			border: 1px solid #ddd;
+					    		}
+					    		.sybtn{
+					    			width: 400px;
+					    			height: 45px;
+					    			border: 0px solid #fff;
+					    			color: #fff;
+					    			background-color: rgb(23,69,84);
+					    			font-family: 'Noto Sans KR', sans-serif;
+					    			font-size: 16px;
+					    			font-weight: 500;
+					    		}
 					    	</style>
-					    	<div>
-					    		
-					    	</div>
+					    	
+					    	<!-- 콘텐츠영역 -->
+					    	<table class="table">
+					    			<tr><th>옵션번호</th><th>옵션이름</th><th>옵션가격</th><th>등록일</th></tr>
+					    			<th:block th:each="dto,aaa : ${optList}">
+					    			<tr><td>[[${dto.optNum}]]</td><td>[[${dto.optName}]]</td><td>[[${dto.optPrice}]]</td><td>[[${dto.optRegist}]]</td></tr></th:block>
+					    			<tr><td colspan="4"><a href="/stpback/optionRegi"><input type="button" value="옵 션 추 가" class="sybtn"/></a></td></tr>
+					    	</table>
+					    
+					    	
 						</div>
 					</div>
 				</div>
-                <!--로그인 후 메인화면-->
-
-                <!--<c:if test="${ !empty logId }">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">
-                        	페이지 타이틀... <small>타이틀 내용... 수정수정</small>
-                        </h1>
-                    </div>
-                </div>
-              </c:if>-->
+                
 
 
 

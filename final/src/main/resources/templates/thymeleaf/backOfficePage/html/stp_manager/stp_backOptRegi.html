@@ -5,7 +5,7 @@
     <title></title>
     <head>
     <meta charset="UTF-8">
-    <title>Partner BackOffice</title>
+    <title>STP BackOffice</title>
     <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
     <!-- Bootstrap Styles-->
     <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -22,16 +22,15 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
 
-    </head>
   </head>
   <body>
 
 	<div id="wrapper">
 
     <!-- stp header 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_partner/back_pt_header.html"></div>
+	<div th:include="thymeleaf/backOfficePage/html/layout_stayPark/back_stp_header.html"></div>
     <!-- stp seideNav 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_partner/back_pt_sideNav.html"></div>
+	<div th:include="thymeleaf/backOfficePage/html/layout_stayPark/back_stp_sideNav.html"></div>
 
     <!--페이지래퍼-->
 		<div id="page-wrapper">
@@ -41,7 +40,7 @@
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                        	협력업체
+                        	옵션등록
                         </h1>
                     </div>
                 </div>
@@ -58,24 +57,57 @@
 					    		.submit {
 					    			width: 100%;
 					    		}
-					    	</style>
-					    	<div>
+					    		.table{
+					    			width: 80%;
+					    			text-align: center;
+					    			margin: 0 auto;
+					    		}
+					    		th{
+					    			text-align: center;
+					    			border: 1px solid #ddd;
+
+					    		}
+					    		td{
+					    			font-size: 14px;
+					    			border: 1px solid #ddd;
+					    		}
+					    		.sybtn{
+					    			width: 400px;
+					    			height: 45px;
+					    			border: 0px solid #fff;
+					    			color: #fff;
+					    			background-color: rgb(23,69,84);
+					    			font-family: 'Noto Sans KR', sans-serif;
+					    			font-size: 16px;
+					    			font-weight: 500;
+					    			margin: 50px;
+					    		}
+					    		.syinput{
+					    			width: 100%;
+					    			border: 1px solid #999;
+					    		}
 					    		
-					    	</div>
+					    		
+					    		
+					    	</style>
+					    	
+					    	<!-- 콘텐츠영역 -->
+					    	<form th:action="@{/stpback/optionRegiPro}" method="post" name="frm" th:object="${command}">
+					    	<table class="table">
+					    			
+					    			<tr><th>옵션이름</th><td><input type="text" name="optName" class="syinput"/></td></tr>
+					    			<tr><th>옵션가격</th><td><input type="text" name="optPrice" class="syinput"/></td></tr>
+					    			
+					    			
+					    			<tr><td colspan="2" class="btntd"><input type="submit" value="옵 션 등 록" class="sybtn"/></td></tr>
+					    	</table>
+ 
+					    
+					    	</form>
 						</div>
 					</div>
 				</div>
-                <!--로그인 후 메인화면-->
-
-                <!--<c:if test="${ !empty logId }">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">
-                        	페이지 타이틀... <small>타이틀 내용... 수정수정</small>
-                        </h1>
-                    </div>
-                </div>
-              </c:if>-->
+                
 
 
 

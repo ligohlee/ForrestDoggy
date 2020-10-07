@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import forrest.command.member.MemberCommand;
-import forrest.service.member.MemberDetailService;
-import forrest.service.member.MemberListService;
+import forrest.command.jjj.MemberCommand;
+import forrest.service.jjj.member.MemberDetailService;
+import forrest.service.jjj.member.MemberListService;
 
 @Controller
 @RequestMapping("memberlist")

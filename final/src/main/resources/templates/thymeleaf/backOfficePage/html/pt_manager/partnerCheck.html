@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="ptSearch" method="post">
+업체명을 검색하세요
+<input type="text" name="ptName"/> 
+<button type="submit">찾기</button>
+<br/>
+
+</form>
+
+<table border="1" width="100%">
+  <tr>
+    <td>업체명</td> <td>업체구분 </td>
+  </tr>
+   <tr th:each="list: ${lists}">
+   <td th:text="${list.ptName}"></td> 
+   <td th:text="${list.ptType}"></td> 
+   
+  </tr>
+</table>
+
+
+</body>
+</html>

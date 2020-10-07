@@ -1,4 +1,4 @@
-package forrest.controller.member;
+package forrest.controller.jjj.member;
 
 import javax.servlet.http.HttpSession;
 

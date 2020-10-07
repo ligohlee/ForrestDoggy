@@ -67,13 +67,13 @@ public class MemberController {
 	}
 	@RequestMapping(value="memberView", method = RequestMethod.GET)
 	public String memberView(@RequestParam(value="memId")String memId , Model model , MemberCommand memberCommand) {
-		memberDetailService.detailService(memId , model , memberCommand);
+		memberDetailService.detailService(memId , model);
 		
 		return "thymeleaf/html/memberView";
 	}
 	@RequestMapping(value="memberModify", method = RequestMethod.GET)
 	public String memberModify(@RequestParam(value="memId")String memId , Model model, MemberCommand memberCommand) {
-		memberDetailService.detailService(memId , model , memberCommand);
+		memberDetailService.detailService(memId , model);
 		
 		return "thymeleaf/html/memberView2";
 	}

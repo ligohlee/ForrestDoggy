@@ -18,7 +18,7 @@ public class MemberDetailService {
 	@Autowired
 	MemberMapper memberMapper;
 	
-	public void detailService(String memId, Model model, MemberCommand memberCommand) {
+	public void detailService(String memId, Model model) {
 	MemberDTO dto = new MemberDTO();
 	dto.setMemId(memId);
 	MemberDTO member = memberMapper.selectMember(memId);

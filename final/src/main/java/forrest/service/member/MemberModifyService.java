@@ -1,18 +1,31 @@
 package forrest.service.member;
 
-import org.apache.commons.chain.Command;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
+import forrest.command.member.MemberCommand;
 import forrest.domain.MemberDTO;
+import forrest.mapper.MemberMapper;
 
 @Service
 @Component
 public class MemberModifyService {
 
-	public void modifyService(String memId, Model model) {
+	@Autowired
+	MemberMapper memberMapper;
+	
+	public void modifyService(String memId, MemberCommand command) {
 		
+		
+		MemberDTO dto = new MemberDTO();
+		dto.setMemId(memId);
+		dto.setMemName(command.getMemName());
+		dto.setMemPh(command.getMemPh());
+		dto.setMemAddr(command.getMemAddr());
+		dto.setMemEmail(command.getMemEmail());
+
+		memberMapper.updateMember(dto);
 		
 	}
 }

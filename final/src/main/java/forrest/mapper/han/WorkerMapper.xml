@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.han.WorkerMapper">
+	<sql id="basecolumn">
+		WORK_NUM,DEPT_NUM,WORK_PASS,WORK_NAME,WORK_PH,WORK_EMAIL,HIRE_DATE,WORK_BORN,POSITION,JOB,WORK_HOLI,WORK_ADDR,WORK_IMG
+	</sql>
+	
+	<insert id="workerInsert" parameterType="forrest.domain.han.WorkerDTO">
+		insert into WORKER (<include refid="basecolumn"/>)
+		values(#{workNum}, #{deptNum}, #{workPass}, #{workName}, #{workPh}, #{workEmail}, #{hireDate}, #{workBorn}, #{position}, #{job}, #{workHoli}, #{workAddr}, #{workImg})
+	</insert>
+	<resultMap type="forrest.domain.han.WorkerDTO" id="baseworker">
+	<id column="WORK_NUM" jdbcType="BIGINT" property="workNum"/>
+	<result column="DEPT_NUM" jdbcType="BIGINT" property="deptNum"/>
+	<result column="WORK_PASS" jdbcType="VARCHAR" property="workPass"/>
+	<result column="WORK_NAME" jdbcType="VARCHAR" property="workName"/>
+	<result column="WORK_PH" jdbcType="VARCHAR" property="workPh"/>
+	<result column="WORK_EMAIL" jdbcType="VARCHAR" property="workEmail"/>
+	<result column="HIRE_DATE" jdbcType="TIMESTAMP" property="hireDate"/>
+	<result column="WORK_BORN" jdbcType="TIMESTAMP" property="workBorn"/>
+	<result column="POSITION" jdbcType="VARCHAR" property="position"/>
+	<result column="JOB" jdbcType="VARCHAR" property="job"/>
+	<result column="WORK_HOLI" jdbcType="BIGINT" property="workHoli"/>
+	<result column="WORK_ADDR" jdbcType="VARCHAR" property="workAddr"/>
+	<result column="WORK_IMG" jdbcType="VARCHAR" property="workImg"/>
+	</resultMap>
+	<select id="getworkListview" resultMap="baseworker">
+		select  WORK_NUM,DEPT_NUM,WORK_PASS,WORK_NAME,WORK_PH,WORK_EMAIL,HIRE_DATE,WORK_BORN,POSITION,JOB,WORK_HOLI,WORK_ADDR,WORK_IMG
+		from WORKER
+	</select>
+	<select id="getdetailview" resultMap="baseworker">
+		select  WORK_NUM,DEPT_NUM,WORK_PASS,WORK_NAME,WORK_PH,WORK_EMAIL,HIRE_DATE,WORK_BORN,POSITION,JOB,WORK_HOLI,WORK_ADDR,WORK_IMG
+		from WORKER
+		where WORK_NUM = #{workNum}
+	</select>
+	<update id="getinsertModi" parameterType="forrest.domain.han.WorkerDTO">
+		update WORKER
+		set WORK_NAME = #{workName},  WORK_PH = #{workPh}, WORK_EMAIL = #{workEmail}, HIRE_DATE = #{hireDate},
+		WORK_BORN = #{workBorn}, POSITION = #{position}, JOB = #{job}, WORK_HOLI = #{workHoli}, WORK_ADDR = #{workAddr},WORK_IMG = #{workImg}
+		<trim prefix="set" suffixOverrides=",">
+			<if test="workImg != null">
+				WORK_IMG = #{workImg}
+			</if>
+			WORK_IMG = #{workImg}
+		</trim>
+		where WORK_NUM = #{workNum}
+	</update>
+	<delete id="workDel" parameterType="forrest.domain.han.WorkerDTO">
+		delete from WORKER
+		where WORK_NUM = #{workNum}
+	
+	</delete>
+</mapper>

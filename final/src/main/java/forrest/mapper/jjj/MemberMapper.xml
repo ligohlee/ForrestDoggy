@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="forrest.mapper.MemberMapper">
+<mapper namespace="forrest.mapper.jjj.MemberMapper">
 
 <sql id="basecolumn">
 	MEM_ID, MEM_NAME, MEM_PASS , MEM_ADDR , MEM_EMAIL , MEM_PH 
 </sql>
 
-<insert id="insertMember" parameterType="forrest.domain.MemberDTO">
+<insert id="insertMember" parameterType="forrest.domain.jjj.MemberDTO">
 	insert into member(<include refid="basecolumn"/>)
 	values(#{memId},#{memName},#{memPass},#{memAddr},#{memEmail},#{memPh})
 	
@@ -15,7 +15,7 @@
 
 
 
-	<resultMap type="forrest.domain.MemberDTO" id="baseMember" >
+	<resultMap type="forrest.domain.jjj.MemberDTO" id="baseMember" >
 		<id column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
 		<result column="MEM_NAME" jdbcType="VARCHAR" property="memName"/>
 		<result column="MEM_PASS" jdbcType="VARCHAR" property="memPass"/>
@@ -39,7 +39,7 @@
 	from member
 </select>
 
-<update id="updateMember" parameterType="forrest.domain.MemberDTO">
+<update id="updateMember" parameterType="forrest.domain.jjj.MemberDTO">
 	update member
 	set MEM_NAME = #{memName}, MEM_ADDR = #{memAddr}, MEM_EMAIL = #{memEmail} , MEM_PH = #{memPh}
 	where mem_id = #{memId}

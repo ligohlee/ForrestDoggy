@@ -1,4 +1,4 @@
-package forrest.controller.backoffice.member.list;
+package forrest.controller.jjj.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

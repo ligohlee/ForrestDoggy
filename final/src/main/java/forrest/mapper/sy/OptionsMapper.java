@@ -1,11 +1,11 @@
-package forrest.mapper.backoffice.staypark.room;
+package forrest.mapper.sy;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import forrest.domain.backoffice.staypark.OptionsDTO;
+import forrest.domain.sy.OptionsDTO;
 
 @Repository
 @Component

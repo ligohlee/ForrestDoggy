@@ -1,12 +1,12 @@
-package forrest.service.backoffice.staypark.room;
+package forrest.service.sy.room;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import forrest.command.backoffice.staypark.OptionsCommand;
-import forrest.domain.backoffice.staypark.OptionsDTO;
-import forrest.mapper.backoffice.staypark.room.OptionsMapper;
+import forrest.command.sy.room.OptionsCommand;
+import forrest.domain.sy.OptionsDTO;
+import forrest.mapper.sy.OptionsMapper;
 
 @Service
 @Component

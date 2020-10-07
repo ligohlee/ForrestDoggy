@@ -1,4 +1,4 @@
-package forrest.command.backoffice.staypark;
+package forrest.command.sy.room;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package forrest.controller.backoffice.staypark.room;
+package forrest.controller.sy.room;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,9 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import forrest.command.backoffice.staypark.OptionsCommand;
-import forrest.service.backoffice.staypark.room.OptionInsertService;
-import forrest.service.backoffice.staypark.room.OptionListService;
+import forrest.command.sy.room.OptionsCommand;
+import forrest.service.sy.room.OptionInsertService;
+import forrest.service.sy.room.OptionListService;
 
 @Controller
 @RequestMapping("stpback")

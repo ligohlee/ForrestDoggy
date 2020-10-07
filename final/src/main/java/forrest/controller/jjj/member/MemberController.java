@@ -4,7 +4,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,24 +58,7 @@ public class MemberController {
 	
 		return memberSelectService.selectMember(memId , memPass ,session );
 	}
-	@RequestMapping(value="list", method = RequestMethod.GET)
-	public String list(Model model) {
-		memberListService.listMember(model);
-		
-		return "thymeleaf/html/memberList";
-	}
-	@RequestMapping(value="memberView", method = RequestMethod.GET)
-	public String memberView(@RequestParam(value="memId")String memId , Model model , MemberCommand memberCommand) {
-		memberDetailService.detailService(memId , model);
-		
-		return "thymeleaf/html/memberView";
-	}
-	@RequestMapping(value="memberModify", method = RequestMethod.GET)
-	public String memberModify(@RequestParam(value="memId")String memId , Model model, MemberCommand memberCommand) {
-		memberDetailService.detailService(memId , model);
-		
-		return "thymeleaf/html/memberView2";
-	}
+	
 	
 	
 	

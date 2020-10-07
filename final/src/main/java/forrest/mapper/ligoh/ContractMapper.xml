@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="forrest.mapper.ContractMapper">
+<mapper namespace="forrest.mapper.ligoh.ContractMapper">
 <sql id="basecolumn">
 CT_NUM, PT_NUM, WORK_NUM, CT_TERM, CT_CONTENT, CT_IMAGE, CT_PT_PH, CT_PT_NAME
 
@@ -12,7 +12,7 @@ CT_NUM, PT_NUM, WORK_NUM, CT_TERM, CT_CONTENT, CT_IMAGE, CT_PT_PH, CT_PT_NAME
     from contract
   </sql>
 
-<insert id="contractInsert" parameterType="forrest.domain.ContractTO" >
+<insert id="contractInsert" parameterType="forrest.domain.ligoh.ContractDTO" >
 
 insert into contract ( <include refid="basecolumn" /> )
 values((<include refid="maxNum"/>),1,22,#{ctTerm},
@@ -31,7 +31,7 @@ values((<include refid="maxNum"/>),1,22,#{ctTerm},
 		select count(*) from contract
 </select>	
 
-<resultMap type="forrest.domain.ContractDTO" id="baseContract">
+<resultMap type="forrest.domain.ligoh.ContractDTO" id="baseContract">
 		<id column="ct_num" jdbcType="BIGINT" property="ctNum"/>
 		<id column="pt_num" jdbcType="BIGINT" property="ptNum"/>
 		<result column="work_num" jdbcType="BIGINT" property="workNum"/>

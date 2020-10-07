@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="forrest.mapper.PartnerMapper">
+<mapper namespace="forrest.mapper.jm.PartnerMapper">
 <sql id="basecolumn">
 PT_NUM,PT_NAME, PT_PH, PT_EMAIL, PT_ADDR, PT_TYPE, PT_BUSINESS_NUM, PT_BUSINESS_IMAGE, PT_ACCOUNT	
 ,PT_COMENT, PT_CEO	
@@ -14,14 +14,14 @@ PT_NUM,PT_NAME, PT_PH, PT_EMAIL, PT_ADDR, PT_TYPE, PT_BUSINESS_NUM, PT_BUSINESS_
 
 
 
-<select  id="getPartnerList" parameterType="forrest.domain.PartnerDTO" resultMap="basePartner">
+<select  id="getPartnerList" parameterType="forrest.domain.jm.PartnerDTO" resultMap="basePartner">
 	select <include refid="basecolumn" />
 	from partner
     where lower(PT_NAME) like lower('%'||#{ptName}||'%')
 </select>
 	
 
-<resultMap type="forrest.domain.PartnerDTO" id="basePartner">
+<resultMap type="forrest.domain.jm.PartnerDTO" id="basePartner">
       <id column="PT_NUM" jdbcType="BIGINT" property="ptNum" />
       <result column="PT_NAME" jdbcType="VARCHAR" property="ptName" />
       <result column="PT_PH" jdbcType="VARCHAR" property="ptPh" />

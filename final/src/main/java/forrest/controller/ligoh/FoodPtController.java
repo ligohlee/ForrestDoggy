@@ -76,5 +76,10 @@ public class FoodPtController {
 		return "thymeleaf/backOfficePage/html/pt_manager/workCheck2";
 	}
 	
+	@RequestMapping(value = "contractDetail", method = RequestMethod.GET)
+	public String contractDetail(@RequestParam(value="ctNum") String ctNum, Model model) throws Exception{
+		return "thymeleaf/backOfficePage/html/pt_manager/workCheck";
+	}
+	
 
 }

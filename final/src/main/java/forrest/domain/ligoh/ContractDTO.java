@@ -10,8 +10,12 @@ import lombok.NoArgsConstructor;
 public class ContractDTO {
 	Integer ctNum;
 	
+	
 	Integer ptNum;
 	Integer workNum;
+	
+	String ptName;
+	String workName;
 	String ctTerm;
 	String ctPtName;
 	String ctPtPh;

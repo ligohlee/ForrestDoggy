@@ -19,7 +19,6 @@ public class WorkSearchService {
 			List<PartnerDTO> lists = partnerMapper.getPartnerList(dto);
 		       System.out.println(ptName);
 			model.addAttribute("lists", lists);
-			//sss
 			
 		}
 

@@ -15,8 +15,8 @@ CT_NUM, PT_NUM, WORK_NUM, CT_TERM, CT_CONTENT, CT_IMAGE, CT_PT_PH, CT_PT_NAME
 <insert id="contractInsert" parameterType="forrest.domain.ligoh.ContractDTO" >
 
 insert into contract ( <include refid="basecolumn" /> )
-values((<include refid="maxNum"/>),1,22,#{ctTerm},
-#{ctPtName},#{ctPtPh},#{ctContent}, #{ctImage})S
+values((<include refid="maxNum"/>),#{ptNum},#{workNum},#{ctTerm}, 
+#{ctContent},#{ctImage},#{ctPtPh}, #{ctPtName})
 
 </insert>
 
@@ -24,7 +24,6 @@ values((<include refid="maxNum"/>),1,22,#{ctTerm},
 	select <include refid="basecolumn" />
 	from contract
     order by ct_num desc
-		
 </select>
 	
 <select id="getContractCount" resultType="int">

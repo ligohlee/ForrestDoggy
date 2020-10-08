@@ -16,4 +16,5 @@ public interface PartnerMapper {
 	public void partnerUpdate(PartnerDTO dto) throws Exception;
 	public void partnerInsert(PartnerDTO dto) throws Exception;
 	public void partnerDelete(String ptNum) throws Exception;
+	public List<PartnerDTO> partnerSearch(StartEndPageDTO dto);
 }

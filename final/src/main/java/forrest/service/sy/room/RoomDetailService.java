@@ -1,30 +1,25 @@
 package forrest.service.sy.room;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import forrest.domain.sy.room.OptionsDTO;
-import forrest.mapper.sy.room.OptionsMapper;
-
+import forrest.domain.sy.room.RoomDTO;
+import forrest.mapper.sy.room.RoomMapper;
 
 @Service
 @Component
-public class OptionListService {
-	
+public class RoomDetailService {
 	@Autowired
-	OptionsMapper optionsMapper;
-	
-	public void listOpt(Model model) {
+	RoomMapper mapper;
+	public void selectRoom(int roomNum, Model model) {
 		// TODO Auto-generated method stub
-		
-		List<OptionsDTO> list = optionsMapper.selectOpt();
-		model.addAttribute("optList", list);
+		RoomDTO dto = mapper.selectRoom(roomNum).get(0);
+		model.addAttribute("room", dto);
 		
 		
 	}
+	
 
 }

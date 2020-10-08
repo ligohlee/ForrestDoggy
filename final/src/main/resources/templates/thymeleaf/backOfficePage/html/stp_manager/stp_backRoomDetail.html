@@ -44,7 +44,7 @@
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                        	객실등록
+                        	객실상세보기
                         </h1>
                     </div>
                 </div>
@@ -116,30 +116,20 @@
 					    	</style>
 					    	
 					    	<!-- 콘텐츠영역 -->
-					    	<form th:action="@{/stpback/roomRegistPro}" method="post" name="frm" enctype="multipart/form-data">
+					    	
 					    	<table class="table">
 					    			
-					    			<tr><th>객실번호</th><td><input type="text" name="roomNum" class="syinput"/></td></tr>
-					    			<tr><th>객실이름</th><td><input type="text" name="roomName" class="syinput"/></td></tr>
-					    			<tr><th>객실가격</th><td><input type="text" name="roomPrice" class="syinput"/></td></tr>
-					    			<tr><th>객실소개</th><td><textarea name="roomInfo" class="syarea"></textarea></td></tr>
-					    			<tr><th>객실사진</th><td><input type="file" name="roomImg" class="syfile" multiple="multiple"/></td></tr>
-					    			<tr><th>수용인원</th><td><select name="capacity" class="syinput">
-									<option value="2" selected="selected">2명</option>
-									<option value="4">3~4명</option>
-									<option value="6">5~6명</option>
-									<option value="8">7~8명</option>
-									<option value="10">9~10명</option>									
-								</select></td></tr>
-					    			<tr><th>수용반려견수</th><td><select name="dogCap" class="syinput">
-									<option value="1" selected="selected">1마리</option>
-									<option value="3">2~3마리</option>
-									<option value="5">4~5마리</option>
-									<option value="7">6~7마리</option>								
-								</select></td></tr>
+					    			<tr><th>객실번호</th><td>[[${room.roomNum}]]</td></tr>
+					    			<tr><th>객실이름</th><td>[[${room.roomName}]]</td></tr>
+					    			<tr><th>객실가격</th><td>[[${room.roomPrice}]]</td></tr>
+					    			<tr><th>객실소개</th><td>[[${room.roomInfo}]]</td></tr>
+					    			<tr><th>객실사진</th><td>[[${room.roomImg}]]</td></tr>
+					    			<tr><th>수용인원</th><td>[[${room.capacity}]]</td></tr>
+					    			<tr><th>수용반려견수</th><td>[[${room.dogCap}]]</td></tr>
+					    			<tr><td></td></tr>
 											    			
 					    		<tr><td colspan="2" class="btntd"><input type="submit" value="객 실 등 록" class="sybtn"/></td></tr>
-					    	</table></form>
+					    	</table>
  
 					    
 					    	

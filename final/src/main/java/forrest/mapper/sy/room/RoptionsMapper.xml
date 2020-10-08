@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.sy.room.RoptionsMapper">
+
+
+
+<insert id="insertRoptions" parameterType="forrest.domain.sy.room.RoptionsDTO">
+	insert into roptions(ROOM_NUM, OPT_NUM, ROPTION_QTY)
+	values(#{roomNum}, #{optNum}, #{roptionQty})
+</insert>
+
+<resultMap type="forrest.domain.sy.room.RoptionsDTO" id="resultmap2">
+	<constructor>
+		<arg column="room_num" javaType="int" />
+		<arg column="opt_num" javaType="int"/>
+		<arg column="roption_qty" javaType="int"/>	
+	</constructor>
+</resultMap>
+
+<select id="selectRoptions" resultMap="resultmap2" parameterType="int">
+	select <include refid="basecolumn"/>
+	from roptions
+	where room_num=#{roomNum}
+</select>
+</mapper>

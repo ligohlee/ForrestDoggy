@@ -20,7 +20,7 @@ public class PtSearchService {
 		
 		StartEndPageDTO dto = new StartEndPageDTO(1L, 1L, ptName, null);
 		
-		List<PartnerDTO> lists = partnerMapper.getPartnerList(dto);
+		List<PartnerDTO> lists = partnerMapper.partnerSearch(dto);
 	       System.out.println(ptName);
 		model.addAttribute("lists", lists);
 		

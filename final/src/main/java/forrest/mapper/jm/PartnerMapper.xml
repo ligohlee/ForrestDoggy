@@ -38,6 +38,12 @@
 					order by PT_NUM desc))
 		where rn &gt;= #{startPage} and rn &lt;= #{endPage}
 	</select>
+	
+	<select id="partnerSearch" parameterType="forrest.domain.jm.StartEndPageDTO"  resultMap="basePartner">
+	   select <include refid="basecolumn"/>
+	   from partner
+	   where lower(pt_name) like lower('%'||#{userId}||'%')
+	</select>
 
 	<select id="getPartnerCount" resultType="int">
 		select count(*) from PARTNER 

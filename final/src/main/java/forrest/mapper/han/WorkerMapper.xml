@@ -29,10 +29,10 @@
 		from WORKER
 		
 	</select>
-	<select id="workSearch" parameterType="forrest.domain.han.WorkerDTO"  resultMap="baseworker">
+	<select id="workSearch" parameterType="forrest.domain.jm.StartEndPageDTO"  resultMap="baseworker">
 	   select <include refid="basecolumn"/>
 	   from WORKER
-	   where lower(work_name) like lower('%'||#{workName}||'%')
+	   where lower(work_name) like lower('%'||#{userId}||'%')
 	</select>
 	
 	

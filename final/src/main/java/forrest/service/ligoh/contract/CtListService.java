@@ -18,7 +18,6 @@ public class CtListService {
 	
 	public void ctList(Model model) throws Exception {
 	List<ContractDTO> lists = contractMapper.getContractList();
-	// 자료실테이블에 있는 레코드가 몇개인지 가져오
 	int count = contractMapper.getContractCount();
 	
 	model.addAttribute("count", count);

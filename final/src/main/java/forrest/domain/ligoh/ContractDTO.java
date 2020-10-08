@@ -8,18 +8,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContractDTO {
-	String ctNum;
-	String ptNum;
-	String workNum;
+	Integer ctNum;
 	
-	String ptName;
-	String workName;
-	
+	Integer ptNum;
+	Integer workNum;
 	String ctTerm;
-	
 	String ctPtName;
 	String ctPtPh;
 	String ctContent;
+	
 	String ctImage;
 
 }

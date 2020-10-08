@@ -16,6 +16,7 @@ import forrest.command.ligoh.ContractCommand;
 import forrest.service.ligoh.contract.CtListService;
 import forrest.service.ligoh.contract.CtWriteService;
 import forrest.service.ligoh.contract.PtSearchService;
+import forrest.service.ligoh.contract.WorkSearchService;
 
 
 @Controller
@@ -33,6 +34,8 @@ public class FoodPtController {
 	CtListService ctListService;
 	@Autowired
 	PtSearchService ptSearchService;
+	@Autowired
+	WorkSearchService workSearchService;
 	
 	
 	@RequestMapping(value = "foodContract")
@@ -69,7 +72,7 @@ public class FoodPtController {
 	}
 	@RequestMapping(value = "workSearch", method = RequestMethod.POST)
 	public String workSearch (@RequestParam(value="workName") String workName, Model model) throws Exception {
-
+		workSearchService.wkSel(workName, model);
 		return "thymeleaf/backOfficePage/html/pt_manager/workCheck2";
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import forrest.domain.jm.PartnerDTO;
 import forrest.domain.ligoh.ContractDTO;
 import forrest.mapper.ligoh.ContractMapper;
 
@@ -18,6 +19,9 @@ public class CtListService {
 	
 	public void ctList(Model model) throws Exception {
 	List<ContractDTO> lists = contractMapper.getContractList();
+	
+	
+	
 	int count = contractMapper.getContractCount();
 	
 	model.addAttribute("count", count);

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.han.DeptMapper">
+	<sql id="deptbaseColum">
+	DEPT_NUM,DEPT_NAME,DEPT_PH
+	</sql>
+	<insert id="deptInsert" parameterType="forrest.domain.han.DeptDTO">
+	insert into DEPARTMENT (DEPT_NUM,DEPT_NAME,DEPT_PH)
+	values(#{deptNum},#{deptName},#{deptPh})
+	</insert>
+	<resultMap type="forrest.domain.han.DeptDTO" id="deptBase">
+	<id column="DEPT_NUM" jdbcType="BIGINT" property="deptNum"/>
+	<result column="DEPT_NAME" jdbcType="VARCHAR" property="deptName"/>
+	<result column="DEPT_PH" jdbcType="VARCHAR" property="deptPh"/>
+	</resultMap>
+	<select id="deptview" resultMap="deptBase">
+		select DEPT_NUM,DEPT_NAME,DEPT_PH from DEPARTMENT
+	</select>
+	<select id="deptdetailview" resultMap="deptBase">
+		select DEPT_NUM,DEPT_NAME,DEPT_PH from DEPARTMENT
+		where DEPT_NUM = #{deptNum}
+	</select>
+	<update id="deptModiupdate" parameterType="forrest.domain.han.DeptDTO">
+		update DEPARTMENT
+		set DEPT_NAME = #{deptName}, DEPT_PH = #{deptPh}
+		where DEPT_NUM = #{deptNum}
+	
+	
+	
+	
+	</update>
+
+
+
+</mapper>

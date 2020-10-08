@@ -12,5 +12,6 @@ public class PartnerBackMainController {
 		return "thymeleaf/backOfficePage/html/pt_manager/pt_backMain";
 	}
 	
+	
 
 }

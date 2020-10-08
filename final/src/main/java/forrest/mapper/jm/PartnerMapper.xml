@@ -2,38 +2,77 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="forrest.mapper.jm.PartnerMapper">
+
 <sql id="basecolumn">
-PT_NUM,PT_NAME, PT_PH, PT_EMAIL, PT_ADDR, PT_TYPE, PT_BUSINESS_NUM, PT_BUSINESS_IMAGE, PT_ACCOUNT	
-,PT_COMENT, PT_CEO	
+	PT_NUM, PT_NAME, PT_PH, PT_EMAIL, PT_ADDR, PT_TYPE, PT_BUSINESS_NUM, PT_BUSINESS_IMAGE, PT_ACCOUNT, PT_COMENT, PT_CEO
 </sql>
-
-  <sql id="maxNum">
-    select nvl(max(CT_NUM),0) + 1
-    from partner
-  </sql>
-
-
-
-<select  id="getPartnerList" parameterType="forrest.domain.jm.PartnerDTO" resultMap="basePartner">
-	select <include refid="basecolumn" />
-	from partner
-    where lower(PT_NAME) like lower('%'||#{ptName}||'%')
-</select>
 	
+	<resultMap type="forrest.domain.jm.PartnerDTO" id="basePartner">
+		<id column="PT_NUM" jdbcType="BIGINT" property="ptNum" />
+		<result column="PT_NAME" jdbcType="VARCHAR" property="ptName" />
+		<result column="PT_PH" jdbcType="VARCHAR" property="ptPh" />
+		<result column="PT_EMAIL" jdbcType="VARCHAR" property="ptEmail" />
+		<result column="PT_ADDR" jdbcType="VARCHAR" property="ptAddr" />
+		<result column="PT_TYPE" jdbcType="VARCHAR" property="ptType" />
+		<result column="PT_BUSINESS_NUM" jdbcType="BIGINT" property="ptBusinessNum" />
+		<result column="PT_BUSINESS_IMAGE" jdbcType="VARCHAR" property="ptBusinessImage" />
+		<result column="PT_ACCOUNT" jdbcType="VARCHAR" property="ptAccount" />
+		<result column="PT_COMENT" jdbcType="VARCHAR" property="ptComent" />
+		<result column="PT_CEO" jdbcType="VARCHAR" property="ptCeo" />
+	</resultMap>
+	
+	<select id="getPartnerList" resultMap="basePartner">
+		select rn, <include refid="basecolumn" />
+		from (select rownum rn, <include refid="basecolumn" />
+			 from ( select 
+						<include refid="basecolumn" />
+					from PARTNER
+					<trim prefix="where" prefixOverrides="AND | OR">
+						<if test="num != null ">
+							and PT_num = #{num}
+						</if>
+					</trim>
+					order by PT_NUM desc))
+		where rn &gt;= #{startPage} and rn &lt;= #{endPage}
+	</select>
 
-<resultMap type="forrest.domain.jm.PartnerDTO" id="basePartner">
-      <id column="PT_NUM" jdbcType="BIGINT" property="ptNum" />
-      <result column="PT_NAME" jdbcType="VARCHAR" property="ptName" />
-      <result column="PT_PH" jdbcType="VARCHAR" property="ptPh" />
-      <result column="PT_EMAIL" jdbcType="VARCHAR" property="ptEmail" />
-      <result column="PT_ADDR" jdbcType="VARCHAR" property="ptAddr" />
-      <result column="PT_TYPE" jdbcType="VARCHAR" property="ptType" />
-      <result column="PT_BUSINESS_NUM" jdbcType="BIGINT" property="ptBusinessNum" />
-      <result column="PT_BUSINESS_IMAGE" jdbcType="VARCHAR" property="ptBusinessImage" />
-      <result column="PT_ACCOUNT" jdbcType="VARCHAR" property="ptAccount" />
-      <result column="PT_COMENT" jdbcType="VARCHAR" property="ptComent" />
-      <result column="PT_CEO" jdbcType="VARCHAR" property="ptCeo" />
-   </resultMap>
+	<select id="getPartnerCount" resultType="int">
+		select count(*) from PARTNER 
+	</select>
+
+	<update id="partnerUpdate" parameterType="forrest.domain.jm.PartnerDTO">
+		update partner
+		<trim prefix="set" suffixOverrides=",">
+			<if test="pt_name != null"> pt_name = #{ptName}, </if>
+			<if test="pt_ph != null"> pt_ph = #{ptPh}, </if>
+			<if test="pt_email != null"> pt_email = #{ptEmail}, </if>
+			<if test="pt_addr != null"> pt_addr = #{ptAddr}, </if>
+			<if test="pt_type != null"> pt_type = #{ptType}, </if>
+			<if test="pt_business_num != null"> pt_business_num = #{ptBusinessNum}, </if>
+			<if test="pt_business_image != null"> pt_business_image = #{ptBusinessImage}, </if>
+			<if test="pt_account != null"> pt_account = #{ptAccount}, </if>
+			<if test="pt_ceo != null"> pt_ceo = #{ptCeo}, </if>
+			pt_coment = #{ptComent}
+		</trim>
+		<where>
+			pt_num = #{ptNum}
+		</where>
+	</update>
+			
+	<insert id="partnerInsert" parameterType="forrest.domain.jm.PartnerDTO">
+		insert into PARTNER ( <include refid="basecolumn" />  )
+		values ( 
+  				(select nvl(max(PT_NUM),0) + 1
+    			from partner), 
+    			#{ptName}, #{ptPh}, #{ptEmail}, #{ptAddr}, #{ptType}, #{ptBusinessNum}, 
+				#{ptBusinessImage}, #{ptAccount}, #{ptComent}, #{ptCeo}	)
+	</insert>	
+		
+	<delete id="partnerDelete" parameterType="string">
+		delete from PARTNER
+		where pt_num = #{ptNum}
+    </delete>
+
 
 
 

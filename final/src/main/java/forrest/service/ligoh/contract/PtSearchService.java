@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import forrest.domain.jm.PartnerDTO;
+import forrest.domain.jm.StartEndPageDTO;
 import forrest.mapper.jm.PartnerMapper;
 
 @Service
@@ -16,8 +17,9 @@ public class PtSearchService {
  @Autowired
  PartnerMapper partnerMapper;
 	public void ptSel(String ptName, Model model) throws Exception {
-		PartnerDTO dto = new PartnerDTO();
-		dto.setPtName(ptName);
+		
+		StartEndPageDTO dto = new StartEndPageDTO(1L, 1L, ptName, null);
+		
 		List<PartnerDTO> lists = partnerMapper.getPartnerList(dto);
 	       System.out.println(ptName);
 		model.addAttribute("lists", lists);

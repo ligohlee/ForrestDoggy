@@ -28,6 +28,9 @@
 						<include refid="basecolumn" />
 					from PARTNER
 					<trim prefix="where" prefixOverrides="AND | OR">
+						<if test="userId != null">
+							and PT_NAME = #{userId}
+						</if> 
 						<if test="num != null ">
 							and PT_num = #{num}
 						</if>

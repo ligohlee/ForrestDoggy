@@ -64,10 +64,11 @@
 	width: 100%;
 }
 </style>
-							<form th:action="@{/edit/memberModifyPro}" method="post" name="frm">
+							<form th:action="@{/memberlist/memberModifyPro}" method="post" name="frm">
     <div class="memberDetail-area">
       <div class="form-group">     
         <span class="bar">회원아이디</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${memberCommand.memId}]]<span class="redred">* 수정불가</span>
+        <input type="hidden" name="memId" th:value = "${memberCommand.memId}"/>
       </div>
       <div class="form-group">
         <span class="bar">회원이름 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="name" name ="memName" 

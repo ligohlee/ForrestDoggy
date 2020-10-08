@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="workSearch" method="post">
+직원명을 검색하세요
+<input type="text" name="workName"/> 
+<button type="submit">찾기</button>
+<br/>
+
+</form>
+
+<table border="1" width="100%">
+  <tr>
+    <td>직원명</td> <td>부서명</td>
+  </tr>
+   <tr th:each="list: ${lists}">
+   <td th:text="${list.workName}"></td> 
+   <td th:text="${list.deptNu}"></td> 
+   
+  </tr>
+</table>
+
+
+</body>
+</html>

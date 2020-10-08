@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.jm.PartnerMapper">
+<sql id="basecolumn">
+PT_NUM,PT_NAME, PT_PH, PT_EMAIL, PT_ADDR, PT_TYPE, PT_BUSINESS_NUM, PT_BUSINESS_IMAGE, PT_ACCOUNT	
+,PT_COMENT, PT_CEO	
+</sql>
+
+  <sql id="maxNum">
+    select nvl(max(CT_NUM),0) + 1
+    from partner
+  </sql>
+
+
+
+<select  id="getPartnerList" parameterType="forrest.domain.jm.PartnerDTO" resultMap="basePartner">
+	select <include refid="basecolumn" />
+	from partner
+    where lower(PT_NAME) like lower('%'||#{ptName}||'%')
+</select>
+	
+
+<resultMap type="forrest.domain.jm.PartnerDTO" id="basePartner">
+      <id column="PT_NUM" jdbcType="BIGINT" property="ptNum" />
+      <result column="PT_NAME" jdbcType="VARCHAR" property="ptName" />
+      <result column="PT_PH" jdbcType="VARCHAR" property="ptPh" />
+      <result column="PT_EMAIL" jdbcType="VARCHAR" property="ptEmail" />
+      <result column="PT_ADDR" jdbcType="VARCHAR" property="ptAddr" />
+      <result column="PT_TYPE" jdbcType="VARCHAR" property="ptType" />
+      <result column="PT_BUSINESS_NUM" jdbcType="BIGINT" property="ptBusinessNum" />
+      <result column="PT_BUSINESS_IMAGE" jdbcType="VARCHAR" property="ptBusinessImage" />
+      <result column="PT_ACCOUNT" jdbcType="VARCHAR" property="ptAccount" />
+      <result column="PT_COMENT" jdbcType="VARCHAR" property="ptComent" />
+      <result column="PT_CEO" jdbcType="VARCHAR" property="ptCeo" />
+   </resultMap>
+
+
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.sy.room.RoomMapper">
+
+<sql id="basecolumn">
+	ROOM_NUM, ROOM_NAME, ROOM_INFO, ROOM_PRICE, ROOM_IMG, CAPACITY, DOG_CAP, ROOM_REGIT
+</sql>
+
+<insert id="insertRoom" parameterType="forrest.domain.sy.room.RoomDTO">
+	insert into room(<include refid="basecolumn"/>)
+	values(#{roomNum}, #{roomName}, #{roomInfo}, #{roomPrice}, #{roomImg}, #{capacity}, #{dogCap}, sysdate)	
+</insert>
+
+<resultMap type="forrest.domain.sy.room.RoomDTO" id="resultmap">
+	<constructor>
+		<idArg column="room_Num" javaType="int" />
+		<arg column="room_name" javaType="string"/>
+		<arg column="room_info" javaType="string"/>
+		<arg column="room_price" javaType="int"/>
+		<arg column="room_img" javaType="string"/>
+		<arg column="capacity" javaType="int"/>
+		<arg column="dog_cap" javaType="int"/>
+		<arg column="room_regit" javaType="java.sql.Timestamp"/>	
+	</constructor>
+</resultMap>
+
+<select id="selectRoom" resultMap="resultmap">
+	select <include refid="basecolumn"/>
+	from room
+</select>
+
+
+
+</mapper>

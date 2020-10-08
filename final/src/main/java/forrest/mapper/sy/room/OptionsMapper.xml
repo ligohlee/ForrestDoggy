@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.sy.room.OptionsMapper">
+
+<sql id="basecolumn">
+	OPT_NUM, OPT_NAME, OPT_PRICE, OPT_REGIST
+</sql>
+
+<insert id="insertOpt" parameterType="forrest.domain.sy.room.OptionsDTO">
+	insert into options(<include refid="basecolumn"/>)
+	values(opts_seq.nextval,#{optName},#{optPrice},sysdate)	
+</insert>
+
+<resultMap type="forrest.domain.sy.room.OptionsDTO" id="resultmap">
+	<constructor>
+		<idArg column="opt_num" javaType="int" />
+		<arg column="opt_name" javaType="string"/>
+		<arg column="opt_price" javaType="int"/>
+		<arg column="opt_regist" javaType="java.sql.Timestamp"/>	
+	</constructor>
+</resultMap>
+
+<select id="selectOpt" resultMap="resultmap">
+	select <include refid="basecolumn"/>
+	from options
+</select>
+
+
+
+</mapper>

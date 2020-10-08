@@ -5,7 +5,7 @@
     <title></title>
     <head>
     <meta charset="UTF-8">
-    <title>Partner BackOffice</title>
+    <title>STP BackOffice</title>
     <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
     <!-- Bootstrap Styles-->
     <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -20,18 +20,21 @@
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+    	
+    	
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
 
-    </head>
   </head>
   <body>
 
 	<div id="wrapper">
 
     <!-- stp header 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_partner/back_pt_header.html"></div>
+	<div th:include="thymeleaf/backOfficePage/html/layout_stayPark/back_stp_header.html"></div>
     <!-- stp seideNav 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_partner/back_pt_sideNav.html"></div>
+	<div th:include="thymeleaf/backOfficePage/html/layout_stayPark/back_stp_sideNav.html"></div>
 
     <!--페이지래퍼-->
 		<div id="page-wrapper">
@@ -41,7 +44,7 @@
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                        	협력계약리스트
+                        	객실상세보기
                         </h1>
                     </div>
                 </div>
@@ -58,58 +61,82 @@
 					    		.submit {
 					    			width: 100%;
 					    		}
-					    		table{
-					    		    width: 90%;
-					    		    text-align: center;
-					    		    margin: 0 auto;
+					    		.table{
+					    			width: 80%;
+					    			text-align: center;
+					    			margin: 0 auto;
 					    		}
 					    		th{
-					    		    text-align: center;
-					    		    border: 1px solid #ddd;
+					    			text-align: center;
+					    			border: 1px solid #ddd;
+
 					    		}
 					    		td{
-					    		    font-size: 15px;
-					    		    border: 1px solid #ddd;
+					    			font-size: 14px;
+					    			border: 1px solid #ddd;
 					    		}
+					    		.sybtn{
+					    			width: 400px;
+					    			height: 45px;
+					    			border: 0px solid #fff;
+					    			color: #fff;
+					    			background-color: rgb(23,69,84);
+					    			font-family: 'Noto Sans KR', sans-serif;
+					    			font-size: 16px;
+					    			font-weight: 500;
+					    			margin: 50px;
+					    		}
+					    		.syinput{
+					    			width: 100%;
+					    			border: 1px solid #999;
+					    		}
+					    		.syarea{
+					    		width: 100%;
+					    		height: 100px;
+					    		border: 1px solid #999;
+					    		}
+					    		.syfile{
+					    		width: 50%;}
+					    		.syopt{
+					    			width: 65%;
+					    			border: 1px solid #999;
+					    			margin-right: 5px;
+					    		}
+					    		.syoptqty{
+					    		margin-bottom: 2px;
+					    		margin-top: 2px;
+					    			width: 50%;
+					    			border: 1px solid #999;
+					    			
+					    			float: left;
+					    		}
+					    		.optName{ width: 49.9%; text-align: left; float: left; margin-bottom: 2px;
+					    		margin-top: 2px;}
+					    		
 					    	</style>
-					    	<div>
-					    	   <table>
-					    	     <tr>
-					    	       <td>계약번호</td> <td>업체명</td> <td>계약기간</td> <td>계약 담당자</td> <td>상세</td>
-					    	     </tr>
-					    	     <tr th:each="list: ${lists}">
-					    	       <td th:text="${list.ctNum}"></td> 
-					    	       <td th:text="${list.ptNum}">업체명</td> 
-					    	       <td th:text="${list.ctTerm}">계약기간</td> 
-					    	       <td th:text="${list.workNum}">계약 담당자</td> 
-					    	       <td >상세</td>
-					    	     </tr>
-					    	     
-					    	     <tr>
-					    	        <td style="text-align:right" colspan="6">
-					    	          <a href="ctRegist">계약 등록</a> &emsp;
-					    	        </td>
-					    	     </tr>
 					    	
+					    	<!-- 콘텐츠영역 -->
 					    	
+					    	<table class="table">
+					    			
+					    			<tr><th>객실번호</th><td>[[${room.roomNum}]]</td></tr>
+					    			<tr><th>객실이름</th><td>[[${room.roomName}]]</td></tr>
+					    			<tr><th>객실가격</th><td>[[${room.roomPrice}]]</td></tr>
+					    			<tr><th>객실소개</th><td>[[${room.roomInfo}]]</td></tr>
+					    			<tr><th>객실사진</th><td>[[${room.roomImg}]]</td></tr>
+					    			<tr><th>수용인원</th><td>[[${room.capacity}]]</td></tr>
+					    			<tr><th>수용반려견수</th><td>[[${room.dogCap}]]</td></tr>
+					    			<tr><td></td></tr>
+											    			
+					    		<tr><td colspan="2" class="btntd"><input type="submit" value="객 실 등 록" class="sybtn"/></td></tr>
+					    	</table>
+ 
+					    
 					    	
-					    	   </table>
-					    	   
-					    	</div>
 						</div>
 					</div>
 				</div>
-                <!--로그인 후 메인화면-->
-
-                <!--<c:if test="${ !empty logId }">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">
-                        	페이지 타이틀... <small>타이틀 내용... 수정수정</small>
-                        </h1>
-                    </div>
-                </div>
-              </c:if>-->
+                
 
 
 

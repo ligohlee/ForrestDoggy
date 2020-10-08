@@ -22,6 +22,29 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
 
+     <script type="text/javascript">
+     $(function(){
+    	 $("#ptCheck").click(function(){
+ 			open("partnerCheck","파트너검색",
+ 			'left='+(screen.availWidth-440)/2+',top='+(screen.availHeight-300)/2+', width=440px,height=300px');
+
+ 		});
+    	 $("#workCheck").click(function(){
+ 			open("workCheck","직원검색",
+ 			'left='+(screen.availWidth-440)/2+',top='+(screen.availHeight-300)/2+', width=440px,height=300px');
+
+ 		});
+    	 
+     });
+     function goBack(){
+    	 location.href="foodContract";
+     }
+     
+     </script>
+     
+ 
+     
+     
     </head>
   </head>
   <body>
@@ -41,7 +64,7 @@
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                        	협력계약리스트
+                        	협력계약등록
                         </h1>
                     </div>
                 </div>
@@ -67,34 +90,80 @@
 					    		    text-align: center;
 					    		    border: 1px solid #ddd;
 					    		}
-					    		td{
+					    		td{ 
 					    		    font-size: 15px;
 					    		    border: 1px solid #ddd;
 					    		}
+					    		input{
+					    		   width: 100%;
+					    		}
+					    		textarea{
+					    		   width: 100%;
+					    		}
 					    	</style>
 					    	<div>
+					    	
+					    	
+					    	<form th:action='@{/ptback/contractInsert}' method="post" 
+					    	name="foodContract" th:object="${contractCommand}" enctype="multipart/form-data">
 					    	   <table>
+					    	    <colgroup>
+                               <col width="15%" >
+                               <col width="20%" >
+                               <col width="15%">
+                               <col width="20%" >
+                               <col width="10%" >
+                               <col width="20%">
+                               </colgroup>
+                               
 					    	     <tr>
-					    	       <td>계약번호</td> <td>업체명</td> <td>계약기간</td> <td>계약 담당자</td> <td>상세</td>
-					    	     </tr>
-					    	     <tr th:each="list: ${lists}">
-					    	       <td th:text="${list.ctNum}"></td> 
-					    	       <td th:text="${list.ptNum}">업체명</td> 
-					    	       <td th:text="${list.ctTerm}">계약기간</td> 
-					    	       <td th:text="${list.workNum}">계약 담당자</td> 
-					    	       <td >상세</td>
+					    	       <td>업체명</td> 
+					    	       <td colspan="5">
+					    	       <input style="width:10%" type="button" value="찾기" id="ptCheck">
+					    	       <input style="width:89%" type="text" id="ptName" value="" readonly="readonly">
+					    	       <input type="hidden" id="ptName" value="" >
+					    	       <input type="hidden" id="ptNum" value="">
+					    	       </td> 
+					    	       
 					    	     </tr>
 					    	     
 					    	     <tr>
-					    	        <td style="text-align:right" colspan="6">
-					    	          <a href="ctRegist">계약 등록</a> &emsp;
-					    	        </td>
+					            
+					               <td >계약기간</td> 
+					               <td colspan="2"><input type="text" name="ctTerm" ></td> 
+					               <td>계약 담당 직원</td>
+					               <td colspan="2">
+					               <input style="width: 18%" type="button" value="찾기" id="workCheck">
+					               <input style="width: 80%"  type="text" name="workName" >
+					               </td> 
+					    	     </tr>
+					    	       
+					    	     <tr>
+					                <td>업체 담당자</td> 
+					                <td><input type="text" name="ctPtName" ></td>  
+					                <td>업체 당당자 연락처</td> 
+					                <td><input type="text" name="ctPtPh"  ></td>
+					                <td>계약서 사본</td>
+					    	        <td><input type="file" name="report" multiple="multiple"></td>  
+					    	     </tr>
+					    	       
+					    	     <tr>
+					    	       <td>계약내용</td>  
+					    	       <td colspan="5" ><textarea  name="ctContent" cols="100" rows="5" ></textarea></td> 
+					    	     </tr>
+					    	     <tr>
+					    	        
+					    	       <td colspan="6" style="text-align:right">
+					    	       <button type="submit">등록</button> 
+					    	       <button type="button" onclick="javascript:goBack()">취소</button>
+					    	       </td> 
+					    	   
 					    	     </tr>
 					    	
-					    	
-					    	
 					    	   </table>
-					    	   
+					    	      
+					    	      </form>
+					    		
 					    	</div>
 						</div>
 					</div>

@@ -1,4 +1,4 @@
-package forrest.domain.sy;
+package forrest.domain.sy.room;
 
 
 import java.sql.Timestamp;

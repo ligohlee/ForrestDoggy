@@ -8,22 +8,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import forrest.domain.sy.room.OptionsDTO;
-import forrest.mapper.sy.room.OptionsMapper;
+import forrest.domain.sy.room.RoomDTO;
+import forrest.mapper.sy.room.RoomMapper;
+
+
 
 
 @Service
 @Component
-public class OptionListService {
+public class RoomListService {
 	
 	@Autowired
-	OptionsMapper optionsMapper;
-	
-	public void listOpt(Model model) {
+	RoomMapper roomMapper;
+	public void selectRoom(Model model) {
 		// TODO Auto-generated method stub
-		
-		List<OptionsDTO> list = optionsMapper.selectOpt();
-		model.addAttribute("optList", list);
-		
+		List<RoomDTO> list = roomMapper.selectRoom(null);
+		model.addAttribute("roomList", list);
 		
 	}
 

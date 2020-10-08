@@ -20,14 +20,18 @@ public class CtWriteService {
 	ContractMapper contractMapper;
 
 	public String write(ContractCommand cc, HttpServletRequest request) throws Exception {
-		 ContractDTO dto = new ContractDTO();
-		   
-		   dto.setCtContent(cc.getCtContent());
-		   dto.setCtPtName(cc.getCtPtName());
-		   dto.setCtPtPh(cc.getCtPtPh());
-		   dto.setCtTerm(cc.getCtTerm());
-		   dto.setPtName(cc.getPtName());
-		   dto.setWorkName(cc.getWorkName());
+		 
+		
+		ContractDTO dto = new ContractDTO();
+		
+		  dto.setCtContent(cc.getCtContent());
+		  dto.setPtNum(cc.getPtNum());
+		  dto.setWorkNum(cc.getWorkNum());
+		  dto.setCtPtPh(cc.getCtPtPh());
+		  dto.setCtPtName(cc.getCtPtName());
+		  dto.setCtTerm(cc.getCtTerm());
+		
+	
 		   		   
 		    String imgTotal ="";
 			String location = "";
@@ -55,6 +59,9 @@ public class CtWriteService {
 			
 			contractMapper.contractInsert(dto);
 			location = "redirect:/ptback/foodContract";
+			
+		
+			
 			
 			return location;
 		}

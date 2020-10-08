@@ -24,10 +24,18 @@
 	<result column="WORK_ADDR" jdbcType="VARCHAR" property="workAddr"/>
 	<result column="WORK_IMG" jdbcType="VARCHAR" property="workImg"/>
 	</resultMap>
-	<select id="getworkListview" resultMap="baseworker">
-		select  WORK_NUM,DEPT_NUM,WORK_PASS,WORK_NAME,WORK_PH,WORK_EMAIL,HIRE_DATE,WORK_BORN,POSITION,JOB,WORK_HOLI,WORK_ADDR,WORK_IMG
+	<select id="getworkListview" parameterType="forrest.domain.han.WorkerDTO"  resultMap="baseworker">
+		select <include refid="basecolumn"/>
 		from WORKER
+		
 	</select>
+	<select id="workSearch" parameterType="forrest.domain.han.WorkerDTO"  resultMap="baseworker">
+	   select <include refid="basecolumn"/>
+	   from WORKER
+	   where lower(work_name) like lower('%'||#{workName}||'%')
+	</select>
+	
+	
 	<select id="getdetailview" resultMap="baseworker">
 		select  WORK_NUM,DEPT_NUM,WORK_PASS,WORK_NAME,WORK_PH,WORK_EMAIL,HIRE_DATE,WORK_BORN,POSITION,JOB,WORK_HOLI,WORK_ADDR,WORK_IMG
 		from WORKER

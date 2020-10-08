@@ -5,8 +5,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import forrest.command.sy.room.OptionsCommand;
-import forrest.domain.sy.OptionsDTO;
-import forrest.mapper.sy.OptionsMapper;
+import forrest.domain.sy.room.OptionsDTO;
+import forrest.mapper.sy.room.OptionsMapper;
+
 
 @Service
 @Component

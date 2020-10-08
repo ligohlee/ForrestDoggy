@@ -43,7 +43,7 @@
 				<!--로그인 전 메인 화면-->
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="page-header">회원정보수정</h1>
+						<h1 class="page-header">부서정보수정</h1>
 					</div>
 				</div>
 
@@ -61,26 +61,28 @@
 	width: 100%;
 }
 </style>
-							<form th:action="@{/deptlist/deptModifyPro}" method="post" name="frm">
+							<form th:action="@{/worker/deptModifyPro}" method="post" name="frm">
     <div class="deptDetail-area">
       <div class="form-group">     
-        <span class="bar">부서 번호</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${deptCommand.deptNum}]]<span class="redred">* 수정불가</span>
-        <input type="hidden" name="deptNum" th:value = "${deptCommand.deptNum}"/>
+        <span class="bar">부서 번호</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${dto.deptNum}]]<span class="redred">* 수정불가</span>
+        <input type="hidden" name="deptNum" th:value = "${dto.deptNum}"/>
       </div>
       <div class="form-group">
-        <span class="bar">부서이름 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="name" name ="deptName" 
-	        th:value = "${deptCommand.deptName}"  class="inputBox"/>
+        <span class="bar">부서이름 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="deptName" name ="deptName" 
+	        th:value = "${dto.deptName}"  class="inputBox"/>
       </div>
       <div class="form-group">
-        <span class="bar bar2">부서연락처</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="ph" name ="deptPh" 
-	        th:value = "${deptCommand.deptPh }"  class="inputBox"/>
+        <span class="bar bar2">부서연락처</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="deptPh" name ="deptPh" 
+	        th:value = "${dto.deptPh }"  class="inputBox"/>
     
 					
     </div>
      <div class="clearfix formBtn">
-        <input type="submit" name="modify" value="수정" class="btn btn2">
+        <input type="submit" name="modify" value="수정" class="btn">
         
       </div>
+      </div>
+      <input type="hidden" name="deptNum" th:value="${dto.deptNum }"/>
     </form>
 
 								

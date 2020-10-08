@@ -82,10 +82,9 @@ td {
 									<th>부서명</th>
 									<th>연락처</th>
 								</tr>
-								<th:block th:each="dto , aaa : ${list}">
+								<th:block th:each="dto : ${lists}">
 									<tr>
-										<td>[[${aaa.count}]]</td>
-										<td><a th:href="@{/list/detail(deptNum=${dto.deptNum})}">[[${dto.deptNum}]]</a></td>
+										<td><a th:href="@{deptdetail(deptNum=${dto.deptNum})}">[[${dto.deptNum}]]</a></td>
 										<td>[[${dto.deptName}]]</td>
 										<td>[[${dto.deptPh}]]</td>
 									</tr>

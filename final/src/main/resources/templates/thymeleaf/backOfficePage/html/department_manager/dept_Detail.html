@@ -32,11 +32,9 @@
 <div id="wrapper">
 
 	<!-- stp header 인클루드 영역 -->
-	<div
-		th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_header.html"></div>
-	<!-- stp seideNav 인클루드 영역 -->
-	<div
-		th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_sideNav.html"></div>
+		<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_header.html"></div>
+		<!-- stp seideNav 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_sideNav.html"></div>
 
 	<!--페이지래퍼-->
 	<div id="page-wrapper">
@@ -45,7 +43,7 @@
 			<!--로그인 전 메인 화면-->
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="page-header">회원정보</h1>
+					<h1 class="page-header">부서정보</h1>
 				</div>
 			</div>
 
@@ -64,42 +62,28 @@
 }
 </style>
 
-
+						<from th:action="@{/worker/deptdetail(deptNum=${dto.deptNum})}">
 						<div class="deptDetail-area">
 							<div class="form-group">
 
-								<span class="bar">회원아이디</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${deptCommand.deptNum}]]
+								<span class="bar">부서번호</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${dto.deptNum}]]
 
 							</div>
 							<div class="form-group">
-								<span class="bar">회원이름 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${deptCommand.deptName}]]
+								<span class="bar">부서명 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${dto.deptName}]]
 
 							</div>
 							<div class="form-group">
-								<span class="bar">회원연락처</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${deptCommand.deptPh}]]
+								<span class="bar">연락처</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${dto.deptPh}]]
 
 							</div>
-							<div class="form-group">
-								<span class="bar">회원주소 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${memberCommand.memAddr}]]
-
-							</div>
-							<div class="form-group">
-								<span class="bar">회원이메일</span>&nbsp;&nbsp;&nbsp;&nbsp;[[${deptCommand.memEmail}]]
-
-							</div>
+							
 							<div class="clearfix formBtn">
 								<input type="button" name="modify" value="수정" class="btn"
-									th:onclick="'javascript:location.href=\'deptModify?deptNum=' + ${deptCommand.deptNum} + '\''" />
-								<a> <input type="button" name="delete" value="삭제"
-									class="btn"
-									th:onclick="'javascript:location.href=\'deptDelete?deptNum=' + ${deptCommand.mdeptNum} + '\''">
-								</a>
+									th:onclick="'javascript:location.href=\'deptModify?deptNum=' + ${dto.deptNum} + '\''" />
 							</div>
-
-
-
 						</div>
-
+						</from>
 					</div>
 				</div>
 			</div>

@@ -14,6 +14,7 @@ public class WorkSearchService {
 	 PartnerMapper partnerMapper;
 		public void ptSel(String ptName, Model model) throws Exception {
 			
+			
 			StartEndPageDTO dto = new StartEndPageDTO(1L, 1L, ptName, null);
 			
 			List<PartnerDTO> lists = partnerMapper.getPartnerList(dto);

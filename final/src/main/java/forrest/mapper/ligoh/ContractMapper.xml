@@ -21,9 +21,13 @@ values((<include refid="maxNum"/>),#{ptNum},#{workNum},#{ctTerm},
 </insert>
 
 <select id="getContractList" resultMap="baseContract">
-	select <include refid="basecolumn" />
-	from contract
-    order by ct_num desc
+	select CT_NUM, c.PT_NUM cPtNum, c.WORK_NUM cWorkNum, CT_TERM, CT_CONTENT, 
+	CT_IMAGE, CT_PT_PH, CT_PT_NAME, pt_name, work_name
+	from contract c join partner p 
+    on c.pt_num = p.pt_num
+    join worker w
+    on c.work_num = w.work_num
+    order by ct_num
 </select>
 	
 <select id="getContractCount" resultType="int">
@@ -32,13 +36,15 @@ values((<include refid="maxNum"/>),#{ptNum},#{workNum},#{ctTerm},
 
 <resultMap type="forrest.domain.ligoh.ContractDTO" id="baseContract">
 		<id column="ct_num" jdbcType="BIGINT" property="ctNum"/>
-		<id column="pt_num" jdbcType="BIGINT" property="ptNum"/>
-		<result column="work_num" jdbcType="BIGINT" property="workNum"/>
+		<id column="cPtNum" jdbcType="BIGINT" property="ptNum"/>
+		<result column="cWorkNum" jdbcType="BIGINT" property="workNum"/>
 		<result column="ct_term" jdbcType="VARCHAR" property="ctTerm"/>
 		<result column="ct_image" jdbcType="VARCHAR" property="ctImage"/>
 		<result column="ct_pt_ph" jdbcType="VARCHAR" property="ctPtPh"/>
 		<result column="ct_pt_name" jdbcType="VARCHAR" property="ctPtName"/>
 		<result column="ct_content" jdbcType="VARCHAR" property="ctContent"/>
+		<result column="pt_name" jdbcType="VARCHAR" property="ptName"/>
+		<result column="work_name" jdbcType="VARCHAR" property="workName"/>
 	</resultMap>
 
 

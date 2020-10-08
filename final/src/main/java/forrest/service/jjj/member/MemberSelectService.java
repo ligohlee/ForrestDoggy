@@ -26,7 +26,7 @@ public class MemberSelectService {
 			session.setAttribute("login",memId);
 			return "redirect:/main";
 		}else {
-			return "thymeleaf/html/login";
+			return "thymeleaf/frontPage/html/login";
 		}
 	}
 	

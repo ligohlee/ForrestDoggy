@@ -73,7 +73,7 @@ table {
 .topUl{
 
 }
-#topMenu > ul >li{
+#topMenu > ul >span>li{
   float: left;
 }
 .bar{

@@ -1,11 +1,9 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <head>
+ 
     <meta charset="UTF-8">
-    <title>Partner BackOffice</title>
+    <title>Contract Detail</title>
     <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
     <!-- Bootstrap Styles-->
     <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -41,11 +39,7 @@
      }
      
      </script>
-     
- 
-     
-     
-    </head>
+    
   </head>
   <body>
 
@@ -104,8 +98,7 @@
 					    	<div>
 					    	
 					    	
-					    	<form th:action='@{/ptback/contractInsert}' method="post" 
-					    	name="foodContract" th:object="${contractCommand}" enctype="multipart/form-data">
+					    
 					    	   <table>
 					    	    <colgroup>
                                <col width="15%" >
@@ -119,47 +112,49 @@
 					    	     <tr>
 					    	       <td>업체명</td> 
 					    	       <td colspan="5">
-					    	       [[${list.ptName}]]
+					    	      [[${detail.ptName}]]
 					    	       </td> 
 					    	     </tr>
 					    	     
 					    	     <tr>
 					            
 					               <td >계약기간</td> 
-					               <td colspan="2"><input type="text" name="ctTerm" ></td> 
+					               <td colspan="2">[[${detail.ctTerm}]]</td> 
 					               <td>계약 담당 직원</td>
-					               <td colspan="2">
-					               <input style="width: 18%" type="button" value="찾기" id="workCheck">
-					               <input style="width: 80%"  type="text" name="workName" id="workName" readonly="readonly">
-					    	       <input type="hidden" id="workNum" value="" name="workNum">
-					               </td> 
+					               <td colspan="2">[[${detail.workName}]]</td> 
 					    	     </tr>
 					    	       
 					    	     <tr>
 					                <td>업체 담당자</td> 
-					                <td><input type="text" name="ctPtName" ></td>  
+					                <td>[[${detail.ctPtName}]]</td>  
 					                <td>업체 당당자 연락처</td> 
-					                <td><input type="text" name="ctPtPh"  ></td>
+					                <td>[[${detail.ctPtPh}]]</td>
 					                <td>계약서 사본</td>
-					    	        <td><input type="file" name="report" multiple="multiple"></td>  
+					    	        <td>
+					    	        <div th:each="file :  ${fileList}" >
+					    	        <a th:href="@{/ptback/fileDown(file=${file.ctImage+'`'+file.ctImage})}" >
+					    	        [[${file.ctImage}]]		</a>
+					    	        </div>
+					    	        </td>  
 					    	     </tr>
 					    	       
 					    	     <tr>
 					    	       <td>계약내용</td>  
-					    	       <td colspan="5" ><textarea  name="ctContent" cols="100" rows="5" ></textarea></td> 
+					    	       <td style="width: 100%; height:100px; text-align: left" colspan="5" >
+					    	       [[${detail.ctContent}]]
+					    	       </td> 
 					    	     </tr>
 					    	     <tr>
 					    	        
 					    	       <td colspan="6" style="text-align:right">
-					    	       <button type="submit">등록</button> 
-					    	       <button type="button" onclick="javascript:goBack()">취소</button>
+					    	       <button type="button" onclick="javascript:goBack()">목록으로</button>
 					    	       </td> 
 					    	   
 					    	     </tr>
 					    	
 					    	   </table>
 					    	      
-					    	      </form>
+					    
 					    		
 					    	</div>
 						</div>
@@ -206,12 +201,12 @@
         <script th:src="@{/static/js/morris/morris.js}"></script>
 
 
-      <script th:src="@{/static/js/easypiechart.js}"></script>
-      <script th:src="@{/static/js/easypiechart-data.js}"></script>
+       <script th:src="@{/static/js/easypiechart.js}"></script>
+       <script th:src="@{/static/js/easypiechart-data.js}"></script>
 
        <script th:src="@{/static/js/Lightweight-Chart/jquery.chart.js}"></script>
 
         <!-- Custom Js -->
-        <script th:src="@{/static/js/custom-scripts.js}"></script>
+       <script th:src="@{/static/js/custom-scripts.js}"></script>
   </body>
 </html>

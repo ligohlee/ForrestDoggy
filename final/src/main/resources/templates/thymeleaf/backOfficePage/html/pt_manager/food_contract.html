@@ -1,11 +1,9 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+
     <head>
     <meta charset="UTF-8">
-    <title>Partner BackOffice</title>
+    <title>Food Contract List</title>
     <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
     <!-- Bootstrap Styles-->
     <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -22,7 +20,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
 
-    </head>
+   
   </head>
   <body>
 
@@ -75,7 +73,7 @@
 					    	<div>
 					    	   <table>
 					    	     <tr>
-					    	       <td>계약번호</td> <td>업체명</td> <td>계약기간</td> <td>계약 담당자</td> <td>상세</td>
+					    	       <td>계약번호</td> <td>업체명</td> <td>계약기간</td> <td>계약 담당자</td> <td></td>
 					    	     </tr>
 					    	     <tr th:each="list: ${lists}">
 					    	       <td th:text="${list.ctNum}"></td> 
@@ -92,9 +90,10 @@
 					    	     </tr>
 					    	
 					    	
-					    	
 					    	   </table>
-					    	   
+					    	    <!-- paging -->
+		                        <div th:include="thymeleaf/backOfficePage/html/commonLayout/paging.html" >
+					    	   </div>
 					    	</div>
 						</div>
 					</div>

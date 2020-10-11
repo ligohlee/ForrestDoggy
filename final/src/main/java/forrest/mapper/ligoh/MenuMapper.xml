@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.ligoh.EvaluationMapper">
+
+<sql id="basecolumn">
+MENU_NUM, MENU_NAME, MENU_PRICE, RECIPE, MENU_INTRO, ALLERGY, MENU_IMAGE		
+</sql>
+
+<sql id="maxNum">
+    select nvl(max(eval_NUM),0) + 1
+    from menu
+</sql>
+
+<insert id="menuInsert" parameterType="forrest.domain.ligoh.MenuDTO" >
+   insert into menu ( <include refid="basecolumn" /> )
+   values((<include refid="maxNum"/>),#{menuName},#{menuPrice},#{recipe}, 
+            #{menuIntro},#{allergy},#{menuImage})
+</insert>
+
+
+</mapper>

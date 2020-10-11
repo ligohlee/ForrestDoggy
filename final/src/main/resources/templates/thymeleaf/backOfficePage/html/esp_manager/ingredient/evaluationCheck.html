@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Evaluation Check</title>
+<script type="text/javascript" 
+	src="http://code.jquery.com/jquery-latest.js" ></script>
+<script type="text/javascript">
+
+function select1(a, b){
+	$(opener.document).find("#ptName").val(a);
+	$(opener.document).find("#ptNum").val(b);
+	
+    window.close();	
+}
+
+</script>
+
+</head>
+<body>
+<form action="evalSearch" method="post">
+식재료명을 검색하세요
+<input type="text" name="ingrName" required="required"/> 
+<button type="submit">찾기</button>
+<br/>
+
+</form>
+
+<table border="1" width="100%">
+  <tr>
+    <td >업체명</td><td>식재료명</td><td>등록일 </td>
+  </tr>
+
+</table>
+
+
+</body>
+</html>

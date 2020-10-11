@@ -21,19 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
 
      <script type="text/javascript">
-     $(function(){
-    	 $("#ptCheck").click(function(){
- 			open("partnerCheck","파트너검색",
- 			'left='+(screen.availWidth-440)/2+',top='+(screen.availHeight-300)/2+', width=440px,height=300px');
-
- 		});
-    	 $("#workCheck").click(function(){
- 			open("workCheck","직원검색",
- 			'left='+(screen.availWidth-440)/2+',top='+(screen.availHeight-300)/2+', width=440px,height=300px');
-
- 		});
-    	 
-     });
+    
      function goBack(){
     	 location.href="foodContract";
      }
@@ -132,8 +120,8 @@
 					                <td>계약서 사본</td>
 					    	        <td>
 					    	        <div th:each="file :  ${fileList}" >
-					    	        <a th:href="@{/ptback/fileDown(file=${file.ctImage+'`'+file.ctImage})}" >
-					    	        [[${file.ctImage}]]		</a>
+					    	        <a th:href="@{/ptback/fileDown(file=${file.image+'`'+file.image})}" >
+					    	        [[${file.image}]]		</a>
 					    	        </div>
 					    	        </td>  
 					    	     </tr>

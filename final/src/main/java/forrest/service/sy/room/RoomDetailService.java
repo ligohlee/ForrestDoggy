@@ -15,7 +15,9 @@ public class RoomDetailService {
 	RoomMapper mapper;
 	public void selectRoom(int roomNum, Model model) {
 		// TODO Auto-generated method stub
-		RoomDTO dto = mapper.selectRoom(roomNum).get(0);
+		RoomDTO roomNum1 = new RoomDTO();
+		roomNum1.setRoomNum(roomNum);
+		RoomDTO dto = mapper.selectRoom(roomNum1).get(0);
 		model.addAttribute("room", dto);
 		
 		

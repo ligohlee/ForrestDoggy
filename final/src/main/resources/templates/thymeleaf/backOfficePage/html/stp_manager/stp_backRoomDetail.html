@@ -145,10 +145,10 @@
 					    			margin-bottom: 10px;
 					    		}
 					    		.roomImg{
-					    			width: 380px;
+					    			width: 280px;
 					    			text-align: center;
 					    			float:left;
-					    			height: 250px;
+					    			height: 200px;
 					    			overflow: hidden;
 					    			margin: 5px;
 					    		}
@@ -158,7 +158,7 @@
 					    			margin-bottom: 50px;
 					    		}
 					    		.imgs{
-					    			width: 800px;
+					    			width: 600px;
 					    			margin: 0 auto;
 					    			
 					    		}
@@ -192,11 +192,15 @@
 					    	<table class="table">
 					    			<tr><td colspan="3"><h3 class="smallTitle">옵션정보</h3></td></tr>
 					    			<tr><th>옵션명</th><th>옵션수량</th><th>옵션변경</th></tr>
-					    			<!-- 가능한 옵션 없을 때 -->
+					    			<!-- 가능한 옵션 없을 때
+					    			
 					    			<tr><td>-</td><td>-</td><td><input type="button" value="수 정" class="mini"/><input type="button" value="삭제" class="mini"/></td></tr>
+									 -->
 									<!-- 가능한 옵션 있을 때 -->
-									<th:block th:each="dto,aaa : ${roptList}">
-									<tr><td>[[${dto.optNum}]]</td><td>[[${dto.roptionQty}]]</td><td><input type="button" value="수 정" class="mini"/><input type="button" value="삭제" class="mini"/></td></tr>
+									
+									<th:block th:each="dtodto,aaa : ${roptList}">
+									
+									<tr th:each = "ropt : ${dtodto.roptions}"><td>[[${dtodto.optName}]]</td><td>[[${ropt.roptionQty}]]</td><td><input type="button" value="수 정" class="mini"/><input type="button" value="삭제" class="mini"/></td></tr>
 									</th:block>
 									
 									<tr>								

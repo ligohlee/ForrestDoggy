@@ -14,7 +14,7 @@ public interface RoomMapper {
 
 	void insertRoom(RoomDTO dto);
 
-	List<RoomDTO> selectRoom(Integer roomNum);
+	List<RoomDTO> selectRoom(RoomDTO roomNum1);
 
 	void insertRoptions(RoptionsDTO dto);
 

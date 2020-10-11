@@ -89,7 +89,7 @@
 					    	<table class="table">
 					    			<tr><th>옵션번호</th><th>옵션이름</th><th>옵션가격</th><th>등록일</th></tr>
 					    			<th:block th:each="dto,aaa : ${optList}">
-					    			<tr><td>[[${dto.optNum}]]</td><td>[[${dto.optName}]]</td><td>[[${dto.optPrice}]]</td><td>[[${dto.optRegist}]]</td></tr></th:block>
+					    			<tr><td>[[${dto.optNum}]]</td><td>[[${dto.optName}]]</td><td>[[${dto.optPrice}]]</td><td th:text="${#dates.format(dto.optRegist,'yyyy-MM-dd')}"></td></tr></th:block>
 					    			<tr><td colspan="4"><a href="/stpback/optionRegi"><input type="button" value="옵 션 추 가" class="sybtn"/></a></td></tr>
 					    	</table>
 					    

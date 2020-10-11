@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class FileName {
 
-	String ctImage;
+	String image;
+
 
 }

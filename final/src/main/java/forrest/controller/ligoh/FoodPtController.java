@@ -50,7 +50,7 @@ public class FoodPtController {
 	@RequestMapping(value = "foodContract")
 	public String foodCT(@RequestParam(value="page", defaultValue="1") Integer page, Model model) throws Exception {
 		        ctListService.ctList(model,page);
-		return "thymeleaf/backOfficePage/html/pt_manager/food_contract";
+		return "thymeleaf/backOfficePage/html/pt_manager/ct_list";
 	}
 	@RequestMapping(value = "ctRegist", method = RequestMethod.GET)
 	public String foodPtCont() {

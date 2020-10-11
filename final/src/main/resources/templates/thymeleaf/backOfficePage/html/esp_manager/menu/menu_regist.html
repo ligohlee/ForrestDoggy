@@ -1,11 +1,9 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+ 
     <head>
     <meta charset="UTF-8">
-    <title>Partner BackOffice</title>
+    <title>Menu Registration</title>
     <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
     <!-- Bootstrap Styles-->
     <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -22,48 +20,15 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
 
-    </head>
-    <script>
-$(function(){
-	workNum = '[[${dto.workNum}]]';
-	$("#workmodify").click(function(){
-		location.href="workerModifyPro?workNum="+workNum;
-		});
-	$("#workerDel").click(function(){
-		location.href="workerDel?workNum="+workNum;
-		});
-	});
-
-	
-
-</script>
-  </head>
-  <body>
-
-	<div id="wrapper">
-
-    <!-- worker header 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_header.html"></div>
-    <!-- worker seideNav 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_sideNav.html"></div>
-	
-    <!--페이지래퍼-->
-		<div id="page-wrapper">
-            <div id="page-inner">
-
-            	<!--로그인 전 메인 화면-->
-            	<div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">
-                        	직원등록
-                        </h1>
-                    </div>
-                </div>
-
-                <div class="row">
-					<div class="panel panel-default">
-					    <div class="panel-body" style="padding:100px 0;">
-					    	<style>
+     <script type="text/javascript">
+    
+     function goBack(){
+    	 location.href="menuList";
+     }
+     
+     </script>
+     
+         	               <style>
 					    		.login-area {
 					    			max-width:300px;
 					    			margin: 0 auto;
@@ -82,6 +47,7 @@ $(function(){
 					    		    border: 1px solid #ddd;
 					    		}
 					    		td{ 
+					    		  
 					    		    font-size: 15px;
 					    		    border: 1px solid #ddd;
 					    		}
@@ -92,66 +58,95 @@ $(function(){
 					    		   width: 100%;
 					    		}
 					    	</style>
+ 
+     
+     
+  
+  </head>
+  <body>
+
+	<div id="wrapper">
+
+      <!-- stp header 인클루드 영역 -->
+	<div th:include="thymeleaf/backOfficePage/html/layout_eatSomePlace/back_esp_header.html"></div>
+    <!-- stp seideNav 인클루드 영역 -->
+	<div th:include="thymeleaf/backOfficePage/html/layout_eatSomePlace/back_esp_sideNav.html"></div>
+
+    <!--페이지래퍼-->
+		<div id="page-wrapper">
+            <div id="page-inner">
+
+            	<!--로그인 전 메인 화면-->
+            	<div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                                                    메뉴등록
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="row">
+					<div class="panel panel-default">
+					    <div class="panel-body" style="padding:100px 0;">
+					
 					    	<div>
 					    	
-					    	<form action="workerModifyPro" method="post" name="workerModifyPro" 
-	                           enctype="multipart/form-data">
+					    	
+					    	<form th:action='@{/espback/menu/menuInsert}' method="post" 
+					    	enctype="mulitipart/form-data" >
 					    	   <table>
 					    	    <colgroup>
-                               <col width="10%">
-                               <col width="10%">
-                               <col width="10%">
-                               <col width="10%">
-                               <col width="10%">
-                               <col width="10%">
+                               <col width="15%">
+                               <col width="50%">
+                               <col width="15%">
+                               <col width="20%">
+                              
                                </colgroup>
+                                 <tr>
+                                   <td>메뉴이름</td> 
+					    	       <td  style="text-align: left;" >
+					    	       <input type="text"  name="menuName">
+					    	       </td> 
+                                   <td>메뉴금액</td> 
+					    	       <td  style="text-align: left;" >
+					    	       <input type="number"   name="menuPrice">
+					    	       </td> 
+                                 </tr>
                                
 					    	     <tr>
-					    	       <td>직원번호</td> 
-					    	       <td> <!-- th:text="*{workNum}" -->[[${dto.workNum}]]</td> 
-					    	       <td >부서번호</td>
-					    	       <td colspan="3">[[${dto.workNum}]]</td> 
-					    	    	<td>직원명</td>
-					    	    	<td>[[${dto.workName}]]</td> 
+					    	       <td >레시피</td> 
+					               <td >
+					    	       <textarea name="recipe" rows="8" cols="50"></textarea>
+					               </td>
+					    	       <td>메뉴이미지</td> 
+					    	       <td >
+					    	       <input type="file" name="send" >
+					    	       </td> 
 					    	     </tr>
 					    	     
 					    	     <tr>
-					                <td>연락처</td> 
-					                <td>[[${dto.workPh}]]</td>  
-					                <td>이메일</td> 
-					                <td>[[${dto.workEmail}]]</td>
-					                <td>생년월일</td>
-					    	        <td>[[${dto.hireDate}]]</td>
-					    	        <td>입사일</td>
-					    	        <td>[[${dto.workBorn}]]</td>
-					    	          
+					               <td>메뉴설명</td>
+					    	       <td colspan="3">
+					    	       <textarea rows="4" cols="50" name="menuIntro"></textarea>
+					               </td>
 					    	     </tr>
-					    	       <tr>
-					                <td>직책</td> 
-					                <td>[[${dto.position}]]</td>  
-					                <td>직무</td> 
-					                <td>[[${dto.job}]]</td>
-					                <td>휴가일수</td>
-					    	        <td>[[${dto.workHoli}]]</td>
-					    	        <td>주소</td>
-					    	        <td>[[${dto.workAddr}]]</td>
-					    	     </tr>
-					    	     <tr>
-					    	       <td>직원 이미지</td>  
-					    	       <td colspan="5"><img width="150px" height="150px" th:src="@{'/static/upload/worker/'+${dto.workImg}}"></td> 
 					    	       
-					    	     </tr>
 					    	     <tr>
-					    	        
-					    	       <td colspan="6" style="text-align:right">
-					    	   		<input type="button" name="workmodify" id="workmodify" value="수 정">
-					    	       <button onclick="javascript:history.back()">취소</button>
-					    	       <input type="button" name="workerDel" id="workerDel" value="삭 제">
-					    	       </td> 
-					    	   
+					                <td>알러지</td>
+					    	       <td  colspan="3"><input type="text" name="allergy"/> </td>
 					    	     </tr>
+					    	    
+					    	     <tr>
+					    	       <td colspan="4" style="text-align:right">
+					    	       <button type="submit">등록</button> 
+					    	       <button type="button" onclick="javascript:goBack()">취소</button>
+					    	       </td> 
+					    	     </tr>
+					    	
 					    	   </table>
+					    	      
 					    	      </form>
+					    		
 					    	</div>
 						</div>
 					</div>

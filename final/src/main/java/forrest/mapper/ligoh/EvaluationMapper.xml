@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.ligoh.EvaluationMapper">
+
+<sql id="basecolumn">
+ EVAL_NUM, PT_NUM, EVAL_DATE, EVAL_INGR, EVAL_PRICE, EVAL_DESC, EVAL_RESULT, INGR_IMG	
+</sql>
+
+<sql id="maxNum">
+    select nvl(max(eval_NUM),0) + 1
+    from evaluation
+</sql>
+
+<insert id="evaluationInsert" parameterType="forrest.domain.ligoh.ContractDTO" >
+
+insert into evaluation ( <include refid="basecolumn" /> )
+values((<include refid="maxNum"/>),#{ptNum},sysdate,#{evalIngr}, 
+#{evalPrice},#{evalDesc},#{evalResult}, #{ingrImg})
+
+</insert>
+
+<select id="getEvalList" resultMap="ResultEvaluation">
+	
+	select rn, EVAL_NUM, ePtNum, EVAL_DATE, EVAL_INGR, EVAL_PRICE, 
+	EVAL_DESC, EVAL_RESULT, INGR_IMG, pt_name
+	from(select rownum rn, EVAL_NUM, ePtNum, EVAL_DATE, EVAL_INGR, EVAL_PRICE, 
+	EVAL_DESC, EVAL_RESULT, INGR_IMG, pt_name	
+	   from(select  EVAL_NUM, e.PT_NUM ePtNum, EVAL_DATE, EVAL_INGR, EVAL_PRICE, EVAL_DESC,
+	    EVAL_RESULT, INGR_IMG, pt_name	
+	        from evaluation e join partner p 
+            on e.pt_num = p.pt_num
+            <trim prefix="where" prefixOverrides="AND | OR">
+						<if test="num != null ">
+							and eval_num = #{num}
+						</if>
+					</trim>
+            order by eval_num))
+    where rn &gt;= #{startPage} and rn &lt;= #{endPage}
+</select>
+
+<resultMap type="forrest.domain.ligoh.EvaluationDTO" id="ResultEvaluation">
+		<id column="EVAL_NUM" jdbcType="BIGINT" property="evalNum"/>
+		<result column="ePtNum" jdbcType="BIGINT" property="ptNum"/>
+		<result column="EVAL_DATE" jdbcType="TIMESTAMP" property="evalDate"/>
+		<result column="EVAL_INGR" jdbcType="VARCHAR" property="evalIngr"/>
+		<result column="EVAL_PRICE" jdbcType="VARCHAR" property="evalPrice"/>
+		<result column="EVAL_DESC" jdbcType="VARCHAR" property="evalDesc"/>
+		<result column="EVAL_RESULT" jdbcType="VARCHAR" property="evalResult"/>
+		<result column="INGR_IMG" jdbcType="VARCHAR" property="ingrImg"/>
+		<result column="pt_name" jdbcType="VARCHAR" property="ptName"/>
+</resultMap>
+
+
+<select id="getEvalCount" resultType="int">
+		select count(*) from evaluation
+</select>	
+
+
+<select id="ingredientSearch" resultMap="EvaluationSearch">
+   select EVAL_NUM, e.PT_NUM ePtNum, EVAL_DATE, EVAL_INGR, EVAL_PRICE, EVAL_DESC,
+	    EVAL_RESULT, INGR_IMG, pt_name, ct_content, ct_num
+	        from evaluation e join partner p 
+	         on e.pt_num = p.pt_num
+	         join contract c
+	         on e.pt_num = c.pt_num
+              where lower(ct_content) like lower('%'||#{userId}||'%')
+              and lower(eval_ingr) like lower('%'||#{userId}||'%')
+               and eval_result = '통과'
+</select>
+
+<resultMap type="forrest.domain.ligoh.EvaluationDTO" id="EvaluationSearch">
+		<id column="EVAL_NUM" jdbcType="BIGINT" property="evalNum"/>
+		<result column="ePtNum" jdbcType="BIGINT" property="ptNum"/>
+		<result column="EVAL_DATE" jdbcType="TIMESTAMP" property="evalDate"/>
+		<result column="EVAL_INGR" jdbcType="VARCHAR" property="evalIngr"/>
+		<result column="EVAL_PRICE" jdbcType="VARCHAR" property="evalPrice"/>
+		<result column="EVAL_DESC" jdbcType="VARCHAR" property="evalDesc"/>
+		<result column="EVAL_RESULT" jdbcType="VARCHAR" property="evalResult"/>
+		<result column="INGR_IMG" jdbcType="VARCHAR" property="ingrImg"/>
+		<result column="pt_name" jdbcType="VARCHAR" property="ptName"/>
+		<result column="ct_content" jdbcType="VARCHAR" property="ctContent"/>
+		<result column="ct_num" jdbcType="BIGINT" property="ctNum"/>
+	</resultMap>
+
+
+</mapper>

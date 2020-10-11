@@ -73,13 +73,14 @@
 					    	<div>
 					    	   <table>
 					    	     <tr>
-					    	       <td>계약번호</td> <td>업체명</td> <td>계약기간</td> <td>계약 담당자</td> <td></td>
+					    	       <td>계약번호</td> <td>업체명</td> <td>계약내용</td> <td>계약기간</td> <td>계약 담당자</td> <td></td>
 					    	     </tr>
 					    	     <tr th:each="list: ${lists}">
 					    	       <td th:text="${list.ctNum}"></td> 
-					    	       <td th:text="${list.ptName}">업체명</td> 
-					    	       <td th:text="${list.ctTerm}">계약기간</td> 
-					    	       <td th:text="${list.workName}">계약 담당자</td> 
+					    	       <td th:text="${list.ptName}"></td> 
+					    	       <td th:text="${list.ctContent}"></td> 
+					    	       <td th:text="${list.ctTerm}"></td> 
+					    	       <td th:text="${list.workName}"></td> 
 					    	       <td ><a th:href="@{/ptback/contractDetail(ctNum=${list.ctNum})}">상세</a></td>
 					    	     </tr>
 					    	     

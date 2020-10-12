@@ -36,11 +36,10 @@ public class CtWriteService {
 		   		   
 		    String imgTotal ="";
 			String location = "";
-			
-		
+
 			String path ="/static/upload/contract";
 			String filePath = request.getServletContext().getRealPath(path);
-			
+
 			System.out.println("contract upload path : " + filePath);
 		   
 			

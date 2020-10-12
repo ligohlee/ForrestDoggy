@@ -1,4 +1,4 @@
-package forrest.controller.jm;
+package forrest.controller.jm.back;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -67,8 +67,8 @@ public class PartnerController {
 		return "thymeleaf/backOfficePage/html/pt_manager/pt_modify";
 	}
 	@RequestMapping(value="partnerModifyPro/{ptNum}")
-	public String partnerModifyPro(PartnerCommand partnerCommand, Model model, HttpServletRequest request) throws Exception{
-		String path = partnerModifyService.partnerModify(partnerCommand, request, model);
+	public String partnerModifyPro(PartnerCommand partnerCommand, HttpServletRequest request) throws Exception{
+		String path = partnerModifyService.partnerModify(partnerCommand, request);
 		return path;
 	}
 	

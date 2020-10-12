@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.jm.CordMapper">
+
+<sql id="basecolumn">
+	CORD_NUM, GOODS_NUM, CORD_QTY, CORD_REGIST
+</sql>
+
+	<resultMap type="forrest.domain.jm.CordDTO" id="baseCord">
+		<id column="CORD_NUM" jdbcType="BIGINT" property="cordNum" />
+		<result column="GOODS_NUM" jdbcType="BIGINT" property="goodsNum" />
+		<result column="CORD_QTY" jdbcType="BIGINT" property="cordQty" />
+		<result column="CORD_REGIST" jdbcType="TIMESTAMP" property="cortRegist" />
+	</resultMap>
+
+	<select id="getCordList" resultMap="baseCord">
+		select rn, CORD_NUM, cGoodsNum, CORD_QTY, CORD_REGIST, goods_name
+		from (select rownum rn, CORD_NUM, cGoodsNum, CORD_QTY, CORD_REGIST, goods_name
+			 from ( select 
+						rownum rn, CORD_NUM, c.GOODS_NUM cGoodsNum, CORD_QTY, CORD_REGIST, goods_name
+					from CORD c join goods g
+					on c.goods_num = g.goods_num
+					<trim prefix="where" prefixOverrides="AND | OR">
+						<if test="num != null ">
+							and cord_num = #{num}
+						</if>
+					</trim>
+					order by cord_NUM desc))
+		where rn &gt;= #{startPage} and rn &lt;= #{endPage}
+	</select>
+	
+	<select id="getCordCount" resultType="int">
+		select count(*) from CORD 
+	</select>
+
+
+
+</mapper>

@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class GoodsDTO {
 	Integer goodsNum;
 	Integer ptNum;
+	String ptName;
 	Integer ctNum;
 	String goodsName;
 	Integer goodsPrice;

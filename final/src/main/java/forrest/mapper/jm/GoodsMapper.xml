@@ -23,11 +23,12 @@
 	</resultMap>
 
 	<select id="getGoodsList" resultMap="baseGoods">
-		select rn, <include refid="basecolumn" />
-		from (select rownum rn, <include refid="basecolumn" />
+		select rn, GOODS_NUM, gPtNum, CT_NUM, GOODS_NAME, GOODS_PRICE, GOODS_CATEGORY, GOODS_MADE, GOODS_SIZE, GOODS_MANUAL, GOODS_INTRO, GOODS_TIME_LIMIT, GOODS_IMG, pt_name
+		from (select rownum rn, GOODS_NUM, gPtNum, CT_NUM, GOODS_NAME, GOODS_PRICE, GOODS_CATEGORY, GOODS_MADE, GOODS_SIZE, GOODS_MANUAL, GOODS_INTRO, GOODS_TIME_LIMIT, GOODS_IMG, pt_name
 			 from ( select 
-						<include refid="basecolumn" />
-					from Goods
+						GOODS_NUM, g.PT_NUM gPtNum, CT_NUM, GOODS_NAME, GOODS_PRICE, GOODS_CATEGORY, GOODS_MADE, GOODS_SIZE, GOODS_MANUAL, GOODS_INTRO, GOODS_TIME_LIMIT, GOODS_IMG, pt_name
+					from Goods g join partner p
+					on g.pt_num = p.pt_num
 					<trim prefix="where" prefixOverrides="AND | OR">
 						<if test="num != null ">
 							and goods_num = #{num}
@@ -55,10 +56,8 @@
 		where goods_num = #{goodsNum}
     </delete>
 
-
-
-
-
+	
+	
 
 
 

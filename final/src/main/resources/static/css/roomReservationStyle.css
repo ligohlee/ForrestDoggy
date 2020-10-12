@@ -1,0 +1,105 @@
+section{
+	
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+
+}
+.bg{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 1800px;
+	opacity:0.6;
+	z-index:-1;
+}
+.bg-img{
+	width: 100%;
+	object-fit: cover;
+}
+
+
+.container{
+	width: 80%;
+	margin: 0 auto;
+	height: 650px;
+	position: relative;
+
+	}
+	
+h2{
+	padding-top:110px;
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgb(23, 69, 84);
+}
+	
+.rsv {
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	bottom: 250px;
+	left: 0;
+	border: 1px solid #ddd;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.rsv>div {
+	color: #fff;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: bold;
+	float: left;
+	width: 25%;
+	text-align: center;
+}
+
+.rsv>div>div {
+	/* border-right: 1px dotted #999; */
+	height: 100px;
+}
+
+.rsv>div>div>p {
+	padding-top: 10px;
+}
+
+.ckIn {
+	border-right: 1px dotted #ddd;
+}
+
+.ckOut {
+	border-right: 1px dotted #ddd;
+}
+
+.type {
+	border-right: 1px dotted #ddd;
+}
+
+.choice_box {
+	width: 220px;
+	margin: 0 auto;
+	height: 25px;
+	margin-top: 20px;
+	font-family: 'Nanum Gothic', sans-serif;
+	border: 1px solid #000;
+	padding-left:5px;
+}
+
+.search {
+	text-align: center;
+	width: 240px;
+	margin: 0 auto;
+	margin-top: 25px;
+	height: 45px;
+	background-color: rgb(23, 69, 84);
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+}
+.pp{
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #000;
+}

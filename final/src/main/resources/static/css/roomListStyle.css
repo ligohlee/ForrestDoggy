@@ -1,0 +1,112 @@
+section{	
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+
+}
+.bg{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 1800px;
+	opacity:0.6;
+	z-index:-1;
+}
+.bg-img{
+	width: 100%;
+	object-fit: cover;
+}
+
+
+.container{
+	width: 80%;
+	margin: 0 auto;
+
+	position: relative;
+
+	}
+	
+h2{
+	font-size: 30px;
+	font-family: 'Noto Sans KR', sans-serif;
+	padding-top:110px;
+	color: rgb(23, 69, 84);
+}
+	
+
+.roomTable{
+	width: 100%;
+	text-align:center;
+	margin-bottom: 200px;
+
+	
+}
+.rsvInfo{
+	font-size: 14px;
+	line-height: 1.5;
+	margin-top: 40px;
+	
+	padding-top:25px;
+	padding-bottom:25px;
+	background-color: #ddd;
+	color:#000;
+}
+
+.roomTd{
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+		
+
+
+	
+}
+.link{
+
+}
+.link:hover{
+	font-weight: bold;
+	color: rgb(23, 69, 84);
+}
+.th{
+
+	border-bottom: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: 'Noto Sans KR', sans-serif;
+	
+}
+.imgTd{
+	width: 390px;
+}
+.roomImg{
+	width: 380px;
+	height: 250px;
+	overflow: hidden;
+	display:none;
+}
+.roomImg:first-child{
+	display:block;
+	
+}
+.roomImg>a>img{ width: 100%;}
+
+
+
+.search {
+	text-align: center;
+	width: 200px;
+	margin: 0 auto;
+	margin-top: 30px;
+	height: 35px;
+	background-color: #fff;
+	color: rgb(23, 69, 84);
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+}

@@ -86,8 +86,17 @@
 					    	
 					    	<!-- 콘텐츠영역 -->
 					    	<table class="table">
-					    			<tr><th>번호</th><th>티켓번호</th><th>티켓이름</th><th>티켓가격</th></tr>
-					    			<tr><td></td><td><a href=""></a></td><td></td><td></td></tr>
+					    			<tr>
+					    			<th>번호</th>
+					    			<th>티켓번호</th>
+					    			<th>티켓이름</th>
+					    			<th>티켓가격</th>
+					    			</tr>
+					    			<th:block th:each="dto , aaa : ${list}">
+					    			<tr>
+					    				<td>[[${aaa.count}]]</td><td><a th:href="@{/dvlback/ticketDetail(ticketNum=${dto.ticketNum})}">[[ ${dto.ticketNum}]]</a></td><td>[[ ${dto.ticketName}]]</td><td>[[ ${dto.ticketPrice}]]</td>
+					    			</tr>
+					    			</th:block>
 					    			<tr><td colspan="4"><a href="/dvlback/ticketRegist"><input type="button" value="티 켓 추 가" class="sybtn"/></a></td></tr>
 					    	</table>
 					    

@@ -18,4 +18,6 @@ public class TicketDTO {
 	Integer ticketPrice;	   
 	String ticketRegist;
 	Integer ticketQty;
-}
+
+	}
+

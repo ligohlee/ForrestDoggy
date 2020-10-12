@@ -14,5 +14,43 @@
 </insert>
 
 
+	<resultMap type="forrest.domain.jjj.TicketDTO" id="baseTicket" >
+		<id column="TICKET_NUM" jdbcType="BIGINT" property="ticketNum"/>
+		<result column="TICKET_NAME" jdbcType="VARCHAR" property="ticketName"/>
+		<result column="TICKET_SEASON" jdbcType="TIMESTAMP" property="ticketSeason"/>
+		<result column="TICKET_TIME" jdbcType="VARCHAR" property="ticketTime"/>
+		<result column="TICKET_GRADE" jdbcType="VARCHAR" property="ticketGrade"/>
+		<result column="TICKET_PRICE" jdbcType="BIGINT" property="ticketPrice"/>
+		<result column="TICKET_REGIST" jdbcType="TIMESTAMP" property="ticketRegist"/>
+		<result column="TICKET_QTY" jdbcType="BIGINT" property="ticketQty"/>
+	</resultMap>
+
+
+<select id="selectTicketAll" parameterType="forrest.domain.jjj.TicketDTO" resultMap="baseTicket" >
+
+	select TICKET_NUM, TICKET_NAME, TICKET_SEASON , TICKET_TIME , TICKET_GRADE , TICKET_PRICE , TICKET_REGIST , TICKET_QTY
+	from ticket
+</select>
+
+<select id="selectTicket" resultMap="baseTicket" parameterType="forrest.domain.jjj.TicketDTO">
+	select <include refid="basecolumn"/>
+	from ticket
+	where ticket_num = #{ticketNum}
+	
+</select>
+
+<update id="updateTicket" parameterType="forrest.domain.jjj.TicketDTO">
+	update ticket
+	set TICKET_NAME = #{ticketName}, TICKET_Time = #{ticketTime} , TICKET_PRICE = #{ticketPrice} , TICKET_GRADE = #{ticketGrade} , TICKET_QTY = #{ticketQty}
+	where ticket_num = #{ticketNum}
+
+</update>
+
+
+<delete id="deleteTicket"  parameterType="forrest.domain.jjj.TicketDTO"  >
+	delete ticket
+	where ticket_num = #{ticketNum}
+</delete>
+
 
 </mapper>

@@ -4,10 +4,12 @@ package forrest.domain.sy.room;
 
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 @Data
 @AllArgsConstructor
@@ -15,10 +17,12 @@ import lombok.NoArgsConstructor;
 public class OptionsDTO {
 	
 	    
-	Integer optNum;
-	String optName;
-	Integer optPrice;
-	Timestamp optRegist;
+	private Integer optNum;
+	private String optName;
+	private Integer optPrice;
+	private Timestamp optRegist;
+	
+	private List<RoptionsDTO> roptions;
 	
 
 }

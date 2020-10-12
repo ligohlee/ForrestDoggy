@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.sy.room.RoptionsMapper">
+
+<insert id="insertRoptions" parameterType="forrest.domain.sy.room.RoptionsDTO">
+	insert into roptions(ROOM_NUM, OPT_NUM, ROPTION_QTY)
+	values(#{roomNum}, #{optNum}, #{roptionQty})
+</insert>
+
+ <resultMap type="forrest.domain.sy.room.RoptionsDTO" id="replyBaseMap">
+	<constructor>
+		<arg column="room_num" javaType="int" />
+		<arg column="opt_num" javaType="int"/>
+		<arg column="roption_qty" javaType="int"/>
+			
+	</constructor>
+</resultMap>
+
+<resultMap type="forrest.domain.sy.room.OptionsDTO" id="resultmap">
+	
+	<id column="opt_num" jdbcType="BIGINT" property="optNum"/>
+	<result column="opt_name" jdbcType="VARCHAR" property="optName"/>
+	<result column="opt_price" jdbcType="BIGINT" 
+											property="optPrice"/>
+	<result column="opt_regist" jdbcType="TIMESTAMP" 
+											property="optRegist"/>
+	<collection property="roptions" 
+				ofType="forrest.domain.sy.room.RoptionsDTO" 
+				resultMap="replyBaseMap"/>
+</resultMap>
+
+<select id="selectRoptions" resultMap="resultmap" parameterType="int">
+
+select 
+		r.opt_num, r.room_num, r.roption_qty, o.opt_name
+	from options o left outer join roptions r
+	on r.opt_num = o.opt_num
+	where room_num=#{roomNum}
+
+
+
+</select>
+</mapper>

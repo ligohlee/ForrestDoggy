@@ -1,0 +1,52 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Evaluation Check</title>
+<script type="text/javascript" 
+	src="http://code.jquery.com/jquery-latest.js" ></script>
+<script type="text/javascript">
+
+function select1(a, b, c, d){
+	$(opener.document).find("#ptName").val(a);
+	$(opener.document).find("#ptNum").val(b);
+	$(opener.document).find("#ingrName").val(c);
+	$(opener.document).find("#ctNum").val(d);
+	$(opener.document).find("#hingrName").val(c);
+	$(opener.document).find("#hctNum").val(d);
+	
+    window.close();	
+}
+
+</script>
+
+</head>
+<body>
+<form action="evalSearch" method="post">
+식재료명을 검색하세요
+<input type="text" name="ingrName" required="required"/> 
+
+<button type="submit">찾기</button>
+<br/>
+
+</form>
+
+<table border="1" width="100%">
+  <tr>
+    <td >업체명</td><td>식재료명</td><td>등록일 </td>
+  </tr>
+   <tr th:each="list, i: ${lists}">
+   <td style="width: 20%" th:text="${list.ptName}"></td> 
+   <td style="width: 40%" th:text="${list.evalIngr}"></td> 
+   <td style="width: 30%" th:text="${#dates.format(list.evalDate, 'yyyy-MM-dd')}"></td>
+   <td style="width: 10%" >
+   <input type="button" id="serchPtName" value="선택" 
+   th:onclick="@{'select1(\'' + ${list.ptName} + '\',\'' + ${list.ptNum} + '\',\'' + ${list.evalIngr} + '\',\'' + ${list.ctNum} + '\')'}">
+   </td>
+
+   
+  </tr>
+</table>
+
+
+</body>
+</html>

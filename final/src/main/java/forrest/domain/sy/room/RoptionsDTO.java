@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RoptionsDTO {
 	
-	int roomNum;
-	int optNum;
-	int roptionQty;
+	Integer roomNum;
+	Integer optNum;
+	Integer roptionQty;
 	
 }

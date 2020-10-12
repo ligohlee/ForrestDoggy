@@ -1,6 +1,7 @@
 package forrest.service.ligoh.contract;
 
 import java.io.File;
+import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,14 +36,16 @@ public class CtWriteService {
 		   		   
 		    String imgTotal ="";
 			String location = "";
-			String name = System.getProperty("user.name");
-			String filePath = "C:\\Users\\"+name+"\\git\\ForrestDoggy\\final\\src\\main\\resources\\static\\upload\\contract";
-			
+
+			String path ="/static/upload/contract";
+			String filePath = request.getServletContext().getRealPath(path);
+
 			System.out.println("contract upload path : " + filePath);
 		   
 			
 			for (MultipartFile mf : cc.getReport()) {
-				String img =mf.getOriginalFilename();
+				String img =mf.getOriginalFilename().replaceAll(" ", "").replaceAll("-", "");
+				
 				
 				imgTotal += img +"`";
 				

@@ -20,14 +20,30 @@ values((<include refid="maxNum"/>),#{ptNum},#{workNum},#{ctTerm},
 
 </insert>
 
-<select id="getContractList" resultMap="baseContract">
-	select CT_NUM, c.PT_NUM cPtNum, c.WORK_NUM cWorkNum, CT_TERM, CT_CONTENT, 
+<sql id="selectContract">
+ CT_NUM, c.PT_NUM cPtNum, c.WORK_NUM cWorkNum, CT_TERM, CT_CONTENT, 
 	CT_IMAGE, CT_PT_PH, CT_PT_NAME, pt_name, work_name
-	from contract c join partner p 
-    on c.pt_num = p.pt_num
-    join worker w
-    on c.work_num = w.work_num
-    order by ct_num
+</sql>
+
+<select id="getContractList" resultMap="baseContract">
+	
+	select rn, CT_NUM, cPtNum, cWorkNum, CT_TERM, CT_CONTENT, 
+	CT_IMAGE, CT_PT_PH, CT_PT_NAME, pt_name, work_name
+	from(select rownum rn, CT_NUM, cPtNum, cWorkNum, CT_TERM, CT_CONTENT, 
+	CT_IMAGE, CT_PT_PH, CT_PT_NAME, pt_name, work_name
+	   from(select  CT_NUM, c.PT_NUM cPtNum, c.WORK_NUM cWorkNum, CT_TERM, CT_CONTENT, 
+	        CT_IMAGE, CT_PT_PH, CT_PT_NAME, pt_name, work_name
+	        from contract c join partner p 
+            on c.pt_num = p.pt_num
+            join worker w
+            on c.work_num = w.work_num
+            <trim prefix="where" prefixOverrides="AND | OR">
+						<if test="num != null ">
+							and CT_num = #{num}
+						</if>
+					</trim>
+            order by ct_num))
+    where rn &gt;= #{startPage} and rn &lt;= #{endPage}
 </select>
 	
 <select id="getContractCount" resultType="int">

@@ -23,8 +23,7 @@ public class MemberController {
 	
 	@Autowired
 	MemberInsertService memberInsertService;
-	@Autowired
-	MemberSelectService memberSelectService;
+	
 	@Autowired
 	MemberListService memberListService;
 	@Autowired
@@ -48,16 +47,8 @@ public class MemberController {
 		}
 		return "thymeleaf/html/memberForm" ;
 	}
-	@RequestMapping(value="login", method = RequestMethod.GET)
-	public String login() {
-		return "thymeleaf/html/login";
-	}
-	@RequestMapping(value="loginPro", method = RequestMethod.POST)
-	public String loginPro(@RequestParam(value = "memId")String memId ,@RequestParam(value = "memPass")String memPass ,HttpSession session) {
-		
 	
-		return memberSelectService.selectMember(memId , memPass ,session );
-	}
+	
 	
 	
 	

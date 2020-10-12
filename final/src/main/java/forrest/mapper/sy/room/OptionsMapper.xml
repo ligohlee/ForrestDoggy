@@ -13,12 +13,10 @@
 </insert>
 
 <resultMap type="forrest.domain.sy.room.OptionsDTO" id="resultmap">
-	<constructor>
-		<idArg column="opt_num" javaType="int" />
-		<arg column="opt_name" javaType="string"/>
-		<arg column="opt_price" javaType="int"/>
-		<arg column="opt_regist" javaType="java.sql.Timestamp"/>	
-	</constructor>
+	<id column="opt_num" jdbcType="BIGINT" property="optNum"/>	
+	<result column="opt_name" jdbcType="VARCHAR" property="optName"/>
+	<result column="opt_price" jdbcType="BIGINT" property="optPrice"/>
+	<result column="opt_regist" jdbcType="TIMESTAMP" property="optRegist"/>
 </resultMap>
 
 <select id="selectOpt" resultMap="resultmap">

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.ligoh.IngredientMapper">
+<sql id="basecolumn">
+INGR_NUM, PT_NUM, CT_NUM, INGR_NAME, INGR_CATEGORY, INGR_MADE, INGR_STORAGE, INGR_QTY,
+INGR_INTRO, INGR_LIMIT	
+</sql>
+
+  <sql id="maxNum">
+    select nvl(max(CT_NUM),0) + 1
+    from ingredient
+  </sql>
+  
+<insert id="ingredientInsert">
+insert into ingredient (<include refid="basecolumn"/>)
+values((<include refid="maxNum"/>), #{ptNum},#{ctNum},#{ingrName}, 
+#{ingrCategory},#{ingrMade},#{ingrStorage}, #{ingrQty},#{ingrIntro},#{ingrLimit})
+
+</insert>
+
+<select id="getIngreList" resultMap="baseIngredient">
+  select rn, INGR_NUM, iptNum, CT_NUM, INGR_NAME, INGR_CATEGORY, INGR_MADE, INGR_STORAGE, INGR_QTY,
+            INGR_INTRO, INGR_LIMIT, pt_name
+	from(select rownum rn, INGR_NUM, iptNum, CT_NUM, INGR_NAME, INGR_CATEGORY, INGR_MADE, INGR_STORAGE, INGR_QTY,
+            INGR_INTRO, INGR_LIMIT, pt_name
+	   from(select INGR_NUM, i.PT_NUM iptNum, CT_NUM, INGR_NAME, INGR_CATEGORY, INGR_MADE, INGR_STORAGE, INGR_QTY,
+            INGR_INTRO, INGR_LIMIT, pt_name
+	        from ingredient i join partner p 
+            on i.pt_num = p.pt_num
+            <trim prefix="where" prefixOverrides="AND | OR">
+				<if test="num != null ">
+					and ingr_num = #{num}
+				</if>
+			</trim>
+            order by ingr_num))
+    where rn &gt;= #{startPage} and rn &lt;= #{endPage}
+</select>
+
+
+<resultMap type="forrest.domain.ligoh.IngredientDTO" id="baseIngredient">
+		<id column="INGR_NUM" jdbcType="BIGINT" property="ingrNum"/>
+		<result column="iptNum" jdbcType="BIGINT" property="ptNum"/>
+		<result column="CT_NUM" jdbcType="BIGINT" property="ctNum"/>
+		<result column="INGR_NAME" jdbcType="VARCHAR" property="ingrName"/>
+		<result column="INGR_CATEGORY" jdbcType="VARCHAR" property="ingrCategory"/>
+		<result column="INGR_MADE" jdbcType="VARCHAR" property="ingrMade"/>
+		<result column="INGR_STORAGE" jdbcType="VARCHAR" property="ingrStorage"/>
+		<result column="INGR_INTRO" jdbcType="VARCHAR" property="ingrIntro"/>
+		<result column="pt_name" jdbcType="VARCHAR" property="ptName"/>
+		<result column="INGR_QTY" jdbcType="BIGINT" property="ingrQty"/>
+		<result column="INGR_LIMIT" jdbcType="BIGINT" property="ingrLimit"/>
+</resultMap>
+
+<select id="getIngreCount" resultType="int">
+		select count(*) from ingredient
+</select>	
+
+
+</mapper>

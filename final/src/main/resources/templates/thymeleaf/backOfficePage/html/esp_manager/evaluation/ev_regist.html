@@ -1,0 +1,216 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+    <head>
+    <meta charset="UTF-8">
+    <title>Evaluation Registration</title>
+    <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
+    <!-- Bootstrap Styles-->
+    <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link th:href="@{/static/css/font-awesome.css}" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+   <!--   <link th:href="@{/static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
+    <!-- Custom Styles-->
+    <link th:href="@{/static/css/custom-styles.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/static/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/newSoyoungStyle.css}" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+
+     <script type="text/javascript">
+     $(function(){
+    	 $("#ptCheck").click(function(){
+ 			open("partnerCheck","파트너검색",
+ 			'left='+(screen.availWidth-440)/2+',top='+(screen.availHeight-300)/2+', width=440px,height=300px');
+
+ 		});
+    	
+    	 
+     });
+     function goBack(){
+    	 location.href="eval";
+     }
+     
+     </script>
+     
+         	               <style>
+					    		.login-area {
+					    			max-width:300px;
+					    			margin: 0 auto;
+					    			padding:30px 0;
+					    		}
+					    		.submit {
+					    			width: 100%;
+					    		}
+					    		table{
+					    		    width: 90%;
+					    		    text-align: center;
+					    		    margin: 0 auto;
+					    		}
+					    		th{
+					    		    text-align: center;
+					    		    border: 1px solid #ddd;
+					    		}
+					    		td{ 
+					    		    font-size: 15px;
+					    		    border: 1px solid #ddd;
+					    		}
+					    		input{
+					    		   width: 100%;
+					    		}
+					    		textarea{
+					    		   width: 100%;
+					    		}
+					    	</style>
+ 
+     
+     
+  
+  </head>
+  <body>
+
+	<div id="wrapper">
+
+     <!-- stp header 인클루드 영역 -->
+	<div th:include="thymeleaf/backOfficePage/html/layout_eatSomePlace/back_esp_header.html"></div>
+    <!-- stp seideNav 인클루드 영역 -->
+	<div th:include="thymeleaf/backOfficePage/html/layout_eatSomePlace/back_esp_sideNav.html"></div>
+
+    <!--페이지래퍼-->
+		<div id="page-wrapper">
+            <div id="page-inner">
+
+            	<!--로그인 전 메인 화면-->
+            	<div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                                                    납품평가등록
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="row">
+					<div class="panel panel-default">
+					    <div class="panel-body" style="padding:100px 0;">
+					
+					    	<div>
+					    	
+					    	
+					    	<form th:action='@{/espback/evaluation/evalInsert}' method="post" 
+					    	 enctype="multipart/form-data">
+					    	   <table>
+					    	    <colgroup>
+                               <col width="15%" >
+                               <col width="20%" >
+                               <col width="15%">
+                               <col width="20%" >
+                               <col width="10%" >
+                               <col width="20%">
+                               </colgroup>
+                               
+					    	     <tr>
+					    	       <td>업체명</td> 
+					    	       <td colspan="2">
+					    	       <input style="width:15%" type="button" value="찾기" id="ptCheck">
+					    	       <input style="width:83%" type="text" id="ptName" value="" readonly="readonly">
+					    	       <input type="hidden" id="ptNum"  name="ptNum">
+					    	       </td> 
+					    	       <td >식재료명</td> 
+					               <td colspan="2"><input type="text" name="evalIngr" ></td> 
+					    	       
+					    	     </tr>
+					    	     
+					    	     <tr>
+					            
+					               <td >납품제안가</td> 
+					               <td colspan="2"><input type="text" name="evalPrice" ></td> 
+					               <td>평가 결과</td>
+					               <td colspan="2">
+					               <select name="evalResult" style="width: 100%">
+                                       <option value='보류' >보류</option>
+                                       <option value='통과'>통과</option>
+                                       <option value='탈락' >탈락</option>
+					               </select>
+					    	      
+					               </td> 
+					    	     </tr>
+					    	       
+					    	     <tr>
+					                <td>식재료 이미지</td>
+					    	        <td colspan="5"><input type="file" name="report" multiple="multiple"></td>  
+					    	     </tr>
+					    	       
+					    	     <tr>
+					    	       <td>식재료 설명</td>  
+					    	       <td colspan="5" ><textarea  name="evalDesc" cols="100" rows="5" ></textarea></td> 
+					    	     </tr>
+					    	     <tr>
+					    	        
+					    	       <td colspan="6" style="text-align:right">
+					    	       <button type="submit">등록</button> 
+					    	       <button type="button" onclick="javascript:goBack()">취소</button>
+					    	       </td> 
+					    	   
+					    	     </tr>
+					    	
+					    	   </table>
+					    	      
+					    	      </form>
+					    		
+					    	</div>
+						</div>
+					</div>
+				</div>
+                <!--로그인 후 메인화면-->
+
+                <!--<c:if test="${ !empty logId }">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                        	페이지 타이틀... <small>타이틀 내용... 수정수정</small>
+                        </h1>
+                    </div>
+                </div>
+              </c:if>-->
+
+
+
+
+			<!-- footer 인클루드 영역 -->
+			<div th:include="thymeleaf/backOfficePage/html/commonLayout/backFooter.html"></div>
+
+
+
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+
+
+
+       
+
+      <!-- JS Scripts-->
+        <!-- Bootstrap Js -->
+        <script th:src="@{/static/js/bootstrap.min.js}"></script>
+
+        <!-- Metis Menu Js -->
+        <script th:src="@{/static/js/jquery.metisMenu.js}"></script>
+        <!-- Morris Chart Js -->
+        <script th:src="@{/static/js/morris/raphael-2.1.0.min.js}"></script>
+        <script th:src="@{/static/js/morris/morris.js}"></script>
+
+
+      <script th:src="@{/static/js/easypiechart.js}"></script>
+      <script th:src="@{/static/js/easypiechart-data.js}"></script>
+
+       <script th:src="@{/static/js/Lightweight-Chart/jquery.chart.js}"></script>
+
+        <!-- Custom Js -->
+        <script th:src="@{/static/js/custom-scripts.js}"></script>
+  </body>
+</html>

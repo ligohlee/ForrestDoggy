@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.jjj.TicketMapper">
+
+<sql id="basecolumn">
+	TICKET_NUM, TICKET_NAME, TICKET_SEASON , TICKET_TIME , TICKET_GRADE , TICKET_PRICE , TICKET_REGIST , TICKET_QTY
+</sql>
+
+<insert id="insertTicket" parameterType="forrest.domain.jjj.TicketDTO">
+	insert into ticket(<include refid="basecolumn"/>)
+	values(Ticket_SEQ.nextval,#{ticketName},#{ticketSeason},#{ticketTime},#{ticketGrade},#{ticketPrice},sysdate,#{ticketQty})
+	
+</insert>
+
+
+
+</mapper>

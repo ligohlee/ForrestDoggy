@@ -89,7 +89,7 @@
 					    	<table class="table">
 					    			<tr><th>객실번호</th><th>객실이름</th><th>객실가격</th><th>등록일</th></tr>
 					    			<th:block th:each="dto,aaa : ${roomList}">
-					    			<tr><td><a th:href="@{/stpback/roomDetail(roomNum=${dto.roomNum})}">[[${dto.roomNum}]]</a></td><td>[[${dto.roomName}]]</td><td>[[${dto.roomPrice}]]</td><td>[[${dto.roomRegit}]]</td></tr></th:block>
+					    			<tr><td><a th:href="@{/stpback/roomDetail(roomNum=${dto.roomNum})}">[[${dto.roomNum}]]</a></td><td>[[${dto.roomName}]]</td><td>[[${dto.roomPrice}]]</td><td th:text="${#dates.format(dto.roomRegit,'yyyy-MM-dd')}"></td></tr></th:block>
 					    			<tr><td colspan="4"><a href="/stpback/roomRegist"><input type="button" value="객 실 추 가" class="sybtn"/></a></td></tr>
 					    	</table>
 					    

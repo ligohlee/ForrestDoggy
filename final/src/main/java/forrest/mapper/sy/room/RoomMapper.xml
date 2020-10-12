@@ -12,9 +12,11 @@
 	values(#{roomNum}, #{roomName}, #{roomInfo}, #{roomPrice}, #{roomImg}, #{capacity}, #{dogCap}, sysdate)	
 </insert>
 
+
+
 <resultMap type="forrest.domain.sy.room.RoomDTO" id="resultmap">
 	<constructor>
-		<idArg column="room_Num" javaType="int" />
+		<idArg column="room_num" javaType="int" />
 		<arg column="room_name" javaType="string"/>
 		<arg column="room_info" javaType="string"/>
 		<arg column="room_price" javaType="int"/>
@@ -25,10 +27,17 @@
 	</constructor>
 </resultMap>
 
-<select id="selectRoom" resultMap="resultmap">
+<select id="selectRoom" resultMap="resultmap" parameterType="forrest.domain.sy.room.RoomDTO">
 	select <include refid="basecolumn"/>
 	from room
+	<where>
+		<if test="roomNum != null">
+			room_num = #{roomNum}
+		</if>
+	</where>
 </select>
+
+
 
 
 

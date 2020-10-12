@@ -25,13 +25,11 @@
     </head>
     <script>
 $(function(){
-	workNum = '[[${dto.workNum}]]';
+	workNum = '[[${dto.salNum}]]';
 	$("#workmodify").click(function(){
-		location.href="workerModifyPro?workNum="+workNum;
+		location.href="workerModifyPro?salNum="+workNum;
 		});
-	$("#workerDel").click(function(){
-		location.href="workerDel?workNum="+workNum;
-		});
+	
 	});
 
 	
@@ -55,7 +53,7 @@ $(function(){
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                        	직원등록
+                        	연봉계약상세정보
                         </h1>
                     </div>
                 </div>
@@ -94,8 +92,8 @@ $(function(){
 					    	</style>
 					    	<div>
 					    	
-					    	<form action="workerModifyPro" method="post" name="workerModifyPro" 
-	                           enctype="multipart/form-data">
+					    	<form action="salaryModifyPro" method="post" name="salaryModifyPro" 
+	enctype="multipart/form-data">
 					    	   <table>
 					    	    <colgroup>
                                <col width="10%">
@@ -107,46 +105,34 @@ $(function(){
                                </colgroup>
                                
 					    	     <tr>
-					    	       <td>직원번호</td> 
-					    	       <td> <!-- th:text="*{workNum}" -->[[${dto.workNum}]]</td> 
-					    	       <td >부서번호</td>
-					    	       <td colspan="3">[[${dto.deptNum}]]</td> 
-					    	    	<td>직원명</td>
-					    	    	<td>[[${dto.workName}]]</td> 
+					    	       <td>연봉계약번호</td> 
+					    	       <td> <!-- th:text="*{workNum}" -->[[${dto.salNum}]]</td> 
+					    	       <td >직원번호</td>
+					    	       <td colspan="3">[[${dto.workNum}]]</td> 
+					    	    	<td>현재연봉금액</td>
+					    	    	<td>[[${dto.salNow}]]만원</td> 
 					    	     </tr>
 					    	     
 					    	     <tr>
-					                <td>연락처</td> 
-					                <td>[[${dto.workPh}]]</td>  
-					                <td>이메일</td> 
-					                <td>[[${dto.workEmail}]]</td>
-					                <td>생년월일</td>
-					    	        <td>[[${dto.hireDate}]]</td>
-					    	        <td>입사일</td>
-					    	        <td>[[${dto.workBorn}]]</td>
+					                <td>연봉상승금액</td> 
+					                <td>[[${dto.salIncre}]]만원</td>
+					                <td>상승된금액</td>
+					                <td>[[${dto.salIncre}-${dto.salNow}]]만원</td>
+					                <td>연봉계약년도</td> 
+					                <td>[[${dto.salYear}]]</td>
+					    	        <td>연봉계약내용</td>
+					    	        <td>[[${dto.salCont}]]</td>
 					    	          
-					    	     </tr>
-					    	       <tr>
-					                <td>직책</td> 
-					                <td>[[${dto.position}]]</td>  
-					                <td>직무</td> 
-					                <td>[[${dto.job}]]</td>
-					                <td>휴가일수</td>
-					    	        <td>[[${dto.workHoli}]]</td>
-					    	        <td>주소</td>
-					    	        <td>[[${dto.workAddr}]]</td>
-					    	     </tr>
+					    	    
 					    	     <tr>
-					    	       <td>직원 이미지</td>  
-					    	       <td colspan="5"><img width="150px" height="150px" th:src="@{'/static/upload/worker/'+${dto.workImg}}"></td> 
+					    	       <td>연봉계약서이미지</td>  
+					    	       <td colspan="7"><img width="150px" height="150px" th:src="@{'/static/upload/worker/'+${dto.salImage}}"></td> 
 					    	       
 					    	     </tr>
 					    	     <tr>
 					    	        
-					    	       <td colspan="6" style="text-align:right">
-					    	   		<input type="button" name="workmodify" id="workmodify" value="수 정">
-					    	       <button onclick="javascript:history.back()">취소</button>
-					    	       <input type="button" name="workerDel" id="workerDel" value="삭 제">
+					    	       <td colspan="8" style="text-align:center;">
+					    	       <a href="javascript:history.go(-1)">[뒤로]</a>&nbsp;&nbsp;
 					    	       </td> 
 					    	   
 					    	     </tr>

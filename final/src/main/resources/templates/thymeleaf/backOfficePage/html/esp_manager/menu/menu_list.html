@@ -74,9 +74,15 @@
 					    	       <td>매뉴번호</td> <td>메뉴명</td> <td>메뉴가격</td> <td> </td> 
 					    	     </tr>
 					    	     
+					    	     <tr th:each="list: ${lists}">
+					    	       <td th:text="${list.menuNum}"></td> 
+					    	       <td th:text="${list.menuName}"></td> 
+					    	       <td th:text="${list.menuPrice}"></td> 
+					    	       <td ><a th:href="@{/espback/menu/menuDetail(menuNum=${list.menuNum})}">상세</a></td>
+					    	     </tr>
 					    	     
 					    	     <tr>
-					    	        <td style="text-align:right" colspan="7">
+					    	        <td style="text-align:right" colspan="4">
 					    	          <a href="menuRegist">등록</a> &emsp;
 					    	        </td>
 					    	     </tr>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="forrest.mapper.ligoh.EvaluationMapper">
+<mapper namespace="forrest.mapper.ligoh.MenuMapper">
 
 <sql id="basecolumn">
 MENU_NUM, MENU_NAME, MENU_PRICE, RECIPE, MENU_INTRO, ALLERGY, MENU_IMAGE		
 </sql>
 
 <sql id="maxNum">
-    select nvl(max(eval_NUM),0) + 1
+    select nvl(max(menu_NUM),0) + 1
     from menu
 </sql>
 
@@ -18,5 +18,34 @@ MENU_NUM, MENU_NAME, MENU_PRICE, RECIPE, MENU_INTRO, ALLERGY, MENU_IMAGE
             #{menuIntro},#{allergy},#{menuImage})
 </insert>
 
+<select id="getMenu" resultMap="ResultMenu" >
+     select rn,<include refid="basecolumn" /> 
+     from
+     (select rownum rn, <include refid="basecolumn" /> 
+     from(select <include refid="basecolumn" /> 
+     from menu
+      <trim prefix="where" prefixOverrides="AND | OR">
+						<if test="num != null ">
+							and menu_num = #{num}
+						</if>
+	  </trim>
+     order by menu_num))
+     where
+     rn &gt;= #{startPage} and rn &lt;= #{endPage}
+</select>
+
+<resultMap type="forrest.domain.ligoh.MenuDTO" id="ResultMenu">
+		<id column="Menu_NUM" jdbcType="BIGINT" property="menuNum"/>
+		<result column="MENU_NAME" jdbcType="VARCHAR" property="menuName"/>
+		<result column="MENU_PRICE" jdbcType="BIGINT" property="menuPrice"/>
+		<result column="RECIPE" jdbcType="VARCHAR" property="recipe"/>
+		<result column="MENU_INTRO" jdbcType="VARCHAR" property="menuIntro"/>
+		<result column="ALLERGY" jdbcType="VARCHAR" property="allergy"/>
+		<result column="MENU_IMAGE" jdbcType="VARCHAR" property="menuImage"/>
+</resultMap>
+<select id="getMenuCount"  resultType="int" >
+ select count(*) from menu
+
+</select>
 
 </mapper>

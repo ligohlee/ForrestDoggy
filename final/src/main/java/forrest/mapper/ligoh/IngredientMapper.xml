@@ -8,7 +8,7 @@ INGR_INTRO, INGR_LIMIT
 </sql>
 
   <sql id="maxNum">
-    select nvl(max(CT_NUM),0) + 1
+    select nvl(max(ingr_NUM),0) + 1
     from ingredient
   </sql>
   
@@ -32,6 +32,9 @@ values((<include refid="maxNum"/>), #{ptNum},#{ctNum},#{ingrName},
 				<if test="num != null ">
 					and ingr_num = #{num}
 				</if>
+				<if test="userId != null ">
+					and lower(ingr_name) like lower('%'||#{userId}||'%')
+				</if>
 			</trim>
             order by ingr_num))
     where rn &gt;= #{startPage} and rn &lt;= #{endPage}
@@ -54,7 +57,16 @@ values((<include refid="maxNum"/>), #{ptNum},#{ctNum},#{ingrName},
 
 <select id="getIngreCount" resultType="int">
 		select count(*) from ingredient
-</select>	
+</select>
+
+<select id="nameSearch" resultMap="baseIngredient">
+  select INGR_NUM, i.PT_NUM iptNum, INGR_NAME, pt_name
+	        from ingredient i join partner p 
+            on i.pt_num = p.pt_num
+              where lower(ingr_name) like lower('%'||#{userId}||'%')
+            
+</select>
+	
 
 
 </mapper>

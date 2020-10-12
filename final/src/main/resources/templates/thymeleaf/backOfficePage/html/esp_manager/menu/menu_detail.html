@@ -1,10 +1,9 @@
 
-
 <html xmlns:th="http://www.thymeleaf.org">
  
     <head>
     <meta charset="UTF-8">
-    <title>Ingredient Registration</title>
+    <title>Menu Detail</title>
     <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
     <!-- Bootstrap Styles-->
     <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -22,20 +21,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
 
      <script type="text/javascript">
+    
+     function goBack(){
+    	 location.href="menuList";
+     }
+    
+     
+    
      $(function(){
-    	
-    	 $("#evalCheck").click(function(){
- 			open("evalCheck","납품평가검색",
- 			'left='+(screen.availWidth-440)/2+',top='+(screen.availHeight-300)/2+', width=440px,height=300px');
-
+     	
+    	 $("#ingr").click(function(){
+ 			open("menuIngr?menuNum="+[[${detail.menuNum}]]+"","메뉴재료검색",
+ 			'left='+(screen.availWidth-450)/2+',top='+(screen.availHeight-300)/2+', width=450px,height=300px');
  		});
     	
+    	 $("#btn").click(function(){
+    		 var value = document.getElementById("btn").value;
+    		 
+    	 if(value == "식재료 보기"){
+    		 $.ajax({ 
+ 				type : "post",	
+ 				url : "seeIngr",
+ 				dataType : "html",
+ 				data: {"menuNum": "[[${detail.menuNum}]]"},
+ 				success : function(result){
+ 					$("#notice").html(result);
+ 					$("#btn").val("닫기");
+ 				
+ 				},
+ 				error : function(){
+ 					alert('에러');
+ 					return;
+ 				}
+ 			});
+    	}else{
+    		$("#notice").html("");
+    		$("#btn").val("식재료 보기");
+    	}
+ 		});
     	 
      });
-     function goBack(){
-    	 location.href="ingrList";
-     }
-     
      </script>
      
          	               <style>
@@ -67,6 +92,9 @@
 					    		textarea{
 					    		   width: 100%;
 					    		}
+					    		#textLeft{
+					    		   text-align: left;
+					    		}
 					    	</style>
  
      
@@ -90,7 +118,7 @@
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                                                    식재료등록
+                                                    메뉴상세
                         </h1>
                     </div>
                 </div>
@@ -102,94 +130,64 @@
 					    	<div>
 					    	
 					    	
-					    	<form th:action='@{/espback/ingredient/ingrInsert}' method="post" th:object="${ingredientCommand}">
+					    	<form th:action='@{/espback/menu/menuInsert}' method="post" 
+					    	 enctype="multipart/form-data">
 					    	   <table>
 					    	    <colgroup>
-                               <col width="10%">
+                               <col width="15%">
+                               <col width="50%">
+                               <col width="15%">
                                <col width="20%">
-                               <col width="10%">
-                               <col width="20%">
-                               <col width="10%">
-                               <col width="20%">
-                               
+                              
                                </colgroup>
                                  <tr>
-                                   <td>식재료명</td> 
-					    	       <td colspan="5" style="text-align: left;" >
-					    	       <input style="width:8%" type="button" value="찾기" id="evalCheck">
-					    	       <input style="width:30%" type="text" id="ingrName" readonly="readonly" >
-					    	        <span style="color: red;" th:if="${#fields.hasErrors('ingrName')}" th:errors="*{ingrName}" ></span>
-					    	       <input type="hidden" id="hingrName" th:field="*{ingrName}" name="ingrName">
-					    	      
+                                   <td>메뉴이름</td> 
+					    	       <td id="textLeft" style="text-align: left;" >
+					    	       &ensp;[[${detail.menuName}]]
 					    	       </td> 
-                                 
-                                 
+                                   <td>메뉴금액</td> 
+					    	       <td  id="textLeft"  style="text-align: left;" >
+					    	        &ensp;[[${detail.menuPrice}]]
+					    	       </td> 
                                  </tr>
                                
 					    	     <tr>
-					    	      
-					    	       <td >업체명</td> 
-					               <td colspan="2">
-					    	       <input type="text" id="ptName" value="" readonly="readonly" placeholder="식재료를 검색하세요">
-					    	       <input type="hidden" id="ptNum"  name="ptNum">
+					    	       <td >레시피</td> 
+					               <td id="textLeft" >
+					    	        &ensp;[[${detail.recipe}]]
 					               </td>
-					    	       <td>협력계약번호</td> 
-					    	       <td colspan="2">
-					    	       <input type="text" id="ctNum" value="" readonly="readonly" placeholder="식재료를 검색하세요">
-					    	       <input type="hidden" id="hctNum"  name="ctNum">
+					    	       <td>메뉴이미지</td> 
+					    	       <td >
+					    	      <img width="150px" height="150px" th:src="@{'/static/upload/menu/'+${detail.menuImage}}">
 					    	       </td> 
-					    	      
-					            
 					    	     </tr>
 					    	     
 					    	     <tr>
-					               <td>유통기한</td>
-					    	       <td><input type="number" name="ingrLimit" /> 
-					              
-					               
+					               <td>메뉴설명</td>
+					    	       <td colspan="3" id="textLeft" >
+					    	        &ensp;[[${detail.menuIntro}]]
 					               </td>
-					               <td>구분</td>
-					               <td style="text-align:left; ">
-					               <select name="ingrCategory" style="width:50%;">
-					                 <option value="육류">육류</option>
-					                 <option value="채소">채소</option>
-					                 <option value="해산물">해산물</option>
-					                 <option value="조미료">조미료</option>
-					                 <option value="유제품">유제품</option>
-					                 <option value="가공품">가공품</option>
-					                 <option value="기타">기타</option>
-					               </select>
-					    	      
-					               </td> 
-					               
 					    	     </tr>
 					    	       
 					    	     <tr>
-					                <td>보관방법</td>
-					    	       <td>
-					    	        <select name="ingrStorage" style="width:50%;">
-					                  <option value="냉장">냉장</option>
-					                  <option value="상온">상온</option>
-					                  <option value="냉동">냉동</option>
-					                 </select>
-					    	        </td>
-					                <td>세부수량</td>
-					    	       <td><input type="text" name="ingrQty"/> </td>
-					                <td>원산지</td>
-					    	       <td><input type="text" name="ingrMade"/> </td>
-					               
+					                <td>알러지</td>
+					    	       <td  colspan="3" id="textLeft" >
+					    	        &ensp;[[${detail.allergy}]]
+					    	       </td>
 					    	     </tr>
-					    	       
+					    	    
 					    	     <tr>
-					    	       <td>식재료 설명</td>  
-					    	       <td colspan="5" ><textarea  name="ingrIntro" cols="100" rows="3" ></textarea></td> 
-					    	     </tr>
-					    	     
-					    	     <tr>
-					    	       <td colspan="6" style="text-align:right">
-					    	       <button type="submit">등록</button> 
-					    	       <button type="button" onclick="javascript:goBack()">취소</button>
+					    	       <td colspan="4" style="text-align:right">
+					    	       <button type="button" id="ingr">식재료등록</button>
+					    	       <button type="button" onclick="javascript:goBack()">목록으로</button>
 					    	       </td> 
+					    	     </tr>
+					    	     <tr>
+					    	       <td colspan="4" style="text-align:left">
+					    	       <input style="width: 100px" type="button" id="btn" value="식재료 보기"/>
+					    	        <span id ="notice"></span>
+					    	       </td> 
+					    	      
 					    	     </tr>
 					    	
 					    	   </table>

@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import forrest.command.ligoh.MenuCommand;
 import forrest.domain.ligoh.MenuDTO;
-import forrest.mapper.ligoh.MemuMapper;
+import forrest.mapper.ligoh.MenuMapper;
 
 
 @Service
@@ -17,7 +17,7 @@ import forrest.mapper.ligoh.MemuMapper;
 public class MenuWriteService {
 	
 	@Autowired
-	MemuMapper menuMapper;
+	MenuMapper menuMapper;
 
 	public String write(MenuCommand mc) throws Exception {
  
@@ -31,16 +31,15 @@ public class MenuWriteService {
          dto.setRecipe(mc.getRecipe());
          
 			String location = "";
-			
 		
 			String filePath = "C:\\Users\\hogil\\git\\ForrestDoggy\\final\\src\\main\\resources\\static\\upload\\menu";
 			
 			System.out.println("contract upload path : " + filePath);
 
+			MultipartFile mf = mc.getReport();
 			
-			MultipartFile mf = mc.getSend();
-			String img =mf.getOriginalFilename();
-			
+		
+				String img =mf.getOriginalFilename();
 			
 				File file = new File(filePath + "/" +img);
 				try {
@@ -50,6 +49,7 @@ public class MenuWriteService {
 					e.printStackTrace();
 				}
 				
+			
 		
 			dto.setMenuImage(img);
 			

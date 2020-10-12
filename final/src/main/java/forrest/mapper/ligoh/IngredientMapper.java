@@ -13,5 +13,8 @@ public interface IngredientMapper {
 
 	public int getIngreCount();
 
+	public List<IngredientDTO> nameSearch(StartEndPageDTO dto);
+
+
 	
 }

@@ -34,7 +34,7 @@ values((<include refid="maxNum"/>),#{ptNum},sysdate,#{evalIngr},
 						<if test="num != null ">
 							and eval_num = #{num}
 						</if>
-					</trim>
+			</trim>
             order by eval_num))
     where rn &gt;= #{startPage} and rn &lt;= #{endPage}
 </select>

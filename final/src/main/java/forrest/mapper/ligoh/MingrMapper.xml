@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.ligoh.MingrMapper">
+
+<insert id="mingrInsert">
+  insert into menu_ingr (menu_num, ingr_num, menu_ingr_qty)
+  values(#{menuNum},#{ingrNum},#{menuIngrQty})
+
+</insert>
+
+<select id="getMingrList" resultMap="ResultMingr">
+ select menu_num, mi.ingr_num migrNum, menu_ingr_qty, ingr_name
+ from menu_ingr mi join ingredient i 
+ on mi.ingr_num = i.ingr_num
+ where menu_num = #{menuNum}
+
+</select>
+
+<resultMap type="forrest.domain.ligoh.MingrDTO" id="ResultMingr">
+		<id column="MENU_NUM" jdbcType="BIGINT" property="menuNum"/>
+		<result column="migrNum" jdbcType="BIGINT" property="ingrNum"/>
+		<result column="MENU_INGR_QTY" jdbcType="BIGINT" property="menuIngrQty"/>
+		<result column="INGR_NAME" jdbcType="VARCHAR" property="ingrName"/>
+</resultMap>
+
+
+</mapper>

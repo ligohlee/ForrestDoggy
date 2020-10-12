@@ -1,31 +1,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Evaluation Check</title>
+<title>Ingredient Check</title>
 <script type="text/javascript" 
 	src="http://code.jquery.com/jquery-latest.js" ></script>
 <script type="text/javascript">
-
+ function co(){
+	 window.close();
+ }
 
 </script>
 
 </head>
 <body>
-<form action="evalSearch" method="post">
+<form action="ingrSearch" method="post">
 식재료명을 검색하세요
-<input type="text" name="ingrName" required="required"/> 
+<input style="width:30%" type="text" name="ingrName" > 
 <button type="submit">찾기</button>
+<button onclick="javascript:co()">닫기</button>
 <br/>
+<input type="hidden" name="menuNum" th:value="${menuNum}" >
 
 </form>
-
-<table border="1" width="100%">
-  <tr>
-    <td >업체명</td><td>식재료명</td><td>등록일 </td>
-  </tr>
-
-</table>
-
 
 </body>
 </html>

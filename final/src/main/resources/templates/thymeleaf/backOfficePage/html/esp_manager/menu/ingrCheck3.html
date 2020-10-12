@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Evaluation Check</title>
+<script type="text/javascript" 
+	src="http://code.jquery.com/jquery-latest.js" ></script>
+<script type="text/javascript">
+
+</script>
+
+</head>
+<body>
+
+<form action="mingrRegist" method="post">
+<table border="1" width="100%">
+  <tr>
+   <td>식재료명</td> <td >수량</td>
+  </tr>
+   <tr th:each="list: ${lists}">
+   <td style="width: 40%" th:text="${list.ingrName}"></td> 
+   <td> <input type="number" name="menuIngrQty"> 
+   <input type="hidden" name="ingrNum" th:value="${list.ingrNum}">
+   <input type="button" id="" value="등록" onclick="submit()">
+   </td>
+  </tr>
+   <input type="hidden" name="menuNum" th:value="${menuNum}">
+</table>
+</form>
+
+</body>
+</html>

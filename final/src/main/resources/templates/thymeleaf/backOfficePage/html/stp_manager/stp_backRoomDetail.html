@@ -148,7 +148,7 @@
 					    			width: 280px;
 					    			text-align: center;
 					    			float:left;
-					    			height: 200px;
+					    			height: 180px;
 					    			overflow: hidden;
 					    			margin: 5px;
 					    		}
@@ -198,8 +198,7 @@
 									 -->
 									<!-- 가능한 옵션 있을 때 -->
 									
-									<th:block th:each="dtodto,aaa : ${roptList}">
-									
+									<th:block th:each="dtodto,aaa : ${roptList}">									
 									<tr th:each = "ropt : ${dtodto.roptions}"><td>[[${dtodto.optName}]]</td><td>[[${ropt.roptionQty}]]</td><td><input type="button" value="수 정" class="mini"/><input type="button" value="삭제" class="mini"/></td></tr>
 									</th:block>
 									

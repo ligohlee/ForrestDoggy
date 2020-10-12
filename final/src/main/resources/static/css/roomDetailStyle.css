@@ -1,0 +1,129 @@
+section {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both
+}
+
+.bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 1800px;
+	opacity: 0.6;
+	z-index: -1;
+}
+
+.bg-img {
+	width: 100%;
+	object-fit: cover;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+}
+
+h2 {
+	font-size: 30px;
+	font-family: 'Noto Sans KR', sans-serif;
+	padding-top: 110px;
+	color: rgb(23, 69, 84);
+}
+
+.roomTable {
+	width: 100%;
+	text-align: center;
+}
+
+.rsvInfo {
+	font-size: 14px;
+	line-height: 1.5;
+	margin-top: 40px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	background-color: #ddd;
+	color: #000;
+}
+
+.imageTd {
+	width: 54%;
+}
+
+.tableTd {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+	position: relative;
+}
+
+
+
+.search {
+	text-align: center;
+	width: 240px;
+	margin: 0 auto;
+	margin-top: 30px;
+	height: 45px;
+	background-color: rgb(23, 69, 84);
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+}
+
+.titleTable {
+	border: 1px solid #ddd;
+	width: 100%;
+}
+
+.line {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+	font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+
+.selectbox {
+	width: 50px;
+	
+}
+
+
+
+.imgs {
+	width: 1140px;
+	margin: 0 auto;
+}
+
+.roomImg {
+	width: 560px;
+	text-align: center;
+	float: left;
+	height: 360px;
+	overflow: hidden;
+	
+	margin: 5px;
+}
+
+
+
+.final_btn {
+	width: 100%;
+	margin-top: 70px;
+	margin-bottom: 200px;
+	text-align: center;
+}
+
+.btn_style {
+	width: 220px;
+	height: 40px;
+	background-color: rgb(160, 164, 193);
+}

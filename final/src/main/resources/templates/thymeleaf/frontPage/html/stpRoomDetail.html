@@ -1,0 +1,113 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Stay Park</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/roomDetailStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_stayPark.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		<section>
+
+			<div class="container">
+
+				<table class="roomTable">
+					<tr>
+						<td colspan="2">
+							<h2>[ [[${room.roomName}]] ] 객실예약</h2>
+							<div class="rsvInfo">
+								[[${checkIn}]] ~ [[${checkOut}]]</br> 객실인원: [[${capacitySelect}]]인 이상
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="imageTd tableTd">
+							<div class="imgs">
+								<block
+									th:each=" lang : ${#strings.arraySplit(room.roomImg,'`')}"
+									th:remove="tag">
+								<div class="roomImg">
+									<img th:src="@{/static/staypark/room/upload/} + ${lang}"
+										width="100%" th:alt="${lang}" />
+								</div>
+								</block>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th class="line">객실이름</th>
+						<td class="line">[[${room.roomName}]]</td>
+					</tr>
+					<tr>
+						<th class="line">객실가격</th>
+						<td class="line">[[${room.roomPrice}]]</td>
+					</tr>
+					<tr>
+						<th class="line">객실소개</th>
+						<td class="line">[[${room.roomInfo}]]</td>
+					</tr>
+					
+					<th:block th:each="dtodto,aaa : ${roptList}">
+						<tr th:each = "ropt : ${dtodto.roptions}">				
+							<th colspan="2" class="line">[[${dtodto.optName}]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<select name="selQty" class="selectbox">
+									<th:block th:each="num : ${#numbers.sequence(1,ropt.roptionQty)}">		 			
+										<option>[[${num}]]</option>
+									</th:block>						 									
+								</select>
+							</th>
+						</tr>
+					</th:block>
+					
+
+				</table>
+
+
+				
+
+			<div class="final_btn">
+				<div class="add_cart">
+					<input type="submit" name="add_cart_btn"
+						class="search" value="장 바 구 니"> <input
+						type="submit" name="pay_now_btn" class="search"
+						value="결 제 하 기">
+				</div>
+			</div>
+		</section>
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+
+	</div>
+</body>
+</html>

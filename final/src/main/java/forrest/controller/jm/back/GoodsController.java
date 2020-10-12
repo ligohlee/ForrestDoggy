@@ -1,4 +1,4 @@
-package forrest.controller.jm;
+package forrest.controller.jm.back;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import forrest.command.jm.GoodsCommand;
+import forrest.service.jm.goods.GoodsDeleteService;
 import forrest.service.jm.goods.GoodsDetailService;
 import forrest.service.jm.goods.GoodsListService;
 import forrest.service.jm.goods.GoodsWriteService;
@@ -28,6 +29,8 @@ public class GoodsController {
 	GoodsWriteService goodsWriteService;
 	@Autowired
 	GoodsDetailService goodsDetailService;
+	@Autowired
+	GoodsDeleteService goodsDeleteService;
 	@Autowired
 	PtSearchService ptSearchService;
 	
@@ -63,7 +66,11 @@ public class GoodsController {
 		goodsDetailService.goodsDetail(goodsNum, model);
 		return "thymeleaf/backOfficePage/html/dgm_manager/goods_modify";
 	}
-	
+	@RequestMapping("goodsDel/{goodsNum}")
+	public String goodsDel(@PathVariable(value="goodsNum") String goodsNum, HttpServletRequest request) throws Exception{
+		String path = goodsDeleteService.goodsDelete(goodsNum, request);
+		return path;
+	}
 	
 	
 	

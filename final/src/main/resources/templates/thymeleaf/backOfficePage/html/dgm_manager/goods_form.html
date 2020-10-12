@@ -76,18 +76,18 @@
 	                        	<form th:action='@{/goods/goodsWritePro}' name="goodsform" method="post" role="form" 
 	                        			th:object="${goodsCommand}" enctype="multipart/form-data">
 	                        	
-	                                <div class="form-group">
+	                                <!-- <div class="form-group">
 	                                    <label>업체명</label>
-	                                    <input type="text" class="form-control" name="ptType"  />
+	                                    <input type="text" class="form-control" name="ptType"  /> -->
 	                                    
-							    	       <input style="width:10%" type="button" value="찾기" id="ptCheck">
+							    	       <!-- <input style="width:10%" type="button" value="찾기" id="ptCheck">
 							    	       <input style="width:89%" type="text" id="ptName" value="" readonly="readonly">
-							    	       <input type="hidden" id="ptName" value="" >
-							    	       <input type="hidden" id="ptNum" value="">
+							    	       <input type="hidden" id="ctnum" value="" >
+							    	       <input type="hidden" id="ptNum" value=""> -->
 	                                    <!--
 	                                    <span th:if="${#fields.hasErrors('ptType')}" th:errors="*{ptType}" ></span>
 	                                    -->
-	                                </div>
+	                                <!-- </div> -->
 	                                <div class="form-group">
 	                                    <label>상품명</label>
 	                                    <input type="text" class="form-control" name="goodsName" th:field="*{goodsName}" />
@@ -104,49 +104,49 @@
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>종 류</label>
-	                                    <input type="text" class="form-control" name="ptType" th:field="*{goodsCategory}" />
+	                                    <input type="text" class="form-control" name="goodsCategory" th:field="*{goodsCategory}" />
 	                                    <!-- 
 	                                    <span th:if="${#fields.hasErrors('ptCeo')}" th:errors="*{ptCeo}" ></span>
 	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>원산지</label>
-	                                    <input type="text" class="form-control" name="ptType" th:field="*{goodsMade}" />
+	                                    <input type="text" class="form-control" name="goodsMade" th:field="*{goodsMade}" />
 	                                    <!-- 
 	                                    <span th:if="${#fields.hasErrors('ptPh')}" th:errors="*{ptPh}" ></span>
 	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>크 기</label>
-	                                    <input type="text" class="form-control" name="ptType" th:field="*{goodsSize}" />
+	                                    <input type="text" class="form-control" name="goodsSize" th:field="*{goodsSize}" />
 	                                    <!--  
 	                                    <span th:if="${#fields.hasErrors('ptEmail')}" th:errors="*{ptEmail}" ></span>
 	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>설 명</label>
-	                                    <input type="text" class="form-control" name="ptType" th:field="*{goodsManual}" />
+	                                    <input type="text" class="form-control" name="goodsManual" th:field="*{goodsManual}" />
 	                                    <!--  
 	                                    <span th:if="${#fields.hasErrors('ptAddr')}" th:errors="*{ptAddr}" ></span>
 	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>판매자 설명</label>
-	                                    <input type="text" class="form-control" name="ptType" th:field="*{goodsIntro}" />
+	                                    <input type="text" class="form-control" name="goodsIntro" th:field="*{goodsIntro}" />
 	                                    <!--  
 	                                    <span th:if="${#fields.hasErrors('ptAccount')}" th:errors="*{ptAccount}" ></span>
 	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>유통 기한</label>
-	                                    <input type="text" class="form-control" name="ptType" th:field="*{goodsTimeLimit}" />
+	                                    <input type="text" class="form-control" name="goodsTimeLimit" th:field="*{goodsTimeLimit}" />
 	                                    <!--  
 	                                    <span th:if="${#fields.hasErrors('ptComent')}" th:errors="*{ptComent}" ></span>
 	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>이미지</label>
-										<input type="file" class="form-control" name="report"  >
+										<input type="file" class="form-control" name="report" multiple="multiple" >
 	                                </div>
 	                                <div class="btn btn-default">
 	                               		<a href="javascript:addboard()">등록</a>

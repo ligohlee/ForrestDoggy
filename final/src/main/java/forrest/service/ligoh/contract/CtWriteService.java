@@ -35,8 +35,8 @@ public class CtWriteService {
 		   		   
 		    String imgTotal ="";
 			String location = "";
-		
-			String filePath = "C:\\Users\\hogil\\git\\ForrestDoggy\\final\\src\\main\\resources\\static\\upload\\contract";
+			String name = System.getProperty("user.name");
+			String filePath = "C:\\Users\\"+name+"\\git\\ForrestDoggy\\final\\src\\main\\resources\\static\\upload\\contract";
 			
 			System.out.println("contract upload path : " + filePath);
 		   

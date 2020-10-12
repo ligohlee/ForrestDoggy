@@ -1,23 +1,17 @@
-package forrest.service.jm.partner;
+package forrest.service.jm.Inventory;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import forrest.controller.page.PageAction;
 import forrest.domain.jm.PartnerDTO;
 import forrest.domain.jm.StartEndPageDTO;
-import forrest.mapper.jm.PartnerMapper;
 
-@Component
 @Service
-public class PartnerListService {
-	@Autowired
-	PartnerMapper partnerMapper;
-	public void cordList(Model model, Integer page) throws Exception{
+public class CordListService {
+	public void partnerList(Model model, Integer page) throws Exception{
 		int limit = 10;
 		int limitPage = 10;
 		
@@ -36,6 +30,8 @@ public class PartnerListService {
 		pageAction.page(model, count, limit, limitPage, page, "partnerList");
 		
 	}
+	
+	
 	
 	
 	

@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.maven.shared.invoker.SystemOutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -25,7 +26,7 @@ public class PartnerModifyService {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
-	public String partnerModify(PartnerCommand partnerCommand, HttpServletRequest request, Model model) throws Exception{
+	public String partnerModify(PartnerCommand partnerCommand, HttpServletRequest request) throws Exception{
 		PartnerDTO dto = new PartnerDTO();
 		dto.setPtNum(partnerCommand.getPtNum());
 		dto.setPtName(partnerCommand.getPtName());
@@ -39,7 +40,8 @@ public class PartnerModifyService {
 		dto.setPtCeo(partnerCommand.getPtCeo());
 		
 		String location = "";
-		String path = "/static/partner/upload";
+		String name = System.getProperty("user.name");
+		String path = "C:\\Users\\"+name+"\\git\\ForrestDoggy\\final\\src\\main\\resources\\static\\upload\\partner";
 		String filePath = request.getServletContext().getRealPath(path);
 		
 		MultipartFile mf = partnerCommand.getReport();
@@ -49,7 +51,7 @@ public class PartnerModifyService {
 		   mf.transferTo(file);
 		} catch (Exception e) {
 		   // TODO: handle exception
-		   location = "thymeleaf/backOfficePage/html/partner_manager/partner_form";
+		   location = "thymeleaf/backOfficePage/html/pt_manager/partner_form";
 		   e.printStackTrace();
 		}
 		dto.setPtBusinessImage(img);

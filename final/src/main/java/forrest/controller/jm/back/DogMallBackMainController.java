@@ -1,4 +1,4 @@
-package forrest.controller.jm;
+package forrest.controller.jm.back;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

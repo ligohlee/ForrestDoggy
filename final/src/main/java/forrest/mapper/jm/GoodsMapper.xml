@@ -44,13 +44,16 @@
 	<insert id="goodsInsert" parameterType="forrest.domain.jm.GoodsDTO">
 		insert into GOODS ( <include refid="basecolumn" />  )
 		values ( 
-  				(select nvl(max(PT_NUM),0) + 1
+  				(select nvl(max(goods_NUM),0) + 1
     			from goods), 
     			#{ptNum}, #{ctNum}, #{goodsName}, #{goodsPrice}, #{goodsCategory}, 
 				#{goodsMade}, #{goodsSize}, #{goodsManual}, #{goodsIntro}, #{goodsTimeLimit}, #{goodsImg}	)
 	</insert>
 
-
+	<delete id="goodsDelete" parameterType="string">
+		delete from GOODS
+		where goods_num = #{goodsNum}
+    </delete>
 
 
 

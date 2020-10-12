@@ -122,13 +122,13 @@
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>사업자등록증 사본</label>
-										<input type="file" class="form-control" name="report"  >
+										<input type="file" class="form-control" name="report" multiple="multiple"  >
 	                                </div>
 	                                <div class="btn btn-default">
-	                               		<a href="javascript:addboard()">등록</a>
+	                               		<button type="submit">등록</button>
 									</div>
 									<div class="btn btn-default">
-										<a href="javascript:history.go(-1)">뒤로</a>
+										<button type="button" onclick="javascript:goBack()">취소</button>
 									</div>
 	                            </form>
 	                        </div>

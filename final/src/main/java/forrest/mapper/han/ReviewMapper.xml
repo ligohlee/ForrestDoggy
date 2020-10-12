@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.han.ReviewMapper">
+	<sql id="reviewColumn">
+	REV_NUM,WORK_NUM,QUALITY,ATTAIN,EFFORT,CREATIVITY,RESPONSIBILITY,COOPER,KNOWLE,REV_DATE,REV_WRITER
+	</sql>
+	<insert id="reviewInsert" parameterType="forrest.domain.han.ReviewDTO">
+	insert into REVIEW (<include refid="reviewColumn"/>)
+	values(#{revNum}, #{workNum},#{quality}, #{attain}, #{effort}, #{creativity}, #{responsibility}, #{cooper}, #{knowle}, #{revDate}, #{revWriter})
+	</insert>
+	<resultMap type="forrest.domain.han.ReviewDTO" id="database">
+	<id column="REV_NUM" jdbcType="BIGINT" property="revNum"/>
+	<result column="WORK_NUM" jdbcType="BIGINT" property="workNum"/>
+	<result column="QUALITY" jdbcType="BIGINT" property="quality"/>	
+	<result column="ATTAIN" jdbcType="BIGINT" property="attain"/>
+	<result column="EFFORT" jdbcType="BIGINT" property="effort"/>
+	<result column="CREATIVITY" jdbcType="BIGINT" property="creativity"/>
+	<result column="RESPONSIBILITY" jdbcType="BIGINT" property="responsibility"/>
+	<result column="COOPER" jdbcType="BIGINT" property="cooper"/>
+	<result column="KNOWLE" jdbcType="BIGINT" property="knowle"/>
+	<result column="REV_DATE" jdbcType="TIMESTAMP" property="revDate"/>
+	<result column="REV_WRITER" jdbcType="VARCHAR" property="revWriter"/>
+	</resultMap>
+	
+	<select id="getrevView" resultMap="database">
+		select REV_NUM,WORK_NUM,QUALITY,ATTAIN,EFFORT,CREATIVITY,RESPONSIBILITY,COOPER,KNOWLE,REV_DATE,REV_WRITER
+		from REVIEW
+	
+	</select>
+	
+	<select id="detailview" resultMap="database">
+		select REV_NUM,WORK_NUM,QUALITY,ATTAIN,EFFORT,CREATIVITY,RESPONSIBILITY,COOPER,KNOWLE,REV_DATE,REV_WRITER
+		from REVIEW
+		where WORK_NUM = #{workNum}
+	
+	
+	</select>
+</mapper>

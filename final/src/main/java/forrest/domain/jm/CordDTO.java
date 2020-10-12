@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class CordDTO {
 	Integer cordNum;
 	Integer goodsNum;
+	String goodsName;
 	Integer cordQty;
 	Timestamp cordRegist;
 	

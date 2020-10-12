@@ -8,17 +8,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import forrest.controller.page.PageAction;
-import forrest.domain.jm.CordDTO;
+import forrest.domain.jm.GoodsDTO;
 import forrest.domain.jm.StartEndPageDTO;
-import forrest.mapper.jm.CordMapper;
+import forrest.mapper.jm.GoodsMapper;
 
 @Component
 @Service
-public class CordListService {
+public class InventoryListService {
 	@Autowired
-	CordMapper cordMapper;
-	
-	public void cordList(Model model, Integer page) throws Exception{
+	GoodsMapper goodsmapper;
+	public void inventoryList(Model model, Integer page) throws Exception{
 		int limit = 10;
 		int limitPage = 10;
 		
@@ -27,19 +26,14 @@ public class CordListService {
 		
 		StartEndPageDTO dto = new StartEndPageDTO(startRow, endRow, null, null);
 		
-		List<CordDTO> lists = cordMapper.getCordList(dto);
+		List<GoodsDTO> lists = goodsmapper.getGoodsList(dto);
 		
-		int count = cordMapper.getCordCount();
+		int count = goodsmapper.getGoodsCount();
 		
 		model.addAttribute("count", count);
 		model.addAttribute("lists", lists);
 		PageAction pageAction = new PageAction();
-		pageAction.page(model, count, limit, limitPage, page, "CordList");
+		pageAction.page(model, count, limit, limitPage, page, "goodsList");
 		
 	}
-	
-	
-	
-	
-	
 }

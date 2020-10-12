@@ -47,7 +47,19 @@ public class GoodsController {
 	public String goodsWrite() {
 		return "thymeleaf/backOfficePage/html/dgm_manager/goods_form";
 	}
-	@RequestMapping(value="goodsWritePro", method=RequestMethod.POST)
+	@RequestMapping(value = "partnerCheck")
+	public String ptChk() {
+		return "thymeleaf/backOfficePage/html/pt_manager/partnerCheck";
+	}
+	@RequestMapping(value = "ptSearch", method = RequestMethod.POST)
+	public String ptSearch(@RequestParam(value="ptName") String ptName, Model model) throws Exception {
+		ptSearchService.ptSel(ptName, model);
+		return "thymeleaf/backOfficePage/html/pt_manager/partnerCheck2";
+	}
+	
+	
+	
+	@RequestMapping(value="goodsWritePro")
 	public String goodsWritePro(@Validated GoodsCommand goodsCommand, BindingResult result, HttpServletRequest request) throws Exception{
 //		if(result.hasErrors()) {
 //			System.out.println("Write Errors");
@@ -76,10 +88,6 @@ public class GoodsController {
 	
 	
 	
-	@RequestMapping(value = "ptSearch", method = RequestMethod.POST)
-	public String ptSearch (@RequestParam(value="ptName") String ptName, Model model) throws Exception {
-		ptSearchService.ptSel(ptName, model);
-		return "thymeleaf/backOfficePage/html/dgm_manager/partnerCheck";
-	}
+	
 	
 }

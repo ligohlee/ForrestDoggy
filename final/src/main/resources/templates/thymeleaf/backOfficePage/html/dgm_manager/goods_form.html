@@ -5,11 +5,7 @@
     <head>
     <meta charset="UTF-8">
     <title>DGM BackOffice</title>
-    <script language="javascript">
-	function addboard(){
-		goodsform.submit();
-	}
-	</script>
+    
     <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
     <!-- Bootstrap Styles-->
     <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -29,20 +25,16 @@
 	<script type="text/javascript">
      $(function(){
     	 $("#ptCheck").click(function(){
- 			open("partnerCheck","파트너검색",
- 			'left='+(screen.availWidth-440)/2+',top='+(screen.availHeight-300)/2+', width=440px,height=300px');
+  			open("partnerCheck","파트너검색",
+  			'left='+(screen.availWidth-440)/2+',top='+(screen.availHeight-300)/2+', width=440px,height=300px');
 
- 		});
-    	 $("#workCheck").click(function(){
- 			open("workCheck","직원검색",
- 			'left='+(screen.availWidth-440)/2+',top='+(screen.availHeight-300)/2+', width=440px,height=300px');
-
- 		});
+  		});
     	 
      });
-     function goBack(){
-    	 location.href="foodContract";
-     }
+     function addboard(){
+ 		goodsform.submit();
+ 	}
+     
      </script>
 
     </head>
@@ -63,7 +55,7 @@
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                        	업체 등록
+                        	상품 등록
                         </h1>
                     </div>
                 </div>
@@ -75,74 +67,43 @@
 	                        <div class="panel-body">
 	                        	<form th:action='@{/goods/goodsWritePro}' name="goodsform" method="post" role="form" 
 	                        			th:object="${goodsCommand}" enctype="multipart/form-data">
-	                        	
-	                                <!-- <div class="form-group">
-	                                    <label>업체명</label>
-	                                    <input type="text" class="form-control" name="ptType"  /> -->
-	                                    
-							    	       <!-- <input style="width:10%" type="button" value="찾기" id="ptCheck">
-							    	       <input style="width:89%" type="text" id="ptName" value="" readonly="readonly">
-							    	       <input type="hidden" id="ctnum" value="" >
-							    	       <input type="hidden" id="ptNum" value=""> -->
-	                                    <!--
-	                                    <span th:if="${#fields.hasErrors('ptType')}" th:errors="*{ptType}" ></span>
-	                                    -->
-	                                <!-- </div> -->
+	                        		
+	                        		<input type="button" class="btn btn-default" value="찾기" id="ptSerch">
+	                        		<input type="text" class="form-control" value="찾기" id="ptName" readonly="readonly">
+							    	<input type="hidden" id="ctNum" name="ctnum" value="" >
+							    	<input type="hidden" id="ptNum" name="ptNum" value="">
+							    	       
 	                                <div class="form-group">
 	                                    <label>상품명</label>
 	                                    <input type="text" class="form-control" name="goodsName" th:field="*{goodsName}" />
-	                                    <!--  
-	                                    <span th:if="${#fields.hasErrors('ptName')}" th:errors="*{ptName}" ></span>
-	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>금 액</label>
 	                                    <input type="text" class="form-control" name="goodsPrice" th:field="*{goodsPrice}" />
-	                                    <!-- 
-	                               		<span th:if="${#fields.hasErrors('ptBusinessNum')}" th:errors="*{ptBusinessNum}" ></span>
-	                               		-->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>종 류</label>
 	                                    <input type="text" class="form-control" name="goodsCategory" th:field="*{goodsCategory}" />
-	                                    <!-- 
-	                                    <span th:if="${#fields.hasErrors('ptCeo')}" th:errors="*{ptCeo}" ></span>
-	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>원산지</label>
 	                                    <input type="text" class="form-control" name="goodsMade" th:field="*{goodsMade}" />
-	                                    <!-- 
-	                                    <span th:if="${#fields.hasErrors('ptPh')}" th:errors="*{ptPh}" ></span>
-	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>크 기</label>
 	                                    <input type="text" class="form-control" name="goodsSize" th:field="*{goodsSize}" />
-	                                    <!--  
-	                                    <span th:if="${#fields.hasErrors('ptEmail')}" th:errors="*{ptEmail}" ></span>
-	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>설 명</label>
 	                                    <input type="text" class="form-control" name="goodsManual" th:field="*{goodsManual}" />
-	                                    <!--  
-	                                    <span th:if="${#fields.hasErrors('ptAddr')}" th:errors="*{ptAddr}" ></span>
-	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>판매자 설명</label>
 	                                    <input type="text" class="form-control" name="goodsIntro" th:field="*{goodsIntro}" />
-	                                    <!--  
-	                                    <span th:if="${#fields.hasErrors('ptAccount')}" th:errors="*{ptAccount}" ></span>
-	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>유통 기한</label>
 	                                    <input type="text" class="form-control" name="goodsTimeLimit" th:field="*{goodsTimeLimit}" />
-	                                    <!--  
-	                                    <span th:if="${#fields.hasErrors('ptComent')}" th:errors="*{ptComent}" ></span>
-	                                    -->
 	                                </div>
 	                                <div class="form-group">
 	                                    <label>이미지</label>

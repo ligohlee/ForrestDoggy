@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GoodsCommand {
-	@NotNull
 	Integer goodsNum;
 	Integer ptNum;
 	Integer ctNum;
@@ -35,7 +34,7 @@ public class GoodsCommand {
 	
 	MultipartFile report;
 	
-	
+	String ptName;
 	
 	
 	

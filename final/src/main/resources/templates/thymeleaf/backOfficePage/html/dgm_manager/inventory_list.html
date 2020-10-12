@@ -51,7 +51,8 @@
 		                                        <th>이미지</th>
 		                                        <th>상품종류</th>
 		                                        <th>상품이름</th>
-		                                        <th>상품금액</th>
+		                                        <th>재 고</th>
+		                                        <th class="text-center">신청</th>
 		                                    </tr>
 		                                </thead>
 		                                <tbody>
@@ -61,12 +62,9 @@
 		                                        <td><span th:text="${goods.ptName}" /></td>
 		                                        <td><img th:src="@{'/static/upload/goods/' + ${goods.goodsImg}}"></td>
 		                                        <td><span th:text="${goods.goodsCategory}" /></td>
-		                                        <td>
-		                                        	<a th:href="@{'/goods/goodsDetail/' + ${goods.goodsNum}}">
-		                                        		<span th:text="${goods.goodsName}" />
-		                                        	</a>
-		                                        </td>
+		                                        <td><span th:text="${goods.goodsName}" /></td>
 		                                        <td><span th:text="${goods.goodsPrice}" /></td>
+		                                        <td class="text-center" style="width:80px"><a href="@{'/inventory/inventoryForm/' + ${cordNum}}" class="btn btn-default">발주</a></td>
 		                                    </tr>
 		                                   	</div>
 		                                </tbody>

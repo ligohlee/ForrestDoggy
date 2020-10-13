@@ -25,7 +25,7 @@
 	<script type="text/javascript">
      $(function(){
     	 $("#ptCheck").click(function(){
-  			open("partnerCheck","파트너검색",
+  			open("ptCheck","파트너검색",
   			'left='+(screen.availWidth-440)/2+',top='+(screen.availHeight-300)/2+', width=440px,height=300px');
 
   		});
@@ -67,12 +67,12 @@
 	                        <div class="panel-body">
 	                        	<form th:action='@{/goods/goodsWritePro}' name="goodsform" method="post" role="form" 
 	                        			th:object="${goodsCommand}" enctype="multipart/form-data">
-	                        		
-	                        		<input type="button" class="btn btn-default" value="찾기" id="ptSerch">
-	                        		<input type="text" class="form-control" value="찾기" id="ptName" readonly="readonly">
-							    	<input type="hidden" id="ctNum" name="ctnum" value="" >
-							    	<input type="hidden" id="ptNum" name="ptNum" value="">
-							    	       
+	                        		<div class="form-group">
+	                        			<input type="button" class="btn btn-default" value="찾기" id="ptCheck">
+	                        			<input type="text" class="form-control" value="찾기" id="ptName" readonly="readonly">
+ 							    		<input type="hidden" id="ctNum" name="ctnum" value="">
+							    		<input type="hidden" id="ptNum" name="ptNum" value="">
+							    	</div>     
 	                                <div class="form-group">
 	                                    <label>상품명</label>
 	                                    <input type="text" class="form-control" name="goodsName" th:field="*{goodsName}" />
@@ -110,7 +110,7 @@
 										<input type="file" class="form-control" name="report" multiple="multiple" >
 	                                </div>
 	                                <div class="btn btn-default">
-	                               		<a href="javascript:addboard()">등록</a>
+	                               		<button type="submit">등록</button>
 									</div>
 									<div class="btn btn-default">
 										<a href="javascript:history.go(-1)">뒤로</a>

@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GoodsDTO {
 	Integer goodsNum;
+	Integer ctNum;
 	Integer ptNum;
 	String ptName;
-	Integer ctNum;
 	String goodsName;
 	Integer goodsPrice;
 	String goodsCategory;

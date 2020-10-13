@@ -21,7 +21,7 @@
 		<result column="GOODS_TIME_LIMIT" jdbcType="TIMESTAMP" property="goodsTimeLimit" />
 		<result column="GOODS_IMG" jdbcType="VARCHAR" property="goodsImg" />
 	</resultMap>
-
+	
 	<select id="getGoodsList" resultMap="baseGoods">
 		select rn, GOODS_NUM, gPtNum, CT_NUM, GOODS_NAME, GOODS_PRICE, GOODS_CATEGORY, GOODS_MADE, GOODS_SIZE, GOODS_MANUAL, GOODS_INTRO, GOODS_TIME_LIMIT, GOODS_IMG, pt_name
 		from (select rownum rn, GOODS_NUM, gPtNum, CT_NUM, GOODS_NAME, GOODS_PRICE, GOODS_CATEGORY, GOODS_MADE, GOODS_SIZE, GOODS_MANUAL, GOODS_INTRO, GOODS_TIME_LIMIT, GOODS_IMG, pt_name
@@ -42,13 +42,16 @@
 		select count(*) from GOODS 
 	</select>
 
+	<sql id="maxNum">
+    select nvl(max(GOODS_NUM),0) + 1
+    from goods
+  	</sql>
+  
 	<insert id="goodsInsert" parameterType="forrest.domain.jm.GoodsDTO">
 		insert into GOODS ( <include refid="basecolumn" />  )
-		values ( 
-  				(select nvl(max(goods_NUM),0) + 1
-    			from goods), 
-    			#{ptNum}, #{ctNum}, #{goodsName}, #{goodsPrice}, #{goodsCategory}, 
-				#{goodsMade}, #{goodsSize}, #{goodsManual}, #{goodsIntro}, #{goodsTimeLimit}, #{goodsImg}	)
+		values ((<include refid="maxNum"/>), 
+    			#{ptNum}, null, #{goodsName}, #{goodsPrice}, #{goodsCategory}, 
+				#{goodsMade}, #{goodsSize}, #{goodsManual}, #{goodsIntro}, null, #{goodsImg}	)
 	</insert>
 
 	<delete id="goodsDelete" parameterType="string">

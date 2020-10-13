@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CordDTO {
+public class COrderDTO {
 	Integer cordNum;
 	Integer goodsNum;
 	String goodsName;

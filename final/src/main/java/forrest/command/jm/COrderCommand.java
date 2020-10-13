@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CordCommand {
+public class COrderCommand {
 	@NotNull
 	Integer cordNum;
 	Integer goodsNum;

@@ -17,7 +17,7 @@ import forrest.mapper.jm.PartnerMapper;
 public class PartnerListService {
 	@Autowired
 	PartnerMapper partnerMapper;
-	public void cordList(Model model, Integer page) throws Exception{
+	public void partnerList(Model model, Integer page) throws Exception{
 		int limit = 10;
 		int limitPage = 10;
 		

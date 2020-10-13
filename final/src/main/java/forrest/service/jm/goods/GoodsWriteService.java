@@ -35,7 +35,6 @@ public class GoodsWriteService {
 		dto.setGoodsTimeLimit(goodsCommand.getGoodsTimeLimit());
 		
 		
-		
 		String location = "";
 		String filePath = "C:/Java/ForrestDoggy-master/final/src/main/resources/static/upload/goods";
 		
@@ -52,7 +51,7 @@ public class GoodsWriteService {
 		dto.setGoodsImg(img);
 		goodsMapper.goodsInsert(dto);
 
-		location = "redirect:/dgmback/goodsList";
+		location = "redirect:/goods/goodsList";
 		return location;
 	} 
 }

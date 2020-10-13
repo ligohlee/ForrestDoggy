@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="forrest.mapper.jm.CordMapper">
+<mapper namespace="forrest.mapper.jm.COrderMapper">
 
 <sql id="basecolumn">
 	CORD_NUM, GOODS_NUM, CORD_QTY, CORD_REGIST
 </sql>
 
-	<resultMap type="forrest.domain.jm.CordDTO" id="baseCord">
+	<resultMap type="forrest.domain.jm.COrderDTO" id="baseCord">
 		<id column="CORD_NUM" jdbcType="BIGINT" property="cordNum" />
 		<result column="GOODS_NUM" jdbcType="BIGINT" property="goodsNum" />
 		<result column="CORD_QTY" jdbcType="BIGINT" property="cordQty" />

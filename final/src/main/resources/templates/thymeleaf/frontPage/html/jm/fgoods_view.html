@@ -1,0 +1,171 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Dog Mall</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/sectionStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+<script>
+			function submitFunc(actionUrl) {
+				var form = $("[name='frm']");
+					form.attr('action', actionUrl);
+					form.submit();
+			}
+		
+			function numberWithCommas(x) {
+			    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+			
+			function onchangeQtyClick(id,num){
+				var y = Number($("#"+id+"").val()) + num;		
+				if(y < 1) y = 1;
+				$("#"+id+"").val(y);
+				var price = ${ list.bookPrice } * y;
+				$("#bPrice").text(numberWithCommas(price));
+			}
+		</script>
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_stayPark.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		
+		<main id="container">
+			<div id="view-info">
+				<div class="contain">
+					<div class="img-area">
+						<div id="divDetBig">
+							<ul>
+								<li class="big-list active"><img th:src="@{'/static/upload/goods/' + ${dto.goodsImg}}" name="ImgDetBig" alt=""></li>
+							</ul>
+						</div>
+					</div>
+					<div class="view-summary" style="min-height:600px;">
+						<div class="head">
+							<div class="tit"><span th:text="${dto.goodsName}" /></div>
+						</div>
+						<div class="con">
+							<div class="row">
+								<div class="v-table">
+									<table>
+										<colgroup>
+											<col style="width:100px;">
+											<col style="">
+										</colgroup>
+										<tbody>
+											<tr class="pb16">
+												<th scope="row">소비자가</th>
+												<td>
+													<span class="cmp" id="bPrice" th:text="${dto.goodsPrice}" />원
+												</td>
+											</tr>
+											<tr class="tr_select pb16">
+												<th scope="row">주문수량</th>
+												<td>
+													<form action="#" name="frm" method="post">
+														<input type="hidden" name="goodsNum" th:value="${dto.goodsNum}" /> 
+													<div class="qty-wrap">
+														<a href="javascript:onchangeQtyClick('StyleQty1',-1);" class="btn minus">-</a>
+														<input type="text" name="Qty" id="StyleQty1" class="inorder_txt cmp" style="width:52px;" value="1" readonly="">
+														<a href="javascript:onchangeQtyClick('StyleQty1',1)" class="btn plus">+</a>
+													</div>
+													</form>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								
+								<div class="v-button col-2">
+									<a th:href="@{'/dogmall/goodsCart/' + ${dto.goodsNum}}">장바구니</a>
+									<a th:href="@{'/dogmall/goodsOrder/' + ${dto.goodsNum}}">주문하기</a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="v-table">
+									<table>
+										<colgroup>
+											<col style="width:100px;">
+											<col style="">
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">종 류</th>
+												<td><span th:text="${dto.goodsCategory}" /></td>
+											</tr>
+											<tr>
+												<th scope="row">원산지</th>
+												<td><span th:text="${dto.goodsMade}" /></td>
+											</tr>
+											<tr>
+												<th scope="row">크 기</th>
+												<td><span th:text="${dto.goodsSize}" /></td>
+											</tr>
+											<tr>
+												<th scope="row" style="vertical-align: top">설 명</th>
+												<td>
+													<span th:text="${dto.goodsManual}" />
+												</td>
+											</tr>
+											<tr>
+												<th scope="row" style="vertical-align: top">판매자 설명</th>
+												<td>
+													<span th:text="${dto.goodsIntro}" />
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">유통기한</th>
+												<td><span th:text="${dto.goodsTimeLimit}" /></td>
+											</tr>
+											<tr>
+												<th scope="row">배송안내</th>
+												<td>택배(무료배송)</td>
+											</tr>
+											<tr>
+												<th scope="row">결제방법</th>
+												<td>즉시결제 / 정기결제</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		
+		
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+
+	</div>
+</body>
+</html>

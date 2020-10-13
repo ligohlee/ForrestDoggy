@@ -47,7 +47,7 @@ public class GoodsController {
 	public String goodsWrite() {
 		return "thymeleaf/backOfficePage/html/dgm_manager/goods_form";
 	}
-	@RequestMapping(value = "partnerCheck")
+	@RequestMapping(value = "ptCheck")
 	public String ptChk() {
 		return "thymeleaf/backOfficePage/html/pt_manager/partnerCheck";
 	}

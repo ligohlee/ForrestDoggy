@@ -1,0 +1,413 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title></title>
+<head>
+<meta charset="UTF-8">
+<title>Member BackOffice</title>
+<script language="javascript">
+	function addboard(){
+		revform.submit();
+	}
+</script>
+<link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
+<!-- Bootstrap Styles-->
+<link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
+<!-- FontAwesome Styles-->
+<link th:href="@{/static/css/font-awesome.css}" rel="stylesheet" />
+<!-- Morris Chart Styles-->
+<!--   <link th:href="@{/static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
+<!-- Custom Styles-->
+<link th:href="@{/static/css/custom-styles.css}" rel="stylesheet" />
+<link rel="stylesheet" th:href="@{/static/css/common.css}" />
+<link rel="stylesheet" th:href="@{/static/css/newSoyoungStyle.css}" />
+<!-- Google Fonts-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css' />
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/static/css/memberViewStyle.css}" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- stp header 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_header.html"></div>
+		<!-- stp seideNav 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_sideNav.html"></div>
+
+		<!--페이지래퍼-->
+		<div id="page-wrapper">
+			<div id="page-inner">
+
+				<!--로그인 전 메인 화면-->
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="page-header">부서 등록</h1>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-body" style="padding: 100px 0;">
+							<style>
+.login-area {
+	max-width: 300px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.submit {
+	width: 100%;
+}
+.login-area {
+	max-width: 300px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.submit {
+	width: 100%;
+}
+
+.table {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+th {
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+td {
+	font-size: 14px;
+	border: 1px solid #ddd;
+}
+.size{
+	width: 70%;
+	border: 2px solid #ddd;
+	text-align: center;
+}
+
+
+</style>
+<form action='revwritePro' method="post" name="revform"
+	enctype="multipart/form-data">
+<table cellpadding="0" cellspacing="0" class="table">
+	<tr align="center" valign="middle" border="2">
+		<td colspan="11" >직원평가 게시판</td>
+	</tr>
+	<tr>
+		<th colspan="5">
+			<div align="center" >직원평가번호</div>
+		</th>
+	</tr>
+	<tr>	
+		<td colspan="5">
+			<input name="revNum" id="revNum" type="number" class="size" />
+		</td>
+	</tr>
+	<tr>
+		<th colspan="5">
+			<div align="center">직원번호</div>
+		</th>
+	</tr>
+	<tr>
+		<td colspan="5">
+			<input name="workNum" id="workNum" type="number" class="size" />
+		</td>
+	</tr>
+	<tr>
+		<th colspan="5">
+			<div align="center">업무질</div>
+		</th>
+	</tr>
+	<tr >
+		<form action = "qualityForm" modelAttribute= "reservation" method="post"> 
+			<td>
+			<input name="quality" id="quality" type="radio"  value="5"/>
+			<label for="contactChoice5">매우 우수</label>
+			</td>
+			<td>			
+			<input name="quality" id="quality" type="radio"  value="4"/>
+			<label for="contactChoice4">우수</label>
+			</td>
+			<td>
+			<input name="quality" id="quality" type="radio"  value="3"/>
+			<label for="contactChoice3">보통</label>
+			</td>
+			<td>
+			<input name="quality" id="quality" type="radio"  value="2"/>
+			<label for="contactChoice2">미흡</label>
+			</td>
+			<td>
+			<input name="quality" id="quality" type="radio"  value="1"/>
+			<label for="contactChoice1">매우 미흡</label>
+			</td>
+		
+	</tr>
+	<tr>
+		<th colspan="5">
+			<div align="center">업무달성도</div>
+		</th>
+	</tr>
+	<tr>
+	<div>
+			<td>
+			<input name="attain" id="attain" type="radio"  value="5"/>
+			<label for="contactChoice5">매우 우수</label>
+			</td>
+			<td>			
+			<input name="attain" id="attain" type="radio"  value="4"/>
+			<label for="contactChoice4">우수</label>
+			</td>
+			<td>
+			<input name="attain" id="attain" type="radio"  value="3"/>
+			<label for="contactChoice3">보통</label>
+			</td>
+			<td>
+			<input name="attain" id="attain" type="radio"  value="2"/>
+			<label for="contactChoice2">미흡</label>
+			</td>
+			<td>
+			<input name="attain" id="attain" type="radio"  value="1"/>
+			<label for="contactChoice1">매우 미흡</label>
+			</td>
+		</div>
+	</tr>
+	<tr>
+		<th colspan="5">
+			<div align="center">근면성</div>
+		</th>
+	</tr>
+	<tr>	
+	<div>
+			<td>
+			<input name="effort" id="effort" type="radio"  value="5"/>
+			<label for="contactChoice5">매우 우수</label>
+			</td>
+			<td>			
+			<input name="effort" id="effort" type="radio"  value="4"/>
+			<label for="contactChoice4">우수</label>
+			</td>
+			<td>
+			<input name="effort" id="effort" type="radio"  value="3"/>
+			<label for="contactChoice3">보통</label>
+			</td>
+			<td>
+			<input name="effort" id="effort" type="radio"  value="2"/>
+			<label for="contactChoice2">미흡</label>
+			</td>
+			<td>
+			<input name="effort" id="effort" type="radio"  value="1"/>
+			<label for="contactChoice1">매우 미흡</label>
+			</td>
+		</div>
+	
+	</tr>
+	<tr>
+		<th colspan="5">
+			<div align="center">기획창의력</div>
+		</th>
+	</tr>
+	<tr>
+		<div>
+			<td>
+			<input name="creativity" id="creativity" type="radio"  value="5"/>
+			<label for="contactChoice5">매우 우수</label>
+			</td>
+			<td>			
+			<input name="creativity" id="creativity" type="radio"  value="4"/>
+			<label for="contactChoice4">우수</label>
+			</td>
+			<td>
+			<input name="creativity" id="creativity" type="radio"  value="3"/>
+			<label for="contactChoice3">보통</label>
+			</td>
+			<td>
+			<input name="creativity" id="creativity" type="radio"  value="2"/>
+			<label for="contactChoice2">미흡</label>
+			</td>
+			<td>
+			<input name="creativity" id="creativity" type="radio"  value="1"/>
+			<label for="contactChoice1">매우 미흡</label>
+			</td>
+		</div>
+		
+	</tr>
+	<tr>
+		<th colspan="5">
+			<div align="center">책임감</div>
+		</th>
+	</tr>
+	<tr>
+		<div>
+			<td>
+			<input name="responsibility" id="responsibility" type="radio"  value="5"/>
+			<label for="contactChoice5">매우 우수</label>
+			</td>
+			<td>			
+			<input name="responsibility" id="responsibility" type="radio"  value="4"/>
+			<label for="contactChoice4">우수</label>
+			</td>
+			<td>
+			<input name="responsibility" id="responsibility" type="radio"  value="3"/>
+			<label for="contactChoice3">보통</label>
+			</td>
+			<td>
+			<input name="responsibility" id="responsibility" type="radio"  value="2"/>
+			<label for="contactChoice2">미흡</label>
+			</td>
+			<td>
+			<input name="responsibility" id="responsibility" type="radio"  value="1"/>
+			<label for="contactChoice1">매우 미흡</label>
+			</td>
+		</div>
+	</tr>
+	<tr>
+		<th colspan="5">
+			<div align="center">협동심</div>
+		</th>
+	</tr>
+	<tr>
+		<div>
+			<td>
+			<input name="cooper" id="cooper" type="radio"  value="5"/>
+			<label for="contactChoice5">매우 우수</label>
+			</td>
+			<td>			
+			<input name="cooper" id="cooper" type="radio"  value="4"/>
+			<label for="contactChoice4">우수</label>
+			</td>
+			<td>
+			<input name="cooper" id="cooper" type="radio"  value="3"/>
+			<label for="contactChoice3">보통</label>
+			</td>
+			<td>
+			<input name="cooper" id="cooper" type="radio"  value="2"/>
+			<label for="contactChoice2">미흡</label>
+			</td>
+			<td>
+			<input name="cooper" id="cooper" type="radio"  value="1"/>
+			<label for="contactChoice1">매우 미흡</label>
+			</td>
+		</div>
+		
+	</tr>
+	<tr>
+		<th colspan="5">
+			<div align="center">업무지식</div>
+		</th>
+	</tr>
+	<tr>
+	<div>
+			<td>
+			<input name="knowle" id="knowle" type="radio"  value="5"/>
+			<label for="contactChoice1">매우 우수</label>
+			</td>
+			<td>			
+			<input name="knowle" id="knowle" type="radio"  value="4"/>
+			<label for="contactChoice2">우수</label>
+			</td>
+			<td>
+			<input name="knowle" id="knowle" type="radio"  value="3"/>
+			<label for="contactChoice3">보통</label>
+			</td>
+			<td>
+			<input name="knowle" id="knowle" type="radio"  value="2"/>
+			<label for="contactChoice4">미흡</label>
+			</td>
+			<td>
+			<input name="knowle" id="knowle" type="radio"  value="1"/>
+			<label for="contactChoice5">매우 미흡</label>
+			</td>
+		</div>
+		
+	</tr>
+	<tr>
+		<th colspan="5">
+			<div align="center">평가날짜</div>
+		</th>
+	</tr>
+	<tr>
+	
+		<td colspan="5">
+			<input  type="date" name="revDate" id="revDate"/>
+		</td>
+	</tr>
+	</form>
+	<tr>
+		<th colspan="5">
+			<div align="center">평가작성자</div>
+		</th>
+	</tr>
+	<tr>
+	
+		<td colspan="5">
+			<input name="revWriter" id="revWriter"  type="text" size="48" maxlength="50" class="size"/>
+		</td>		
+	</tr>
+	<tr>
+	<td colspan="5">합계</td>
+	</tr>
+	<tr>
+		<td colspan="5">
+			<span>계: </span>
+		</td>		
+	</tr>
+	</form>
+	<tr><td colspan="5">&nbsp;</td></tr>
+	<tr align="center" valign="middle">
+		<td colspan="11">
+			<a href="javascript:addboard()">[등록]</a>&nbsp;&nbsp;
+			<a href="javascript:history.go(-1)">[뒤로]</a>
+		</td>
+	</tr>
+</table>
+</form>
+		</div>
+		<!-- /. PAGE INNER  -->
+	</div>
+	<!-- /. PAGE WRAPPER  -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer 인클루드 영역 -->
+			<div th:include="thymeleaf/backOfficePage/html/commonLayout/backFooter.html"></div>
+
+
+	<!-- JS Scripts-->
+	<!-- Bootstrap Js -->
+	<script th:src="@{/static/js/bootstrap.min.js}"></script>
+
+	<!-- Metis Menu Js -->
+	<script th:src="@{/static/js/jquery.metisMenu.js}"></script>
+	<!-- Morris Chart Js -->
+	<script th:src="@{/static/js/morris/raphael-2.1.0.min.js}"></script>
+	<script th:src="@{/static/js/morris/morris.js}"></script>
+
+
+	<script th:src="@{/static/js/easypiechart.js}"></script>
+	<script th:src="@{/static/js/easypiechart-data.js}"></script>
+
+	<script th:src="@{/static/js/Lightweight-Chart/jquery.chart.js}"></script>
+
+	<!-- Custom Js -->
+	<script th:src="@{/static/js/custom-scripts.js}"></script>
+</body>
+</html>

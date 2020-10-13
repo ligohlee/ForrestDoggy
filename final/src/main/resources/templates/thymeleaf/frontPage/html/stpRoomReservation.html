@@ -1,0 +1,99 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Stay Park</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/roomReservationStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_stayPark.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		<section>
+			
+			<div class="container">
+				<h2>예약가능 객실 검색</h2>
+				<form th:action="@{/staypark/roomList}" method="post" name="frm">
+				<div class="rsv">
+					<div class="divi">
+						<div class="ckIn">
+
+							<p class="pp">체크인 날짜 선택</p>
+							<input type="date" name="checkIn" value="" class="choice_box"
+								required>
+
+						</div>
+					</div>
+					<div class="divi">
+						<div class="ckOut">
+							<p class="pp">체크아웃 날짜 선택</p>
+							<input type="date" name="checkOut" value="" class="choice_box"
+								required>
+						</div>
+					</div>
+					<div class="divi">
+						<div class="type">
+							<p class="pp">숙박 인원 선택</p>
+							<select name="capacity" class="choice_box" required>
+								<option value="2">1명</option>
+								<option value="2">2명</option>
+								<option value="4">3명</option>
+								<option value="4">4명</option>
+								<option value="6">5명</option>
+								<option value="6">6명</option>
+								<option value="8">7명</option>
+								<option value="8">8명</option>
+								<option value="10">9명</option>
+								<option value="10">10명</option>
+								
+							</select>
+						</div>
+					</div>
+					<div class="divi">
+						<div class="searchBtn">
+							<input type="submit" value="객 실 검 색" class="search">
+						</div>
+
+					</div>
+
+				</div>
+				</form>
+
+
+			</div>
+		</section>
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+
+	</div>
+</body>
+</html>

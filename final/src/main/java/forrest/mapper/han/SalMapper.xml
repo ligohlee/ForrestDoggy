@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.han.SalMapper">
+ <sql id="basecolumn">
+ SAL_NUM,WORK_NUM,SAL_NOW,SAL_INCRE,SAL_YEAR,SAL_CONT,SAL_IMAGE
+ </sql>
+ <insert id="salInsert" parameterType="forrest.domain.han.SalDTO">
+ 	insert into SALARY (<include refid="basecolumn"/>)
+ 	values(#{salNum},#{workNum},#{salNow},#{salIncre},#{salYear},#{salCont},#{salImage})
+ </insert>
+ <resultMap type="forrest.domain.han.SalDTO" id="Listbasecolumn">
+ 	<id column="SAL_NUM" jdbcType="BIGINT" property="salNum"/>
+ 	<id column="WORK_NUM" jdbcType="BIGINT" property="workNum"/>
+ 	<result column="SAL_NOW" jdbcType="BIGINT" property="salNow"/>
+ 	<result column="SAL_INCRE" jdbcType="BIGINT" property="salIncre"/>
+ 	<result column="SAL_YEAR" jdbcType="TIMESTAMP" property="salYear"/>
+ 	<result column="SAL_CONT" jdbcType="VARCHAR" property="salCont"/>
+ 	<result column="SAL_IMAGE" jdbcType="VARCHAR" property="salImage"/>
+ </resultMap>
+ <select id="Listview" resultMap="Listbasecolumn">
+ 	select <include refid="basecolumn"/> from SALARY
+ </select>
+ <select id="salDetailview" resultMap="Listbasecolumn">
+ select <include refid="basecolumn"/> from SALARY
+ where WORK_NUM = #{workNum}
+ 
+ </select>
+ 
+</mapper>

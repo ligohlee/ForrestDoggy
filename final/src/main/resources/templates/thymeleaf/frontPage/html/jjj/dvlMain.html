@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title>Stay Park</title>
+<title>Dog Village</title>
 
 <link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
 
 <link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
 <link rel="stylesheet" th:href="@{/static/css/sectionStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/dvlMainStyle.css}">
 <link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
 
 <link
@@ -28,7 +29,7 @@
 		<!-- header인클루드 영역 -->
 		<header>
 			<div
-				th:include="thymeleaf/frontPage/html/commonLayout/header_stayPark.html"></div>
+				th:include="thymeleaf/frontPage/html/commonLayout/header_dogVillage.html"></div>
 		</header>
 
 		<!--메인콘텐츠 영역-->
@@ -36,13 +37,22 @@
 			<div class=bg><img th:src="@{/static/images/stp_bg.jpg}" id="bg-img"/></div>
 			<div class="container">
 				<div class="quickSet">
-					<div class="quickBtn"><a href="" class="quickBtn_a">빠 른 예 약</a></div>
-					<div class="quickBtn"><a href="" class="quickBtn_a">룸 서 비 스</a></div>
+				
+					<div class="searchTicket">
+					 <form th:action="@{/dogVillage/searchTicket}" method="post" name="frm">
+						
+							<input type="date" name="ticketSeason" class="choice_box"
+								placeholder="방문 날짜 선택" required >
+							<input type="submit" value="티 켓 검 색" class="searchBtn">
+					</form>
+					
+					</div>
+					
 				</div>
 				<div class="scroll-back">
 					<div class="scroll-icon"><img th:src="@{/static/images/scroll.png}" id="scroll-image"/></div>
 				</div>
-				<h2>스테이파크 소개</h2>
+				<h2>도그빌리지 소개</h2>
 				<p class="textBox">Lorem Ipsum is simply dummy text of the
 					printing and typesetting industry. Lorem Ipsum has been the
 					industry's standard dummy text ever since the 1500s, when an

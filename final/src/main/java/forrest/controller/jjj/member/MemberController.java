@@ -33,19 +33,19 @@ public class MemberController {
 	
 	@RequestMapping(value="agree", method = RequestMethod.GET)
 	public String agree () {
-		return "thymeleaf/html/memberAgree";
+		return "thymeleaf/frontPage/html/member/memberAgree";
 	}
 	@RequestMapping(value="regist", method = RequestMethod.GET)
 	public String regist() {
-		return "thymeleaf/html/memberForm";
+		return "thymeleaf/frontPage/html/member/memberForm";
 	}
 	@RequestMapping(value="memberJoinAction", method = RequestMethod.POST)
 	public String memberJoinAction(MemberCommand command) {
 		Integer i = memberInsertService.insertMember(command);
 		if (i == 1) {
-			return "thymeleaf/html/success" ;
+			return "thymeleaf/frontPage/html/member/success" ;
 		}
-		return "thymeleaf/html/memberForm" ;
+		return "thymeleaf/frontPage/html/member/memberForm" ;
 	}
 	
 	

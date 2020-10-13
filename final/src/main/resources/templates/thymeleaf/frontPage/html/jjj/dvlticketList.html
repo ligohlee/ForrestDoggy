@@ -1,0 +1,123 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Dog Village</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/sectionStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/dvlMainStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+<style>
+.login-area {
+	max-width: 300px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.submit {
+	width: 100%;
+}
+
+.table {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+th {
+	text-align: center;
+	border: 1px solid #ddd;
+	padding:10px;
+}
+
+td {
+	font-size: 14px;
+	border: 1px solid #ddd;
+	padding: 20px;
+}
+
+.sybtn {
+	width: 400px;
+	height: 45px;
+	border: 0px solid #fff;
+	color: #fff;
+	background-color: rgb(23, 69, 84);
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+}
+.selectbox{
+	width: 60px;
+}
+</style>
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_dogVillage.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		<section>
+			
+			<div class="container">
+				<table class="table">
+					<tr>
+						<th>선택</th>
+						<th>번호</th>						
+						<th>티켓이름</th>
+						<th>티켓가격</th>
+						<th>수량</th>
+					</tr>
+					<th:block th:each="dto , aaa : ${list}">
+						<tr>
+							<td><input type="checkbox" name="ticketNum" th:value="${dto.ticketName}"></td>
+							<td>[[${aaa.count}]]</td>							
+							<td>[[ ${dto.ticketName}]]</td>
+							<td>[[ ${dto.ticketPrice}]]</td>
+							<td>
+								<select name="tolistQty" class="selectbox" >
+									<th:block th:each="num : ${#numbers.sequence(1,dto.ticketQty)}">		 			
+										<option>[[${num}]]</option>
+									</th:block>						 									
+								</select>
+							</td>
+						</tr>
+					</th:block>
+					<tr>
+						<td colspan="5"><a href="/dvlback/ticketRegist"><input
+								type="button" value="예 매 하 기" class="sybtn" /></a></td>
+					</tr>
+				</table>
+
+			</div>
+		</section>
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+
+	</div>
+</body>
+</html>

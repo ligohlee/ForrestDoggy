@@ -36,10 +36,7 @@ public class PartnerListService {
 		pageAction.page(model, count, limit, limitPage, page, "partnerList");
 		
 	}
-	public void partnerList(Model model, Integer page) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	
 	

@@ -12,13 +12,12 @@ import forrest.domain.jm.COrderDTO;
 import forrest.domain.jm.StartEndPageDTO;
 import forrest.mapper.jm.COrderMapper;
 
-@Component
 @Service
-public class CordListService {
+@Component
+public class COrderListService {
 	@Autowired
-	COrderMapper cordMapper;
-	
-	public void cordList(Model model, Integer page) throws Exception{
+	COrderMapper cordermapper;
+	public void corderList(Model model, Integer page) throws Exception{
 		int limit = 10;
 		int limitPage = 10;
 		
@@ -27,19 +26,17 @@ public class CordListService {
 		
 		StartEndPageDTO dto = new StartEndPageDTO(startRow, endRow, null, null);
 		
-		List<COrderDTO> lists = cordMapper.getCordList(dto);
+		List<COrderDTO> lists = cordermapper.getCOrderList(dto);
 		
-		int count = cordMapper.getCordCount();
+		int count = cordermapper.getCOrderCount();
 		
 		model.addAttribute("count", count);
 		model.addAttribute("lists", lists);
 		PageAction pageAction = new PageAction();
-		pageAction.page(model, count, limit, limitPage, page, "CordList");
+		pageAction.page(model, count, limit, limitPage, page, "corderList");
 		
 	}
 	
-	
-	
-	
+
 	
 }

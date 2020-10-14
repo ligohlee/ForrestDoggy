@@ -19,4 +19,11 @@ public class COrderCommand {
 	Integer cordQty;
 	@NotNull
 	Timestamp cordRegist;
+	String goodsName;
+	String ptName;
+	String ptType;
+	String goodsCategory;
+	String goodsMade;
+	
+	
 }

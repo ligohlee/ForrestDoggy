@@ -15,6 +15,8 @@ public class COrderDTO {
 	String goodsName;
 	Integer cordQty;
 	Timestamp cordRegist;
+	String ptName;
+	String ptType;
 	
 	
 	

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.sy.PointMapper">
+
+<sql id="basecolumn">
+	MEM_ID,POINT_IN,POINT_OUT,POINT_REGIST,POINT_SUM
+</sql>
+
+<insert id="pointIn" parameterType="string">
+	INSERT INTO point(mem_id, point_in, point_regist, point_sum)
+    values(#{memId},#{pointIn}, sysdate, #{pointIn}+(SELECT point_sum
+                                                    FROM point
+                                                    where point_regist = (select MAX(point_regist)
+                                                    from point where mem_id=#{memId})));	
+</insert>
+
+<resultMap type="forrest.domain.sy.PointDTO" id="resultmap">		
+	<result column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
+	<result column="POINT_IN" jdbcType="VARCHAR" property="pointIn"/>
+	<result column="POINT_OUT" jdbcType="VARCHAR" property="pointOut"/>
+	<result column="POINT_REGIST" jdbcType="TIMESTAMP" property="pointRegist"/>
+	<result column="POINT_SUM" jdbcType="VARCHAR" property="pointSum"/>
+</resultMap>
+
+<select id="selectPointSum" resultMap="resultmap" parameterType="string">
+	SELECT point_sum
+    FROM point
+    where point_regist = (select MAX(point_regist) from point where mem_id=#{memId})
+</select>
+
+
+
+</mapper>

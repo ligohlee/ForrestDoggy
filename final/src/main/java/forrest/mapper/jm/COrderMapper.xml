@@ -11,16 +11,20 @@
 		<id column="CORD_NUM" jdbcType="BIGINT" property="cordNum" />
 		<result column="GOODS_NUM" jdbcType="BIGINT" property="goodsNum" />
 		<result column="CORD_QTY" jdbcType="BIGINT" property="cordQty" />
-		<result column="CORD_REGIST" jdbcType="TIMESTAMP" property="cortRegist" />
+		<result column="CORD_REGIST" jdbcType="TIMESTAMP" property="cordRegist" />
+		<result column="GOODS_NAME" jdbcType="VARCHAR" property="goodsName" />
+		<result column="PT_NAME" jdbcType="VARCHAR" property="ptName" />
 	</resultMap>
 
-	<select id="getCordList" resultMap="baseCord">
-		select rn, CORD_NUM, cGoodsNum, CORD_QTY, CORD_REGIST, goods_name
-		from (select rownum rn, CORD_NUM, cGoodsNum, CORD_QTY, CORD_REGIST, goods_name
+	<select id="getCOrderList" resultMap="baseCord">
+		select rn, CORD_NUM, cGoodsNum, CORD_QTY, CORD_REGIST, goods_name, gPtNum, pt_name
+		from (select rownum rn, CORD_NUM, cGoodsNum, CORD_QTY, CORD_REGIST, goods_name, gPtNum, pt_name
 			 from ( select 
-						rownum rn, CORD_NUM, c.GOODS_NUM cGoodsNum, CORD_QTY, CORD_REGIST, goods_name
+						rownum rn, CORD_NUM, c.GOODS_NUM cGoodsNum, CORD_QTY, CORD_REGIST, goods_name, g.pt_num gPtNum, pt_name
 					from CORD c join goods g
-					on c.goods_num = g.goods_num
+						on c.goods_num = g.goods_num
+						join partner p
+						on g.pt_num = p.pt_num
 					<trim prefix="where" prefixOverrides="AND | OR">
 						<if test="num != null ">
 							and cord_num = #{num}
@@ -30,10 +34,14 @@
 		where rn &gt;= #{startPage} and rn &lt;= #{endPage}
 	</select>
 	
-	<select id="getCordCount" resultType="int">
+	<select id="getCOrderCount" resultType="int">
 		select count(*) from CORD 
 	</select>
-
+	
+	<insert id="corderInsert" parameterType="forrest.domain.jm.COrderDTO">
+	insert into CORD ( <include refid="basecolumn" /> )
+	values ( (select nvl(max(CORD_NUM),0) + 1 from CORD), #{goodsNum}, #{cordQty}, sysdate )
+	</insert>
 
 
 </mapper>

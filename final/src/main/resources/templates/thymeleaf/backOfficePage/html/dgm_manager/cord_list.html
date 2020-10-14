@@ -2,7 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
-    <title>PartnerList</title>
     <head>
     <meta charset="UTF-8">
     <title>DGM BackOffice</title>
@@ -57,11 +56,10 @@
 		                                    <tr>
 		                                        <td><span th:text="${cord.cordNum}" /></td>
 		                                        <td>
-		                                        	<a th:href="@{'/inventory/cordDetail/' + ${cord.cordNum}}">
+		                                        	<a th:href="@{'/inventory/corderView/' + ${cord.cordNum}}">
 		                                        		<span th:text="${cord.goodsName}" />
 		                                        	</a>
 		                                        </td>
-		                                        <td></td>
 		                                        <td><span th:text="${cord.cordQty}" /></td>
 		                                        <td><span th:text="${cord.cordRegist}" /></td>
 		                                    </tr>

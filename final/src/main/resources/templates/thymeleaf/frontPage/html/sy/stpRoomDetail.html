@@ -17,6 +17,24 @@
 <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 <script th:src="@{/static/js/jquery.js}"></script>
 
+<script>
+	$(document).ready(function(){
+		
+		$("input[name=optPrice]").each(function(idx){   			
+	       
+	        var optPrice = $(this).val();	 	        
+	        $('.selectbox').eq(idx).change(function(){			
+				var selQty = $(this).find(':selected').val();
+				var oneOptPrice = optPrice*selQty;			
+				$('.optTotalPrice').eq(idx).val(oneOptPrice);
+				
+			});	        	         
+	      });
+		
+		
+		
+	});
+</script>
 
 
 </head>
@@ -37,22 +55,24 @@
 		<section>
 
 			<div class="container">
+			<form th:action="@{/staypark/roomOrder}" method="post" name="frm">
+				<input type="hidden" name="roomNum" th:value="${room.roomNum}"/>
+				<input type="hidden" name="checkIn" th:value="${checkIn}"/>
+				<input type="hidden" name="checkOut" th:value="${checkOut}"/>
 
 				<table class="roomTable">
 					<tr>
 						<td colspan="2">
 							<h2>[ [[${room.roomName}]] ] 객실예약</h2>
 							<div class="rsvInfo">
-								[[${checkIn}]] ~ [[${checkOut}]]</br> 객실인원: [[${capacitySelect}]]인 이상
+								[[${checkIn}]] ~ [[${checkOut}]]</br>객실인원: [[${capacitySelect}]]인 이상
 							</div>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2" class="imageTd tableTd">
 							<div class="imgs">
-								<block
-									th:each=" lang : ${#strings.arraySplit(room.roomImg,'`')}"
-									th:remove="tag">
+								<block th:each=" lang : ${#strings.arraySplit(room.roomImg,'`')}" th:remove="tag">
 								<div class="roomImg">
 									<img th:src="@{/static/staypark/room/upload/} + ${lang}"
 										width="100%" th:alt="${lang}" />
@@ -67,24 +87,45 @@
 					</tr>
 					<tr>
 						<th class="line">객실가격</th>
-						<td class="line">[[${room.roomPrice}]]</td>
+						<td class="line">[[${room.roomPrice}]]원</td>
 					</tr>
 					<tr>
 						<th class="line">객실소개</th>
 						<td class="line">[[${room.roomInfo}]]</td>
 					</tr>
-					
-					<th:block th:each="dtodto,aaa : ${roptList}">
-						<tr th:each = "ropt : ${dtodto.roptions}">				
-							<th colspan="2" class="line">[[${dtodto.optName}]]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<tr>
+						<th class="line">수용인원</th>
+						<td class="line">[[${room.capacity}]]명</td>
+					</tr>
+					<tr>
+						<th class="line">수용반려견</th>
+						<td class="line">[[${room.dogCap}]]마리</td>
+					</tr>
+				
+					<tr>
+						<td colspan="2" class="line lineOpt">
+						<h4>객실 옵션 선택</h4>
+						<div class="optBox">
+							<th:block th:each="dtodto,aaa : ${roptList}">
+							<div class="oneOpt" th:each = "ropt : ${dtodto.roptions}">
+								[[${dtodto.optName}]] x [[${dtodto.optPrice}]]원
+								<input type="hidden" th:value="${dtodto.optNum}" name="optNum"/>
+								<input type="hidden" th:value="${dtodto.optName}" name="optName"/>
+								<input type="hidden" th:value="${dtodto.optPrice}" name="optPrice" class="optPrice"/>
+								<input type="hidden" value="" name="optTotalPrice" class="optTotalPrice"/>
+								
 								<select name="selQty" class="selectbox">
-									<th:block th:each="num : ${#numbers.sequence(1,ropt.roptionQty)}">		 			
+									<th:block th:each="num : ${#numbers.sequence(0,ropt.roptionQty)}">		 			
 										<option>[[${num}]]</option>
 									</th:block>						 									
 								</select>
-							</th>
-						</tr>
-					</th:block>
+							</div>
+							
+						</th:block>
+						</div>
+						
+						</td>
+					</tr>
 					
 
 				</table>
@@ -94,11 +135,12 @@
 
 			<div class="final_btn">
 				<div class="add_cart">
-					<input type="submit" name="add_cart_btn"
-						class="search" value="장 바 구 니"> <input
-						type="submit" name="pay_now_btn" class="search"
-						value="결 제 하 기">
+					<input type="submit" class="search" value="바 로 예 약">
+					<input type="button" class="search" value="장 바 구 니">
 				</div>
+			</div>
+			
+			</form>
 			</div>
 		</section>
 

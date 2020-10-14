@@ -1,0 +1,162 @@
+section{	
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+
+}
+.bg{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 1800px;
+	opacity:0.6;
+	z-index:-1;
+}
+.bg-img{
+	width: 100%;
+	object-fit: cover;
+}
+
+
+.container{
+	width: 80%;
+	margin: 0 auto;
+
+	position: relative;
+
+	}
+	
+h2{
+	font-size: 30px;
+	font-family: 'Noto Sans KR', sans-serif;
+	padding-top:110px;
+	color: rgb(23, 69, 84);
+	margin-bottom: 40px;
+}
+	
+
+.roomTable{
+	width: 100%;
+	text-align:center;
+	
+
+	
+}
+
+.roomTd{	
+	border-top: 1px solid #000;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.opt{
+	padding-top:2px;
+	padding-bottom:2px;
+	font-size: 14px;
+}
+.priceTd{
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #000;	
+	padding-bottom: 20px;
+	padding-top: 20px;
+	line-height:1.5;
+	font-weight: bold;
+	
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 18px;
+	
+	text-align: right;
+	padding-right: 20px;
+}
+.number{
+	border-bottom: 1px solid #000;
+	border-right:1px solid #ddd;
+}
+
+.th{
+
+	border-bottom: 1px solid #000;
+	border-top: 1px solid #000;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-family: 'Noto Sans KR', sans-serif;
+	
+}
+
+.font{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 18px;
+	line-height: 1.5;
+}
+
+.final_btn{
+	width: 300px;
+	margin:0 auto;
+	margin-top: 70px;
+}
+
+.search {
+	text-align: center;
+	width: 100%;
+	margin-bottom: 200px;
+	margin-top: 30px;
+	height: 45px;
+	background-color: rgb(23, 69, 84);
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+}
+
+h4{
+	margin-top: 50px;
+	margin-bottom: 20px;
+	font-size: 20px;
+	color: rgb(23, 69, 84);
+	text-align: center;
+}
+
+.optBox{
+	width: 445px;
+	padding: 20px;
+	border: 2px solid rgb(23, 69, 84);
+	margin: 0 auto;
+	text-align: left;
+	line-height: 1.5;
+	margin-bottom: 80px;
+}
+.roInfo{
+	padding-top: 20px; 
+	padding-bottom: 10px;
+	font-size: 14px;
+}
+.infoinput{
+	border-bottom: 1px solid #ddd;
+	width: 340px;
+}
+
+.roInfotd{
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	width: 50%;
+}
+.roInfotd:first-child{
+	border-right: 1px solid #ddd;
+}
+
+.roInfoTable{
+	width: 100%;
+	margin-top: 40px;
+}
+.borderleft{
+	border-left: 1px solid #000;
+}
+.borderright{
+	border-right: 1px solid #000;
+}
+.total{
+	background-color: rgb(23, 69, 84);
+	color: #fff;
+}

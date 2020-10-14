@@ -33,7 +33,7 @@
 <select id="selectRoptions" resultMap="resultmap" parameterType="int">
 
 select 
-		r.opt_num, r.room_num, r.roption_qty, o.opt_name
+		r.opt_num, r.room_num, r.roption_qty, o.opt_name, o.opt_price
 	from options o left outer join roptions r
 	on r.opt_num = o.opt_num
 	where room_num=#{roomNum}

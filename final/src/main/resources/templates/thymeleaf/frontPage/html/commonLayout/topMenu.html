@@ -11,14 +11,14 @@
 	<div id="topMenu">
 		<ul class="clearfix topUl">
 			<!--로그인전-->
-			<span th:if="${session.login == null}">
+			<span th:if="${session.authInfo == null}">
 
 				<li><a href="/login"><span class="bar">로그인</span></a></li>
 				<li><a href="/register/agree"><span class="bar">회원가입</span></a></li>
 				<li><a href="#"><span class="bar_1">문의하기</span></a></li>
 			</span>
 			<!--로그인후-->
-			<span th:if="${session.login != null}">
+			<span th:if="${session.authInfo != null}">
 				<li><a href="#"><span class="bar">로그아웃</span></a></li>
 				<li><a href="#"><span class="bar">내정보</span></a></li>
 				<li><a href="#"><span class="bar_1">문의하기</span></a></li>

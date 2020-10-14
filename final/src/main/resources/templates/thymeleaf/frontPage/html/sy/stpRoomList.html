@@ -47,7 +47,7 @@
 							객실인원: [[${capacitySelect}]]인 이상
 						</div>
 					</td></tr>
-					<tr><th class="th"><div><img/>대표사진</div></th><th class="th">객실이름</th><th class="th">숙박요금(1day)</th><th class="th">수용인원</th></tr>
+					<tr><th class="th"><div>대표사진</div></th><th class="th">객실이름</th><th class="th">숙박요금(1day)</th><th class="th">수용인원</th></tr>
 					<th:block th:each="dto,aaa : ${roomList}">
 					<tr><td class="roomTd imgTd">
 						<block th:each=" lang : ${#strings.arraySplit(dto.roomImg,'`')}" th:remove="tag">    			 

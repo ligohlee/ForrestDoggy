@@ -7,7 +7,7 @@
 <title>Member BackOffice</title>
 <script language="javascript">
 	function addboard(){
-		salform.submit();
+		deptform.submit();
 	}
 </script>
 <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
@@ -36,11 +36,10 @@
 
 	<div id="wrapper">
 
-		<!-- stp header 인클루드 영역 -->
-		<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_header.html"></div>
+	<!-- stp header 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_header.html"></div>
 		<!-- stp seideNav 인클루드 영역 -->
-		<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_sideNav.html"></div>
-
+		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_sideNav.html"></div>
 		<!--페이지래퍼-->
 		<div id="page-wrapper">
 			<div id="page-inner">
@@ -74,9 +73,6 @@
 .submit {
 	width: 100%;
 }
-input {
-	width: 100%;
-}
 
 .table {
 	width: 80%;
@@ -93,69 +89,82 @@ td {
 	font-size: 14px;
 	border: 1px solid #ddd;
 }
+input{
+	width:70%
+}
 </style>
-<form action='salwritePro' method="post" name="salform"
-	enctype="multipart/form-data">
+<form th:action='@{/departmentMain/budgetwritePro}' method="post" name="deptform">
 <table cellpadding="0" cellspacing="0" class="table">
 	<tr align="center" valign="middle" border="2">
-		<td colspan="5">연봉계약 상세정보</td>
+		<td colspan="5">부서예산 내역등록</td>
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">연봉계약번호</div>
+			<div align="center">부서번호</div>
 		</td>
 		<td>
-			<input name="salNum" id="salNum" type="number" size="10" maxlength="10"/>
-		</td>
-	</tr>
-	<tr>
-		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">직원번호</div>
-		</td>
-		<td>
-			<input name="workNum" id="workNum" type="number" />
+			<input name="deptNum" id="deptNum" type="number"/>
 		</td>
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">현재연봉금액</div>
+			<div align="center">예산내역번호</div>
 		</td>
 		<td>
-			<input name="salNow" id="salNow" type="number"/>
+			<input name="budNum" id="budNum" type="number" />
 		</td>
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">연봉상승금액</div>
+			<div align="center">집행년도</div>
 		</td>
 		<td>
-			<input name="salIncre" id="salIncre" type="number"/>
+			<input name="budYear" id="budYear" type="date" />
 		</td>
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">연봉계약년도</div>
+			<div align="center">인건비</div>
 		</td>
 		<td>
-			<input name="salYear" id="salYear" type="date"/>
+			<input name="budSalary" id="budSalary" type="number"/>
 		</td>
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">연봉계약내용</div>
+			<div align="center">시설관리예산</div>
 		</td>
 		<td>
-			<input name="salCont" id="salCont" type="text"/>
+			<input name="budFacility" id="budFacility" type="number"/>
 		</td>
 	</tr>
 	<tr>
 		<td style="font-family:돋음; font-size:12" height="16">
-			<div align="center">연봉계약서이미지</div>
+			<div align="center">기본운영예산</div>
 		</td>
 		<td>
-			<input name="salImage" id="salImage" type="file"/>
+			<input name="budBasic" id="budBasic" type="number"/>
 		</td>
 	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">비품운영예산</div>
+		</td>
+		<td>
+			<input name="budSup" id="budSup" type="number"/>
+		</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">기타계획예산</div>
+		</td>
+		<td>
+			<input name="budEtc" id="budEtc" type="number"/>
+		</td>
+	</tr>
+	
+	
+	
 	<tr bgcolor="cccccc">
 		<td colspan="2" style="height:1px;">
 		</td>

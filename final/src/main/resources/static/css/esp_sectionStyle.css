@@ -11,11 +11,13 @@ section{
 	left:0;
 	width: 100%;
 	height: 1800px;
-	opacity: 0.4;
+	overflow: hidden;
+	opacity: 0.5;
 	z-index:-1;
 }
 .bg-img{
 	width: 100%;
+	height:auto;
 	object-fit: cover;
 }
 
@@ -23,7 +25,7 @@ section{
 .container{
 	width: 80%;
 	margin: 0 auto;
-	padding-top: 100px;
+	padding-top: 120px;
 	padding-bottom: 150px;
 
 	}
@@ -31,14 +33,18 @@ section{
 .quickSet{
 	float: left;
 	width: 30%;
-	margin: 0 auto;
+	margin: 0 ;
+	margin-right: 10px;
 	text-align: left;
+	
+	
 	
 }
 .quickSet_e{
 	float: left
 	width: 100%;
-	margin: 0 auto;
+	margin: 0;
+	margin-right: 10px;
 	
 }
 .quickBtn{
@@ -96,8 +102,10 @@ h2{
 	
 .textBox{
 	line-height: 1.4;
-	text-align: center;
-	margin-bottom: 100px;
+	text-align: left;
+	margin-bottom: 20px;
+	margin-top: 10px;
+	
 }
 
 .imageSet{

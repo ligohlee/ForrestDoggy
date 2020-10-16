@@ -1,0 +1,80 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>EATsomePlace</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/esp_sectionStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/slideImage.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+<script th:src="@{/static/js/slide.js}"></script>
+
+
+</head>
+<body >
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_eatSomePlace.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		<section>
+			<div class=bg><img width="100%" height="auto" th:src="@{/static/images/ligoh/menuInt4.jpg}" id="bg-img"/></div>
+			<div class="container" style="width: 50%;">
+				
+				
+				<div style="text-align:left; margin:0 ;">			
+				<h2 style="text-align:left; margin:0 ;">MENU</h2>
+				
+				</div>	
+				<br>
+					
+				<div class="imageSet clearfix">
+                    <div th:each="list : ${lists}" style="overflow: hidden; width:800px; height: 581px; ">
+
+                       <div style="  float:left;" >
+                          <img width="300px" height="200px" th:src="@{'/static/upload/menu/'+${list.menuImage}}">
+                       </div>
+                       
+                       <div style=" vertical-align:middle; display:table-cell;  background-color:  rgb(23, 69, 84); ">
+                         <span class="quickBtn_a">[[${list.menuIntro}]]</span>
+                       </div>
+
+
+
+                    </div>
+
+
+					
+					
+				</div>
+
+			</div>
+		</section>
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+
+	</div>
+</body>
+</html>

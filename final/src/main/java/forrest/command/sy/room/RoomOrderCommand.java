@@ -18,9 +18,7 @@ public class RoomOrderCommand {
 	String roName;
 	String roPh;
 	
-	
-	String checkIn;
-	
+	Date checkIn;
 	String checkOut;
 	
 	String roReq;

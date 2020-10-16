@@ -10,14 +10,20 @@ import forrest.mapper.jjj.FacilityMapper;
 
 @Service
 @Component
+
 public class FacilityDetailService {
 	@Autowired
-	FacilityMapper mapper;
-	public void selectFacility(int facilityNum, Model model) {
-		FacilityDTO facilityNum1 = new FacilityDTO();
-		facilityNum1.setFacilityNum(facilityNum);
-		FacilityDTO dto = mapper.selectFacility(facilityNum1);
+	FacilityMapper facilityMapper;
+	
+	public void detailFacility(int facNum, Model model) {
+		FacilityDTO fac = new FacilityDTO();
+		fac.setFacNum(facNum);
+		FacilityDTO dto = facilityMapper.selectFacility(fac);
+		System.out.println(dto.getFacNum());
 		model.addAttribute("facility",dto);
+	
+		
 	}
+
 
 }

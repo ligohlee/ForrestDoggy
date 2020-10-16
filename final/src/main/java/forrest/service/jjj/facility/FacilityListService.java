@@ -10,16 +10,16 @@ import org.springframework.ui.Model;
 import forrest.domain.jjj.FacilityDTO;
 import forrest.mapper.jjj.FacilityMapper;
 
-
 @Service
 @Component
+
 public class FacilityListService {
 	@Autowired
 	FacilityMapper facilityMapper;
-	
 	public void listFacility(Model model) {
 		List<FacilityDTO> list = facilityMapper.selectFacilityAll();
-		model.addAttribute("list" , list);
+		model.addAttribute("facilitylist" , list);
+		
 	}
-
+	
 }

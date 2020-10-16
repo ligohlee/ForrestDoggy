@@ -1,56 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="forrest.mapper.jjj.TicketMapper">
+<mapper namespace="forrest.mapper.jjj.FacilityMapper">
 
 <sql id="basecolumn">
-	TICKET_NUM, TICKET_NAME, TICKET_SEASON , TICKET_TIME , TICKET_GRADE , TICKET_PRICE , TICKET_REGIST , TICKET_QTY
+	FAC_NUM , FAC_NAME , FAC_INFO , FAC_IMG , FAC_REGIST
 </sql>
 
-<insert id="insertTicket" parameterType="forrest.domain.jjj.TicketDTO">
-	insert into ticket(<include refid="basecolumn"/>)
-	values(Ticket_SEQ.nextval,#{ticketName},#{ticketSeason},#{ticketTime},#{ticketGrade},#{ticketPrice},sysdate,#{ticketQty})
+<insert id="insertFacility" parameterType="forrest.domain.jjj.FacilityDTO">
+	insert into facility(<include refid="basecolumn"/>)
+	values(Facility_SEQ.nextval,#{facName},#{facInfo},#{facImg},sysdate)
 	
 </insert>
-
-
-	<resultMap type="forrest.domain.jjj.TicketDTO" id="baseTicket" >
-		<id column="TICKET_NUM" jdbcType="BIGINT" property="ticketNum"/>
-		<result column="TICKET_NAME" jdbcType="VARCHAR" property="ticketName"/>
-		<result column="TICKET_SEASON" jdbcType="TIMESTAMP" property="ticketSeason"/>
-		<result column="TICKET_TIME" jdbcType="VARCHAR" property="ticketTime"/>
-		<result column="TICKET_GRADE" jdbcType="VARCHAR" property="ticketGrade"/>
-		<result column="TICKET_PRICE" jdbcType="BIGINT" property="ticketPrice"/>
-		<result column="TICKET_REGIST" jdbcType="TIMESTAMP" property="ticketRegist"/>
-		<result column="TICKET_QTY" jdbcType="BIGINT" property="ticketQty"/>
+    
+	<resultMap type="forrest.domain.jjj.FacilityDTO" id="baseFacility" >
+		<id column="FAC_NUM" jdbcType="BIGINT" property="facNum"/>
+		<result column="FAC_NAME" jdbcType="VARCHAR" property="facName"/>
+		<result column="FAC_INFO" jdbcType="VARCHAR" property="facInfo"/>
+		<result column="FAC_IMG" jdbcType="VARCHAR" property="facImg"/>
+		<result column="FAC_REGIST" jdbcType="TIMESTAMP" property="facRegist"/>
+	
 	</resultMap>
 
 
-<select id="selectTicketAll" parameterType="forrest.domain.jjj.TicketDTO" resultMap="baseTicket" >
+<select id="selectFacilityAll" resultMap="baseFacility" >
 
-	select TICKET_NUM, TICKET_NAME, TICKET_SEASON , TICKET_TIME , TICKET_GRADE , TICKET_PRICE , TICKET_REGIST , TICKET_QTY
-	from ticket
+	select FAC_NUM , FAC_NAME , FAC_INFO , FAC_IMG , FAC_REGIST
+	from facility
 </select>
 
-<select id="selectTicket" resultMap="baseTicket" parameterType="forrest.domain.jjj.TicketDTO">
-	select <include refid="basecolumn"/>
-	from ticket
-	where ticket_num = #{ticketNum}
-	
+<select id="selectFacility" resultMap="baseFacility"  parameterType="forrest.domain.jjj.FacilityDTO">
+
+	select FAC_NUM , FAC_NAME , FAC_INFO , FAC_IMG , FAC_REGIST
+	from facility
+	where FAC_NUM = #{facNum}
 </select>
 
-<update id="updateTicket" parameterType="forrest.domain.jjj.TicketDTO">
-	update ticket
-	set TICKET_NAME = #{ticketName}, TICKET_Time = #{ticketTime} , TICKET_PRICE = #{ticketPrice} , TICKET_GRADE = #{ticketGrade} , TICKET_QTY = #{ticketQty}
-	where ticket_num = #{ticketNum}
-
+<update id="updateFacility" parameterType="forrest.domain.jjj.FacilityDTO">
+	update facility
+	set FAC_NAME = #{facName} , FAC_INFO = #{facInfo}
+	where FAC_NUM = #{facNum}
 </update>
-
-
-<delete id="deleteTicket"  parameterType="forrest.domain.jjj.TicketDTO"  >
-	delete ticket
-	where ticket_num = #{ticketNum}
-</delete>
-
 
 </mapper>

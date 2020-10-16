@@ -42,21 +42,74 @@ public class DogVillageBackTicketController {
 		ticketInsertService.insertTicket(command);
 		return "redirect:/dvlback/ticketList";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "ticketDetail", method = RequestMethod.GET)
-	public String roomDetail(@RequestParam(value="ticketNum") int TicketNum, Model model) {
-		ticketDetailService.selectTicket(TicketNum, model);
+	public String roomDetail(@RequestParam(value="ticketNum") int ticketNum, Model model) {
+		ticketDetailService.selectTicket(ticketNum, model);
 		return "thymeleaf/backOfficePage/html/dvl_manager/dvl_backTicketDetail";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "ticketModify", method = RequestMethod.GET)
 	public String ticketModify(@RequestParam(value = "ticketNum") int ticketNum, Model model) {
 		ticketDetailService.selectTicket(ticketNum,model);
 		return "thymeleaf/backOfficePage/html/dvl_manager/dvl_backTicketModify";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "ticketModifyPro", method = RequestMethod.POST)
 	public String ticketModifyPro(@RequestParam(value = "ticketNum") int ticketNum,TicketCommand command) {
 		ticketModifyService.modifyTicket(ticketNum,command);
 		return "redirect:/dvlback/ticketDetail?ticketNum="+ticketNum;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "ticketDelete", method = RequestMethod.GET)
 	public String ticketDelete(@RequestParam(value = "ticketNum")int ticketNum) {
 		ticketDeleteService.deleteTicket(ticketNum);

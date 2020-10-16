@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.han.CalcMapper">
+	<sql id="calcColum">
+	CALC_NUM,PT_NUM,WORK_NUM,CALC_DATE,CALC_TERM,CALC_PRICE,CALC_CONTENT
+	</sql>
+	<insert id="calcInsert" parameterType="forrest.domain.han.CalcDTO">
+		insert into CALCULATION (<include refid="calcColum"/>)
+		values(#{calcNum},#{ptNum},#{workNum},#{calcDate},#{calcTerm},#{calcPrice},#{calcContent})
+	</insert>
+</mapper>

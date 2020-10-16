@@ -1,157 +1,227 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <head>
-    <meta charset="UTF-8">
-    <title>Partner BackOffice</title>
-    <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
-    <!-- Bootstrap Styles-->
-    <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
-    <!-- FontAwesome Styles-->
-    <link th:href="@{/static/css/font-awesome.css}" rel="stylesheet" />
-    <!-- Morris Chart Styles-->
-   <!--   <link th:href="@{/static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
-    <!-- Custom Styles-->
-    <link th:href="@{/static/css/custom-styles.css}" rel="stylesheet" />
-    <link rel="stylesheet" th:href="@{/static/css/common.css}" />
-    <link rel="stylesheet" th:href="@{/static/css/newSoyoungStyle.css}" />
-    <!-- Google Fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+<head>
+<meta charset="utf-8">
+<title></title>
+<head>
+<meta charset="UTF-8">
+<title>Partner BackOffice</title>
+<link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
+<!-- Bootstrap Styles-->
+<link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
+<!-- FontAwesome Styles-->
+<link th:href="@{/static/css/font-awesome.css}" rel="stylesheet" />
+<!-- Morris Chart Styles-->
+<!--   <link th:href="@{/static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
+<!-- Custom Styles-->
+<link th:href="@{/static/css/custom-styles.css}" rel="stylesheet" />
+<link rel="stylesheet" th:href="@{/static/css/common.css}" />
+<link rel="stylesheet" th:href="@{/static/css/newSoyoungStyle.css}" />
+<!-- Google Fonts-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css' />
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
 
-    </head>
-  </head>
-  <body>
+</head>
+</head>
+<body>
 
 	<div id="wrapper">
 
-    <!-- worker header 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_header.html"></div>
-    <!-- worker seideNav 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_sideNav.html"></div>
-	
-    <!--페이지래퍼-->
+		<!-- worker header 인클루드 영역 -->
+		<div
+			th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_header.html"></div>
+		<!-- worker seideNav 인클루드 영역 -->
+		<div
+			th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_sideNav.html"></div>
+
+		<!--페이지래퍼-->
 		<div id="page-wrapper">
-            <div id="page-inner">
+			<div id="page-inner">
 
-            	<!--로그인 전 메인 화면-->
-            	<div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">
-                        	직원등록
-                        </h1>
-                    </div>
-                </div>
+				<!--로그인 전 메인 화면-->
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="page-header">직원등록</h1>
+					</div>
+				</div>
 
-                <div class="row">
+				<div class="row">
 					<div class="panel panel-default">
-					    <div class="panel-body" style="padding:100px 0;">
-					    	<style>
-					    		.login-area {
-					    			max-width:300px;
-					    			margin: 0 auto;
-					    			padding:30px 0;
-					    		}
-					    		.submit {
-					    			width: 100%;
-					    		}
-					    		table{
-					    		    width: 90%;
-					    		    text-align: center;
-					    		    margin: 0 auto;
-					    		}
-					    		th{
-					    		    text-align: center;
-					    		    border: 1px solid #ddd;
-					    		}
-					    		td{ 
-					    		    font-size: 15px;
-					    		    border: 1px solid #ddd;
-					    		}
-					    		input{
-					    		   width: 100%;
-					    		}
-					    		textarea{
-					    		   width: 100%;
-					    		}
-					    	</style>
-					    	<div>
-					    	
-					    	<form action="workerForm" method="post" name="workerForm" enctype="multipart/form-data">
-					    	   <table>
-					    	    <colgroup>
-                               <col width="10%">
-                               <col width="10%">
-                               <col width="10%">
-                               <col width="10%">
-                               <col width="10%">
-                               <col width="10%">
-                               </colgroup>
-                               
-					    	     <tr>
-					    	       <td>직원번호</td> 
-					    	       <td><input type="number" name="workNum"></td> 
-					    	       <td >부서번호</td>
-					    	       <td colspan="3"><input type="number" name="deptNum"></td> 
-					    	    	<td>직원명</td>
-					    	    	<td><input type="text" name="workName"></td> 
-					    	     </tr>
-					    	     
-					    	     <tr>
-					               <td>비밀번호</td>
-					               <td><input type="password" name="workPass"></td> 
-					               <td>비밀번호확인</td> 
-					               <td><input type="password" name="workPassCon"></td>  
-					    	     </tr>
-					    	       
-					    	     <tr>
-					                <td>연락처</td> 
-					                <td><input type="text" name="workPh"></td>  
-					                <td>이메일</td> 
-					                <td><input type="text" name="workEmail"></td>
-					                <td>생년월일</td>
-					    	        <td><input type="date" name="hireDate"></td>
-					    	        <td>입사일</td>
-					    	        <td><input type="date" name="workBorn"></td>
-					    	          
-					    	     </tr>
-					    	       <tr>
-					                <td>직책</td> 
-					                <td><input type="text" name="position"></td>  
-					                <td>직무</td> 
-					                <td><input type="text" name="job"></td>
-					                <td>휴가일수</td>
-					    	        <td><input type="number" name="workHoli"></td>
-					    	        <td>주소</td>
-					    	        <td><input type="text" name="workAddr"></td>
-					    	     </tr>
-					    	     <tr>
-					    	       <td>직원 이미지</td>  
-					    	       <td colspan="5"><input type="file" name="workImg" multiple="multiple"></td> 
-					    	     </tr>
-					    	     <tr>
-					    	        
-					    	       <td colspan="6" style="text-align:right">
-					    	       <button type="submit">등록</button> 
-					    	       <button onclick="javascript:history.back()">취소</button>
-					    	       </td> 
-					    	   
-					    	     </tr>
-					    	
-					    	   </table>
-					    	      
-					    	      </form>
-					    		
-					    	</div>
+						<div class="panel-body" style="padding: 100px 0;">
+							<style>
+.login-area {
+	max-width: 300px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.submit {
+	width: 100%;
+}
+
+table {
+	width: 90%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+th {
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+td {
+	font-size: 15px;
+	border: 1px solid #ddd;
+}
+
+input {
+	width: 100%;
+}
+
+textarea {
+	width: 100%;
+}
+</style>
+							<div>
+								<form action='workerForm' method="post" name="workerForm"
+									enctype="multipart/form-data">
+									<table cellpadding="0" cellspacing="0" class="table">
+										<tr align="center" valign="middle" border="2">
+											<td colspan="5">직원등록</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">직원번호</div>
+											</td>
+											<td><input name="workNum" id="workNum" type="number" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">부서번호</div>
+											</td>
+											<td><input name="deptNum" id="deptNum" type="number" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">직원명</div>
+											</td>
+											<td><input name="workName" id="workName" type="password" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">비밀번호</div>
+											</td>
+											<td><input name="workPass" id="workPass" type="password" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">비밀번호확인</div>
+											</td>
+											<td><input name="workPassCon" id="workPassCon"
+												type="password" /></td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">연락처</div>
+											</td>
+											<td><input name="workPh" id="workPh" type="text" /></td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">이메일</div>
+											</td>
+											<td><input name="workEmail" id="workEmail" type="text" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">생년월일</div>
+											</td>
+											<td><input name="hireDate" id="hireDate" type="date" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">입사일</div>
+											</td>
+											<td><input name="workBorn" id="workBorn" type="date" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">직책</div>
+											</td>
+											<td><input name="position" id="position" type="text" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">직무</div>
+											</td>
+											<td><input name="job" id="job" type="text" /></td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">휴가일수</div>
+											</td>
+											<td><input name="workHoli" id="workHoli" type="number" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">주소</div>
+											</td>
+											<td><input name="workAddr" id="workAddr" type="text" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">휴가일수</div>
+											</td>
+											<td><input name="workHoli" id="workHoli" type="number" />
+											</td>
+										</tr>
+										<tr>
+											<td style="font-family: 돋음; font-size: 12" height="16">
+												<div align="center">직원 이미지</div>
+											</td>
+											<td><input name="workImg" id="workImg" type="file"
+												multiple="multiple" /></td>
+										</tr>
+										<tr bgcolor="cccccc">
+											<td colspan="2" style="height: 1px;"></td>
+										</tr>
+										<tr>
+											<td colspan="2">&nbsp;</td>
+										</tr>
+										<tr align="center" valign="middle">
+											<td colspan="5"><a href="javascript:addboard()">[등록]</a>&nbsp;&nbsp;
+												<a href="javascript:history.go(-1)">[뒤로]</a></td>
+										</tr>
+									</table>
+								</form>
+
+							</div>
 						</div>
 					</div>
 				</div>
-                <!--로그인 후 메인화면-->
 
-                <!--<c:if test="${ !empty logId }">
+			</div>
+			<!-- /. PAGE INNER  -->
+		</div>
+		<!-- /. PAGE WRAPPER  -->
+		<!--로그인 후 메인화면-->
+
+		<!--<c:if test="${ !empty logId }">
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
@@ -164,38 +234,39 @@
 
 
 
-			<!-- footer 인클루드 영역 -->
-			<div th:include="thymeleaf/backOfficePage/html/commonLayout/backFooter.html"></div>
+		<!-- footer 인클루드 영역 -->
+		<div
+			th:include="thymeleaf/backOfficePage/html/commonLayout/backFooter.html"></div>
 
 
 
 
-            </div>
-            <!-- /. PAGE INNER  -->
-        </div>
-        <!-- /. PAGE WRAPPER  -->
+	</div>
+	<!-- /. PAGE INNER  -->
+	</div>
+	<!-- /. PAGE WRAPPER  -->
 
 
 
-       
-
-      <!-- JS Scripts-->
-        <!-- Bootstrap Js -->
-        <script th:src="@{/static/js/bootstrap.min.js}"></script>
-
-        <!-- Metis Menu Js -->
-        <script th:src="@{/static/js/jquery.metisMenu.js}"></script>
-        <!-- Morris Chart Js -->
-        <script th:src="@{/static/js/morris/raphael-2.1.0.min.js}"></script>
-        <script th:src="@{/static/js/morris/morris.js}"></script>
 
 
-      <script th:src="@{/static/js/easypiechart.js}"></script>
-      <script th:src="@{/static/js/easypiechart-data.js}"></script>
+	<!-- JS Scripts-->
+	<!-- Bootstrap Js -->
+	<script th:src="@{/static/js/bootstrap.min.js}"></script>
 
-       <script th:src="@{/static/js/Lightweight-Chart/jquery.chart.js}"></script>
+	<!-- Metis Menu Js -->
+	<script th:src="@{/static/js/jquery.metisMenu.js}"></script>
+	<!-- Morris Chart Js -->
+	<script th:src="@{/static/js/morris/raphael-2.1.0.min.js}"></script>
+	<script th:src="@{/static/js/morris/morris.js}"></script>
 
-        <!-- Custom Js -->
-        <script th:src="@{/static/js/custom-scripts.js}"></script>
-  </body>
+
+	<script th:src="@{/static/js/easypiechart.js}"></script>
+	<script th:src="@{/static/js/easypiechart-data.js}"></script>
+
+	<script th:src="@{/static/js/Lightweight-Chart/jquery.chart.js}"></script>
+
+	<!-- Custom Js -->
+	<script th:src="@{/static/js/custom-scripts.js}"></script>
+</body>
 </html>

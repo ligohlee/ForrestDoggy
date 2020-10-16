@@ -32,7 +32,8 @@ public class ReviewService {
 	
 	  Timestamp revdate = new Timestamp(reviewCommand.getRevDate().getTime());
 	  System.out.println(reviewCommand.getRevDate());
-	  dto.setRevDate(revdate); reviewMapper.reviewInsert(dto);
+	  dto.setRevDate(revdate); 
+	  reviewMapper.reviewInsert(dto);
 	 
 	
 	}

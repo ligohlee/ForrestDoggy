@@ -23,16 +23,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
 
     </head>
+    <script>
+$(function(){
+	workNum = '[[${dto.budNum}]]';
+	$("#budgetmodify").click(function(){
+		location.href="budgetModifyPro?budNum="+budNum;
+		});
+	
+	});
+
+	
+
+</script>
   </head>
   <body>
 
 	<div id="wrapper">
 
-  <!-- worker header 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_header.html"></div>
-    <!-- worker seideNav 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_sideNav.html"></div>
-	
+  		<!-- stp header 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_header.html"></div>
+		<!-- stp seideNav 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_sideNav.html"></div>
     <!--페이지래퍼-->
 		<div id="page-wrapper">
             <div id="page-inner">
@@ -41,12 +52,12 @@
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                        	직원리스트
+                        	연봉계약상세정보
                         </h1>
                     </div>
                 </div>
 
-                <div class="row" >
+                <div class="row">
 					<div class="panel panel-default">
 					    <div class="panel-body" style="padding:100px 0;">
 					    	<style>
@@ -67,28 +78,73 @@
 					    		    text-align: center;
 					    		    border: 1px solid #ddd;
 					    		}
-					    		td{
+					    		td{ 
 					    		    font-size: 15px;
 					    		    border: 1px solid #ddd;
 					    		}
+					    		input{
+					    		   width: 100%;
+					    		}
+					    		textarea{
+					    		   width: 100%;
+					    		}
 					    	</style>
+					    	<div>
+					    	
+					    	<form action="budgetModifyPro" method="post" name="budgetModifyPro" >
 					    	   <table>
+					    	    <colgroup>
+                               <col width="10%">
+                               <col width="10%">
+                               <col width="10%">
+                               <col width="10%">
+                               <col width="10%">
+                               <col width="10%">
+                               </colgroup>
+                               
 					    	     <tr>
-					    	       <th>직원번호</th> <th>부서번호</th> <th>이름</th> <th>연락처</th> <th>이메일</th> <th>사진</th>
-					    	       </tr>
-					    	       <tr th:each="dto : ${lists}">
-					    	       <td>[[${dto.workNum}]]</td> <td>[[${dto.deptNum}]]</td> <td><a th:href="@{WorkerDetail(workNum = ${dto.workNum})}">[[${dto.workName}]]</a></td> <td>[[${dto.workPh}]]</td> <td>[[${workEmail}]]</td> <td>[[${dto.workImg}]]</td>
+					    	       <td>부서번호</td> 
+					    	       <td> [[${dto.deptNum}]]</td> 
+					    	       <td>예산내역번호</td>
+					    	       <td>[[${dto.budNum}]]</td> 
+					    	    	<td>집행년도</td>
+					    	    	<td>[[${dto.budYear}]]</td> 
+					    	    	<td colspan="4"></td>
+					    	    	
+					    	    	
 					    	     </tr>
 					    	     
 					    	     <tr>
-					    	        <td style="text-align:right" colspan="6">
-					    	      <a href="WorkerRegist">직원 등록</a> &emsp;
-					    	       
-					    	        </td>
+					                <td>인건비</td> 
+					                <td>[[${dto.budSalary}]]만원</td>
+					                <td>시설관리예산</td>
+					                <td>[[${dto.budFacility}]]만원</td>
+					                <td>기본운영예산</td> 
+					                <td>[[${dto.budBasic}]]만원</td>
+					    	        <td>비품운영예산</td>
+					    	        <td>[[${dto.budSup}]]만원</td>
+					    	        <td>기타계획예산</td>
+					    	        <td>[[${dto.budEtc}]]만원</td>
+					    	          
+					    	    </tr>
+					    	     <tr>
+					    	       <td>총 남은예산</td>  
+					    	       <td colspan="9">[[${dto.budFacility}+${dto.budBasic}+${dto.budSup}+${dto.budEtc}]]만원</td> 
 					    	     </tr>
-					    	   </table>
-					    	<div style="width: 10%;	text-align: center;
-					    		    margin: 0 auto;">
+					    	     <tr>
+					    	       <td>비고</td>
+					    	       <td colspan="9"><input type="text"/></td>
+					    	      </tr>
+					    	    
+					    	     <tr>
+					    	        
+					    	       <td colspan="10" style="text-align:center;">
+					    	       <a href="javascript:history.go(-1)">[뒤로]</a>&nbsp;&nbsp;
+					    	       </td> 
+					    	   
+					    	     </tr>
+					    	   </table>	
+					    	      </form>
 					    	</div>
 						</div>
 					</div>

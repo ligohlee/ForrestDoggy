@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.han.BudgetMapper">
+	<sql id="basecolum">
+	DEPT_NUM,BUD_NUM,BUD_YEAR,BUD_SALARY,BUD_FACILITY,BUD_BASIC,BUD_SUP,BUD_ETC
+	</sql>
+	<insert id="getbudInsert" parameterType="forrest.domain.han.BudgetDTO">
+	insert into BUDGET (DEPT_NUM,BUD_NUM,BUD_YEAR,BUD_SALARY,BUD_FACILITY,BUD_BASIC,BUD_SUP,BUD_ETC)
+	values(#{deptNum},#{budNum},#{budYear},#{budSalary},#{budFacility},#{budBasic},#{budSup},#{budEtc})
+	
+	</insert>
+	<resultMap type="forrest.domain.han.BudgetDTO" id="columnBasc">
+	<result column="DEPT_NUM" jdbcType="BIGINT" property="deptNum"/>
+	<result column="BUD_NUM" jdbcType="BIGINT" property="budNum"/>
+	<result column="BUD_YEAR" jdbcType="TIMESTAMP" property="budYear"/>
+	<result column="BUD_SALARY" jdbcType="BIGINT" property="budSalary"/>
+	<result column="BUD_FACILITY" jdbcType="BIGINT" property="budFacility"/>
+	<result column="BUD_BASIC" jdbcType="BIGINT" property="budBasic"/>
+	<result column="BUD_SUP" jdbcType="BIGINT" property="budSup"/>
+	<result column="BUD_ETC" jdbcType="BIGINT" property="budEtc"/>
+	</resultMap>
+	
+	<select id="budlistview" resultMap="columnBasc">
+	select DEPT_NUM,BUD_NUM,BUD_YEAR,BUD_SALARY,BUD_FACILITY,BUD_BASIC,BUD_SUP,BUD_ETC
+	from BUDGET 
+	</select>
+	<select id="buddetailview" resultMap="columnBasc">
+	select DEPT_NUM,BUD_NUM,BUD_YEAR,BUD_SALARY,BUD_FACILITY,BUD_BASIC,BUD_SUP,BUD_ETC
+	from BUDGET
+	where BUD_NUM = #{budNum}
+	
+	
+	</select>
+	
+
+</mapper>

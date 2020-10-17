@@ -36,6 +36,8 @@ public class StayParkRoomController {
 	PaymentService paymentService;	
 	@Autowired
 	PointService pointService;
+	@Autowired
+	RoomOrderService roomOrderService;
 	
 	@RequestMapping(value = "roomReservation", method = RequestMethod.GET)
 	public String roomReservation() {
@@ -80,6 +82,7 @@ public class StayParkRoomController {
 	public String roomOrderPro(PaymentCommand paymentCommand,PointCommand pointCommand, RoomOrderCommand roderCommand, Model model  ) {				
 		paymentService.insertPayment(paymentCommand);
 		pointService.insertPoint(pointCommand);
+		roomOrderService.insertOrder(roderCommand);
 		return "thymeleaf/frontPage/html/sy/stpPaymentOk";
 	}
 	

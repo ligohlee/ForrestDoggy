@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoderDTO {
+public class RorderDTO {
 	
 	Integer roNum;
 	String memId;

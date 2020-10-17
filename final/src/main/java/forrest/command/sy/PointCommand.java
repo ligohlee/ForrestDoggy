@@ -6,9 +6,9 @@ import lombok.Data;
 public class PointCommand {
 	
 	String memId;
-	String point_in;
-	String point_out;
-	String point_sum;
+	String pointIn;
+	String pointOut;
+	String pointSum;
 	
 
 	

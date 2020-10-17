@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.sy.room.RoomOrderMapper">
+
+<sql id="basecolumn">
+	RO_NUM, MEM_ID, ROOM_NUM, RO_REGIST, RO_NAME, RO_PH, CHECK_IN, CHECK_OUT, RO_REQ
+</sql>
+
+<insert id="insertRoomOrder" parameterType="forrest.domain.sy.room.RorderDTO">
+	INSERT INTO rorder(<include refid="basecolumn"/>)
+    values(ro_seq.nextval, #{memId}, #{roomNum}, sysdate, #{roName}, #{roPh}, #{checkIn}, #{checkOut}, #{roReq})
+</insert>
+</mapper>

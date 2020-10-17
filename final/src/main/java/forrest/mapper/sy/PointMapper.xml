@@ -7,12 +7,9 @@
 	MEM_ID,POINT_IN,POINT_OUT,POINT_REGIST,POINT_SUM
 </sql>
 
-<insert id="pointIn" parameterType="string">
-	INSERT INTO point(mem_id, point_in, point_regist, point_sum)
-    values(#{memId},#{pointIn}, sysdate, #{pointIn}+(SELECT point_sum
-                                                    FROM point
-                                                    where point_regist = (select MAX(point_regist)
-                                                    from point where mem_id=#{memId})));	
+<insert id="insertPoint" parameterType="string">
+	INSERT INTO point(mem_id, point_in, point_out, point_regist, point_sum)
+    values(#{memId},#{pointIn}, #{pointOut}, sysdate, #{pointSum})
 </insert>
 
 <resultMap type="forrest.domain.sy.PointDTO" id="resultmap">		

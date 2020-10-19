@@ -35,7 +35,7 @@ public class TicketInsertService {
 		ticketMapper.insertTicket(dto);
 		
 		
-		
+
 	}
 
 }

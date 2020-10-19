@@ -10,7 +10,7 @@ public class StayParkMainController {
 	
 	@RequestMapping(value = "main", method = RequestMethod.GET)
 	public String stpMain() {
-		return "thymeleaf/frontPage/html/stpMain";
+		return "thymeleaf/frontPage/html/sy/stpMain";
 	}
 	
 }

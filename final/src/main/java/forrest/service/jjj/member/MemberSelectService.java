@@ -7,8 +7,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import forrest.command.AuthInfo;
 import forrest.domain.jjj.MemberDTO;
 import forrest.mapper.jjj.MemberMapper;
+
 
 @Service
 @Component
@@ -19,11 +21,23 @@ public class MemberSelectService {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
+	AuthInfo authInfo;
+	
 	public String selectMember(String memId, String memPass, HttpSession session) {
-		MemberDTO dto = memberMapper.selectMember(memId);
+		
+		MemberDTO dto = memberMapper.selectMember(memId);	
 		
 		if (passwordEncoder.matches(memPass,dto.getMemPass())) {
+			
+			authInfo = new AuthInfo(dto.getMemId(), 
+					dto.getMemPh(), dto.getMemName(),
+					dto.getMemPass());
+			
+			System.out.println(authInfo.getId());
+			
+			session.setAttribute("authInfo",authInfo);
 			session.setAttribute("login",memId);
+			
 			return "redirect:/main";
 		}else {
 			return "thymeleaf/frontPage/html/login";

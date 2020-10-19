@@ -5,9 +5,9 @@ img {vertical-align: middle;}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  max-width: 2000px;
   position: relative;
-  margin: auto;
+  margin: 0;
 }
 
 /* Next & previous buttons */
@@ -66,6 +66,7 @@ img {vertical-align: middle;}
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
+  text-align: center;
 }
 
 .active, .dot:hover {

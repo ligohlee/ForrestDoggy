@@ -90,9 +90,17 @@ h2 {
 
 }
 
+.lineOpt{
+	padding-bottom: 80px;
+}
+
 
 .selectbox {
-	width: 50px;
+	width: 100px;
+	border: 1px solid #000;
+	height: 20px;
+	position: absolute;
+	right:0;
 	
 }
 
@@ -122,8 +130,25 @@ h2 {
 	text-align: center;
 }
 
-.btn_style {
-	width: 220px;
-	height: 40px;
-	background-color: rgb(160, 164, 193);
+
+
+h4{
+	margin-top: 50px;
+	margin-bottom: 20px;
+	font-size: 20px;
+	color: rgb(23, 69, 84);
+}
+
+.oneOpt{
+	margin: 5px;
+	width: 400px;
+	margin: 0 auto;
+	text-align: left;
+	position: relative;
+}
+.optBox{
+	width: 445px;
+	padding: 20px;
+	border: 2px solid rgb(23, 69, 84);
+	margin: 0 auto;
 }

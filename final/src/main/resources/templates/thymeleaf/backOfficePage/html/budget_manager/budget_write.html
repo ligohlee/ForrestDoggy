@@ -1,0 +1,210 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title></title>
+<head>
+<meta charset="UTF-8">
+<title>Member BackOffice</title>
+<script language="javascript">
+	function addboard(){
+		deptform.submit();
+	}
+</script>
+<link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
+<!-- Bootstrap Styles-->
+<link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
+<!-- FontAwesome Styles-->
+<link th:href="@{/static/css/font-awesome.css}" rel="stylesheet" />
+<!-- Morris Chart Styles-->
+<!--   <link th:href="@{/static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
+<!-- Custom Styles-->
+<link th:href="@{/static/css/custom-styles.css}" rel="stylesheet" />
+<link rel="stylesheet" th:href="@{/static/css/common.css}" />
+<link rel="stylesheet" th:href="@{/static/css/newSoyoungStyle.css}" />
+<!-- Google Fonts-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css' />
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/static/css/memberViewStyle.css}" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+	<!-- stp header 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_header.html"></div>
+		<!-- stp seideNav 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_sideNav.html"></div>
+		<!--페이지래퍼-->
+		<div id="page-wrapper">
+			<div id="page-inner">
+
+				<!--로그인 전 메인 화면-->
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="page-header">부서 등록</h1>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-body" style="padding: 100px 0;">
+							<style>
+.login-area {
+	max-width: 300px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.submit {
+	width: 100%;
+}
+.login-area {
+	max-width: 300px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+.submit {
+	width: 100%;
+}
+
+.table {
+	width: 80%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+th {
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+td {
+	font-size: 14px;
+	border: 1px solid #ddd;
+}
+input{
+	width:70%
+}
+</style>
+<form th:action='@{/departmentMain/budgetwritePro}' method="post" name="deptform">
+<table cellpadding="0" cellspacing="0" class="table">
+	<tr align="center" valign="middle" border="2">
+		<td colspan="5">부서예산 내역등록</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">부서번호</div>
+		</td>
+		<td>
+			<input name="deptNum" id="deptNum" type="number"/>
+		</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">예산내역번호</div>
+		</td>
+		<td>
+			<input name="budNum" id="budNum" type="number" />
+		</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">집행년도</div>
+		</td>
+		<td>
+			<input name="budYear" id="budYear" type="date" />
+		</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">인건비</div>
+		</td>
+		<td>
+			<input name="budSalary" id="budSalary" type="number"/>
+		</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">시설관리예산</div>
+		</td>
+		<td>
+			<input name="budFacility" id="budFacility" type="number"/>
+		</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">기본운영예산</div>
+		</td>
+		<td>
+			<input name="budBasic" id="budBasic" type="number"/>
+		</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">비품운영예산</div>
+		</td>
+		<td>
+			<input name="budSup" id="budSup" type="number"/>
+		</td>
+	</tr>
+	<tr>
+		<td style="font-family:돋음; font-size:12" height="16">
+			<div align="center">기타계획예산</div>
+		</td>
+		<td>
+			<input name="budEtc" id="budEtc" type="number"/>
+		</td>
+	</tr>
+	
+	
+	
+	<tr bgcolor="cccccc">
+		<td colspan="2" style="height:1px;">
+		</td>
+	</tr>
+	<tr><td colspan="2">&nbsp;</td></tr>
+	<tr align="center" valign="middle">
+		<td colspan="5">
+			<a href="javascript:addboard()">[등록]</a>&nbsp;&nbsp;
+			<a href="javascript:history.go(-1)">[뒤로]</a>
+		</td>
+	</tr>
+</table>
+</form>
+		</div>
+		<!-- /. PAGE INNER  -->
+	</div>
+	<!-- /. PAGE WRAPPER  -->
+
+
+<!-- footer 인클루드 영역 -->
+			<div th:include="thymeleaf/backOfficePage/html/commonLayout/backFooter.html"></div>
+
+
+	<!-- JS Scripts-->
+	<!-- Bootstrap Js -->
+	<script th:src="@{/static/js/bootstrap.min.js}"></script>
+
+	<!-- Metis Menu Js -->
+	<script th:src="@{/static/js/jquery.metisMenu.js}"></script>
+	<!-- Morris Chart Js -->
+	<script th:src="@{/static/js/morris/raphael-2.1.0.min.js}"></script>
+	<script th:src="@{/static/js/morris/morris.js}"></script>
+
+
+	<script th:src="@{/static/js/easypiechart.js}"></script>
+	<script th:src="@{/static/js/easypiechart-data.js}"></script>
+
+	<script th:src="@{/static/js/Lightweight-Chart/jquery.chart.js}"></script>
+
+	<!-- Custom Js -->
+	<script th:src="@{/static/js/custom-scripts.js}"></script>
+</body>
+</html>

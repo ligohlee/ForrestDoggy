@@ -11,8 +11,8 @@ import forrest.domain.jm.StartEndPageDTO;
 @Component
 @Repository
 public interface COrderMapper {
-	public List<COrderDTO> getCordList(StartEndPageDTO startEndPageDTO) throws Exception;
-	public Integer getCordCount() throws Exception;
-	public void cordInsert(COrderDTO dto) throws Exception;
-	public void cordDelete(String cordNum) throws Exception;
+	public List<COrderDTO> getCOrderList(StartEndPageDTO startEndPageDTO) throws Exception;
+	public Integer getCOrderCount() throws Exception;
+	public void corderInsert(COrderDTO dto) throws Exception;
+	public void corderDelete(String cordNum) throws Exception;
 }

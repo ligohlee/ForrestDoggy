@@ -1,0 +1,73 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Stay Park</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/roomListStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_stayPark.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		<section>
+			
+			<div class="container">
+			
+				<table class="roomTable">
+					<tr><td colspan="4">
+						<h2>예약가능객실</h2>
+						<div class="rsvInfo">
+							[[${checkIn}]] ~
+							[[${checkOut}]]</br>
+							객실인원: [[${capacitySelect}]]인 이상
+						</div>
+					</td></tr>
+					<tr><th class="th"><div>대표사진</div></th><th class="th">객실이름</th><th class="th">숙박요금(1day)</th><th class="th">수용인원</th></tr>
+					<th:block th:each="dto,aaa : ${roomList}">
+					<tr><td class="roomTd imgTd">
+						<block th:each=" lang : ${#strings.arraySplit(dto.roomImg,'`')}" th:remove="tag">    			 
+					    				<div class="roomImg"><a th:href="@{/staypark/roomDetail(roomNum=${dto.roomNum})}"><img th:src="@{/static/staypark/room/upload/} + ${lang}" width="100%" th:alt="${lang}"/></a></div></block>
+					</td><td class="roomTd"><a class="link" th:href="@{/staypark/roomDetail(roomNum=${dto.roomNum},checkIn=${checkIn}, checkOut=${checkOut}, capacitySelect=${capacitySelect})}">[[${dto.roomName}]]</a></td><td class="roomTd">[[${dto.roomPrice}]]</td><td class="roomTd">[[${dto.capacity}]]</td></tr>
+					</th:block>
+					
+				</table>
+				
+
+
+			</div>
+		</section>
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+
+	</div>
+</body>
+</html>

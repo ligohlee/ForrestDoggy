@@ -7,7 +7,7 @@
 <link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
 
 <link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
-<link rel="stylesheet" th:href="@{/static/css/roomListStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/roomPaymentStyle.css}">
 <link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
 
 <link
@@ -16,8 +16,7 @@
 
 <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 <script th:src="@{/static/js/jquery.js}"></script>
-
-
+	
 
 </head>
 <body>
@@ -35,31 +34,42 @@
 
 		<!--메인콘텐츠 영역-->
 		<section>
-			
+			<form th:action="@{/staypark/roomOrderPro}" method="post" name="frm">
+			<span th:if="${session.authInfo !=null}">
+				<input type="hidden" th:value="${session.authInfo.name}" name="memName" id="memName"/>
+				<input type="hidden" th:value="${session.authInfo.ph}" name="memPh" id="memPh"/>
+				<input type="hidden" th:value="${session.authInfo.id}" name="memId" id="memId"/>
+			</span>
 			<div class="container">
-			
+
 				<table class="roomTable">
-					<tr><td colspan="4">
-						<h2>예약가능객실</h2>
-						<div class="rsvInfo">
-							[[${checkIn}]] ~
-							[[${checkOut}]]</br>
-							객실인원: [[${capacitySelect}]]인 이상
-						</div>
-					</td></tr>
-					<tr><th class="th"><div><img/>대표사진</div></th><th class="th">객실이름</th><th class="th">숙박요금(1day)</th><th class="th">수용인원</th></tr>
-					<th:block th:each="dto,aaa : ${roomList}">
-					<tr><td class="roomTd imgTd">
-						<block th:each=" lang : ${#strings.arraySplit(dto.roomImg,'`')}" th:remove="tag">    			 
-					    				<div class="roomImg"><a th:href="@{/staypark/roomDetail(roomNum=${dto.roomNum})}"><img th:src="@{/static/staypark/room/upload/} + ${lang}" width="100%" th:alt="${lang}"/></a></div></block>
-					</td><td class="roomTd"><a class="link" th:href="@{/staypark/roomDetail(roomNum=${dto.roomNum},checkIn=${checkIn}, checkOut=${checkOut}, capacitySelect=${capacitySelect})}">[[${dto.roomName}]]</a></td><td class="roomTd">[[${dto.roomPrice}]]</td><td class="roomTd">[[${dto.capacity}]]</td></tr>
-					</th:block>
+					<tr>
+						<td colspan="5">
+							<h2>객실 주문 완료!</h2>
+						</td>
+					</tr>
+					<tr>
+						<th class="th"><div>주문번호</div></th><th class="th">객실이름</th><th class="th">숙박일수</th><th class="th">체크인</th>
+					</tr>
+					<tr>
+						<td></td><td></td><td></td><td></td>
+					</tr>
 					
-				</table>
-				
+				</table>	
+
+
+
+
+				<div class="final_btn">
+
+					<input type="submit" class="search" value="예 약 하 기">
+
+				</div>
+
 
 
 			</div>
+			</form>
 		</section>
 
 

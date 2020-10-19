@@ -74,7 +74,7 @@
 					    	</style>
 					    	   <table>
 					    	     <tr>
-					    	       <td>직원번호</td> <td>부서번호</td> <td>이름</td> <td>연락처</td> <td>이메일</td> <td>사진</td>
+					    	       <th>직원번호</th> <th>부서번호</th> <th>이름</th> <th>연락처</th> <th>이메일</th> <th>사진</th>
 					    	       </tr>
 					    	       <tr th:each="dto : ${lists}">
 					    	       <td>[[${dto.workNum}]]</td> <td>[[${dto.deptNum}]]</td> <td><a th:href="@{WorkerDetail(workNum = ${dto.workNum})}">[[${dto.workName}]]</a></td> <td>[[${dto.workPh}]]</td> <td>[[${workEmail}]]</td> <td>[[${dto.workImg}]]</td>

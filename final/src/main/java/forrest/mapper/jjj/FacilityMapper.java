@@ -1,5 +1,7 @@
 package forrest.mapper.jjj;
 
+
+
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -10,15 +12,15 @@ import forrest.domain.jjj.FacilityDTO;
 @Component
 public interface FacilityMapper {
 
-	void insertFacility(FacilityDTO dto);
+	public void insertFacility(FacilityDTO dto);
 
-	List<FacilityDTO> selectFacilityAll();
+	public List<FacilityDTO> selectFacilityAll();
 
-	void updateFacility(FacilityDTO dto);
+	public FacilityDTO selectFacility(FacilityDTO fac);
 
-	void deleteFacility(int facilityNum);
+	public void updateFacility(FacilityDTO fac);
 
-	FacilityDTO selectFacility(FacilityDTO facilityNum1);
+
 
 
 

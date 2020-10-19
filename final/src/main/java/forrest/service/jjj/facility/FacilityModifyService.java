@@ -1,7 +1,5 @@
 package forrest.service.jjj.facility;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -14,14 +12,14 @@ import forrest.mapper.jjj.FacilityMapper;
 @Component
 public class FacilityModifyService {
 	@Autowired
-	FacilityMapper mapper;
-	public void modifyFacility(int facilityNum, FacilityCommand command) {
+	FacilityMapper facMapper;
+	public void modifyFacility(int facNum, FacilityCommand facCommand) {
+		FacilityDTO fac = new FacilityDTO();
 		
-		FacilityDTO dto = new FacilityDTO();
-		dto.setFacilityNum(facilityNum);
-		dto.setFacilityName(command.getFacilityName());
+		fac.setFacName(facCommand.getFacName());
+		fac.setFacInfo(facCommand.getFacInfo());
+		facMapper.updateFacility(fac);
 		
-		mapper.updateFacility(dto);
 	}
 
 }

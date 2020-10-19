@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.jjj.FacilityMapper">
+
+<sql id="basecolumn">
+	FAC_NUM , FAC_NAME , FAC_INFO , FAC_IMG , FAC_REGIST
+</sql>
+
+<insert id="insertFacility" parameterType="forrest.domain.jjj.FacilityDTO">
+	insert into facility(<include refid="basecolumn"/>)
+	values(Facility_SEQ.nextval,#{facName},#{facInfo},#{facImg},sysdate)
+	
+</insert>
+    
+	<resultMap type="forrest.domain.jjj.FacilityDTO" id="baseFacility" >
+		<id column="FAC_NUM" jdbcType="BIGINT" property="facNum"/>
+		<result column="FAC_NAME" jdbcType="VARCHAR" property="facName"/>
+		<result column="FAC_INFO" jdbcType="VARCHAR" property="facInfo"/>
+		<result column="FAC_IMG" jdbcType="VARCHAR" property="facImg"/>
+		<result column="FAC_REGIST" jdbcType="TIMESTAMP" property="facRegist"/>
+	
+	</resultMap>
+
+
+<select id="selectFacilityAll" resultMap="baseFacility" >
+
+	select FAC_NUM , FAC_NAME , FAC_INFO , FAC_IMG , FAC_REGIST
+	from facility
+</select>
+
+<select id="selectFacility" resultMap="baseFacility"  parameterType="forrest.domain.jjj.FacilityDTO">
+
+	select FAC_NUM , FAC_NAME , FAC_INFO , FAC_IMG , FAC_REGIST
+	from facility
+	where FAC_NUM = #{facNum}
+</select>
+
+<update id="updateFacility" parameterType="forrest.domain.jjj.FacilityDTO">
+	update facility
+	set FAC_NAME = #{facName} , FAC_INFO = #{facInfo}
+	where FAC_NUM = #{facNum}
+</update>
+
+</mapper>

@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Partner Check</title>
+<script type="text/javascript" 
+	src="http://code.jquery.com/jquery-latest.js" ></script>
+<script type="text/javascript">
+
+function select1(ptNum){
+	location.href="goodsSearch?ptNum="+ptNum+""
+	
+	window.close();	
+}
+
+</script>
+
+</head>
+<body>
+	<form action="ptSearch" method="post">
+	업체명을 검색하세요
+		<input type="text" name="ptName"/> 
+		<button type="submit">찾기</button>
+		<br/>
+	</form>
+
+	<table border="1" width="100%">
+	  <tr>
+	    	<td >업체명</td><td colspan="2">업체구분 </td>
+	  </tr>
+	   <tr th:each="list, i: ${lists}">
+		   <td style="width: 40%" th:text="${list.ptName}"></td> 
+		   <td style="width: 40%" th:text="${list.ptType}"></td> 
+		   <td style="width: 20%" >
+		   		<input type="button" id="serch" value="선택" th:onclick="@{'select1(\'' + ${list.ptNum} + '\')'}">
+		   </td>
+	  </tr>
+	</table>
+
+
+</body>
+</html>

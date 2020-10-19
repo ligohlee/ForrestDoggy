@@ -16,7 +16,7 @@ public class COrderWriteProService {
 	@Autowired
 	COrderMapper corderMapper;
 	
-	public String writePro(COrderCommand corderCommand, HttpServletRequest request) {
+	public String writePro(COrderCommand corderCommand, HttpServletRequest request) throws Exception{
 		
 		COrderDTO dto = new COrderDTO();
 		dto.setCordNum(corderCommand.getCordNum());
@@ -27,14 +27,7 @@ public class COrderWriteProService {
 		dto.setPtName(corderCommand.getPtName());
 		dto.setPtType(corderCommand.getPtType());
 		
-		System.out.println(dto.getCordQty());
-		
-		try {
-			corderMapper.corderInsert(dto);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		corderMapper.corderInsert(dto);
 		
 		return "redirect:/inventory/corderList";
 	}

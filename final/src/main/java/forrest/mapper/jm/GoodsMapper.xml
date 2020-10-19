@@ -59,7 +59,11 @@
 		where goods_num = #{goodsNum}
     </delete>
 
-	
+	<select id="getPtGoodsList" resultMap="baseGoods">
+		select goods_num, goods_name, goods_category, goods_made
+		from goods
+		where pt_num = #{ptNum}
+	</select>
 	
 
 

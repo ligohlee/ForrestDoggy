@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Goods List</title>
+<script type="text/javascript" 
+	src="http://code.jquery.com/jquery-latest.js" ></script>
+<script type="text/javascript">
+function select1(a, b, c, d){
+/* 	$(opener.document).find("#goodsName").val(a);
+	$(opener.document).find("#goodsCategory").val(b);
+	$(opener.document).find("#goodsMade").val(c);
+	$(opener.document).find("#goodsNum").val(d);
+	 */
+	var goodsName=$("#goodsName").val(a);
+	var goodsCategory=$("#goodsCategory").val(b);
+	var goodsMade=$("#goodsMade").val(c);
+	var goodsNum=$("#goodsNum").val(d);
+}
+</script>
+
+</head>
+<body>
+
+<table border="1" width="100%" class="form-group">
+  <tr>
+   <td>상품명</td>
+   <td>상품구분</td>
+   <td>생산지</td>
+   <td>선택</td>
+  </tr>
+   <tr th:each="list: ${lists}">
+   <td style="width: 25%" th:text="${list.goodsName}"></td> 
+   <td style="width: 25%" th:text="${list.goodsCategory}"></td>
+   <td style="width: 25%" th:text="${list.goodsMade}"></td>
+   <td style="width: 25%" >
+   	<input type="button" id="serchGoodsName" value="선택" th:onclick="@{'select1(\'' + ${list.goodsName} + '\',\'' + ${list.goodsCategory} + '\',\'' + ${list.goodsMade} + '\',\'' + ${list.goodsNum} + '\')'}">
+   </td>
+  </tr>
+</table>
+
+</body>
+</html>

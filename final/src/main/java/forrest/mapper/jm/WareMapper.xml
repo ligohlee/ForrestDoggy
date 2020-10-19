@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.jm.WareMapper">
+
+<sql id="basecolumn">
+	WARE_NUM, GOODS_NUM, WARE_QTY, WARE_REGIST
+</sql>
+
+	<resultMap type="forrest.domain.jm.WareDTO" id="baseCord">
+		<id column="WARE_NUM" jdbcType="BIGINT" property="wareNum" />
+		<result column="GOODS_NUM" jdbcType="BIGINT" property="goodsNum" />
+		<result column="WARE_QTY" jdbcType="BIGINT" property="wareQty" />
+		<result column="WARE_REGIST" jdbcType="TIMESTAMP" property="wareRegist" />
+		<result column="GOODS_NAME" jdbcType="VARCHAR" property="goodsName" />
+		<result column="PT_NAME" jdbcType="VARCHAR" property="ptName" />
+	</resultMap>
+
+	<select id="getWareList" resultMap="baseCord">
+		select rn, WARE_NUM, wGoodsNum, WARE_QTY, WARE_REGIST, goods_name, gPtNum, pt_name
+		from (select rownum rn, WARE_NUM, wGoodsNum, WARE_QTY, WARE_REGIST, goods_name, gPtNum, pt_name
+			 from ( select 
+						rownum rn, WARE_NUM, w.GOODS_NUM wGoodsNum, WARE_QTY, WARE_REGIST, goods_name, g.pt_num gPtNum, pt_name
+					from WARE w join goods g
+						on w.goods_num = g.goods_num
+						join partner p
+						on g.pt_num = p.pt_num
+					<trim prefix="where" prefixOverrides="AND | OR">
+						<if test="num != null ">
+							and ware_num = #{num}
+						</if>
+					</trim>
+					order by ware_NUM desc))
+		where rn &gt;= #{startPage} and rn &lt;= #{endPage}
+	</select>
+	
+	<select id="getWareCount" resultType="int">
+		select count(*) from WARE 
+	</select>
+	
+	<insert id="wareInsert" parameterType="forrest.domain.jm.WareDTO">
+		insert into WARE ( <include refid="basecolumn" /> )
+		values ( (select nvl(max(WARE_NUM),0) + 1 from WARE), #{goodsNum}, #{wareQty}, sysdate )
+	</insert>
+
+
+</mapper>

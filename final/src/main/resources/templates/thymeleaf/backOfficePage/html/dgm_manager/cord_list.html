@@ -46,6 +46,7 @@
 		                                <thead>
 		                                    <tr>
 		                                        <th>No</th>
+		                                        <th>업체명</th>
 		                                        <th>상품명</th>
 		                                        <th>발주수량</th>
 		                                        <th>발주일시</th>
@@ -55,6 +56,7 @@
 		                                	<div th:each="cord : ${lists}">
 		                                    <tr>
 		                                        <td><span th:text="${cord.cordNum}" /></td>
+		                                        <td><span th:text="${cord.ptName}" /></td>
 		                                        <td>
 		                                        	<a th:href="@{'/inventory/corderView/' + ${cord.cordNum}}">
 		                                        		<span th:text="${cord.goodsName}" />

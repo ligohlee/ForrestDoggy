@@ -16,4 +16,5 @@ public interface GoodsMapper {
 	public void goodsUpdate(GoodsDTO dto) throws Exception;
 	public void goodsInsert(GoodsDTO dto) throws Exception;
 	public void goodsDelete(String goodsNum) throws Exception;
+	public List<GoodsDTO> getPtGoodsList(String ptNum) throws Exception;
 }

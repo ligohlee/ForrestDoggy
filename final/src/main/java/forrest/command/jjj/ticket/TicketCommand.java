@@ -26,6 +26,8 @@ public class TicketCommand {
 		String ticketGrade;
 		Integer ticketPrice;	   		
 		Integer ticketQty;
+		
+		
 }
 
 

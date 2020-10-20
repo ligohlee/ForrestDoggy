@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FacilityCommand {
 	
-
+	Integer facNum;
 	String facName;
 	String facInfo;
 	MultipartFile facImg;

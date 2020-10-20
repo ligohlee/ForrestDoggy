@@ -13,9 +13,9 @@ import forrest.mapper.jjj.FacilityMapper;
 public class FacilityModifyService {
 	@Autowired
 	FacilityMapper facMapper;
-	public void modifyFacility(int facNum, FacilityCommand facCommand) {
+	public void modifyFacility(FacilityCommand facCommand) {
 		FacilityDTO fac = new FacilityDTO();
-		
+		fac.setFacNum(facCommand.getFacNum());
 		fac.setFacName(facCommand.getFacName());
 		fac.setFacInfo(facCommand.getFacInfo());
 		facMapper.updateFacility(fac);

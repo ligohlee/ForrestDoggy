@@ -52,7 +52,7 @@ public class DogViliageBackFacilityController {
 	}
 	@RequestMapping(value = "facilityModifyPro", method = RequestMethod.POST)
 	public String facilityModifyPro(@RequestParam(value="facNum") int facNum,FacilityCommand facCommand) {
-		facilityModifyService.modifyFacility(facNum,facCommand);
+		facilityModifyService.modifyFacility(facCommand);
 		return "redirect:/facility/facilityDetail?facNum="+facNum;
 	}
 }

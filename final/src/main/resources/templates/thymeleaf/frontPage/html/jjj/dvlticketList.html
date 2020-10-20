@@ -60,7 +60,16 @@ td {
 .selectbox{
 	width: 60px;
 }
+#tolistQty{
+display:none;}
 </style>
+<script>
+	$(function(){
+			
+		
+	});
+	
+</script>
 
 </head>
 <body>
@@ -80,35 +89,39 @@ td {
 		<section>
 			
 			<div class="container">
+			<form th:action="@{/dogVillage/ticketOrder}" method="post" name="frm">
+				<h2>[[${ticketSeason}]] 가능티켓</h2>
+			
 				<table class="table">
 					<tr>
 						<th>선택</th>
 						<th>번호</th>						
 						<th>티켓이름</th>
 						<th>티켓가격</th>
-						<th>수량</th>
+						<th>티켓수량</th>
 					</tr>
-					<th:block th:each="dto , aaa : ${list}">
+					<th:block th:each="dto , aaa : ${list}" >
 						<tr>
-							<td><input type="checkbox" name="ticketNum" th:value="${dto.ticketName}"></td>
+							<td><input type="checkbox" name="ticketNum" th:value="${dto.ticketNum}" class="ticketNum"></td>
 							<td>[[${aaa.count}]]</td>							
 							<td>[[ ${dto.ticketName}]]</td>
 							<td>[[ ${dto.ticketPrice}]]</td>
-							<td>
-								<select name="tolistQty" class="selectbox" >
-									<th:block th:each="num : ${#numbers.sequence(1,dto.ticketQty)}">		 			
+							<td>[[${dto.ticketQty}]]
+								<!--  <select name="tolistQty" class="selectbox tolistQty" id="tolistQty">
+									<th:block th:each="num : ${#numbers.sequence(0,dto.ticketQty)}">		 			
 										<option>[[${num}]]</option>
 									</th:block>						 									
-								</select>
+								</select>-->
+								<!--  <input type="button" name="chk" id="chk" value="확인" class="chk"/>
+								<input type="text" name="torderQty" id="torderQty" value="" class="torderQty"/>-->
 							</td>
 						</tr>
 					</th:block>
 					<tr>
-						<td colspan="5"><a href="/dvlback/ticketRegist"><input
-								type="button" value="예 매 하 기" class="sybtn" /></a></td>
+						<td colspan="5"><input type="submit" value="예 매 하 기" class="sybtn" /></td>
 					</tr>
 				</table>
-
+			</form>
 			</div>
 		</section>
 

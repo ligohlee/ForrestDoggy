@@ -111,12 +111,12 @@
 					    	
 					    	<!-- 콘텐츠영역 -->
 					    	<form th:action="@{/facility/facilityModifyPro}" method="post" name="frm">
-					    	<input type="hidden" name="facilityNum" th:value="${facility.facNum}"/>
+					    	<input type="text" name="facNum" th:value="${facility.facNum}"/>
 					    	<table class="table">
 					    		
 					    			<tr><th>시설번호</th><td>[[${facility.facNum}]]</td></tr>
-					    			<tr><th>시설이름</th><td><input type="text" name="facilityName" class="syinput" th:value="${facility.facName}"/></td></tr>
-					    			<tr><th>시설정보</th><td><textarea name="facilityInfo" class="syarea" >[[${facility.facInfo}]]</textarea></td></tr>
+					    			<tr><th>시설이름</th><td><input type="text" name="facName" class="syinput" th:value="${facility.facName}"/></td></tr>
+					    			<tr><th>시설정보</th><td><textarea name="facInfo" class="syarea" >[[${facility.facInfo}]]</textarea></td></tr>
 					    			<tr><th>시설사진</th><td>[[${facility.facImg}]]</td></tr>
 					    	
 								

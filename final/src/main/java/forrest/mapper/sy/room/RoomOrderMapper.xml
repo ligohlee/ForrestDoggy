@@ -11,4 +11,8 @@
 	INSERT INTO rorder(<include refid="basecolumn"/>)
     values(ro_seq.nextval, #{memId}, #{roomNum}, sysdate, #{roName}, #{roPh}, #{checkIn}, #{checkOut}, #{roReq})
 </insert>
+
+
+
+
 </mapper>

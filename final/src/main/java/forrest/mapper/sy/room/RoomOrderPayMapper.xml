@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.sy.room.RoomOrderPayMapper">
+
+<insert id="insertRoomOrderPay" parameterType="forrest.domain.sy.room.RoomOrderPayDTO">
+	INSERT INTO ro_pay(pay_num, ro_num)
+    values((select MAX(pay_num) from payment where pay_price = #{payPrice}),(select MAX(ro_num) from rorder where room_num= #{roomNum} and check_in = #{checkIn} and check_out=#{checkOut}))
+</insert>
+</mapper>

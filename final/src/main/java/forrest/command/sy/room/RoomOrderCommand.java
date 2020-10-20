@@ -14,6 +14,7 @@ public class RoomOrderCommand {
 	String memId;
 	
 	Integer roomNum;
+	String roomName;
 	
 	String roName;
 	String roPh;
@@ -22,5 +23,7 @@ public class RoomOrderCommand {
 	String checkOut;
 	
 	String roReq;
+	
+	Integer days;
 
 }

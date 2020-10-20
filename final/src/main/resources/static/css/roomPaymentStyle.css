@@ -21,7 +21,6 @@ section{
 .container{
 	width: 80%;
 	margin: 0 auto;
-
 	position: relative;
 
 	}
@@ -44,11 +43,10 @@ h2{
 }
 
 .roomTd{	
-	border-top: 1px solid #000;
-	padding-bottom: 15px;
-	padding-top: 15px;
-	padding-left: 10px;
-	padding-right: 10px;
+	border-bottom: 1px solid #000;
+	padding-bottom: 10px;
+	padding-top: 10px;
+
 }
 
 .opt{

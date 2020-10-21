@@ -34,25 +34,20 @@
 
 		<!--메인콘텐츠 영역-->
 		<section>
-			<form th:action="@{/staypark/roomOrderPro}" method="post" name="frm">
-			<span th:if="${session.authInfo !=null}">
-				<input type="hidden" th:value="${session.authInfo.name}" name="memName" id="memName"/>
-				<input type="hidden" th:value="${session.authInfo.ph}" name="memPh" id="memPh"/>
-				<input type="hidden" th:value="${session.authInfo.id}" name="memId" id="memId"/>
-			</span>
+			
 			<div class="container">
 
 				<table class="roomTable">
 					<tr>
 						<td colspan="5">
-							<h2>객실 주문 완료!</h2>
+							<h2>객실 주문 완료</h2>
 						</td>
 					</tr>
 					<tr>
-						<th class="th"><div>주문번호</div></th><th class="th">객실이름</th><th class="th">숙박일수</th><th class="th">체크인</th>
+						<th class="th">객실이름</th><th class="th">숙박일수</th><th class="th">체크인</th><th class="th">체크아웃</th>
 					</tr>
 					<tr>
-						<td></td><td></td><td></td><td></td>
+						<td class="roomTd">[[${roomName}]]</td><td class="roomTd">[[${days}]]</td><td class="roomTd">[[${checkIn}]]</td><td class="roomTd">[[${checkOut}]]</td>
 					</tr>
 					
 				</table>	
@@ -62,14 +57,14 @@
 
 				<div class="final_btn">
 
-					<input type="submit" class="search" value="예 약 하 기">
+					<a th:href="@{/staypark/main}"><input type="button" class="search" value="메 인 으 로"></a>
 
 				</div>
 
 
 
 			</div>
-			</form>
+			
 		</section>
 
 

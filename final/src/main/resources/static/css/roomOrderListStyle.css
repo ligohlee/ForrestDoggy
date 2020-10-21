@@ -26,6 +26,8 @@ section{
 
 	}
 	
+
+	
 h2{
 	font-size: 30px;
 	font-family: 'Noto Sans KR', sans-serif;
@@ -176,7 +178,7 @@ h4{
 }
 
 #usePoint{
-	display: none;
+	diplay: none;
 	position: relative;
 }
 #usePointBtn{

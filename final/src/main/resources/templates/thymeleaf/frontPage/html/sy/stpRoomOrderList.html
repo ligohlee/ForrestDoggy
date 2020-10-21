@@ -41,7 +41,7 @@
 		
 		if(isNaN(optTotal)){
 			optTotal=0;
-			alert(optTotal);
+			//alert(optTotal);
 		}
 		
 		
@@ -51,7 +51,7 @@
 		
 		if(parseInt(optTotal) != 0){
 			totalPrice=totalPrice+optTotal
-			alert("optTotal이 0이 아닐 때"+totalPrice);
+			//alert("optTotal이 0이 아닐 때"+totalPrice);
 		}
 		
 		
@@ -93,14 +93,16 @@
 	        		pointOut=0;
 	    			$('#usePointBtn').click(function(){
 	    				pointOut = parseInt($('#pointOut').val());
+	    				if(pointOut > nowPoint){
+	    					pointOut = 0;
+	    					alert("사용 가능한 포인트는 "+nowPoint+"점 입니다.");
+	    					$('#pointOut').val(pointOut);    					
+	    				}
 	    				$("#nowPoint").val(nowPoint-pointOut);
 	    				$('#payPoint').html(pointOut);
 	    				$('#payReal').html(totalPrice-pointOut)
 	    				$('#payPrice').val(totalPrice-pointOut);
-	    				var pricezz = parseInt($('#payPrice').val(totalPrice-pointOut));
-	    				var pin = pricezz*0.01;
-	    				$('#pointIn').val(pin);
-	    				$('#payPointIn').html(pin);
+	    				
 	    			});    			
 	    		}	        		            
 	        }else{
@@ -117,6 +119,7 @@
 	        	$('#usePoint').css('display','none');
 	        	
 	        	
+	        	
 	        }
 	    });
 		
@@ -125,10 +128,8 @@
 			$('#payPoint').html(0);
 			$('#payReal').html(totalPrice);
 			$('#payPrice').val(totalPrice);
-			var priceaa = parseInt($('#payPrice').val(totalPrice));
-			var pinnn = priceaa*0.01;
-			$('#pointIn').val(pinnn);
-			$('#payPointIn').html(pinnn);
+			
+			
 		}
 		
 		 
@@ -143,6 +144,11 @@
 				alert('예약자 연락처를 입력해주세요');
 			}else{
 				$('#payPage').css('display','block');
+				var payWay = $('input[type="checkbox"][name="payWay"]:checked').val();
+				$('.payH2').html(payWay+" 결제");
+				var pointIn = totalPrice*0.01;
+				$('#payPointIn').html(pointIn);
+				$('#pointIn').val(pointIn);
 			}
 			
 		});
@@ -169,12 +175,12 @@
 <body>
 
 	<div class="main clearfix" id="main">
-	<form th:action="@{/staypark/roomOrderPro}" method="post" name="frm">
+	<form th:action="@{/staypark/roomOrderPro}" method="post" name="frm" id="formStyle">
 	<div id="payPage">
 					<div id="payBox">
 						<div id="cancle"><input type="button" value="X" id="cancleBtn"/></div>
 						<span id="payOk"></span>
-						<h2 class="payH2">결 제</h2>
+						<h2 class="payH2"></h2>
 						<table id="payTable">
 							<tr><td class="paytd">총 주문금액</td><td class="paytd"><span id="payTotal"></span></td></tr>
 							<tr><td class="paytd">포인트사용</td><td class="paytd"><span id="payPoint"></span></td></tr>
@@ -228,24 +234,32 @@
 					
 					<tr>
 						<td rowspan="2" class="roomTd number borderleft">1</td>
-						<td class="roomTd"><span class="font">[[${room.roomName}]]</span></td>
+						<td class="roomTd"><span class="font">[[${room.roomName}]]</span>
+						
+						<input type="hidden" name="roomNum" th:value="${room.roomNum}"/>
+						<input type="hidden" name="roomName" th:value="${room.roomName}"/></td>
 						<td class="roomTd">[[${room.roomPrice}]]원
 							<input type="hidden" name="roomPrice" th:value="${room.roomPrice}" id="roomPrice"/>
 						</td>
 						<td class="roomTd">[[${rsvInfo.checkIn}]] ~ [[${rsvInfo.checkOut}]]
 							<input type="hidden" name="days" th:value="${days}" id="days"/>
+							<input type="hidden" name="checkIn" th:value="${rsvInfo.checkIn}"/>
+							<input type="hidden" name="checkOut" th:value="${rsvInfo.checkOut}"/>
 						</td>
 						<td class="roomTd">
 						<th:block th:each="optName : ${optName}">
-							<p class="opt">[[${optName}]]</p>														
+							<p class="opt">[[${optName}]]</p>
+							<input type="hidden" name="selName" class="optTotal" th:value="${optName}"/>														
 						</th:block></td>
 						<td class="roomTd borderright">
 						<th:block th:each="selQty : ${selQty}">
-							<p class="opt">[[${selQty}]]</p>														
+							<p class="opt">[[${selQty}]]</p>
+							<input type="hidden" name="selQty" class="optTotal" th:value="${selQty}"/>														
 						</th:block>
 						
 						<th:block th:each="optTotal : ${optTotal}">
 							<input type="hidden" name="optTotal" class="optTotal" th:value="${optTotal}"/>																			
+							<input type="hidden" name="selPrice" class="optTotal" th:value="${optTotal}"/>																			
 						</th:block>
 						</td>						
 					</tr>
@@ -275,12 +289,13 @@
 							<h4>결제 정보</h4>
 							<div class="optBox">
 								<span class="font">결제수단 선택</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								카드결제 <input type="checkbox" name="payWay" value="credit"/>&nbsp;&nbsp;&nbsp;계좌이체 <input type="checkbox" name="payWay" value="cash"/>&nbsp;&nbsp;&nbsp;포인트 <input type="checkbox" name="point" value="point" id="pointCheck"/>
+								카드결제 <input type="checkbox" name="payWay" value="신용카드"/>&nbsp;&nbsp;&nbsp;계좌이체 <input type="checkbox" name="payWay" value="계좌이체"/>&nbsp;&nbsp;&nbsp;포인트 <input type="checkbox" name="point" value="point" id="pointCheck"/>
 								<div class="roInfo">
 								총 결제금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="prePayPrice" class="infoinput" value="" id="prePayPrice" readonly/>원</br>
 								가용 포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointSum" th:value="${point}" class="infoinput" id="nowPoint" readonly/>점
-								<div id="usePoint">포인트 사용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointOut" value="" class="infoinput" id="pointOut" placeholder="0"/>점</br>
+								<div id="usePoint">포인트 사용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointOut" value="0" class="infoinput" id="pointOut" />점</br>
 								<button type="button" id="usePointBtn">사용</button>
+								
 								</div></div>
 								
 							</div>

@@ -6,4 +6,6 @@ public interface RoomOrderMapper {
 
 	void insertRoomOrder(RorderDTO dto);
 
+	void selectRoomOrder(RorderDTO dto);
+
 }

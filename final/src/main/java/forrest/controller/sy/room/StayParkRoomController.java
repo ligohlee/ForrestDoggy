@@ -13,12 +13,16 @@ import forrest.command.sy.PaymentCommand;
 import forrest.command.sy.PointCommand;
 import forrest.command.sy.room.RoomOrderCommand;
 import forrest.command.sy.room.RoomReservationInfoCommand;
+import forrest.command.sy.room.SelectOptionCommand;
 import forrest.service.sy.PaymentService;
 import forrest.service.sy.PointService;
 import forrest.service.sy.room.RoomDetailService;
 import forrest.service.sy.room.RoomListService;
 import forrest.service.sy.room.RoomOptionListService;
+import forrest.service.sy.room.RoomOrderPayService;
+import forrest.service.sy.room.RoomOrderService;
 import forrest.service.sy.room.RoomRsvInfoService;
+import forrest.service.sy.room.SelOptionService;
 
 @Controller
 @RequestMapping("staypark")
@@ -38,6 +42,10 @@ public class StayParkRoomController {
 	PointService pointService;
 	@Autowired
 	RoomOrderService roomOrderService;
+	@Autowired
+	SelOptionService selOptionService;
+	@Autowired
+	RoomOrderPayService roomOrderPayService;
 	
 	@RequestMapping(value = "roomReservation", method = RequestMethod.GET)
 	public String roomReservation() {
@@ -79,10 +87,16 @@ public class StayParkRoomController {
 	}
 	
 	@RequestMapping(value = "roomOrderPro", method = RequestMethod.POST)
-	public String roomOrderPro(PaymentCommand paymentCommand,PointCommand pointCommand, RoomOrderCommand roderCommand, Model model  ) {				
+	public String roomOrderPro(PaymentCommand paymentCommand,PointCommand pointCommand, RoomOrderCommand roderCommand, SelectOptionCommand selCommand, Model model  ) {				
 		paymentService.insertPayment(paymentCommand);
-		pointService.insertPoint(pointCommand);
 		roomOrderService.insertOrder(roderCommand);
+		roomOrderPayService.insertRoomOrderPay(paymentCommand,roderCommand);
+		pointService.insertPoint(pointCommand);	
+		selOptionService.insertSelOpt(selCommand);
+		model.addAttribute("roomName", roderCommand.getRoomName());
+		model.addAttribute("checkIn", roderCommand.getCheckIn());
+		model.addAttribute("checkOut", roderCommand.getCheckIn());
+		model.addAttribute("days", roderCommand.getDays());
 		return "thymeleaf/frontPage/html/sy/stpPaymentOk";
 	}
 	

@@ -15,7 +15,7 @@
 		parameterType="forrest.domain.sy.PaymentDTO">
 		
 		insert into payment(<include refid="basecolumn"/>)
-		values(pay_seq.nextval, sysdate, #{payPrice}, #{payWay})
+		values(pay_seq.nextval, sysdate, #{payPrice}, #{payWay},null)
 
 	</insert>
 

@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="forrest.mapper.sy.PointMapper">
+<mapper namespace="forrest.mapper.sy.room.SelectOptionMapper">
 
 <sql id="basecolumn">
-	MEM_ID,POINT_IN,POINT_OUT,POINT_REGIST,POINT_SUM
+	SEL_NUM,RO_NUM,SEL_NAME,SEL_QTY,SEL_PRICE
 </sql>
 
-<insert id="insertPoint" parameterType="forrest.domain.sy.PointDTO">
-	INSERT INTO point(mem_id, point_in, point_out, point_regist, point_sum)
-    values(#{memId},#{pointIn}, #{pointOut}, sysdate, #{pointSum})
+<insert id="insertSelOpt" parameterType="forrest.domain.sy.room.SelectOptionDTO">
+	INSERT INTO sel_option(<include refid="basecolumn"/>)
+    values(selopt_seq.nextval, (select ro_Num from rorder where ro_regist = (select MAX(ro_regist) from rorder where mem_id=#{memId})),#{selName},#{selQty}, #{selPrice})
 </insert>
 
+<!--  
 <resultMap type="forrest.domain.sy.PointDTO" id="resultmap">		
 	<result column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
 	<result column="POINT_IN" jdbcType="VARCHAR" property="pointIn"/>
@@ -20,12 +21,10 @@
 	<result column="POINT_SUM" jdbcType="VARCHAR" property="pointSum"/>
 </resultMap>
 
-<select id="selectPointSum" resultMap="resultmap" parameterType="string">
-	SELECT point_sum
-    FROM point
-    where point_regist = (select MAX(point_regist) from point where mem_id=#{memId})
-</select>
+<select id="" resultMap="resultmap" parameterType="forrest.domain.sy.rooom.SelectOptionDTO">	
+</select>-->
 
 
 
 </mapper>
+

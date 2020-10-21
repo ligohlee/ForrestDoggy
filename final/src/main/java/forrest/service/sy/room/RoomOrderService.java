@@ -1,4 +1,4 @@
-package forrest.controller.sy.room;
+package forrest.service.sy.room;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -8,6 +8,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import forrest.command.sy.room.RoomOrderCommand;
 import forrest.domain.sy.room.RorderDTO;
@@ -28,6 +29,8 @@ public class RoomOrderService {
 		SimpleDateFormat formmatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date checkIn;
 		Date checkOut;
+		//System.out.println(roderCommand.getCheckIn());
+		//System.out.println(roderCommand.getCheckOut());
 		
 		try {
 			checkIn = formmatter.parse(roderCommand.getCheckIn());
@@ -46,10 +49,11 @@ public class RoomOrderService {
 		dto.setRoomNum(roderCommand.getRoomNum());
 		dto.setRoPh(roderCommand.getRoPh());
 		dto.setRoReq(roderCommand.getRoReq());
-		
+		System.out.println(dto);
 		roomOrderMapper.insertRoomOrder(dto);
 		
 		
 	}
+	
 
 }

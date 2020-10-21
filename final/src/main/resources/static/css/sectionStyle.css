@@ -66,9 +66,16 @@ section{
 
 
 .quickBtn_a{
+	color: #ddd;
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+	
+}
+.quickBtn_a:hover{
 	color: #fff;
 	font-size: 16px;
 	font-family: 'Noto Sans KR', sans-serif;
+	
 }
 
 .scroll-back{

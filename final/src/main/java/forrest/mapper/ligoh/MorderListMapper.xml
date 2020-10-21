@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.ligoh.MorderListMapper">
+  <sql id="menuList">
+     MORD_NUM, MENU_NUM, MORD_TIME, MORD_QTY
+  </sql>
+  <select id="getMenu" resultMap="menuResult">
+    select menu_num
+    from course_list
+    where course_num = #{courseNum}
+  </select>
+  <resultMap type="forrest.domain.ligoh.MenuListDTO" id="menuResult">
+		<result column="MENU_NUM" jdbcType="BIGINT" property="menuNum"/>
+  </resultMap>
+  
+  <insert id="insertMenu">
+    insert into menu_list(<include refid="menuList"/>)
+    values(#{mordNum}, #{menuNum}, null, #{mordQty})
+  </insert>
+ 
+</mapper>

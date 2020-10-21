@@ -50,7 +50,6 @@
 				      <div class="type">
 							<p class="pp">코스 선택</p>
 						<select  name="courseNum" class="choice_box" required>
-							    <option>선택없음</option>
 								<option th:each="list: ${lists}" th:value="${list.courseNum}" th:text="${list.courseName}"></option>
 							</select>
 					  </div>
@@ -60,17 +59,10 @@
 						<div class="type">
 							<p class="pp">인원 선택</p>
 							<select name="mordPeople" class="choice_box" required>
-								<option value="0">선택없음</option>
 								<option value="1">1명</option>
 								<option value="2">2명</option>
-								<option value="4">3명</option>
+								<option value="3">3명</option>
 								<option value="4">4명</option>
-								<option value="6">5명</option>
-								<option value="6">6명</option>
-								<option value="8">7명</option>
-								<option value="8">8명</option>
-								<option value="10">9명</option>
-								<option value="10">10명</option>
 							</select>
 						</div>
 					</div>
@@ -131,18 +123,12 @@
 								<option value="0">선택없음</option>
 								<option value="1">1명</option>
 								<option value="2">2명</option>
-								<option value="4">3명</option>
+								<option value="3">3명</option>
 								<option value="4">4명</option>
-								<option value="6">5명</option>
-								<option value="6">6명</option>
-								<option value="8">7명</option>
-								<option value="8">8명</option>
-								<option value="10">9명</option>
-								<option value="10">10명</option>
 							</select>`
 				
 				aHtml = '<select  name="courseNum" class="choice_box">';
-				aHtml += '<option>선택없음</option>';
+			
 				
 				$(arr).each(function(){
 					aHtml += '<option value="' + $(this)[0].courseNum + '">' + $(this)[0].courseName + '</option>';

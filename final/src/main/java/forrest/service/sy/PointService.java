@@ -16,8 +16,7 @@ public class PointService {
 	PointMapper mapper;
 	public void insertPoint(PointCommand pointCommand) {
 		// TODO Auto-generated method stub
-		PointDTO dto = new PointDTO();
-		
+		PointDTO dto = new PointDTO();		
 		dto.setMemId(pointCommand.getMemId());
 		
 		dto.setPointIn(pointCommand.getPointIn());

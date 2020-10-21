@@ -1,0 +1,91 @@
+section{
+	
+	width: 100%;
+	
+	position: relative;
+
+}
+
+.container{
+	width: 80%;
+	margin: 0 auto;
+	height: 650px;
+	position: relative;
+
+
+	}
+	
+h2{
+	padding-top:110px;
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgb(23, 69, 84);
+}
+.connect{
+	position:absolute;
+	top:220px;
+	right:-10px;
+}
+#roomOrder{
+	width: 100%;
+	padding-top: 285px;
+}
+.orderRoom{
+	width: 370px;
+	margin: 0 auto;
+	font-family: 'Noto Sans KR', sans-serif;
+	margin-bottom: 5px;
+	
+}
+.selectOrder{
+	border: 1px solid #ddd;
+	width: 220px;
+	height: 25px;
+}
+
+#monitor {
+	width: 99.2%;
+	height: 100px;
+	position: absolute;
+	bottom: 250px;
+	left: 0;
+	border: 1px solid #000;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+	overflow: auto;
+	padding-left: 10px;
+}
+#login{
+	
+}
+.buttons{
+	width: 80px;
+	height: 25px;
+	border: 1px solid #ddd;
+	line-height: 1.5;
+}
+
+.btnsBox{
+	width: 370px;
+	margin: 0 auto;
+}
+.complete {
+	text-align: center;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 25px;
+	height: 45px;
+	background-color: rgb(23, 69, 84);
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+}
+.pp{
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #000;
+}

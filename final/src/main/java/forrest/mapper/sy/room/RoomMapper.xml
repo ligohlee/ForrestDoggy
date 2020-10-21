@@ -14,27 +14,37 @@
 
 
 
-<resultMap type="forrest.domain.sy.room.RoomDTO" id="resultmap">
-	<constructor>
-		<idArg column="room_num" javaType="int" />
-		<arg column="room_name" javaType="string"/>
-		<arg column="room_info" javaType="string"/>
-		<arg column="room_price" javaType="int"/>
-		<arg column="room_img" javaType="string"/>
-		<arg column="capacity" javaType="int"/>
-		<arg column="dog_cap" javaType="int"/>
-		<arg column="room_regit" javaType="java.sql.Timestamp"/>	
-	</constructor>
+<resultMap type="forrest.domain.sy.room.RoomDTO" id="resultmap">		
+	<result column="room_num" jdbcType="BIGINT" property="roomNum"/>
+	<result column="room_name" jdbcType="VARCHAR" property="roomName"/>
+	<result column="room_info" jdbcType="VARCHAR" property="roomInfo"/>
+	<result column="room_price" jdbcType="BIGINT" property="roomPrice"/>
+	<result column="room_img" jdbcType="VARCHAR" property="roomImg"/>
+	<result column="capacity" jdbcType="BIGINT" property="capacity"/>
+	<result column="dog_cap" jdbcType="BIGINT" property="dogCap"/>
+	<result column="room_regit" jdbcType="TIMESTAMP" property="roomRegit"/>
 </resultMap>
 
 <select id="selectRoom" resultMap="resultmap" parameterType="forrest.domain.sy.room.RoomDTO">
 	select <include refid="basecolumn"/>
 	from room
-	<where>
-		<if test="roomNum != null">
-			room_num = #{roomNum}
+	<trim prefix="where" prefixOverrides="AND | OR">
+		<if test="roomNum != null">		
+			and room_num = #{roomNum}
 		</if>
-	</where>
+		<if test="capacity !=null">
+			and capacity &gt;= #{capacity}
+						
+		</if>
+		<if test="checkIn !=null">
+			and room_num not in (select room_num from rorder where #{checkIn}
+					between check_in and check_out
+					and #{checkOut} between check_in and check_out)
+		</if>
+	</trim>
+	
+		
+	
 </select>
 
 

@@ -1,0 +1,241 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <head>
+    <meta charset="UTF-8">
+    <title>STP BackOffice</title>
+    <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
+    <!-- Bootstrap Styles-->
+    <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link th:href="@{/static/css/font-awesome.css}" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+   <!--   <link th:href="@{/static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
+    <!-- Custom Styles-->
+    <link th:href="@{/static/css/custom-styles.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/static/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/newSoyoungStyle.css}" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+    	
+    	
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+
+	<div id="wrapper">
+
+    <!-- stp header 인클루드 영역 -->
+	<div th:include="thymeleaf/backOfficePage/html/layout_stayPark/back_stp_header.html"></div>
+    <!-- stp seideNav 인클루드 영역 -->
+	<div th:include="thymeleaf/backOfficePage/html/layout_stayPark/back_stp_sideNav.html"></div>
+
+    <!--페이지래퍼-->
+		<div id="page-wrapper">
+            <div id="page-inner">
+
+            	<!--로그인 전 메인 화면-->
+            	<div class="row">
+                    <div class="col-md-12">
+                        <h1 class="page-header">
+                        	예약정보 상세
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="row">
+					<div class="panel panel-default">
+					    <div class="panel-body" style="padding:100px 0;">
+					    	<style>
+					    		.login-area {
+					    			max-width:300px;
+					    			margin: 0 auto;
+					    			padding:30px 0;
+					    		}
+					    		.submit {
+					    			width: 100%;
+					    		}
+					    		.table{
+					    			width: 80%;
+					    			text-align: center;
+					    			margin: 0 auto;
+					    			margin-bottom: 20px;
+					    		}
+					    		th{
+					    			text-align: center;
+					    			border: 1px solid #ddd;
+
+					    		}
+					    		td{
+					    			font-size: 14px;
+					    			border: 1px solid #ddd;
+					    		}
+					    		.sybtn{
+					    			width: 200px;
+					    			height: 45px;
+					    			border: 0px solid #fff;
+					    			color: #fff;
+					    			background-color: rgb(23,69,84);
+					    			font-family: 'Noto Sans KR', sans-serif;
+					    			font-size: 16px;
+					    			font-weight: 500;
+					    			margin: 5px;
+					    			margin-top:50px;
+					    			
+					    		}
+					    		.sybtn2{
+					    			margin-top:0;
+					    			margin-bottom:50px;
+					    		}
+					    		.sybtn3{
+					    		width: 410px;
+					    			height: 45px;
+					    			border: 0px solid #fff;
+					    			color: #fff;
+					    			background-color: rgb(23,69,84);
+					    			font-family: 'Noto Sans KR', sans-serif;
+					    			font-size: 16px;
+					    			font-weight: 500;
+					    			margin: 5px;
+					    			
+					    			margin-bottom:50px;
+					    		}
+					    		.syinput{
+					    			width: 100%;
+					    			border: 1px solid #999;
+					    		}
+					    		.syarea{
+					    		width: 100%;
+					    		height: 100px;
+					    		border: 1px solid #999;
+					    		}
+					    		.syfile{
+					    		width: 50%;}
+					    		.syopt{
+					    			width: 65%;
+					    			border: 1px solid #999;
+					    			margin-right: 5px;
+					    		}
+					    		.syoptqty{
+					    		margin-bottom: 2px;
+					    		margin-top: 2px;
+					    			width: 50%;
+					    			border: 1px solid #999;				    			
+					    			float: left;
+					    		}
+					    		.optName{ width: 49.9%; text-align: left; float: left; margin-bottom: 2px;
+					    		margin-top: 2px;}
+					    		.smallTitle{
+					    		margin-top: 20px;
+					    		margin-bottom: 20px;
+					    		color: rgb(23,69,84);
+					    		}
+					    		.mini{
+					    			margin:2px;
+					    		}
+					    		.select{
+					    			width: 203px;
+					    			margin-top: 50px;
+					    			margin-bottom: 10px;
+					    		}
+					    		.roomImg{
+					    			width: 280px;
+					    			text-align: center;
+					    			float:left;
+					    			height: 180px;
+					    			overflow: hidden;
+					    			margin: 5px;
+					    		}
+					    		hr{
+					    			border: 2px solid #ddd;
+					    			margin-top: 50px;
+					    			margin-bottom: 50px;
+					    		}
+					    		.imgs{
+					    			width: 600px;
+					    			margin: 0 auto;
+					    			
+					    		}
+					    		.content{
+					    			text-align: left;
+					    			
+					    		}
+					    		.btntd{border: 0px solid #ddd;}
+					    		.rr{ color: red;}
+					    	</style>
+					    	
+					    	<!-- 콘텐츠영역 -->
+					    	
+					    	<table class="table">
+					    			<tr><td colspan="2"><h3 class="smallTitle">예약정보</h3></td></tr>
+					    			<tr><th>객실번호</th><td class="content">[[${orderDetail.roNum}]]</td></tr>
+					    			<tr><th>객실이름</th><td class="content">[[${orderDetail.roName}]]</td></tr>
+					    			<tr><th>체크인</th><td class="content" th:text="${#dates.format(orderDetail.checkIn,'yyyy-MM-dd')}"></td></tr>
+					    			<tr><th>체크인</th><td class="content" th:text="${#dates.format(orderDetail.checkOut,'yyyy-MM-dd')}"></td></tr>
+					    			<tr><th>예약자명</th><td class="content">[[${orderDetail.roName}]]</td></tr>
+					    			<tr><th>예약자연락처</th><td class="content">[[${orderDetail.roPh}]]</td></tr>
+					    			<tr><th>예약자아이디</th><td class="content">[[${orderDetail.memId}]]</td></tr>
+					    			<tr><th>예약일시</th><td class="content">[[${orderDetail.roRegist}]]</td></tr>
+					    			<tr><th class="rr">*요청사항</th><td class="content">[[${orderDetail.roReq}]]</td></tr>
+					    			<tr><td colspan="2"><h3 class="smallTitle">추가옵션</h3></td></tr>					    			
+					    			
+					    			<th:block th:each="dto:${selOptsList}">
+					    				<tr><th>[[${dto.selName}]]</th><td class="content">[[${dto.selQty}]]</td></tr>
+					    			</th:block>
+					    			
+									<tr><td colspan="2" class="btntd"><input type="button" value="예 약 수 정" class="sybtn"/>
+									<input type="button" value="예 약 취 소" class="sybtn sybtn2"/>
+									</td></tr>
+					    	</table>
+ 
+					    
+					    	
+						</div>
+					</div>
+				</div>
+                
+
+
+
+
+			<!-- footer 인클루드 영역 -->
+			<div th:include="thymeleaf/backOfficePage/html/commonLayout/backFooter.html"></div>
+
+
+
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+
+
+
+       
+
+      <!-- JS Scripts-->
+        <!-- Bootstrap Js -->
+        <script th:src="@{/static/js/bootstrap.min.js}"></script>
+
+        <!-- Metis Menu Js -->
+        <script th:src="@{/static/js/jquery.metisMenu.js}"></script>
+        <!-- Morris Chart Js -->
+        <script th:src="@{/static/js/morris/raphael-2.1.0.min.js}"></script>
+        <script th:src="@{/static/js/morris/morris.js}"></script>
+
+
+      <script th:src="@{/static/js/easypiechart.js}"></script>
+      <script th:src="@{/static/js/easypiechart-data.js}"></script>
+
+       <script th:src="@{/static/js/Lightweight-Chart/jquery.chart.js}"></script>
+
+        <!-- Custom Js -->
+        <script th:src="@{/static/js/custom-scripts.js}"></script>
+  </body>
+</html>

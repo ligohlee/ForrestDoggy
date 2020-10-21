@@ -1,8 +1,11 @@
 package forrest.service.sy.room;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import forrest.command.sy.room.SelectOptionCommand;
 import forrest.domain.sy.room.SelectOptionDTO;
@@ -33,11 +36,16 @@ public class SelOptionService {
 			}
 			
 			
-			
 		}
 		
 		
 		
+	}
+
+	public void selectSelOpt(Model model, int roNum) {
+		// TODO Auto-generated method stub
+		List<SelectOptionDTO> selList = mapper.selectOptions(roNum);
+		model.addAttribute("selOptsList", selList);
 	}
 
 }

@@ -20,6 +20,8 @@ public class RorderDTO {
 	Timestamp checkIn;
 	Timestamp checkOut;
 	String roReq;
+	
+	String roomName;
 
 	
 }

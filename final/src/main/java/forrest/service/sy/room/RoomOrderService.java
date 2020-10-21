@@ -4,12 +4,16 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import forrest.command.AuthInfo;
 import forrest.command.sy.room.RoomOrderCommand;
 import forrest.domain.sy.room.RorderDTO;
 import forrest.mapper.sy.room.RoomOrderMapper;
@@ -52,6 +56,36 @@ public class RoomOrderService {
 		System.out.println(dto);
 		roomOrderMapper.insertRoomOrder(dto);
 		
+		
+	}
+	
+	public void selectList(Model model, int roNum) {
+		// TODO Auto-generated method stub
+		RorderDTO dto = new RorderDTO();
+		
+		
+		dto.setRoNum(roNum);
+		
+		
+		List<RorderDTO> rorderList = roomOrderMapper.selectList(dto);
+		model.addAttribute("orderList", rorderList);
+		
+		if(rorderList.get(0).getMemId() == null) {
+			rorderList.get(0).setMemId("비회원예약");
+		}
+		
+		model.addAttribute("orderDetail", rorderList.get(0));
+	}
+
+	public void selectMyRsv(Model model, HttpSession session) {
+		// TODO Auto-generated method stub
+		
+		RorderDTO dto = new RorderDTO();
+		AuthInfo info = (AuthInfo)session.getAttribute("authInfo");
+		dto.setMemId(info.getId());
+		
+		List<RorderDTO> myList = roomOrderMapper.selectList(dto);
+		model.addAttribute("myList", myList);
 		
 	}
 	

@@ -22,5 +22,8 @@ public class RoomDTO {
 	Integer dogCap;
 	Timestamp roomRegit;
 	
+	Timestamp checkIn;
+	Timestamp checkOut;
+	
 
 }

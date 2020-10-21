@@ -84,6 +84,7 @@
 		
 		
 		$("#pointCheck").change(function(){
+			
 	        if($("#pointCheck").is(":checked")){
 	        	
 	        	$('#usePoint').css('display','block');
@@ -92,6 +93,7 @@
 	        	if(isNaN(pointOut)){
 	        		pointOut=0;
 	    			$('#usePointBtn').click(function(){
+	    				alert("되냐?")
 	    				pointOut = parseInt($('#pointOut').val());
 	    				if(pointOut > nowPoint){
 	    					pointOut = 0;
@@ -117,9 +119,8 @@
 	        	$("#nowPoint").val(nowPoint+pointOut);
 	        	$('#pointOut').val(0);
 	        	$('#usePoint').css('display','none');
-	        	
-	        	
-	        	
+       	
+	        
 	        }
 	    });
 		

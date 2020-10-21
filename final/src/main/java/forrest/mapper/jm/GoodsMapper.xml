@@ -65,6 +65,35 @@
 		where pt_num = #{ptNum}
 	</select>
 	
+	<select id="getGoodsCategoryList" resultMap="baseGoods">
+		select rn, <include refid="basecolumn" />
+		from (select rownum rn, <include refid="basecolumn" />
+			 from ( select 
+						<include refid="basecolumn" />
+					from GOODS
+					<trim prefix="where" prefixOverrides="AND | OR">
+						<if test="num == 1">
+							and GOODS_CATEGORY in ('사료','간식')
+						</if>
+						<if test="num == 2">
+							and GOODS_CATEGORY in ('영양제','케어')
+						</if>
+						<if test="num == 3">
+							and GOODS_CATEGORY in ('목욕','미용')
+						</if>
+						<if test="num == 4">
+							and GOODS_CATEGORY in ('패션','줄','이름')
+						</if>
+						<if test="num == 5">
+							and GOODS_CATEGORY in ('식기','집','이동장')
+						</if>
+						<if test="num == 6">
+							and GOODS_CATEGORY in ('위생','훈련','장난감')
+						</if>
+					</trim>
+					order by goods_NUM desc))
+		where rn &gt;= #{startPage} and rn &lt;= #{endPage}
+	</select> 
 
 
 

@@ -1,0 +1,263 @@
+/* shpo.css는 제품 스타일을 정의합니다. */
+
+#content.goods{padding:0 0 120px;}
+
+/* 리스트 */
+.card-list:not(.slider){overflow:hidden;}
+.card-list{max-width:1140px; margin:0 auto;}
+/* .sub .card-list{padding-top:30px; padding-bottom:30px; margin-bottom:40px;} */
+.card-list{padding-top:30px; padding-bottom:30px; margin-bottom:40px;}
+.card-list .item{position:relative;}
+.card-list .item .thumb .sort{position:absolute; left:0; bottom:0; font-size:0; line-height:0;}
+.card-list .item .thumb .sort span{display:inline-block; vertical-align:top; width:25px; height:25px;}
+.card-list .item .thumb .sort .new{background:#ff4701 url("/static/img/dpgMall/common/sort_new.png") 50% 50% no-repeat;}
+.card-list .item .thumb .sort .best{background:#5b1eaa url("/static/img/dpgMall/common/sort_best.png") 50% 50% no-repeat;}
+.card-list .item .thumb .sort .sale{background:#39b5b7 url("/static/img/dpgMall/common/sort_sale.png") 50% 50% no-repeat;}
+.card-list .item .thumb .over .soldout,
+.card-list .item .thumb .over .btn_out{font-family:"Nanum Barun Gothic"; font-size:13px; font-weight:400; line-height:48px; color:#fff; letter-spacing:0;}
+.card-list .item .thumb .over{position:absolute; left:0; bottom:0; width:100%; padding:6px 0; background:rgba(255, 255, 255, .7); font-size:0; line-height:0; text-align:center; -webkit-transition:all 0.2s ease; transition:all 0.2s ease; -webkit-transform:translate(0, 60px); transform:translate(0, 60px);}
+.card-list .item .thumb .over a{position:relative; display:inline-block; vertical-align:top; margin-left:12px; width:48px; height:48px; border:1px solid #ccc; background-color:#ccc; border-radius:50%; -webkit-transition:all .2s ease; transition:all .2s ease; box-sizing:border-box;}
+.card-list .item .thumb .over a:first-child{margin-left:0;}
+.card-list .item .thumb .over a:hover{background-color:#111; border-color:#111;}
+.card-list .item .thumb .over a.active,
+.card-list .item .thumb .over a.activ:hover{background-color:#5b1eaa; border-color:#5b1eaa;}
+.card-list .item .thumb .over a:after{background-repeat:no-repeat;}
+.card-list .item .thumb .over .cart:after{content:''; position:absolute; left:50%; top:50%; margin-left:-11px; margin-top:-11px; display:block; width:22px; height:22px; background-image:url("/static/image/renewal2019/shop/icon_cart.png"); background-size:22px auto;}
+.card-list .item .thumb .over .wish:after{content:''; position:absolute; left:50%; top:50%; margin-left:-11px; margin-top:-10px; display:block; width:22px; height:20px; background-image:url("/static/image/renewal2019/shop/icon_wish.png"); background-size:22px auto;}
+.card-list .item .thumb .over .zoom:after{content:''; position:absolute; left:50%; top:50%; margin-left:-11px; margin-top:-11px; display:block; width:22px; height:22px; background-image:url("/static/image/renewal2019/shop/icon_zoom.png"); background-size:22px auto;}
+.card-list .item .thumb .over .preview:after{content:''; position:absolute; left:50%; top:50%; margin-left:-11px; margin-top:-11px; display:block; width:22px; height:22px; background-image:url("/static/image/renewal2019/shop/icon_zoom.png"); background-size:22px auto;}
+.card-list .item .thumb .over .payment:after{content:''; position:absolute; left:50%; top:50%; margin-left:-11px; margin-top:-9px; display:block; width:22px; height:18px; background-image:url("/static/image/renewal2019/shop/icon_payment.png"); background-size:22px auto;}
+.card-list .item .thumb:hover .over{-webkit-transform:translate(0, 0); transform:translate(0, 0);}
+.card-list .item .thumb + .info ul .tit{position:relative; margin-bottom:8px; min-height:24px;}
+.card-list .item .thumb + .info ul .tit:before{content:''; position:absolute; left:0; bottom:4px; display:block; width:100%; height:1px; background-color:#000; opacity:0;}
+.card-list .item .thumb:hover + .info ul .tit:before{opacity:1;}
+.card-list .item .thumb + .info ul .tit span{position:absolute; left:calc(100% + 5px); top:0; font-family:"campton"; font-weight:100; color:#aaa; letter-spacing:0; white-space: nowrap;}
+.card-list .item .ea {min-width:55px; font-family:"campton"; font-size:13px; color:#111; letter-spacing:0;}
+.card-list .item .ea p{font-family:"campton"; color:#111; letter-spacing:0;}
+.card-list .item .ea .select{margin-left:-5px; padding-left:5px; padding-right:16px; background:url("/static/image/renewal2019/main/card_arr_01.png") 100% 45% no-repeat; font-family:"campton"; font-size: 12px; color:#111; border:0; -webkit-appearance:none; -moz-appearance:none; appearance:none; cursor:pointer;}
+.card-list .item .ea .select::-ms-expand{display:none;}
+.card-list .item .ea .select-group > p{padding-right:16px; background:url("/static/image/renewal2019/main/card_arr_01.png") 100% 45% no-repeat; cursor:pointer;}
+.card-list .item .ea .select-group .input{display:none;}
+.card-list .item .ea .select-group .input-value{display:none;}
+.card-list .item .ea .select-group .dropdown{display:none; position:absolute; left:-15px; top:24px; width:100px; background:#fff; border:1px solid #ececec; text-align:left; box-sizing:border-box;}
+.card-list .item .ea .select-group .dropdown li{padding:0 15px; font-size:12px; font-weight:300; line-height:26px; color:#333; -webkit-transition:all .2s ease; transition:all .2s ease; cursor:pointer;}
+.card-list .item .ea .select-group .dropdown li:hover{background:#eee;}
+.card-list .item .ea .select-group .dropdown li span{}
+.card-list .item .selected{z-index:10; position:absolute; left:0; top:0;}
+.card-list .item .selected .checkbox{display:none;}
+.card-list .item .selected .checkbox + label{display:block; width:30px; height:30px; border:1px solid #ddd; background-color:#fff; font-size:0; line-height:0; cursor:pointer; box-sizing:border-box;}
+.card-list .item .selected .checkbox:checked + label{border:1px solid #5b1eaa; background:#fff url("/static/img/dogMall/common/icon_checked.png") 50% 50% no-repeat;}
+
+.card-list.type1 > ul{*zoom:1; display:block; margin:-60px -10.5px 0;}
+.card-list.type1 > ul:after{content:''; display:block; clear:both;}
+.card-list.type1 .item.none{display:none;}
+.card-list.type1 .item{float:left; width:33.333%; padding:60px 10.5px 0; text-align:center; box-sizing:border-box;}
+.card-list.type1 .item:nth-child(3n+1){clear:left;}
+.card-list.type1 .item .thumb{position:relative; overflow:hidden;}
+.card-list.type1 .item .thumb .img a{position:relative; display:block; height:280px;}
+.card-list.type1 .item .thumb .img .pos{position:absolute; left:0; top:0; right:0; bottom:0;}
+.card-list.type1 .item .thumb .img .cell{position:relative; height:280px;}
+.card-list.type1 .item .thumb .img .cell img{width:280px; height:280px; position:relative; top:50%; margin-top:-140px;}
+.card-list.type1 .item .info{margin-top:15px;}
+.card-list.type1 .item .info > ul{*zoom:1;}
+.card-list.type1 .item .info > ul:after{content:''; display:block; clear:both;}
+.card-list.type1 .item .info > ul > li{position:relative; float:left; margin-left:30px; line-height:24px;}
+.card-list.type1 .item .info > ul > li:first-child{margin-left:0;}
+.card-list.type1 .item .info > ul > li:after{content:''; position:absolute; left:-15px; top:7px; display:block; width:1px; height:10px; background:#ddd;}
+.card-list.type1 .item .info > ul > li:first-child:after{display:none;}
+.card-list.type1 .item .info > ul > .tit{font-family:"Nanum Barun Gothic"; font-size: 13px; color:#000;}
+.card-list.type1 .item .info > ul > .tit a{color:#000;}
+.card-list.type1 .item .info > ul > .price{font-family:"Nanum Barun Gothic"; font-size:13px; color:#5b1eaa;}
+
+.card-list.type2 > ul{*zoom:1; display:block; margin:-60px -10px 0;}
+.card-list.type2 > ul:after{content:''; display:block; clear:both;}
+.card-list.type2 .item{float:left; width:25%; padding:60px 10px 0; text-align:center; box-sizing:border-box;}
+.card-list.type2 .item:nth-child(4n+1){clear:left;}
+.card-list.type2 .item .thumb{position:relative; overflow:hidden;}
+.card-list.type2 .item .thumb .img a{position:relative; display:block; height:270px;}
+.card-list.type2 .item .thumb .img .pos{position:absolute; left:0; top:0; right:0; bottom:0;}
+.card-list.type2 .item .thumb .img .cell{position:relative;}
+.card-list.type2 .item .thumb .img .cell img{max-width:100%; max-height:270px;}
+.card-list.type2 .item .info{margin-top:15px; text-align:left;}
+.card-list.type2 .item .info > ul{*zoom:1; display:block;}
+.card-list.type2 .item .info > ul:after{content:''; display:block; clear:both;}
+.card-list.type2 .item .info > ul > li{position:relative; float:left; margin-left:30px; font-family:"Nanum Barun Gothic"; font-size: 13px; line-height:24px; color:#000;}
+.card-list.type2 .item .info > ul > li:first-child{margin-left:0;}
+.card-list.type2 .item .info > ul > li:after{content:''; position:absolute; left:-15px; top:6px; display:block; width:1px; height:10px; background:#ddd;}
+.card-list.type2 .item .info > ul > li:first-child:after{display:none;}
+.card-list.type2 .item .info > ul > .tit a{color:#000;}
+.card-list.type2 .item .info > ul > .price{clear:left; margin-left:0; font-family:"Nanum Barun Gothic"; font-size:13px; color:#111;}
+.card-list.type2 .item .info > ul > .price:after{display:none;}
+.card-list.type2 .item .info > ul > .price .parsent{margin-left:5px; color:#5b1eaa;}
+.card-list.type2 .item .info ul .spec{margin-left:0; margin-top:-8px; margin-bottom:8px; width:100%;}
+.card-list.type2 .item .info ul .spec:after{display:none;}
+.card-list.type2 .item .info ul .spec span{position:relative; display:inline-block; vertical-align:top; margin-left:21px; font-family:"Nanum Barun Gothic"; font-size:12px; line-height:24px; color:#999;}
+.card-list.type2 .item .info ul .spec span:after{content:''; position:absolute; left:-11px; top:7px; display:block; width:1px; height:10px; background:#ddd;}
+.card-list.type2 .item .info ul .spec span:first-of-type{margin-left:0;}
+.card-list.type2 .item .info ul .spec span:first-of-type:after{display:none;}
+.card-list.type2 .item .info .category{display:block; font-family:"Nanum Barun Gothic"; font-size:12px; line-height:24px; color:#999;}
+
+.card-list.type2.col-3 > ul{margin:-60px -10.5px 0;}
+.card-list.type2.col-3 .item{width:387px; padding:60px 10.5px 0;}
+.card-list.type2.col-3 .item:nth-child(4n+1){clear:none;}
+.card-list.type2.col-3 .item:nth-child(3n+1){clear:left;}
+.card-list.type2.col-3 .item .thumb .img a{height:366px;}
+
+.card-list.type2.col-3.mcard .item .thumb .img a{height:508px;}
+
+.card-list.type2.col-5 > ul{margin:-60px -9px 0;}
+.card-list.type2.col-5 .item{width:20%; padding:60px 9px 0;}
+.card-list.type2.col-5 .item:nth-child(4n+1){clear:none;}
+.card-list.type2.col-5 .item:nth-child(5n+1){clear:left;}
+.card-list.type2.col-5 .item .thumb .img a{height:214px;}
+
+.card-list.zzim,
+.card-list.sample{border-top:1px solid #eee; border-bottom:1px solid #eee;}
+
+/* 식전영상 리스트 */
+.card-list.type2.movie-list .item{width:50%;}
+.card-list.type2.movie-list .item .thumb .img a{height:316px;}
+.card-list.type2.movie-list .item:nth-child(4n+1){clear:none;}
+.card-list.type2.movie-list .item:nth-child(2n+1){clear:left;}
+
+/* 리스트 상단 */
+.tab_area{padding-top:0; margin-top:30px; position:relative; z-index:10;}
+.tab_area:afteR{content:''; display:block; clear:both;}
+.tab_area .tabarea_{overflow:visible;}
+.tab_area .tabarea_:after{content:''; display:block; clear:both;}
+.tab_area .goods_order{padding-bottom:8px;}
+.tab_area .goods_order li{position:relative; float:left; text-align:center;}
+.tab_area .goods_order li:first-child{margin-left:-20px;}
+.tab_area .goods_order li:after{content:''; position:absolute; left:0; top:50%; margin-top:-5px; display:block; width:1px; height:10px; background:#e4e4e4;}
+.tab_area .goods_order li:first-child:after{display:none;}
+.tab_area .goods_order li a{position:relative; display:block; width:auto; height:auto; padding:0 20px; font-family:"Nanum Barun Gothic"; font-size:13px; font-weight:500; line-height:30px; color:#111;}
+.tab_area .goods_order li a:hover, 
+.tab_area .goods_order li a.on{color:#5b1eaa; border-bottom:0;}
+.tab_area .goods_order li a.on:before{content:''; position:absolute; left:50%; bottom:-7px; margin-left:-2.5px; display:block; width:4px; height:4px; background-color:#5b1eaa; border:1px solid #5b1eaa; border-radius: 50%;}
+
+.tab_area .tabarea_ .right .select{display:block; float:left; margin-left:5px; width:100px; height:34px; padding:7px 20px 5px 10px; background:url("/static/image/renewal2019/common/select_arr.png") right 10px center no-repeat; font-family:"Nanum Barun Gothic"; font-size:12px; color:#111; border:1px solid #dcdcdc; box-sizing:border-box; -webkit-appearance:none; appearance:none;}
+.tab_area .tabarea_ .right .select::-ms-expand{display:none;}
+.tab_area .tabarea_ .right .detail-search{position:relative; display:block; float:left; width:84px; height:34px; padding:0 0 0 26px; font-family:"Nanum Barun Gothic"; font-size:12px; line-height: 34px; color:#111; border:1px solid #dcdcdc; box-sizing:border-box;}
+.tab_area .tabarea_ .right .detail-search:after{content:''; position:absolute; left:10px; top:11px; display:block; width:11px; height:11px; background:url("/static/image/renewal2019/shop/detail_search.png") 0 0 no-repeat;}
+.tab_area .tabarea_ .right .grid-btn.first{margin-right:0; padding-right:0;}
+.tab_area .tabarea_ .right .grid-btn.first:after{display:none;}
+.tab_area .tabarea_ .right .grid-btn{position:relative; display:block; float:left; margin-right:20px; padding-right:12px; font-size:0; line-height:0;}
+.tab_area .tabarea_ .right .grid-btn:after{content:''; position:absolute; right:0; top:50%; margin-top:-5px; display:block; width:1px; height:10px; background:#ddd;}
+.tab_area .tabarea_ .right .grid-btn a,
+.tab_area .tabarea_ .right .grid-btn label{position:relative; display:inline-block; vertical-align:top; position:relative; width:17px; height:18px; padding:8px;}
+.tab_area .tabarea_ .right .grid-btn .radio{display:none;}
+.tab_area .tabarea_ .right .grid-btn .grid-4:after{content:''; position:absolute; left:50%; top:50%; margin-left:-8.5px; margin-top:-8.5px; display:block; width:17px; height:17px; background:url("/static/image/renewal2019/shop/grid_4.png") 0 0 no-repeat;}
+.tab_area .tabarea_ .right .grid-btn .grid-3:after{content:''; position:absolute; left:50%; top:50%; margin-left:-8.5px; margin-top:-8.5px; display:block; width:17px; height:17px; background:url("/static/image/renewal2019/shop/grid_3.png") 0 0 no-repeat;}
+.tab_area .tabarea_ .right .grid-btn .grid-4.active:after{background:url("/static/image/renewal2019/shop/grid_4_on.png") 0 0 no-repeat;}
+.tab_area .tabarea_ .right .grid-btn .grid-3.active:after{background:url("/static/image/renewal2019/shop/grid_3_on.png") 0 0 no-repeat;}
+.tab_area .tabarea_ .right .grid-btn .radio:checked + .grid-4:after{background:url("/static/image/renewal2019/shop/grid_4_on.png") 0 0 no-repeat;}
+.tab_area .tabarea_ .right .grid-btn .radio:checked + .grid-3:after{background:url("/static/image/renewal2019/shop/grid_3_on.png") 0 0 no-repeat;}
+.sp_cate_b{border-top:0;}
+
+/* 제품 상세 */
+#view-info {letter-spacing:-0.025em;}
+#view-info .mcard-area{width:640px; height:860px; padding:127.5px 160px;}
+#view-info .img-area{width:640px;}
+.view-head{margin:0 auto 40px;}
+.view-row{margin-top:50px;}
+.view-row:first-of-type{margin-top:0;}
+.view-tit{padding:0 0 20px; font-family:"Noto Sans KR"; font-size:22px; font-weight:500; line-height:1; color:#111; border-bottom:1px solid #111; letter-spacing:-0.025em;}
+.view-tit-02{margin-bottom:20px; font-family:"Noto Sans KR"; font-size:18px; font-weight:400; line-height:1; color:#111; letter-spacing:-0.025em;}
+.view-tit-02 span{display:inline-block; vertical-align:bottom; margin-left:5px; font-family:inherit; font-size:13px; font-weight:300; color:#666;}
+.view-summary .v-table .pb6 th,
+.view-summary .v-table .pb6 td{padding-bottom:6px;}
+.view-summary .v-table .pb16 th,
+.view-summary .v-table .pb16 td{padding-bottom:16px;}
+.view-summary .v-table .vam th,
+.view-summary .v-table .vam td{vertical-align:middle;}
+
+.view-summary{float:right; width:450px; letter-spacing:-0.025em;}
+.view-summary .head{position:relative; padding-bottom:12px; margin-bottom:25px; border-bottom:1px solid #222;}
+.view-summary .head .tit{margin-right:95px; font-family:"Noto Sans KR"; font-size:28px; font-weight:bold; line-height:40px; color:#222;}
+.view-summary .head .right{position:absolute; right:0; top:0; height:40px;}
+.view-summary .head .right > div{position:relative; display:inline-block; vertical-align:top; margin:5px 0; margin-left:21px; padding-left:21px;}
+.view-summary .head .right > div:after{content:''; position:absolute; left:0; top:8px; display:block; width:1px; height:15px; background:#e4e4e4;}
+.view-summary .head .right > div:first-child{margin-left:0; padding-left:0;}
+.view-summary .head .right > div:first-child:after{display:none;}
+.view-summary .head .box-share{position:relative;}
+.view-summary .head .wish{position:relative;}
+.view-summary .head .wish .icon{position:relative; display:block; width:22px; height:30px; font-size:0; line-height:0;}
+.view-summary .head .wish .icon:after{content:''; position:absolute; left:0; top:50%; margin-top:-10px; display:block; width:21px; height:19px; background:url("/image/renewal2019/shop/icon_wish_view_black.png") 0 0 no-repeat;}
+.view-summary .con .row{padding:25px 0; border-bottom:1px solid #ededed;}
+.view-summary .con .row:first-child{padding-top:0;}
+.view-summary .con .row:last-child{padding-bottom:0; border-bottom:0;}
+.view-summary .con .url{margin-bottom:20px; font-family:"Noto Sans KR"; font-size:20px; font-weight:400; line-height:1; color:#111;}
+.view-summary .con .url .cmp{position:relative; top:2px;}
+.view-summary .con .txt{font-family:"Nanum Barun Gothic"; font-size:13px; font-weight:400; line-height:22px; color:#111;}
+.view-summary .con .txt span{font-family:inherit;}
+.view-summary .v-table{margin:-2px 0;}
+.view-summary .v-table table{width:100%; border-collapse:collapse;}
+.view-summary .v-table table th{padding:2px 0; font-family:"campton", "Nanum Barun Gothic"; font-size:13px; font-weight:400; line-height:22px; color:#999; text-align:left;}
+.view-summary .v-table table td{padding:2px 0; font-family:"campton", "Nanum Barun Gothic"; font-size:13px; font-weight:400; line-height:22px; color:#111; text-align:left;}
+.view-summary .v-table p{font-family:inherit;}
+.view-summary .v-table .price{display:inline-block; vertical-align:top; font-family:"Noto Sans KR"; font-size:15px; font-weight:400; line-height:22px; color:#222;}
+.view-summary .v-table .price strong{display:inline-block; vertical-align:top; position:relative; top:3px; font-family:"campton"; font-size:18px; font-weight:bold;}
+.view-summary .v-table .parsent{display:inline-block; vertical-align:top; margin-left:6px; margin-top:3px; font-size:18px; font-weight:400; color:#5b1eaa;}
+.view-summary .v-table .cdbt{float:right; border-bottom:2px solid #e2e2e2; font-family:"Noto Sans KR"; font-size:12px; font-weight:400; line-height:22px; color:#777;}
+.view-summary .v-table .p-code{font-family:"campton"; font-weight:bold;}
+.view-summary .v-table .p1{margin-top:22px;}
+.view-summary .v-table .ex{margin-top:22px;color:#666;}
+.view-summary .v-table .tr_select th{padding:7px 0;}
+.view-summary .v-table .star{height:22px; margin-right:11px;}
+.view-summary .v-table .inorder_txt{font-family:"Noto Sans KR"; box-sizing:border-box;}
+.view-summary .v-review-btn{position:relative; display:inline-block; vertical-align:top; font-family:"Noto Sans KR"; font-size:12px; font-weight:300; line-height:22px; color:#777;}
+.view-summary .v-review-btn:after{content:''; position:absolute; left:0; bottom:1px; display:block; width:100%; height:1px; background:#bbb;}
+.view-summary .v-review-btn .cmp{display:inline-block; vertical-align:top; margin-top:4px; line-height:18px;}
+.view-summary .v-button{margin-top:35px; margin-bottom:5px;}
+.view-summary .v-button + .v-button{margin-top:10px;}
+.view-summary .v-button:after{content:''; display:block; clear:both;}
+.view-summary .v-button .btn{display:block; width:100%; height:50px; border:1px solid #d4d4d4; font-family:"Noto Sans KR"; font-size:14px; font-weight:500; line-height:48px; color:#111; text-align:center; transition:.3s ease; box-sizing:border-box;}
+.view-summary .v-button.col-2 .btn{float:left; width:50%;}
+.view-summary .v-button .btn01{background:#fff;}
+.view-summary .v-button .btn02{border-color:#5b1eaa; background:#5b1eaa; box-shadow:8px 10px 12px rgba(0, 0, 0, .15); color:#fff;}
+.view-summary .v-button .btn03{border-color:#111; background:#111; box-shadow:8px 10px 12px rgba(0, 0, 0, .15); color:#fff;}
+.view-summary .v-button .btn:hover{box-shadow:0 0 0 rgba(0, 0, 0, .25);}
+.view-summary .v-TextBanner{margin-top:30px;}
+.view-summary .v-TextBanner a{position:relative; display:block; width:100%; height:52px; padding:0 50px 0 20px; background:#f8f8f8; border:1px solid #e4e4e4; font-family:"Noto Sans KR"; font-size:13px; font-weight:300; line-height:50px; color:#111; box-sizing:border-box;}
+.view-summary .v-TextBanner a:after{content:'>'; position:absolute; top:50%; right:20px; margin-top:-7px; display:block; font-family:"Noto Sans KR"; font-size:13px; font-weight:300; line-height:1; color:#111;}
+.view-summary .v-soldout{margin-top:35px; margin-bottom:5px; padding:16px 0; background:#666; text-align:center;}
+.view-summary .v-soldout .p1{font-family:"Noto Sans KR"; font-size:14px; font-weight:300; line-height:24px; color:#fff; letter-spacing:0;}
+.view-summary .v-soldout .p1 span{font-family:inherit; font-size:12px;}
+
+.schedule-btn{position:relative; display:inline-block; vertical-align:top; height:30px; padding:0 37px 0 7px; font-family:"Nanum Barun Gothic"; font-size:12px; font-weight:400; line-height:32px; color:#111 !important; border:1px solid #dadada; border-radius:3px; cursor:pointer;}
+.schedule-btn:after{content:''; position:absolute; top:8px; right:7px; display:block; width:15px; height:15px;}
+.schedule-btn.btn01:after{background:url("/image/renewal2019/shop/schedule_btn_01.png") 0 0 no-repeat;}
+.schedule-btn.btn02{color:#5b1eaa !important;}
+.schedule-btn.btn02:after{background:url("/image/renewal2019/shop/schedule_btn_02.png") 0 0 no-repeat;}
+
+.img-area{position:relative; float:left; width:580px; box-sizing:border-box; overflow:hidden; text-align: center; background:#F7F7F7;}
+.img-area img{max-height:400px;}
+.img-area #divDetBig{display:block;}
+.img-area #divDetBig ul{display:block;}
+.img-area #divDetBig .big-list{display:none;}
+.img-area #divDetBig .active{display:block;}
+.img-area .video-wrap{min-height:360px; background:#000;}
+.img-area .video-wrap iframe{z-index:0;}
+.img-area .thumb-img-list{padding-top:10px; overflow:hidden;}
+.img-area .thumb-img-list ul{display:block; margin:-10px -5px 0;}
+.img-area .thumb-img-list ul:after{content:''; display:block; clear:both;}
+.img-area .thumb-img-list li{position:relative; float:left; width:20%; padding:10px 5px 0; box-sizing:border-box;}
+.img-area .thumb-img-list li:nth-child(n+6){display:none;}
+.img-area .thumb-img-list .thumb{position:relative; width:100%; cursor:pointer;}
+.img-area .thumb-img-list .thumb:after{content:''; position:absolute; left:0; top:0; right:0; bottom:0; display:none; border:2px solid #111;}
+.img-area .thumb-img-list li.active .thumb:after{display:block;}
+.img-area .thumb-img-list .movie:before{content:''; position:absolute; left:50%; top:50%; margin-left:-13px; margin-top:-13px; display:block; width:26px; height:26px; background:url("/image/renewal2019/common/icon_movie.png") 0 0 no-repeat;}
+
+.preview-wrap .img-area img{display:none;}
+.preview-wrap .img-area #divDetBig{width:100%; height:386px; background-position:50% 50%; background-repeat:no-repeat; background-size:cover;}
+.preview-wrap .img-area #divDetBig .big-list{height:386px; background-position:50% 50%; background-repeat:no-repeat; background-size:cover;}
+.preview-wrap .img-area #divDetBig .video-wrap{min-height:386px;}
+.preview-wrap .img-area .thumb-img-list .thumb{height:72px; background-position:50% 50%; background-repeat:no-repeat; background-size:cover;}
+
+.inorder_txt {font-family:"Nanum Barun Gothic"; padding:0 10px; height:34px;  border:1px solid #e0e0e0; text-align:left; box-sizing:content-box;}
+
+.qty-wrap{font-size:0;}
+.qty-wrap .inorder_txt{padding-top:2px; text-align:center; box-sizing:border-box;}
+.qty-wrap .btn{display:inline-block; vertical-align:top; width:35px; height:34px; border:1px solid #e0e0e0; font-family:"Nanum Barun Gothic"; font-size:13px; font-weight:400; line-height:33px; text-align:center; color:#111; box-sizing:border-box;}
+.qty-wrap .plus{margin-left:-1px;}
+.qty-wrap .minus{margin-right:-1px;}

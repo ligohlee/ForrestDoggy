@@ -9,6 +9,9 @@
 <link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
 <link rel="stylesheet" th:href="@{/static/css/sectionStyle.css}">
 <link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/layout.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/shop.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/reset.css}">
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
@@ -28,7 +31,7 @@
 		<!-- header인클루드 영역 -->
 		<header>
 			<div
-				th:include="thymeleaf/frontPage/html/commonLayout/header_stayPark.html"></div>
+				th:include="thymeleaf/frontPage/html/commonLayout/header_dogMall.html"></div>
 		</header>
 
 		<!--메인콘텐츠 영역-->
@@ -166,12 +169,12 @@
 			</style>
 			
 			<div class="order">
-				<form action="orderWrite.od" name="frm" method="post">
+				<form action="/dgm/orderWrite" name="frm" method="post">
 					<div class="section_order_mticket">
 						<h3>주문서작성</h3>
 						<div class="order_step">
 							<ol class="list">
-								<li class="step1"><strong>01. 장바구니</strong></li>
+								<li class="step1"><strong>01. 상품선택</strong></li>
 								<li class="step2 active">02. 주문서작성</li>
 								<li class="step3">03. 주문완료</li>
 							</ol>
@@ -193,27 +196,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<c:forEach items="${ goodsList }" var="gList" varStatus="cnt">
+                                	<c:forEach items="${ goodsList }" var="list" varStatus="cnt">
                                     <tr style="border-bottom: 1px dotted #cdcdcd">
-                                    	<input type="hidden" name="bookName" value="${ gList.bookName }" />
-                                    	<input type="hidden" name="bookNum" value="${ gList.bookNum }" />
-                                    	<input type="hidden" name="bookCount" value="${ gList.bookCount }" />
-                                    	<input type="hidden" name="partnerName" value="${ gList.partnerName }" />
-                                    	<input type="hidden" name="bookPrice" value="${ gList.bookPrice }" />
-                                    	<c:if test="${ !empty qty }">
-                                    		<input type="hidden" name="orderQty" value="${ qty }" />
-                                    	</c:if>
-                                    	<c:if test="${ empty qty }">
-                                    		<input type="hidden" name="orderQty" value="${ gList.bookQty }" />
-                                    	</c:if>
+                                    	<input type="hidden" name="goodsName" value="${ list.goodsName }" />
+                                    	<input type="hidden" name="goodsNum" value="${ list.goodsNum }" />
+                                    	<input type="hidden" name="ptName" value="${ list.ptName }" />
+                                    	<input type="hidden" name="goodsPrice" value="${ list.goodsPrice }" />
                                         <td class="product_photo">
                                             <div class="my-goods-summary">
                                                 <div class="thumb sp-thumb">
-                                                    <img src="${ imagePath }/partnerBo/page/goods/upload/${ gList.bookImage }" alt="" width="160">
+                                                    <img th:src="@{'/static/upload/goods/' + ${dto.goodsImg}}" alt="" width="160">
                                                 </div>
                                                 <div class="info">
-                                                	<div class="cate">[${ gList.bookCategory }]</div>
-                                                    <div class="tit">${ gList.bookName }</div>
+                                                	<div class="cate">[${ list.goodsCategory }]</div>
+                                                    <div class="tit">${ list.goodsName }</div>
                                                 </div>
                                             </div>
                                         </td>
@@ -221,12 +217,7 @@
 											 <div class="my-price"><fmt:formatNumber value="${ gList.bookPrice }" type="number" />원</div>
                                         </td>
                                         <td class="my-qty">
-                                        	<c:if test="${ !empty qty }">
-                                            	<span>${ qty }권</span>
-	                                    	</c:if>
-	                                    	<c:if test="${ empty qty }">
 	                                    		<span>${ gList.bookQty }권</span>
-	                                    	</c:if>
                                         </td>
                                         <td class="amount">
                                         	<c:if test="${ !empty qty }">

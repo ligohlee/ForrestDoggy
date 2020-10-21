@@ -1,0 +1,794 @@
+/* layout.css는 전체적인 레이아웃 스타일을 정의합니다. */
+#wrap{position:relative; max-width:2560px; margin:0 auto; padding-top:141px;
+	display:flex;
+	flex-direction:column;
+	width: 100%;
+	height: 100%;
+	box-sizing:border-box;
+}
+
+#dim{display:none; z-index:10003; position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0, 0, 0, .5);}
+
+#container:after{content:''; display:block; clear:both;}
+
+.contain{*zoom:1; display:block; max-width:1140px; min-width:1100px; margin:0 auto;}
+.contain:after{content:''; display:block; clear:both;}
+
+.nb{font-family:"Nanum Barun Gothic";}
+.cmp{font-family:"campton", "Nanum Barun Gothic" !important; letter-spacing:0;}
+
+.t-purple{font-family:inherit; color:#5b1eaa;}
+
+.star{
+	display:-webkit-inline-flex;
+	display:-ms-inline-flexbox;
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	vertical-align:top;
+	width:58px;
+}
+.star img{flex-shrink:0; max-width:100%; vertical-align:top;}
+
+.com-btn{display:inline-block; vertical-align:top; width:150px; height:46px; border:1px solid #ddd; margin-left:5px; background:#fff; font-family:"Nanum Barun Gothic"; font-size:13px; font-weight:300; line-height:46px; color:#111;}
+.com-btn:first-child,
+.com-btn.first{margin-left:0;}
+
+.com-btn.black{background:#000; border-color:#000; color:#fff;}
+
+.buttons {padding:40px 0 20px; text-align:center; width:100%; font-size:0; line-height:0;}
+.buttons .btn{display:inline-block; vertical-align:top; margin-left:10px; padding:0 20px; min-width:140px; height:50px; font-family:"Noto Sans KR"; font-size:15px; font-weight:400; line-height:48px; box-sizing:border-box;}
+.buttons .btn:first-child{margin-left:0;}
+.buttons .btn01{background-color:#fff; border:1px solid #e5e5e5; color:#111;}
+.buttons .btn02{background-color:#111; color:#fff;}
+
+/* top banner */
+.top-banner{display:none; height:0; z-index:1001; font-size:0; line-height:0; text-align:center;}
+.top-banner .contain{position:relative;}
+.top-banner span{display:inline-block; vertical-align:top; font-size:12px; line-height:23px; margin-left:30px;}
+.top-banner span:first-child{margin-left:0;}
+.top-banner .category{padding:0 7px; height:23px; font-family:"맑은 고딕"; line-height:25px; background:rgba(255, 255, 255, .1); color:rgba(255, 255, 255, .5); border-radius:23px;}
+.top-banner .txt{font-family:"맑은 고딕"; font-size:14px; color:#fff;}
+.top-banner .date{font-family:"Noto Sans KR"; font-weight:200; color:#ff9377;}
+.top-banner .topBannerClose{z-index:10; position:absolute; right:0; top:50%; margin-top:-12.5px; display:block; width:25px; height:25px; background:rgba(0, 0, 0, .4); font-size:0; line-height:0; border-radius:50%;}
+.top-banner .topBannerClose:after,
+.top-banner .topBannerClose:before{content:''; position:absolute; left:6px; top:50%; margin-top:0; display:block; width:13px; height:1px; background:rgba(255, 255, 255, .5);}
+.top-banner .topBannerClose:after{transform:rotate(45deg);}
+.top-banner .topBannerClose:before{transform:rotate(-45deg);}
+.top-banner.active{display:block; height:auto;}
+
+select{padding-right:22px !important; background:#fff url("/static/image/renewal2019/common/select_arr.png") right 10px center no-repeat; -webkit-appearance:none; appearance:none;}
+select::-ms-expand{display:none;}
+select[disabled]{background:#ddd; opacity:0.5;}
+
+.swiper-button-prev,
+.swiper-button-next{outline:none;}
+
+/* header */
+#header2 {z-index:1000; position:absolute; left:0; top:0; width:100%; background:#fff; border-bottom:1px solid #ececec; transition: top 0.2s ease-in-out;}
+#header2 .contain{position:relative;}
+#header2 .global{position:relative; z-index:30; border-bottom:1px solid #ececec;}
+#header2 .events{*zoom:1; float:left;}
+#header2 .events:after{content:''; display:block; clear:both;}
+#header2 .events > a{float:left; position:relative; display:block; width:auto; padding:0 30px; font-family:"Nanum Barun Gothic"; font-size:13px; line-height:39px; color:#111; letter-spacing:-0.33px;}
+#header2 .events > a:first-child{padding-left:0;}
+#header2 .events > a:after{content:''; position:absolute; left:0; top:50%; margin-top:-7px; display:block; width:1px; height:14px; background:#ececec;}
+#header2 .events > a:hover{text-decoration:underline;}
+#header2 .events > .event:after{display:none;}
+#header2 .events > .event.active:before{content:''; position:absolute; right:19px; top:8px; display:block; width:5px; height:5px; background:#5b1eaa; border-radius:50%;}
+#header2 .util{float:right;}
+#header2 .util > ul{*zoom:1; display:block;}
+#header2 .util > ul:after{content:''; display:block; clear:both;}
+#header2 .util > ul > li{position:relative; float:left; margin-left:30px;}
+#header2 .util > ul > li:first-child{margin-left:0;}
+#header2 .util > ul > li > a{display:block; font-family:"Nanum Barun Gothic"; font-size:13px; line-height:39px; color:#777;}
+#header2 .util > ul > li > a:hover{text-decoration:underline;}
+#header2 .util > ul > .cs{margin-left:0;}
+#header2 .util > ul > .cs > a{padding-left:30px; padding-right:14px; background:url("/static/image/renewal2019/common/header_arr_01.png") 98% 50% no-repeat;}
+#header2 .util > ul > .cs > a.active{color:#111; background:url("/static/image/renewal2019/common/header_arr_01_on.png") 98% 50% no-repeat;}
+#header2 .util > ul > .cs > a:hover{color:#111;}
+#header2 .util .csmenu{display:none; position:absolute; right:0; top:39px; background:#fff; border:1px solid #ececec; box-sizing:border-box;}
+#header2 .util .csmenu ul{padding:12px 19px;}
+#header2 .util .csmenu ul li{font-size:0; line-height:0; white-space:nowrap;}
+#header2 .util .csmenu ul li a{position:relative; display:inline-block; vertical-align:top; font-family:"Noto Sans KR"; font-size:12px; font-weight:300; line-height:36px; color:#777; -webkit-transition:all .2s ease; transition:all .2s ease;}
+#header2 .util .csmenu ul li a:hover{color:#111;}
+#header2 .util .csmenu ul li a:after{content:''; position:absolute; left:0; bottom:5px; display:block; width:0; height:1px; background:#111; -webkit-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out;}
+#header2 .util .csmenu ul li a:hover:after{width:100%;}
+#header2 .logo{position:absolute; left:0; top:50%; margin-top:-25px;}
+#header2 .logo a{display:flex; justify-content:center; align-items:center; width:150px; height:50px; font-family: "Noto Sans KR"; font-size:20px; font-weight:bold; line-height:1; border: 1px solid #2B2B2B; box-sizing:border-box;}
+#header2 .gnb-wrap{position:relative; padding-top:5px; z-index:20; transition:transform 0.2s ease-in-out; transform:translateY(0);}
+#gnb2{margin-left:244px; margin-right:70px;}
+#gnb2 > ul{*zoom:1; display:block; margin-left:-19.5px;}
+#gnb2 > ul:after{content:''; display:block; clear:both;}
+#gnb2 > ul > li{position:relative; float:left;}
+#gnb2 > ul > li:before{content:''; position: absolute; left:50%; top:70px; margin-left:-3px; display:block; width: 5px; height: 5px; background:#5b1eaa; -webkit-transition:all .2s ease; transition:all .2s ease; border-radius: 50%; opacity:0;}
+#gnb2 > ul > li.active:before,
+#gnb2 > ul > li.hover:before{top:73px; opacity:1;}
+#gnb2 > ul > li:first-child{margin-left:0;}
+#gnb2 > ul > li.m7{margin-left:50.5px;}
+#gnb2 > ul > li.m7:after{content:''; position:absolute; left:-25px; top:50%; margin-top:-6px; display:block; width:1px; height:12px; background:#ddd;}
+#gnb2 > ul > li > a{display:block; padding:0 19.5px; font-family:"Noto Sans KR"; font-size:15px; font-weight:400; line-height:95px; color:#111;}
+#gnb2 .submenu{display:none; position:absolute; left:0; top:95px; width:150px; background:#fff; border:1px solid #ececec; box-sizing:border-box;}
+#gnb2 .submenu ul{display:block; padding:12px 28px;}
+#gnb2 .submenu ul li{font-size:0; line-height:0;}
+#gnb2 .submenu ul li a{position:relative; display:inline-block; vertical-align:top; font-family:"Noto Sans KR"; font-size:13px; font-weight:400; line-height:32px; color:#333; -webkit-transition:all .2s ease; transition:all .2s ease; text-underline-position:under;}
+#gnb2 .submenu ul li a:hover{text-decoration:underline;}
+/* #gnb2 .submenu > ul > li > a:hover{color:#111;}
+#gnb2 .submenu > ul > li > a:after{content:''; position:absolute; left:0; bottom:0; display:block; width:0; height:1px; background:#111; -webkit-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out;}
+#gnb2 .submenu > ul > li > a:hover:after{width:100%;} */
+#gnb2 .submenu .sort{border-top:1px solid #ececec;}
+#gnb2 .submenu .sort li a{display:block;}
+#gnb2 .submenu .sort span{position:absolute; right:0; top:9px; line-height:normal;}
+#gnb2 .submenu .sort span img{vertical-align:top;}
+
+#gnb2 .submenu{margin-left:-10.5px;}
+#header2 .search-btn{position:absolute; right:50px; top:50%; margin-top:-9px;}
+#header2 .search-btn a{font-family:"Noto Sans KR";}
+#header2 .search-close{display:none;}
+#header2 .menu-btn{position:absolute; right:0; top:50%; margin-top:-9px;} 
+#header2 .menu-btn a{font-family:"Noto Sans KR";}
+#header2 .menu-close{display:none;}
+#header2 .head-menu{display:none; position:absolute; left:0; top:140px; width:100%; height:320px; background:#fafafa; border-top:1px solid #ececec; box-sizing:border-box;}
+#header2 .head-menu .head-sample{float:left;}
+#header2 .head-menu .head-sample a{display:block;}
+#header2 .head-menu .head-sample .img{margin-left:-15px; margin-top:20px;}
+#header2 .head-menu .head-sample p{margin-bottom:15px; font-family:"Noto Sans KR"; font-size:12px; font-weight:300; line-height:20px; letter-spacing:-0.3px; color:#111;}
+#header2 .head-menu .head-sample p:first-of-type{margin-top:-5px;}
+#header2 .head-menu .head-sample .btn{color:#5b1eaa;}
+#header2 .head-menu .head-menu-list{margin-left:244px;}
+#header2 .head-menu .head-menu-list > ul{*zoom:1;}
+#header2 .head-menu .head-menu-list > ul:after{content:''; display:block; clear:both;}
+#header2 .head-menu .head-menu-list > ul > li{position:relative; float:left; width:181px; padding-left:20px; padding-top:28px; box-sizing:border-box;}
+#header2 .head-menu .head-menu-list > ul > .m1{padding-left:0; width:131px;}
+#header2 .head-menu .head-menu-list > ul > .m5{width:131px;}
+#header2 .head-menu .head-menu-list > ul > li:after{content:''; position:absolute; left: 0; top:30px; display:block; width:1px; height:260px; background:#eee;}
+#header2 .head-menu .head-menu-list > ul > li:first-child:after{display:none;}
+#header2 .head-menu .head-menu-list > ul > li .box{margin-top:25px;}
+#header2 .head-menu .head-menu-list > ul > li .box:first-child{margin-top:0;}
+#header2 .head-menu .head-menu-list > ul > li .box .category{margin-bottom:8px; font-family:"Noto Sans KR"; font-size:14px; font-weight:400; color:#111; letter-spacing:-0.35px;}
+#header2 .head-menu .head-menu-list > ul > li a{font-family:"Noto Sans KR"; font-size:13px; font-weight:300; line-height:30px; color:#666; letter-spacing:-0.33px;}
+#header2 .head-menu .head-menu-list > ul > li a:hover{color:#111; text-decoration:underline;}
+#header2 .head-menu .head-menu-list > ul > li .sort{margin-top:10px;}
+#header2 .head-menu .head-menu-list > ul > li .sort ul li a{color:#333}
+#header2 .head-search{display:none; position:absolute; left:0; top:140px; width:100%; height:230px; padding-top:53px; background:#f7f7f7; border-top:1px solid #ececec; box-sizing:border-box;}
+#header2 .head-search form{max-width:560px; margin:0 auto}
+#header2 .head-search .search-group{position:relative; padding-bottom:4px; border-bottom:2px solid #111;}
+#header2 .head-search .search-group .input{width:100%; height:64px; padding:0 50px 0 8px; border:0; background:transparent; font-size:36px; font-weight:100; box-sizing:border-box; outline:none;}
+#header2 .head-search .search-group .input::placeholder{color:#999;}
+#header2 .head-search .search-group .input:-ms-input-placeholder{color:#999;}
+#header2 .head-search .search-group .input:focus{color:#111;}
+#header2 .head-search .search-group .submit{position:absolute; right:0; top:0; width:36px; height:64px; background:url("/static/image/renewal2019/common/header_search_02.png") 100% 10px no-repeat; border:0; font-size:0; line-height:0; cursor:pointer;}
+#header2 .head-search .hash{margin-top:25px; margin-left: 10px;}
+#header2 .head-search .hash dl{*zoom:1;}
+#header2 .head-search .hash dl:after{content:''; display:block; clear:both;}
+#header2 .head-search .hash dl dt{position:relative; float:left; padding-right:21px; font-family:"Noto Sans KR"; font-size:16px; font-weight:300; letter-spacing:-0.4px; color:#111;}
+#header2 .head-search .hash dl dt:after{content:''; position:absolute; right:0; top:5px; display:block; width:1px; height:15px; background:#ddd;}
+#header2 .head-search .hash dl dd{margin-left:94px; font-size:0; line-height:0;}
+#header2 .head-search .hash dl dd a{display:inline-block; vertical-align:top; margin-left:19px; font-family:"Noto Sans KR"; font-size:15px; font-weight:300; line-height:24px; color:#666; letter-spacing:-0.38px; margin-bottom:3px; }
+#header2 .head-search .hash dl dd a:hover{text-decoration:underline;}
+
+#header2.fixed .gnb-wrap{position:fixed; left:0; top:0; width:100%; background:#fff; border-bottom:1px solid #ececec;}
+#header2.fixed .head-menu{position:fixed; top:100px; border-bottom:1px solid #ececec;}
+#header2.fixed .head-search{position:fixed; top:100px; border-bottom:1px solid #ececec;}
+
+#header2.fixed.nav-up .gnb-wrap{transform:translateY(-101px);}
+#header2.fixed.nav-down .gnb-wrap{top:0;}
+
+
+
+/* main */
+.main-section .head{margin-bottom:50px; text-align:center;}
+.main-section .head h2{font-family:"campton"; font-size:24px; line-height:1; color:#000; letter-spacing:4.8px;}
+.main-section .more-btn{margin-top:40px; font-size:0; line-height:0; text-align:center;}
+.main-section .more-btn a{display:inline-block; vertical-align:top; width:60px; height:60px; background-color:#222; font-family:"Nanum Barun Gothic"; font-size:13px; line-height:62px; color:#fff; border-radius:50%; -webkit-transition:.3s ease; transition:.3s ease;}
+.main-section .more-btn .btn01{background:#222 url("/static/image/renewal2019/main/more_01.png") 50% 50% no-repeat; font-size:0; line-height:0;}
+.main-section .more-btn a:hover{background-color:#5b1eaa;}
+
+
+.main-visual{position:relative; height:580px; overflow:hidden;}
+.main-visual .swiper-button-prev,
+.main-visual .swiper-button-next{z-index:10; position:absolute; top:50%; width:60px; height:60px; margin-top:-30px; font-size:0; line-height:0; border-radius:50%; cursor:pointer;}
+.main-visual .swiper-button-prev{left:45px; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_prev_01.png") 50% 50% no-repeat;}
+.main-visual .swiper-button-next{right:45px; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_next_01.png") 50% 50% no-repeat;}
+.main-visual .swiper-pagination{position:absolute; left:0; bottom:30px; width:100%; text-align:center; font-size:0; line-height:0;}
+.main-visual .swiper-pagination .swiper-pagination-bullet{vertical-align:top; width:10px; height:10px; margin:0 5px; margin-bottom:2px; background:#ebebeb; font-size:0; line-height:0; cursor:pointer; border-radius:50%; opacity:1;}
+.main-visual .swiper-pagination .swiper-pagination-bullet-active{height:12px; margin-bottom:0; background:url("/static/image/renewal2019/main/slide_pager_02.png") 0 0 no-repeat;}
+.main-visual .item{height:580px; background-position:center center; background-repeat:no-repeat; background-size:cover;}
+.main-visual .item a{display:block; width:100%; height:100%;}
+#mainSlide .item a{position:relative; display:block; height:580px;}
+#mainSlide .item .background{position:absolute; left:50%; top:0; width:1920px; height:580px; margin-left:-960px; background-position:top center; background-repeat:no-repeat;}
+#mainSlide .item .contain{position:relative;}
+#mainSlide .item .visual_txt{padding-top:150px; color:#fff;}
+#mainSlide .item .visual_txt.black{color:#111;}
+#mainSlide .item .visual_txt .category{width:60px; height:30px; margin-bottom:44px; font-family:"Nanum Barun Gothic"; font-size:12px; line-height:32px; color:#fff; text-align:center; letter-spacing:-0.6px; border-radius:30px;}
+#mainSlide .item .visual_txt .txt{margin-bottom:26px;}
+#mainSlide .item .visual_txt .txt .p1{margin-bottom:10px; font-size:16px; font-weight:200; line-height:20px; letter-spacing:-0.025em;}
+#mainSlide .item .visual_txt .txt .p2{font-size:45px; font-weight:400; line-height:1.2; letter-spacing:-0.05em;}
+#mainSlide .item .visual_txt .date{font-family:"campton"; font-size:16px; line-height:1;}
+#mainSlide .item .visual_txt .txt2{font-size:16px; font-weight:200; line-height:1; letter-spacing:-0.05em;}
+#mainSlide .runway .tit{position:absolute; left:50%; top:50%; margin-left:-200px; margin-top:-190px;}
+#mainSlide .runway .tit .date{position:absolute; left:59px; bottom:70px; font-family:"campton"; font-size:16px; line-height:1; color:#111;}
+#mainSlide .runway .ticker-wrap{top:136px; background:none; height:auto;}
+#mainSlide .runway .ticker{vertical-align:top; height:auto; padding:0 0 0 40px;}
+#mainSlide .runway .ticker-item{padding:0; margin-left:50px;}
+#mainSlide .runway .ticker-item:first-child{margin-left:0;}
+
+.main-service .contain{padding:40px 0 70px;}
+.main-service .con{overflow:hidden;}
+.main-service .con ul{*zoom:1; margin:0 -10px;}
+.main-service .con ul:after{content:''; display:block; clear:both}
+.main-service .con ul li{float:left; width:270px; padding:0 10px;}
+.main-service .con ul li a{display:block;}
+.main-service .con ul li .tit{font-size:16px; font-weight:300; line-height:30px; color:#222; margin-bottom:12px;}
+.main-service .con ul li .tit u{position:relative; display:inline-block; vertical-align:top; height:30px; text-decoration:none;}
+.main-service .con ul li .tit u:after{content:''; position:absolute; left:0; top:28px; display:block; width:0; height:1px; background:#717171; -webkit-transition:all 0.2s ease-in-out; transition:all 0.2s ease-in-out;}
+.main-service .con ul li a:hover .tit u:after{width:100%;}
+.main-service .con ul li .img{position:relative; background:#f7f7f7; height:170px; text-align:center; overflow:hidden;}
+.main-service .con ul li .img img{position:relative; height:100%;}
+
+.main-newcard{position:relative; overflow:hidden;}
+.main-newcard .contain{padding:80px 0;}
+.main-newcard .newcard-bg{z-index:-1; position:absolute; left:50%; top:0; width:1920px; height:280px; margin-left:-960px; background:url("/static/image/renewal2019/main/newcard_bg.jpg") 0 0 no-repeat; overflow:hidden;}
+.main-newcard #circle_area{position:absolute; left:0; top:0; right:0; bottom:0;}
+.main-newcard .newcard-bg .circle{position:absolute;}
+.main-newcard .newcard-bg .circle01{left:70px; top:172px; width:211px; height:248px; background:url("/static/image/renewal2019/main/newcard_circle_01.png") 0 0 no-repeat;}
+.main-newcard .newcard-bg .circle02{left:331px; top:-67px; width:127px; height:149px; background:url("/static/image/renewal2019/main/newcard_circle_02.png") 0 0 no-repeat;}
+.main-newcard .newcard-bg .circle03{right:255px; top:26px; width:95px; height:112px; background:url("/static/image/renewal2019/main/newcard_circle_03.png") 0 0 no-repeat;}
+.main-newcard .newcard-bg .circle04{right:72px; top:186px; width:169px; height:198px; background:url("/static/image/renewal2019/main/newcard_circle_04.png") 0 0 no-repeat;}
+
+.accessory-list > ul{*zoom:1; display:block; margin:-30px -10px 0;}
+.accessory-list > ul:after{content:''; display:block; clear:both;}
+.accessory-list .item.none{display:none;}
+.accessory-list .item{float:left; width:25%; padding:30px 10px 0; text-align:center; box-sizing:border-box;}
+.accessory-list .item .thumb{position:relative; overflow:hidden;}
+.accessory-list .item .thumb .img a{position:relative; display:block; height:270px;}
+.accessory-list .item .thumb .img .pos{position:absolute; left:0; top:0; right:0; bottom:0;}
+.accessory-list .item .thumb .img .cell{position:relative;}
+.accessory-list .item .thumb .img .cell img{max-width:100%;}
+.accessory-list .item .info{margin-top:15px; text-align:left;}
+.accessory-list .item .info .tit{font-size:16px; font-weight:400; line-height:1; color:#111;}
+.accessory-list .item .info .txt{margin-top:12px; font-family:"Nanum Barun Gothic"; font-size:13px; line-height:20px; color:#777;}
+
+.main-banner{position:relative; height:480px; padding-bottom:50px; overflow:hidden;}
+.main-banner .inner{position:absolute; left:50%; top:0; width:1920px; height:480px; margin-left:-960px;}
+.main-banner #mainSlide2{padding-bottom:42px;}
+.main-banner .swiper-slide{height:480px; background-position:top center; background-repeat:no-repeat; background-size:cover;}
+.main-banner .swiper-slide a{display:block; width:100%; height:100%;}
+.main-banner .swiper-button-prev,
+.main-banner .swiper-button-next{z-index:10; position:absolute; top:50%; width:60px; height:60px; margin-top:-51px; font-size:0; line-height:0; border-radius:50%; cursor:pointer;}
+.main-banner .swiper-button-prev{left:45px; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_prev_01.png") 50% 50% no-repeat;}
+.main-banner .swiper-button-next{right:45px; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_next_01.png") 50% 50% no-repeat;}
+.main-banner .swiper-pagination{position:absolute; left:0; bottom:0; width:100%; text-align:center; font-size:0; line-height:0;}
+.main-banner .swiper-pagination .swiper-pagination-bullet{vertical-align:top; width:10px; height:10px; margin:0 5px; margin-bottom:2px; background:#ebebeb; font-size:0; line-height:0; cursor:pointer; border-radius: 50%; opacity:1;}
+.main-banner .swiper-pagination .swiper-pagination-bullet-active{height:12px; margin-bottom:0; background:url("/static/image/renewal2019/main/slide_pager_02.png") 0 0 no-repeat;}
+.main-banner .banner-txt{display:table-cell; vertical-align:middle; height:480px;}
+.main-banner .banner-txt .category{margin-bottom:23px; display:inline-block; vertical-align:top; padding-bottom:9px; border-bottom:1px solid rgba(31, 31, 31, .5); font-family:"Nanum Barun Gothic"; font-size:14px; line-height:1; color:rgba(17, 17, 17, .5);}
+.main-banner .banner-txt .txt{margin-bottom:44px;}
+.main-banner .banner-txt .txt p{font-size:32px; font-weight:400; line-height:42px; letter-spacing:-0.8px; color:#333;}
+.main-banner .banner-txt .txt .cmp{display:inline-block; vertical-align:top; position:relative; top:6px;}
+.main-banner .banner-txt .btn{display:inline-block; vertical-align:top; width:130px; height:45px; background:#1f1f1f; font-family:"Nanum Barun Gothic"; font-size:13px; line-height:45px; color:#fff; text-align:center;}
+.main-banner .banner-txt .btn img{display:inline; margin-left:5px; margin-top:-2px;}
+.main-banner .banner-txt.white .category{color:#777; border-bottom:1px solid rgba(131, 130, 129, .5);}
+.main-banner .banner-txt.white .txt p{color:#fff;}
+
+.main-bestcard .contain{padding:80px 0;}
+
+.main-benefit{height:480px; background:url("/static/image/renewal2019/main/benefit_bg.jpg") 50% 0 no-repeat; overflow:hidden;}
+.main-benefit .contain{padding:80px 0 0;}
+.main-benefit .head h2{color:#fff;}
+.main-benefit .con{margin:0 -75px;}
+.main-benefit .swiper-container{padding:0 75px;}
+.main-benefit .swiper-button-prev,
+.main-benefit .swiper-button-next{z-index:10; position:absolute; top:50%; width:60px; height:60px; margin-top:-48px; font-size:0; line-height:0; border-radius:50%; cursor:pointer;}
+.main-benefit .swiper-button-prev{left:0; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_prev_01.png") 50% 50% no-repeat;}
+.main-benefit .swiper-button-next{right:0; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_next_01.png") 50% 50% no-repeat;}
+.main-benefit ul li .thumb{border-radius:50%; -webkit-transition:all .2s ease; transition:all .2s ease;}
+.main-benefit ul li a:hover .thumb{box-shadow:10px 17.3px 30px 0 rgba(0, 0, 0, 0.1);}
+.main-benefit ul li img{max-width:100%; margin:0 auto;}
+.main-benefit ul li .tit{margin-top:16px; font-size:16px; font-weight:300; line-height:24px; color:#fff;}
+.main-benefit ul li .item-wrap{*zoom:1; margin:0 -11px;}
+.main-benefit ul li .item-wrap:after{content:''; display:block; clear:both;}
+.main-benefit ul li .item{float:left; width:210px; margin:0 11px; text-align:center;}
+
+.main-choice{background:#fafafa;}
+.main-choice .contain{padding:80px 0;}
+.main-choice .box-wrap{*zoom:1; margin-left:-40px; margin-top:-30px;}
+.main-choice .box-wrap:after{content:''; display:block; clear:both;}
+.main-choice .con .box{float:left; margin-left:40px; margin-top:30px; overflow:hidden;}
+.main-choice .con .box > a{position:relative; display:block; background:#fff; box-shadow:5px 8.7px 10px 0 rgba(0, 0, 0, 0.05); -webkit-transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000); transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000); box-sizing:border-box;}
+.main-choice .con .box > a:after{content:''; display:block; clear:both;}
+.main-choice .con .box .info{display:table-cell; vertical-align:middle; text-align:center;}
+.main-choice .con .box .info .tit{margin-bottom:10px; font-size:15px; font-weight:bold; line-height:1; color:#111; letter-spacing:0.8px; -webkit-transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000); transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000);}
+.main-choice .con .box .info .tit.cmp{font-size:16px;}
+.main-choice .con .box .info .txt{font-family:"Nanum Barun Gothic"; font-size:13px; line-height:20px; color:#777; -webkit-transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000); transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000);}
+.main-choice .con .box > a:hover{background:#5b1eaa;}
+.main-choice .con .box > a:hover .info .tit{color:#fff;}
+.main-choice .con .box > a:hover .info .txt{color:rgba(255, 255, 255, .7);}
+.main-choice .con .box .img img{width:100%;}
+.main-choice .con .box01 > a{width:550px; height:580px;}
+.main-choice .con .box01 .info{width:550px; height:160px;}
+
+.main-choice .con .box02 > a{width:550px; height:195px; padding-right:255px;}
+.main-choice .con .box02 .img{position:absolute; right:0; top:0; width:255px;}
+.main-choice .con .box02 .info{width:295px; height:195px;}
+
+.main-choice .con .box03 > a{width:255px; height:355px; box-shadow:none;}
+.main-choice .con .box03 .info{width:255px; height:160px;}
+
+.main-choice .con .box04 > a{width:255px; height:355px; padding-bottom:195px;}
+.main-choice .con .box04 .img{position:absolute; left:0; bottom:0;}
+.main-choice .con .box04 .info{width:255px; height:160px; padding:0;}
+
+.main-sale {height:489px; overflow:hidden;}
+.main-sale .contain{padding:80px 0 50px; background:url("/static/image/renewal2019/main/sale_line.png") 0 100% repeat-x;}
+.main-sale .con{position:relative; margin:-60px -10px 0;}
+.main-sale .head .date{margin-top:40px; font-family:"campton"; font-size:15px; color:#5b1eaa;}
+.main-sale .swiper-button-prev,
+.main-sale .swiper-button-next{z-index:10; position:absolute; top:50%; width:60px; height:60px; border:1px solid #e4e4e4; margin-top:-30px; font-size:0; line-height:0; border-radius:50%; cursor:pointer;}
+.main-sale .swiper-button-prev{left:-75px; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_prev_01.png") 50% 50% no-repeat;}
+.main-sale .swiper-button-next{right:-75px; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_next_01.png") 50% 50% no-repeat;}
+
+.main-accessory{height:665px; overflow:hidden;}
+.main-accessory .contain{padding:80px 0;}
+.main-accessory .accessory-list .con{margin:-30px -10px 0;}
+.main-accessory .accessory-list ul li.none{display:none;}
+.main-accessory .accessory-list ul li{float:left; width:25%; padding:30px 10px 0; text-align:center; box-sizing:border-box;}
+.main-accessory .accessory-list ul li .thumb{position:relative; overflow:hidden; -webkit-transition: .1125s ease-out; transition: .1125s ease-out;}
+.main-accessory .accessory-list ul li .thumb:hover ~ .info .tit{text-decoration:underline; text-underline-position:under;}
+.main-accessory .accessory-list ul li .thumb .img a{position:relative; display:block; height:270px;}
+.main-accessory .accessory-list ul li .thumb .img .pos{position:absolute; left:0; top:0; right:0; bottom:0;}
+.main-accessory .accessory-list > ul > li .thumb .img .cell{position:relative;}
+.main-accessory .accessory-list > ul > li .thumb .img .cell img{max-width:100%;}
+.main-accessory .accessory-list ul li .info{margin-top:15px; text-align:left;}
+.main-accessory .accessory-list ul li .info .tit{font-size:16px; font-weight:400; line-height:1; color:#111;}
+.main-accessory .accessory-list ul li .info .txt{margin-top:10px; font-family:"Nanum Barun Gothic"; font-size:13px; line-height:20px; color:#777;}
+.main-accessory #btn-wrap{margin-top:40px; font-size:0; line-height:0; text-align:center;}
+.main-accessory #btn-wrap a{display:inline-block; vertical-align:top; margin-left:15px; width:60px; height:60px; background-color:#222; font-family:"Nanum Barun Gothic"; font-size:13px; line-height:62px; color:#fff; border-radius:50%; box-sizing:border-box; -webkit-transition:.3s ease; transition:.3s ease; outline:none;}
+.main-accessory #btn-wrap a:first-child{margin-left:0;}
+.main-accessory #btn-wrap .more:hover{background-color:#5b1eaa;}
+.main-accessory #btn-wrap .mainslide5-prev{font-size:0; border:1px solid #e4e4e4; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_prev_01.png") 50% 50% no-repeat;}
+.main-accessory #btn-wrap .mainslide5-next{font-size:0; border:1px solid #e4e4e4; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_next_01.png") 50% 50% no-repeat;}
+
+.main-banner02{position:relative; height:220px; padding-bottom:50px; overflow:hidden;}
+.main-banner02 .inner{position:absolute; left:50%; top:0; width:1920px; height:220px; margin-left:-960px;}
+.main-banner02 #mainSlide6{padding-bottom:50px;}
+.main-banner02 .swiper-button-prev,
+.main-banner02 .swiper-button-next{z-index:10; position:absolute; top:50%; width:60px; height:60px; margin-top:-55px; font-size:0; line-height:0; border-radius:50%; cursor:pointer;}
+.main-banner02 .swiper-button-prev{left:45px; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_prev_01.png") 50% 50% no-repeat;}
+.main-banner02 .swiper-button-next{right:45px; background:rgba(255, 255, 255, .7) url("/static/image/renewal2019/main/slide_next_01.png") 50% 50% no-repeat;}
+.main-banner02 .swiper-pagination{position:absolute; left:0; bottom:0; width:100%; text-align:center; font-size:0; line-height:0;}
+.main-banner02 .swiper-pagination .swiper-pagination-bullet{vertical-align:top; width:10px; height:10px; margin:0 5px; margin-bottom:2px; background:#ebebeb; font-size:0; line-height:0; cursor:pointer; border-radius: 50%; opacity:1;}
+.main-banner02 .swiper-pagination .swiper-pagination-bullet-active{height:12px; margin-bottom:0; background:url("/static/image/renewal2019/main/slide_pager_02.png") 0 0 no-repeat;}
+.main-banner02 .swiper-slide{height:220px; background-position:top center; background-repeat:no-repeat; background-size:cover;}
+.main-banner02 .swiper-slide a{display:block; width:100%; height:100%;}
+.main-banner02 .banner-txt{display:table-cell; vertical-align:middle; width:1140px; height:220px; padding-bottom:25px; text-align:center; color:#fff; box-sizing:border-box;}
+.main-banner02 .banner-txt.black{color:#111;}
+.main-banner02 .banner-txt .tit{font-size:16px; font-weight:400; line-height: 1; letter-spacing:-0.45px;}
+.main-banner02 .banner-txt .txt{margin-top:20px; font-size: 28px; font-weight: 400; line-height: 1; letter-spacing:-0.75px;}
+
+.main-review .contain{padding:80px 0;}
+.main-review .head{margin-bottom:35px;}
+.main-review .tab-menu{margin-bottom:45px;}
+.main-review .tab-menu ul{*zoom:1; display:block; font-size:0; line-height:0; text-align:center;}
+.main-review .tab-menu ul:after{content:''; display:block; clear:both;}
+.main-review .tab-menu ul li{position:relative; display:inline-block; vertical-align:top; padding:0 18px;}
+.main-review .tab-menu ul li:after{content:''; position:absolute; left:0; top:1px; display:block; width:1px; height:15px; background:#eee;}
+.main-review .tab-menu ul li:first-child:after{display:none;}
+.main-review .tab-menu ul li a{position:relative; display:block; padding-bottom:9px; font-size:16px; font-weight:300; line-height:1; color:#999; -webkit-transition:.3s ease; transition:.3s ease;}
+.main-review .tab-menu ul li a:after{content:''; position:absolute; left:0; bottom:0; display:block; width:100%; height:1px; background:#111; -webkit-transition:.3s ease; transition:.3s ease; opacity:0;}
+.main-review .tab-menu ul li.active a{color:#111;}
+.main-review .tab-menu ul li.active a:after{opacity:1;}
+.main-review .tab-wrap{min-height:370px;}
+.main-review .tab-wrap .tab-content{display:none;}
+.main-review .review-wrap{*zoom:1;}
+.main-review .review-wrap:after{content:''; display:block; clear:both;}
+.main-review .best-review{position:relative; float:left; width:650px;}
+.main-review .best-review .con{*zoom:1; background:#fafafa;}
+.main-review .best-review .con:after{content:''; display:block; clear:both;}
+.main-review .best-review .con .img{position:relative; float:left; width:270px; height:270px; overflow:hidden;}
+.main-review .best-review .con .img a{position:relative; display:block; width:100%; height:100%; overflow:hidden; background-position:50% 50%; background-repeat:no-repeat; background-size:cover;}
+.main-review .best-review .con .img.vertical img{max-width:inherit; width:100%; height:auto; position:relative; top:50%; -webkit-transform:translate(0, -50%); transform:translate(0, -50%);}
+.main-review .best-review .con .img.horizontal img{max-width:inherit; width:auto; height:100%; position:relative; left:50%; -webkit-transform:translate(-50%, 0); transform:translate(-50%, 0);}
+.main-review .best-review .con .sort{position:absolute; left:0; top:0;}
+.main-review .best-review .con .sort span{display:inline-block; vertical-align:top; width:50px; height:50px; font-size:0; line-height:0;}
+.main-review .best-review .con .sort .new{background:#ff4701 url("/static/image/renewal2019/shop/sort_new_big.png") 50% 50% no-repeat;}
+.main-review .best-review .con .sort .best{background:#5b1eaa url("/static/image/renewal2019/shop/sort_best_big.png") 50% 50% no-repeat;}
+.main-review .best-review .con .sort .sale{background:#39b5b7 url("/static/image/renewal2019/shop/sort_sale_big.png") 50% 50% no-repeat;}
+.main-review .best-review .con .info{float:left; width:380px; height:270px; padding:40px 10px 0 40px; box-sizing:border-box;}
+.main-review .best-review .con .info .top{font-size:0; line-height:0;}
+.main-review .best-review .con .info .top span{position:relative; display:inline-block; vertical-align:top; margin-left:21px;}
+.main-review .best-review .con .info .top span:first-child{margin-left:0;}
+.main-review .best-review .con .info .top span:after{content:''; position: absolute; left:-11px; top:0; display:block; width:1px; height:10px; background:#eee;}
+.main-review .best-review .con .info .top span:first-child:after{display:none;}
+.main-review .best-review .con .info .top .star{width:58px;}
+.main-review .best-review .con .info .top .date{font-family:"campton"; font-size:12px; line-height:1; color:#777;}
+.main-review .best-review .con .info .tit{margin-top:28px; font-size:18px; font-weight:400; line-height:22px; color:#111;}
+.main-review .best-review .con .info .txt{margin-top:16px; height:80px; font-family:"Nanum Barun Gothic"; font-size:13px; line-height:20px; color:#777; overflow:hidden;}
+.main-review .best-review .item{margin-top:30px; padding-top:17px; border-top:1px solid #eee;}
+.main-review .best-review .item > a{*zoom:1; display:block;}
+.main-review .best-review .item > a:after{content:''; display:block; clear:both;}
+.main-review .best-review .item .img{float:left; width:52px; height:52px;}
+.main-review .best-review .item .info{float:left; margin-left:20px;}
+.main-review .best-review .item .info > ul{*zoom:1; display:block;}
+.main-review .best-review .item .info > ul:after{content:''; display:block; clear:both;}
+.main-review .best-review .item .info > ul > li{position:relative; float:left; margin-left:30px; line-height:24px;}
+.main-review .best-review .item .info > ul > li:first-child{margin-left:0;}
+.main-review .best-review .item .info > ul > li:after{content:''; position:absolute; left:-15px; top:6px; display:block; width:1px; height:10px; background:#ddd;}
+.main-review .best-review .item .info > ul > li:first-child:after{display:none;}
+.main-review .best-review .item .info > ul > .tit{font-family:"Nanum Barun Gothic"; font-size: 13px; color:#000;}
+.main-review .best-review .item .info > ul > .price{clear:left; margin-left:0; font-family:"Nanum Barun Gothic"; font-size:13px; color:#111;}
+.main-review .best-review .item .info > ul > .price:after{display:none;}
+.main-review .best-review .item .info > ul > .price .parsent{margin-left:5px; color:#5b1eaa;}
+.main-review .best-review .item .info > ul > .ea{font-family:"campton"; color:#111;}
+.main-review .ctr-wrap {z-index:51; position:absolute; left:310px; top:221px; text-align:center;}
+.main-review .reviewPager {float:left;}
+.main-review .reviewPager a {position:relative; display:block; float:left; margin-left:15px; font-family:"campton"; font-size:12px; line-height:1; color:#999;}
+.main-review .reviewPager a:first-child {margin-left:0;}
+.main-review .reviewPager a.active {color:#000;}
+.main-review .reviewPager a.active:after {content:''; position:absolute; left:0; bottom:0; display:block; width:100%; height:1px; background:#9f9f9f;}
+.main-review .best-review .slick-dots{position:absolute; left:310px; top:221px;}
+.main-review .best-review .slick-dots li{float:left; margin-left:15px;}
+.main-review .best-review .slick-dots li:first-child{margin-left:0;}
+.main-review .best-review .slick-dots li a{position:relative; display:block; font-family:"campton"; font-size:12px; color:#999;}
+.main-review .best-review .slick-dots li.slick-active a{color:#000;}
+.main-review .best-review .slick-dots li.slick-active a:after{content:''; position:absolute; left:0; bottom:0; display:block; width:100%; height:1px; background:#9f9f9f;}
+.main-review .normal-review{float:right; width:450px;}
+.main-review .normal-review ul li{margin-top:7.5px;}
+.main-review .normal-review ul li:first-child{margin-top:0;}
+.main-review .normal-review ul li a{*zoom:1; display:block;}
+.main-review .normal-review ul li a:after{content:''; display:block; clear:both;}
+.main-review .normal-review ul li .img{position:relative; float:left; width:85px; height:85px; overflow:hidden;}
+.main-review .normal-review ul li .img.vertical img{max-width:inherit; width:100%; height:auto; position:relative; top:50%; -webkit-transform:translate(0, -50%); transform:translate(0, -50%);}
+.main-review .normal-review ul li .img.horizontal img{max-width:inherit; width:auto; height:100%; position:relative; left:50%; -webkit-transform:translate(-50%, 0); transform:translate(-50%, 0);}
+.main-review .normal-review ul li .info{margin-left:100px; padding-top:3px;}
+.main-review .normal-review ul li .info .tit{font-family:"Nanum Barun Gothic"; font-size:13px; line-height:20px; color:#111;}
+.main-review .normal-review ul li .info .txt{margin-top:8px; height:40px; font-family:"Nanum Barun Gothic"; font-size:13px; line-height:20px; letter-spacing:-0.33px; color:#777; overflow:hidden;}
+
+.main-store{position:relative; overflow:hidden;}
+.main-store .store-bg{z-index:-1; position:absolute; left: 50%; top: 0; width: 1920px; height: 270px; margin-left: -960px; background:url("/static/image/renewal2019/main/store_bg.jpg") 50% 0 no-repeat fixed;}
+.main-store .contain{padding:80px 0;}
+.main-store .head h2{color:#fff;}
+.main-store .con ul{*zoom:1; display:block; margin:0 -10px;}
+.main-store .con ul:after{content:''; display:block; clear:both;}
+.main-store .con ul li{float:left; width:25%; padding:0 10px; box-sizing:border-box;}
+.main-store .con ul li a{position:relative; display:block; height:214px; padding:26px 30px; background:#fff; box-shadow:10px 17.3px 30px 0 rgba(0, 0, 0, 0.1); -webkit-transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000); transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000); box-sizing:border-box;}
+.main-store .con ul li .tit{margin-bottom:20px; font-size:15px; font-weight:400; line-height:22px; color:#000; -webkit-transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000); transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000);}
+.main-store .con ul li .btn{font-family:"Nanum Barun Gothic"; font-size:13px; color:#777; -webkit-transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000); transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000);}
+.main-store .con ul li .btn u{text-decoration:none; text-underline-position:under;}
+.main-store .con ul li .num{position:absolute; right:31px; bottom:28px; font-family:"Spoqa Han Sans"; font-size:42px; font-weight:300; line-height:1; color:#5b1eaa; -webkit-transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000); transition:all 400ms cubic-bezier(0.770, 0.000, 0.175, 1.000);}
+.main-store .con ul li a:hover{background:#5b1eaa;}
+.main-store .con ul li a:hover .tit{color:#fff;}
+.main-store .con ul li a:hover .btn{color:#fff;}
+.main-store .con ul li a:hover .btn u{text-decoration:underline;}
+.main-store .con ul li a:hover .num{color:#fff;}
+
+.main-community{background:#fafafa;}
+.main-community .contain{padding:80px 0;}
+.main-community .board-zone{*zoom:1; margin-bottom:40px;}
+.main-community .board-zone:after{content:''; display:block; clear:both;}
+.main-community .board-zone h2{margin-bottom:30px; font-size:15px; font-weight:400; line-height:1; color:#111; letter-spacing:-0.38px;}
+.main-community .board-zone .more{position:absolute; right:0; top:2px; padding-right:17px; background:url("/static/image/renewal2019/main/more_02.png") 99% 2px no-repeat; font-family:"campton"; font-size:12px; color:#111;}
+.main-community .board-zone .notice{position:relative; float:left; width:550px;}
+.main-community .board-zone .faq{position:relative; float:right; width:550px;}
+.main-community .board-zone .pd-box{background:#f2f2f2; padding:20px 20px; max-height:65px; overflow:hidden; box-sizing:border-box;}
+.main-community .board-zone .slider{overflow:hidden;}
+.main-community .board-zone .slider li{position:relative; padding-left:90px; padding-right:60px; font-size:13px; line-height:25px;}
+.main-community .board-zone .faq .slider li{padding-left:40px;}
+.main-community .board-zone .slider li a{display:inline-block; vertical-align:top; max-width:100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-family:"Nanum Barun Gothic"; color:#222;}
+.main-community .board-zone .slider li .date{position:absolute; left:0; top:2px; font-family:"campton"; font-size:13px; color:#777;}
+.main-community .board-zone .slider li .faq-icon{position:absolute; left:0; top:0; width:25px; height:25px;	background:url("/static/image/renewal2019/main/faq_01.png") 0 0 no-repeat;}
+.main-community .board-zone .bx-controls{z-index:10;}
+.main-community .board-zone .bx-controls-direction{position:absolute; right:0; top:-9px; width:40px; height:42px; background:url("/static/image/renewal2019/main/community_arrow.png") 0 0 no-repeat;}
+.main-community .board-zone .bx-wrapper .bx-controls-direction a{width:100%; height:20px; margin:0; background:none;}
+.main-community .board-zone .bx-prev{left:0; top:0;}
+.main-community .board-zone .bx-next{left:0; bottom:0;}
+.main-community .link-zone{margin:0 -20px;}
+.main-community .link-zone h2{margin-bottom:30px; font-size:15px; font-weight:400; line-height:1; color:#111; letter-spacing:-0.38px;}
+.main-community .link-zone .box{float:left; margin:0 20px; padding:28px 30px 0; height:200px; background:#fff; border:1px solid #ececec; box-sizing:border-box;}
+.main-community .link-zone .box01{width:400px;}
+.main-community .link-zone .box02{width:260px;}
+.main-community .link-zone .box03{width:400px;}
+.main-community .link-zone .icon-link{display:block; font-size:0; line-height:0; text-align:center; white-space:nowrap;}
+.main-community .link-zone .icon-link li{position:relative; display:inline-block; vertical-align:top; margin-left:29px;}
+.main-community .link-zone .icon-link li:first-child{margin-left:0;}
+.main-community .link-zone .icon-link li a{position:relative; display:block; padding-bottom:29px;}
+.main-community .link-zone .icon-link li .icon{display:table-cell; vertical-align:middle; width:62px; height:62px; margin:0 auto; background-color:#fafafa; background-position:50% 50%; background-repeat:no-repeat; border-radius:50%;}
+.main-community .link-zone .icon-link li p{position:absolute; left:50%; bottom:0; margin-top:17px; font-size:12px; font-weight:300; line-height:1; color:#666; letter-spacing:-0.3px;}
+.main-community .link-zone ol li{font-family:"Nanum Barun Gothic"; font-size:13px; line-height:20px; margin-top:16px;}
+.main-community .link-zone ol li:first-child{margin-top:0;}
+.main-community .link-zone ol li .num{color:#5b1eaa;}
+.main-community .link-zone ol li a{color:#222; border-bottom:1px solid transparent}
+.main-community .link-zone ol li a:hover{border-color:#222;}
+
+
+
+/* sub */
+#container{padding-top:60px; padding-bottom: 100px;}
+.sub-title{margin-bottom:30px;}
+.sub-title h2{font-family:"Noto Sans KR"; font-size:30px; font-weight:400; line-height:1.1; color:#111; letter-spacing:-0.025em;}
+.sub-title h2 .num{display:inline-block; vertical-align:bottom; margin-left:8px; font-family:"campton"; font-size:13px; line-height:1; color:#111; letter-spacing:0.05em;}
+.sub-title h2 .search-keyword{font-family:"Noto Sans KR"; color:#5b1eaa;}
+
+.sub-title + .tab_area{padding-bottom:0;}
+
+.goods-srchresult{font-family:"Nanum Barun Gothic"; font-size:14px; color:#111;}
+.goods-sortable-msg{font-family:"Nanum Barun Gothic"; font-size:13px; font-weight:500; line-height:30px; color:#111; letter-spacing:-0.1px;}
+.goods-sortable-msg strong{color:#5b1eaa;}
+
+/* footer */
+#footer2{margin-top: auto; font-family:"Noto Sans KR"; background:#333;}
+#footer2 .foot-link{border-bottom:1px solid #414141;}
+#footer2 .foot-link .contain{padding:13px 0;}
+#footer2 .foot-link .link{float:left; font-size:0; line-height:0;}
+#footer2 .foot-link .link a{display:inline-block; vertical-align:top; margin-left:50px; font-family:"Nanum Barun Gothic"; font-size: 12px; line-height:30px; color:#fff;}
+#footer2 .foot-link .link a:first-child{margin-left:0;}
+#footer2 .foot-link .link a:hover{text-decoration:underline;}
+#footer2 .foot-link .sns{float:right; width:auto; margin:0; background-position:none;}
+#footer2 .foot-link .sns dl{font-size:0; line-height:0; white-space:nowrap;}
+#footer2 .foot-link .sns dl dt{display:inline-block; vertical-align:top; margin-right:30px; font-family:"Nanum Barun Gothic"; font-size: 12px; line-height:30px; color:#fff;}
+#footer2 .foot-link .sns dl dd{display:inline-block; vertical-align:top;}
+#footer2 .foot-link .sns dl dd a{position:relative; display:inline-block; vertical-align:top; margin-left:15px; width:30px; height:30px; background:#fff; border-radius:50%;}
+#footer2 .foot-link .sns dl dd a:first-child{margin-left:0;}
+#footer2 .foot-link .sns dl dd .insta:after{content:''; position:absolute; left:50%; top:50%; margin-top:-8px; margin-left:-8px; display:block; width:16px; height:16px; background:url("/static/image/renewal2019/common/footer_sns_insta.png") 0 0 no-repeat;}
+#footer2 .foot-link .sns dl dd .facebook:after{content:''; position:absolute; left:50%; top:50%; margin-top:-8px; margin-left:-4px; display:block; width:8px; height:15px; background:url("/static/image/renewal2019/common/footer_sns_facebook.png") 0 0 no-repeat;}
+#footer2 .foot-link .sns dl dd .blog:after{content:''; position:absolute; left:50%; top:50%; margin-top:-7px; margin-left:-6px; display:block; width:11px; height:14px; background:url("/static/image/renewal2019/common/footer_sns_blog.png") 0 0 no-repeat;}
+#footer2 .foot-link .sns dl dd .youtube:after{content:''; position:absolute; left:50%; top:50%; margin-top:-6px; margin-left:-8px; display:block; width:16px; height:12px; background:url("/static/image/renewal2019/common/footer_sns_youtube.png") 0 0 no-repeat;}
+#footer2 .foot-content .contain{padding:40px 0 60px;}
+#footer2 .foot-content .cs-center{float:left;}
+#footer2 .foot-content .cs-center dl dt{padding-top:5px; margin-bottom:20px; font-family:"Nanum Barun Gothic"; font-size: 13px; line-height:1; color:#ddd;}
+#footer2 .foot-content .cs-center dl dd{font-family:"Nanum Barun Gothic"; font-size:12px; line-height:22px; color:#ddd;}
+#footer2 .foot-content .cs-center dl dd p.tel{margin-bottom:10px; font-family:"campton"; font-size:30px; line-height:1; color:#fff; letter-spacing:0.75px;}
+#footer2 .foot-content .link{float:left; margin-left:77px;}
+#footer2 .foot-content .link ul{display:block;}
+#footer2 .foot-content .link ul li{margin-top:-1px; border:1px solid #414141; box-sizing:border-box;}
+#footer2 .foot-content .link ul li a{display:block; width:118px; padding:0 13px; background:url("/static/image/renewal2019/common/arr_02.png") right 10px center no-repeat; font-family:"Nanum Barun Gothic"; font-size:12px; line-height:30px; letter-spacing:-0.3px; color:#aaa;}
+#footer2 .foot-content .link ul li a:hover{color:#fff;}
+#footer2 .foot-content .info{float:left; margin-left:90px;}
+#footer2 .foot-content .info dl dt{padding-top:5px; margin-bottom:20px; font-family:"Nanum Barun Gothic"; font-size: 13px; line-height:1; color:#777;}
+#footer2 .foot-content .info dl dd{font-family:"Nanum Barun Gothic"; font-size:12px; line-height:22px; color:#777; letter-spacing: -0.3px;}
+#footer2 .foot-content .info dl dd span{font-family:inherit; color:#fff;}
+#footer2 .foot-content .info .bar{display:inline-block; vertical-align:top; margin:0 4px;}
+#footer2 .foot-content .info .line{font-size:10px; color:inherit;}
+#footer2 .foot-banner{background:#fff;}
+#footer2 .foot-banner .contain{padding:15px 0 30px;}
+#footer2 .foot-banner ul{display:block; font-size:0; line-height:0; text-align:center;}
+#footer2 .foot-banner ul li{display:inline-block; vertical-align:top; padding:0 10px;}
+#footer2 .foot-info-link{position:relative; display:inline-block; vertical-align:top; padding-right:10px; font-family:inherit; color:#777;}
+#footer2 .foot-info-link:focus,
+#footer2 .foot-info-link:hover{color:#777; text-decoration:underline;}
+#footer2 .foot-info-link:after{content:'>'; position:absolute; right:0; top:0; display:block; font-family:inherit; font-size:10px; color:#777;}
+
+#quick-area{z-index:1001; position:fixed; right:20px; bottom:20px; width:70px; visibility:hidden; opacity:0; transition:opacity .3s ease-in-out;}
+#quick-area.on{visibility:visible; opacity:1;}
+#quick-area.stop{position:absolute; bottom:391px;}
+.quick-sample{display:none; background:#e2e2e2;}
+.quick-sample .list{padding:5px;}
+.quick-sample .list .item{position:relative; margin-top:5px; width:58px; height:58px; border:1px solid #ddd; background:#fff;}
+.quick-sample .list .item:first-child,
+.quick-sample .list .item:nth-child(5n+1){margin-top:0;}
+.quick-sample .list .item.none{display:none;}
+.quick-sample .list .item:after{content:attr(data-index); display:block; position:absolute; left:50%; top:50%; margin-left:-9px; margin-top:-9px;  width:18px; height:18px; background-color:#eee; border:#eee 1px solid; font-family:"campton"; font-size:11px; line-height:18px; color:#777; text-align:center; border-radius:50%; box-sizing:border-box;}
+.quick-sample .list .item.active:after{display:none;}
+.quick-sample .list .item .img{z-index:1; position:relative; display:block; width:58px; height:58px; text-decoration:none;}
+.quick-sample .list .item .img img{display:block; width:100%;}
+.quick-sample .list .caption{z-index:1; position:absolute; left:-130px; top:-1px; display:none; width:131px; height:60px; padding:14px 0 0 11px; background:#fff; border:1px solid #111; border-right:0; box-sizing:border-box;}
+.quick-sample .list .caption .q-tit{margin-bottom:7px; font-family:"Nanum Barun Gothic"; font-size:12px; line-height:1.1; color:#111;}
+.quick-sample .list .caption .q-price{font-family:"Nanum Barun Gothic"; font-size:12px; line-height:1.1; color:#5b1aaa}
+.quick-sample .list .caption .q-ea{margin-left:8px; font-family:"campton"; font-size:12px; line-height:1.1; color:#111;}
+.quick-sample .list .delete{z-index:10; position:absolute; right:0; top:0; display:none; width:19px; height:19px; background:rgba(17, 17, 17, .5); font-size:0; line-height:0;}
+.quick-sample .list .delete:after{content:''; position:absolute; right:5px; top:5px; display:block; width:9px; height:9px; background:url("/static/image/renewal2019/common/quick_delete.png") 0 0 no-repeat;}
+.quick-sample .list .delete:hover{background:#111;}
+.quick-sample .list .item:hover .img:after{content:''; display:block; position: absolute; left:-1px; top:-1px; right:-1px; bottom:-1px; border:1px solid #111;}
+.quick-sample .list .item:hover .delete{display:block;}
+.quick-sample .list .item:hover .caption{display:block;}
+.quick-sample .prev-next{margin-top:5px;}
+.quick-sample .prev-next:after{content:''; display:block; clear:both;}
+.quick-sample .prev-next .btn{display:block; float:left; width:30px; height:20px; background:none; border:0; font-size:0; line-height:0;}
+.quick-sample .prev-next .prev{background:url("/static/image/renewal2019/common/quick_prev_next.jpg") 0 0 no-repeat;}
+.quick-sample .prev-next .next{background:url("/static/image/renewal2019/common/quick_prev_next.jpg") -30px 0 no-repeat;}
+.quick-sample .apply{padding:5px 5px 10px; background:#c5c5c5;}
+.quick-sample .apply .btn{display:block; background-color:#5b1eaa; border-color:#5b1eaa; font-family:"Nanum Barun Gothic"; font-size:11px; font-weight:300; line-height:30px; color:#fff; text-align:center;}
+.quick-button > ul > li > .btn{position:relative; display:block; width:70px; height:70px; font-family:"Nanum Barun Gothic"; font-size:11px; font-weight:300; line-height:1.3; color:#fff; text-align:center; box-sizing:border-box;}
+.quick-button .cart > .btn{background-color:#111; border-color:#111; padding-top:43px;}
+.quick-button .cart > .btn:after{content:''; position:absolute; left:50%; top:17px; margin-left:-11px; display:block; width:22px; height:20px; background-image:url("/static/image/renewal2019/shop/icon_cart.png"); background-size:22px auto; background-repeat:no-repeat;}
+.quick-button .cart > .btn > .num{z-index:10; position:absolute; right:16px; top:8px; width:18px; height:18px; background-color:#5b1eaa; border:#5b1eaa 1px solid; font-family:"campton"; font-size:11px; line-height:20px; color:#fff; text-align:center; border-radius:50%; box-sizing:border-box;}
+.quick-button .cart > .btn.active .num,
+.quick-button .cart > .btn:hover .num{background-color:#111; border-color:#111;}
+.quick-button .wish > .btn{background-color:#111; border-color:#111; padding-top:43px;}
+.quick-button .wish > .btn:after{content:''; position:absolute; left:50%; top:17px; margin-left:-11px; display:block; width:22px; height:20px; background-image:url("/static/image/renewal2019/shop/icon_wish.png"); background-size:22px auto; background-repeat:no-repeat;}
+#quick-area .top-btn{padding:10px;}
+
+.main .top-btn{z-index:1001; position:fixed; right:-60px; bottom:20px; transition:.45s ease-out;}
+.main .top-btn.active{right:20px;}
+
+.top-btn a{display:block; width:50px; height:50px; font-size:0; line-height:0; background:#111 url("/static/image/renewal2019/common/btn_top.png") 0 0 no-repeat; background-size:100% auto; border-radius:50%;}
+.top-btn a:hover{background-color:#5b1eaa;}
+
+.paginate {width:100%;margin:60px auto 0;padding-bottom:90px;text-align:center;font-size:0;line-height:0;}
+.paginate a {display:inline-block;vertical-align:top;margin:0 2px;width:40px;height:40px;font-family:"campton";font-size:12px;color:#8a8a8a;line-height:42px;border:1px solid #eee;color:#999;}
+.paginate a:hover, .paginate a.on {color:#111;border-color:#111;}
+.paginate .first, .paginate .last, .paginate .prev, .paginate .next{font-family:"NanumGothic"; line-height:40px;}
+
+
+/* 버튼 오버 색상 */
+/* .btn-over{transition:all .3s ease;} */
+.btn-over.black.active,
+.btn-over.black:hover{background-color:#111 !important; border-color:#111 !important; color:#fff !important;}
+
+.btn-over.purple.active,
+.btn-over.purple:hover{background-color:#5b1eaa !important; border-color:#5b1eaa !important; color:#fff !important;}
+
+
+/* 메인 팝업 */
+.main-pop{display:none;}
+.main-pop .pop-body{background:#fff;}
+.main-pop .button{border-top:1px solid #eee;}
+.main-pop .button:after{content:''; display:block; clear:both;}
+.main-pop .button .btn{float:left; position:relative; width:50%; height:60px; background:#fff; border-left:1px solid #eee; font-family:"Noto Sans KR"; font-size:14px; font-weight:400; line-height:60px; text-align:center; color:#111; letter-spacing:-0.025em; box-sizing:border-box;}
+.main-pop .button .btn:first-child{border-left:0;}
+.main-pop .button .btn01:before{content:''; display:inline-block; vertical-align:middle; margin-top:-3px; margin-right:9px; width:27px; height:27px; background:url("/static/image/renewal2019/main/main_pop_btn.png") 50% 50% no-repeat; border:1px solid #ddd; border-radius:50%; box-sizing:border-box;}
+#mainPopSlide .slick-dots{position:absolute; left:0; bottom:18px; width:100%; text-align:center; font-size:0; line-height:0;}
+#mainPopSlide .slick-dots li{display:inline-block; vertical-align:top; margin-left:18px;}
+#mainPopSlide .slick-dots li:first-child{margin-left:0;}
+#mainPopSlide .slick-dots button{display:block; width:10px; height:10px; margin-bottom:2px; background:#ebebeb; font-size:0; line-height:0; cursor:pointer; border-radius: 50%;}
+#mainPopSlide .slick-dots .slick-active button{height:12px; margin-bottom:0; background:url("/static/image/renewal2019/main/slide_pager_02.png") 0 0 no-repeat;}
+
+/* 팝업 */
+.pop-wrap{display:none; z-index:10004; position:fixed; left:50%; top:50%; padding:40px; background:#fff; box-sizing:border-box; transform:translate(0, -50%);}
+.pop-head{margin-bottom:40px;}
+.pop-head .tit{font-family:"Noto Sans KR"; font-size:24px; font-weight:300; line-height:1; color:#111;}
+.pop-wrap .close-btn{position:absolute; right:30px; top:30px; width:40px; height:40px; font-size:0; line-height:0;}
+.pop-wrap .close-btn:after,
+.pop-wrap .close-btn:before{content:''; position:absolute; left:7px; top:20px; width:26px; height:1px; background:#111;}
+.pop-wrap .close-btn:after{transform:rotate(45deg);}
+.pop-wrap .close-btn:before{transform:rotate(-45deg);}
+.pop-wrap p{font-family:"Nanum Barun Gothic"; font-size:13px; font-weight:400; line-height:20px; color:#111; text-align:center;}
+.pop-wrap span,
+.pop-wrap strong{font-family:inherit;}
+.pop-wrap.confirm{padding:40px 0 30px;}
+.pop-wrap.confirm .buttons{padding:30px 0 0;}
+.pop-wrap.confirm .btn{min-width:100px; height:40px; font-size:13px; line-height:38px;}
+.pop-wrap.confirm .close-btn{top:0; right:0; width:50px; height:50px;}
+.pop-wrap.confirm .close-btn:after,
+.pop-wrap.confirm .close-btn:before{left:14px; top:25px; width:22px;}
+
+/* 애니메이션 */
+.animation-circle{z-index:1002; position:fixed; width:18px; height:18px; background:#5b1aaa; border:1px solid #5b1aaa;  border-radius:50%; box-sizing:border-box; pointer-events:none;}
+
+.ticker-wrap { 
+	position: absolute;
+	top: 110px;
+	width:100%;
+	overflow: hidden;
+	height: 360px;
+	background-color: rgba(0, 0, 0, 0.9);
+	box-sizing: content-box;
+}
+.ticker{
+	display: inline-block;
+    height: 360px;
+    white-space: nowrap;
+    box-sizing: content-box;
+}
+.swiper-slide-duplicate-active .ticker,
+.active .ticker{
+	-webkit-animation-iteration-count: infinite; 
+			animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+			animation-timing-function: linear;
+	-webkit-animation-name: ticker;
+			animation-name: ticker;
+	-webkit-animation-duration: 40s;
+			animation-duration: 40s;
+}
+.ticker-item{
+	display: inline-block;
+	padding:30px;
+	box-sizing:border-box;
+}
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-2560px, 0, 0);
+    transform: translate3d(-2560px, 0, 0);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-2560px, 0, 0);
+    transform: translate3d(-2560px, 0, 0);
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+	 -webkit-transform: translate(0, 0);
+	 transform: translate(0, 0);
+     opacity: 0;}
+  /* 50% {
+     opacity: 1; } */
+  50% {
+	 -webkit-transform: translate(0, 10px);
+     transform: translate(0, 10px);
+	 opacity: 1; }
+  100% {
+     -webkit-transform: translate(0, 10px);
+     transform: translate(0, 10px);
+	 opacity: 0; }
+}
+
+@keyframes pulse {
+  0% {
+	 -webkit-transform: translate(0, 0);
+	 transform: translate(0, 0);
+     opacity: 0;}
+  /* 50% {
+     opacity: 1; } */
+  50% {
+	 -webkit-transform: translate(0, 10px);
+     transform: translate(0, 10px);
+	 opacity: 1; }
+  100% {
+	 -webkit-transform: translate(0, 10px);
+     transform: translate(0, 10px);
+	 opacity: 0; }
+}
+
+/* 풀화면 비디오 스타일 */
+.video-wrap{position:relative; overflow:hidden;}
+.video-wrap iframe,
+.video-wrap video{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
+	z-index: -1000;
+	overflow: hidden;
+}
+
+/* 1920 이상 해상도 */
+@media all and (min-width:1921px) {
+	.main-visual .slick-track .item,
+	.main-banner .slick-track li,
+	.main-newcard .newcard-bg,
+	.main-benefit,
+	.main-banner02 .slick-track li{background-size:cover;}
+
+	.main-store .store-bg{left:0; width:100%; margin-left:0; background-size:100% auto;}
+	.main-newcard .newcard-bg{left:0; width:100%; margin-left:0;}
+}
+
+/* Tablet */
+@media all and (max-width:1280px) {
+	#mainSlide .item .contain{padding:0 140px;}
+
+	.main-sale .slick-prev{left:-60px;}
+	.main-sale .slick-next{right:-60px;}
+
+	.main-benefit .slick-prev{left:-60px;}
+	.main-benefit .slick-next{right:-60px;}
+
+	.main-banner li .contain{padding:0 140px;}
+
+	#quick_area{display:none;}
+
+	.main-pop{display:none !important;}
+}

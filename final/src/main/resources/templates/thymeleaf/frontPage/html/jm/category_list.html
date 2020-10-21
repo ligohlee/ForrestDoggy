@@ -1,0 +1,93 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Dog Mall</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/sectionStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/layout.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/shop.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/reset.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_dogMall.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+				
+		<div class="goods-area">
+				<div class="card-list">
+					<ul>
+						<h2>신상품 </h2>
+						<span th:text="${param.num}" />
+						<div th:if="${param.num} == 1" >
+							<h2>카테고리명</h2>
+						</div>
+						
+						
+						<div th:each="goods : ${ lists }">
+						<li class="item">
+							<div class="thumb">
+								<div class="img">
+									<a th:href="@{'/dgm/goodsDetail/' + ${goods.goodsNum}}" style="background-color:#F7F7F7;">
+										<div class="pos">
+											<div class="tb">
+												<div class="cell">
+													<img th:src="@{'/static/upload/goods/' + ${goods.goodsImg}}">
+												</div>
+											</div>
+										</div>
+									</a>
+								</div>											
+								<div class="over">
+									<a href="javascript:void(0);" onclick="getGalleryPop('');" class="zoom">확대보기</a>
+									<a href="javascript:void(0);" onclick="" class="cart">장바구니</a>
+								</div>
+							</div>
+							<div class="info">
+								<ul>
+									<li class="tit"><span th:text="${ goods.goodsName }" /></li>
+									<li class="spec">
+										<span th:text="${ goods.goodsManual }" />
+									</li>
+									<li class="price"><span th:text="${ goods.goodsPrice }" />원</li>
+								</ul>
+							</div>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+		
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+
+	</div>
+</body>
+</html>

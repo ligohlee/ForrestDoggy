@@ -9,6 +9,9 @@
 <link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
 <link rel="stylesheet" th:href="@{/static/css/sectionStyle.css}">
 <link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/layout.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/shop.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/reset.css}">
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
@@ -48,7 +51,7 @@
 		<!-- header인클루드 영역 -->
 		<header>
 			<div
-				th:include="thymeleaf/frontPage/html/commonLayout/header_stayPark.html"></div>
+				th:include="thymeleaf/frontPage/html/commonLayout/header_dogMall.html"></div>
 		</header>
 
 		<!--메인콘텐츠 영역-->
@@ -100,8 +103,8 @@
 								</div>
 								
 								<div class="v-button col-2">
-									<a th:href="@{'/dogmall/goodsCart/' + ${dto.goodsNum}}">장바구니</a>
-									<a th:href="@{'/dogmall/goodsOrder/' + ${dto.goodsNum}}">주문하기</a>
+									<a th:href="@{'/dgm/goodsCart/' + ${dto.goodsNum}}">장바구니</a>
+									<a th:href="@{'/dgm/goodsOrder/' + ${dto.goodsNum}}">주문하기</a>
 								</div>
 							</div>
 							<div class="row">

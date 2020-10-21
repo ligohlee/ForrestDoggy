@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.ligoh.CourseMapper">
+   <sql id="basecolumn">
+     COURSE_NUM, COURSE_NAME, COURSE_CONTENT
+   </sql>
+   <sql id="maxNum">
+    select nvl(max(course_NUM),0) + 1
+    from course
+   </sql>
+   <insert id="makeCourse">
+     insert into course (<include refid="basecolumn"/>)
+     values((<include refid="maxNum"/>),#{courseName}, #{courseContent})
+   </insert>
+   
+   <insert id="addMenu" parameterType="forrest.domain.ligoh.ClistDTO">
+     insert into course_list (course_num, menu_num)
+     values(#{courseNum},#{menuNum})
+   </insert>
+   
+   <select id="nowNum"  resultMap="ResultCourseList">
+      select max(course_num) numMax
+      from course
+   </select>
+   
+   <select id="getCourse" resultMap="priceSum" >
+      select c.course_num cNum, c.course_content cContent, c.course_name cName, sum(menu_price) cPrice
+       from course c join course_list l
+       on c.course_num = l.course_num
+       join menu m
+       on m.menu_num = l.menu_num
+       <trim prefix="where" prefixOverrides="AND | OR">
+						<if test="courseNum != 0 ">
+							and c.course_num = #{courseNum}
+						</if>
+	  </trim>
+       group by c.course_num,  c.course_content, c.course_name
+       order by c.course_num
+   </select>
+   
+<select id="getCourseCount"  resultType="int" >
+ select count(*) from course
+</select>
+ 
+  
+<resultMap type="forrest.domain.ligoh.CourseDTO" id="priceSum">
+		<id column="cNum" jdbcType="BIGINT" property="courseNum"/>
+		<result column="cContent" jdbcType="VARCHAR" property="courseContent"/>
+		<result column="cName" jdbcType="VARCHAR" property="courseName"/>
+		<result column="cPrice" jdbcType="VARCHAR" property="coursePrice"/>
+</resultMap>
+
+<resultMap type="forrest.domain.ligoh.ClistDTO" id="ResultCourseList">
+     <id column="numMax" jdbcType="BIGINT" property="courseNum"/>
+</resultMap>
+
+<resultMap type="forrest.domain.ligoh.CourseDTO" id="viewCourse">
+		<id column="cNum" jdbcType="BIGINT" property="courseNum"/>
+		<result column="course_name" jdbcType="VARCHAR" property="courseName"/>
+		<result column="menu_name" jdbcType="VARCHAR" property="menuName"/>
+		<result column="menu_price" jdbcType="BIGINT" property="menuPrice"/>
+		<result column="course_content" jdbcType="VARCHAR" property="courseContent"/>
+</resultMap>
+
+
+<select id="getSoup" resultMap="viewCourse" >
+    select c.course_num cNum, menu_name , menu_price ,course_content, course_name
+    from course c join course_list l
+    on c.course_num = l.course_num
+    join menu m
+    on m.menu_num = l.menu_num
+    where c.course_num = #{courseNum}
+    and menu_type = '스프'
+</select>
+<select id="getSalad" resultMap="viewCourse" >
+    select c.course_num cNum, menu_name , menu_price ,course_content, course_name
+    from course c join course_list l
+    on c.course_num = l.course_num
+    join menu m
+    on m.menu_num = l.menu_num
+    where c.course_num = #{courseNum}
+    and menu_type = '샐러드'
+</select>
+<select id="getMainMenu" resultMap="viewCourse" >
+    select c.course_num cNum, menu_name , menu_price ,course_content, course_name
+    from course c join course_list l
+    on c.course_num = l.course_num
+    join menu m
+    on m.menu_num = l.menu_num
+    where c.course_num = #{courseNum}
+    and menu_type = '메인메뉴'
+</select>
+<select id="getDessert" resultMap="viewCourse" >
+    select c.course_num cNum, menu_name , menu_price ,course_content, course_name
+    from course c join course_list l
+    on c.course_num = l.course_num
+    join menu m
+    on m.menu_num = l.menu_num
+    where c.course_num = #{courseNum}
+    and menu_type = '디저트'
+</select>
+<select id="getDrink" resultMap="viewCourse" >
+    select c.course_num cNum, menu_name , menu_price ,course_content, course_name
+    from course c join course_list l
+    on c.course_num = l.course_num
+    join menu m
+    on m.menu_num = l.menu_num
+    where c.course_num = #{courseNum}
+    and menu_type = '음료'
+</select>
+
+   
+</mapper>

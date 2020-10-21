@@ -18,7 +18,7 @@ public class MenuListService {
 	@Autowired
 	MenuMapper menuMapper;
 
-	public void getMenu(Integer page, Model model) {
+	public void getMenu(Integer page, Model model) throws Exception {
 		
 		int limit = 10;
 		int limitPage = 10;

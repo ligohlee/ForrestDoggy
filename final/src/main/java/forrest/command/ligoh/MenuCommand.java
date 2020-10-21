@@ -15,6 +15,8 @@ public class MenuCommand {
 	 String recipe;
 	 String menuIntro;
 	 String allergy;
+	 String menuType;
+	 Integer menuSeq;
 	 MultipartFile report;
 
 	 

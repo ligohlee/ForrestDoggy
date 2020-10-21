@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.ligoh.MorderMapper">
+  <sql id="morderColumn">
+     MORD_NUM, MEM_ID, MORD_TABLE, MORD_PEOPLE
+  </sql> 
+  <sql id="listColumn">
+   MORD_NUM,MENU_NUM,MORD_DATE,MORD_QTY,MORD_PRICE,MENU_REQ
+  </sql> 
+  <sql id="maxNum">
+    select nvl(max(mord_NUM),0) + 1
+    from morder
+  </sql>
+  
+  
+  <insert id="firstRegist">
+    insert into MORDER(<include refid="morderColumn"/>)
+    values((<include refid="maxNum"/>),#{memId}, null, #{mordPeople})
+  </insert>
+  <insert id="secondRegist">
+    insert into MENU_LIST(MORD_NUM,MORD_DATE)
+    values(#{mordNum}, #{mordDate})
+  </insert>
+  
+  <select id="getOrderNum" parameterType="string" resultMap="resultMorder">
+    select max(mord_NUM) mordNum from MORDER
+    where mem_id = #{memId}
+  </select>
+  
+  <resultMap type="forrest.domain.ligoh.MorderDTO" id="resultMorder">
+		<id column="mordNum" jdbcType="BIGINT" property="mordNum"/>
+		<result column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
+		<result column="MORD_TABLE" jdbcType="BIGINT" property="mordTable"/>
+		<result column="MORD_PEOPLE" jdbcType="BIGINT" property="mordPeople"/>
+</resultMap>
+  
+
+
+</mapper>
+
+

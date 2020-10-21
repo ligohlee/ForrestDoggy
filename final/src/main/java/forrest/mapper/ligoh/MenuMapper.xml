@@ -4,7 +4,7 @@
 <mapper namespace="forrest.mapper.ligoh.MenuMapper">
 
 <sql id="basecolumn">
-MENU_NUM, MENU_NAME, MENU_PRICE, RECIPE, MENU_INTRO, ALLERGY, MENU_IMAGE		
+MENU_NUM, MENU_NAME, MENU_PRICE, RECIPE, MENU_INTRO, ALLERGY, MENU_IMAGE, MENU_TYPE, MENU_SEQ		
 </sql>
 
 <sql id="maxNum">
@@ -15,7 +15,7 @@ MENU_NUM, MENU_NAME, MENU_PRICE, RECIPE, MENU_INTRO, ALLERGY, MENU_IMAGE
 <insert id="menuInsert" parameterType="forrest.domain.ligoh.MenuDTO" >
    insert into menu ( <include refid="basecolumn" /> )
    values((<include refid="maxNum"/>),#{menuName},#{menuPrice},#{recipe}, 
-            #{menuIntro},#{allergy},#{menuImage})
+            #{menuIntro},#{allergy},#{menuImage}, #{menuType}, #{menuSeq})
 </insert>
 
 <select id="getMenu" resultMap="ResultMenu" >
@@ -34,6 +34,43 @@ MENU_NUM, MENU_NAME, MENU_PRICE, RECIPE, MENU_INTRO, ALLERGY, MENU_IMAGE
      rn &gt;= #{startPage} and rn &lt;= #{endPage}
 </select>
 
+<select id="getSoup" resultMap="ResultMenu" >
+     select <include refid="basecolumn" /> 
+     from menu
+     where menu_type = '스프'
+     order by menu_seq
+</select>
+<select id="getSalad" resultMap="ResultMenu" >
+     select <include refid="basecolumn" /> 
+     from menu
+     where menu_type = '샐러드'
+     order by menu_seq
+</select>
+<select id="getMainMenu" resultMap="ResultMenu" >
+     select <include refid="basecolumn" /> 
+     from menu
+     where menu_type = '메인메뉴'
+     order by menu_seq
+</select>
+<select id="getDessert" resultMap="ResultMenu" >
+     select <include refid="basecolumn" /> 
+     from menu
+     where menu_type = '디저트'
+     order by menu_seq
+</select>
+<select id="getDrink" resultMap="ResultMenu" >
+     select <include refid="basecolumn" /> 
+     from menu
+     where menu_type = '음료'
+     order by menu_seq
+</select>
+<select id="getDogMenu" resultMap="ResultMenu" >
+     select <include refid="basecolumn" /> 
+     from menu
+     where menu_type = '애견메뉴'
+     order by menu_seq
+</select>
+
 <resultMap type="forrest.domain.ligoh.MenuDTO" id="ResultMenu">
 		<id column="Menu_NUM" jdbcType="BIGINT" property="menuNum"/>
 		<result column="MENU_NAME" jdbcType="VARCHAR" property="menuName"/>
@@ -42,6 +79,8 @@ MENU_NUM, MENU_NAME, MENU_PRICE, RECIPE, MENU_INTRO, ALLERGY, MENU_IMAGE
 		<result column="MENU_INTRO" jdbcType="VARCHAR" property="menuIntro"/>
 		<result column="ALLERGY" jdbcType="VARCHAR" property="allergy"/>
 		<result column="MENU_IMAGE" jdbcType="VARCHAR" property="menuImage"/>
+		<result column="MENU_TYPE" jdbcType="VARCHAR" property="menuType"/>
+		<result column="MENU_SEQ" jdbcType="BIGINT" property="menuSeq"/>
 </resultMap>
 <select id="getMenuCount"  resultType="int" >
  select count(*) from menu

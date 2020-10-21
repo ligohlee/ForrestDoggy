@@ -32,7 +32,7 @@ public class MenuCtrl {
 	MingrWriteService mingrWriteService;
 	@Autowired
 	MingrListService mingrListService;
-	
+
 	@RequestMapping(value = "menuList")
 	public String menuList(@RequestParam(value="page", defaultValue="1")Integer page, Model model) throws Exception {
 		menuListService.getMenu(page, model);

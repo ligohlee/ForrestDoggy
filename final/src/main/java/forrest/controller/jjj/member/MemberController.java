@@ -48,7 +48,7 @@ public class MemberController {
 			pointService.insertPoint(pcommand);
 			return "thymeleaf/frontPage/html/member/success" ;
 		}
-		return "thymeleaf/frontPage/html/member/memberForm" ;
+		return "thymeleaf/frontPage/html/member/memberForm";
 	}
 	
 	

@@ -1,0 +1,150 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Stay Park</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/roomService.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+
+
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_stayPark.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		<section>
+
+			<div class="container">
+				<h2>실시간 룸서비스 주문</h2>
+				
+		<form method="post" name="frm" action="">
+		<div id="roomOrder">
+		 <div class="orderRoom connect">
+			룸넘버&nbsp;&nbsp;&nbsp;<select id="roomNum" name="roomNum" class="selectOrder">
+					<th:block th:each="dto,aaa:${rsvRoom}">
+					<option>[[${dto.roomNum}]] [[${dto.roomName}]]</option>
+					</th:block>
+				  </select>&nbsp;<input type="button" id="login" class="buttons" value="접속"/></div>
+			<div id="monitor" contentEditable="true"></div>
+			
+			<div class="orderRoom">							
+				메&nbsp;&nbsp;&nbsp;뉴&nbsp;&nbsp;&nbsp; <select name="menuNum" id="menu" class="selectOrder">
+					<option value="1`지렁이스파게티">지렁이스파게티 30000</option>
+					<option value="2`파인애플주스">파인애플주스 5000</option>
+					<option value="3`계란보끔밥">계란보끔밥 10000</option>
+				</select>
+				<input type="button" value="전송" class="buttons" onClick="sendMenu()"/>
+				
+			</div>
+			<div class="orderRoom">							
+				수&nbsp;&nbsp;&nbsp;량&nbsp;&nbsp;&nbsp; <select name="menuNum" id="qty" class="selectOrder">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>				
+				</select>
+				<input type="button" value="전송" class="buttons" onClick="sendQty()"/>
+				
+			</div>
+			
+			<div class="orderRoom chatt">							
+				메시지&nbsp;&nbsp;&nbsp;&nbsp;<input id="msg" class="selectOrder">
+				<input type="button" value="전송" class="buttons" onClick="sendMsg()"/>
+				
+			</div>
+			<div class="btnsBox">
+			<input type="button" value="주 문 완 료" class="complete" onClick="disConn()"/>
+			</div>
+			</div>
+		</form>
+				
+
+
+			</div>
+		</section>
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+		
+		<script>
+	var url = "ws://172.16.3.21:9090/chat/";
+	var webSocket = null;
+	var monitor = document.getElementById("monitor");
+	//접속 URL
+	$("#login").click(function() {
+		url += $("#roomNum").val(); // ws://172.16.3.57:9090/chat/이숭무	
+		//console.log(url);
+		webSocket = new WebSocket(url);//웹 소켓 객체 생성	
+
+		//웹소켓 연결됐을 때(client <- server)
+		webSocket.onopen = function(e) {
+			console.log(e);
+		}
+		//웹소켓 끊겼을 때(client <- server)
+		webSocket.onclose = function(e) {
+			if (e.type == "close") {
+				monitor.innerHTML += "접속이 종료 되었습니다.<br/>";
+			}
+		}
+		//메시지 수신(client <- server)
+		webSocket.onmessage = function(e) {
+			console.log(e);
+			monitor.innerHTML += e.data + "<br/>";
+		}
+
+	});
+
+	//웹소켓 종료(client -> server)
+	function disConn() {
+		webSocket.close();
+	}
+
+	//메시지 전송(client -> server)
+	function sendMsg() {
+		webSocket.send($("#roomNum").val() + ": " + $("#msg").val());
+		$("#msg").val("");
+	}
+	function sendMenu() {
+		webSocket.send($("#roomNum").val() + ": " + $("#menu").val());
+		$("#menu").val("");
+	}
+	function sendQty() {
+		webSocket.send($("#roomNum").val() + ": " + $("#qty").val());
+		$("#qty").val("");
+	}
+</script>
+
+	</div>
+</body>
+</html>

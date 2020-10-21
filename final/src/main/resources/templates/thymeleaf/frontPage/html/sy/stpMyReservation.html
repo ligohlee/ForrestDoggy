@@ -7,7 +7,7 @@
 <link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
 
 <link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
-<link rel="stylesheet" th:href="@{/static/css/roomListStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/roomPaymentStyle.css}">
 <link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
 
 <link
@@ -16,8 +16,7 @@
 
 <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 <script th:src="@{/static/js/jquery.js}"></script>
-
-
+	
 
 </head>
 <body>
@@ -37,34 +36,36 @@
 		<section>
 			
 			<div class="container">
-			
+
 				<table class="roomTable">
-					<tr><td colspan="4">
-						<h2>예약가능객실</h2>
-						<div class="rsvInfo">
-							[[${checkIn}]] ~
-							[[${checkOut}]]</br>
-							객실인원: [[${capacitySelect}]]인 이상
-						</div>
-					</td></tr>
-					
-					<tr><th class="th"><div>대표사진</div></th><th class="th">객실이름</th><th class="th">숙박요금(1day)</th><th class="th">수용인원</th></tr>
-					
-					<th:block th:each="dto,aaa : ${roomList}">
-					<tr><td class="roomTd imgTd">
-						<block th:each=" lang : ${#strings.arraySplit(dto.roomImg,'`')}" th:remove="tag">    			 
-					    				<div class="roomImg"><a th:href="@{/staypark/roomDetail(roomNum=${dto.roomNum})}"><img th:src="@{/static/staypark/room/upload/} + ${lang}" width="100%" th:alt="${lang}"/></a></div></block>
-					</td><td class="roomTd"><a class="link" th:href="@{/staypark/roomDetail(roomNum=${dto.roomNum},checkIn=${checkIn}, checkOut=${checkOut}, capacitySelect=${capacitySelect})}">[[${dto.roomName}]]</a></td><td class="roomTd">[[${dto.roomPrice}]]</td><td class="roomTd">[[${dto.capacity}]]</td></tr>
+					<tr>
+						<td colspan="5">
+							<h2>내 예약 정보</h2>
+						</td>
+					</tr>
+					<tr>
+						<th class="th">번호</th><th class="th">객실이름</th><th class="th">예약자명</th><th class="th">체크인</th><th class="th">예약일시</th>
+					</tr>
+					<th:block th:each="dto, aaa : ${myList}">
+					<tr>
+						<td class="roomTd">[[${aaa.count}]]</td><td class="roomTd">[[${dto.roomName}]]</td><td class="roomTd">[[${dto.roName}]]</td><td class="roomTd" th:text="${#dates.format(dto.checkIn,'yyyy-MM-dd')}"></td><td class="roomTd">[[${dto.roRegist}]]</td>
+					</tr>
 					</th:block>
-					
-					
-					
-					
-				</table>
-				
+				</table>	
+
+
+
+
+				<div class="final_btn">
+
+					<a th:href="@{/staypark/main}"><input type="button" class="search" value="메 인 으 로"></a>
+
+				</div>
+
 
 
 			</div>
+			
 		</section>
 
 

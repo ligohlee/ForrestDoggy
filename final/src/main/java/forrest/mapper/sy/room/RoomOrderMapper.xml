@@ -13,6 +13,40 @@
 </insert>
 
 
+<resultMap type="forrest.domain.sy.room.RorderDTO" id="resultmap">		
+	<result column="RO_NUM" jdbcType="BIGINT" property="roNum"/>
+	<result column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
+	<result column="ROOM_NUM" jdbcType="BIGINT" property="roomNum"/>
+	<result column="RO_REGIST" jdbcType="TIMESTAMP" property="roRegist"/>
+	<result column="RO_NAME" jdbcType="VARCHAR" property="roName"/>
+	<result column="RO_PH" jdbcType="VARCHAR" property="roPh"/>
+	<result column="CHECK_IN" jdbcType="TIMESTAMP" property="checkIn"/>
+	<result column="CHECK_OUT" jdbcType="TIMESTAMP" property="checkOut"/>
+	<result column="RO_REQ" jdbcType="VARCHAR" property="roReq"/>
+	<result column="room_name" jdbcType="VARCHAR" property="roomName"/>
+</resultMap>
+
+<select id="selectRoomOrderNow" parameterType="forrest.domain.sy.room.RorderDTO" resultMap="resultmap">
+	select RO_NUM, MEM_ID, ro.ROOM_NUM, RO_NAME, RO_PH, CHECK_IN, CHECK_OUT, RO_REQ, room_name
+	from rorder ro join room rm
+	on ro.room_num = rm.room_num
+	where mem_id = #{memId} and sysdate between check_in and check_out
+</select>
+
+<select id="selectList" parameterType="forrest.domain.sy.room.RorderDTO" resultMap="resultmap">
+	select RO_NUM, MEM_ID, ro.ROOM_NUM, RO_NAME, RO_PH, CHECK_IN, CHECK_OUT, RO_REQ, room_name, RO_REGIST
+	from rorder ro join room rm
+	on ro.room_num = rm.room_num
+	<where>
+	<if test="roNum != null">
+		ro_Num = #{roNum}
+	</if>
+	<if test="memId != null">
+		mem_id = #{memId}
+	</if>
+	</where>
+</select>
+
 
 
 </mapper>

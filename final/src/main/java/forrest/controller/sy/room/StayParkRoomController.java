@@ -57,7 +57,7 @@ public class StayParkRoomController {
 			@RequestParam(value="checkOut") String checkOut,
 			@RequestParam(value="capacity") String capacity,
 			Model model) {
-		roomListService.selectRoom(model);
+		roomListService.selectRoom(checkIn,checkOut, capacity, model);
 		model.addAttribute("checkIn", checkIn);
 		model.addAttribute("checkOut", checkOut);
 		model.addAttribute("capacitySelect", capacity);

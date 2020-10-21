@@ -12,17 +12,18 @@
     values(selopt_seq.nextval, (select ro_Num from rorder where ro_regist = (select MAX(ro_regist) from rorder where mem_id=#{memId})),#{selName},#{selQty}, #{selPrice})
 </insert>
 
-<!--  
-<resultMap type="forrest.domain.sy.PointDTO" id="resultmap">		
-	<result column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
-	<result column="POINT_IN" jdbcType="VARCHAR" property="pointIn"/>
-	<result column="POINT_OUT" jdbcType="VARCHAR" property="pointOut"/>
-	<result column="POINT_REGIST" jdbcType="TIMESTAMP" property="pointRegist"/>
-	<result column="POINT_SUM" jdbcType="VARCHAR" property="pointSum"/>
-</resultMap>
+<resultMap type="forrest.domain.sy.room.SelectOptionDTO" id="resultmap">		
+	<result column="SEL_NUM" jdbcType="BIGINT" property="selNum"/>
+	<result column="RO_NUM" jdbcType="BIGINT" property="roNum"/>
+	<result column="SEL_NAME" jdbcType="VARCHAR" property="selName"/>
+	<result column="SEL_QTY" jdbcType="BIGINT" property="selQty"/>
+	<result column="SEL_PRICE" jdbcType="BIGINT" property="selPrice"/>
+</resultMap> 
 
-<select id="" resultMap="resultmap" parameterType="forrest.domain.sy.rooom.SelectOptionDTO">	
-</select>-->
+<select id="selectOptions" resultMap="resultmap" parameterType="int">
+	select * from sel_option
+	where RO_NUM=#{roNum}
+</select>
 
 
 

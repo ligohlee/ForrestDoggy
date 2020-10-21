@@ -13,7 +13,5 @@ public class MenuListDTO {
 	Integer mordNum;
 	Integer menuNum;
 	Integer mordQty; 
-	Integer mordPrice;
-	String menuReq;
-	Timestamp mordDate;
+	Timestamp mordTime;
 }

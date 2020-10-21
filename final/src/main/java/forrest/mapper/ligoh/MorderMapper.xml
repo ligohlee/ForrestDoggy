@@ -3,11 +3,9 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="forrest.mapper.ligoh.MorderMapper">
   <sql id="morderColumn">
-     MORD_NUM, MEM_ID, MORD_TABLE, MORD_PEOPLE
+     MORD_NUM, MEM_ID, MORD_TABLE,MORD_DATE, MORD_PEOPLE, MENU_REQ
   </sql> 
-  <sql id="listColumn">
-   MORD_NUM,MENU_NUM,MORD_DATE,MORD_QTY,MORD_PRICE,MENU_REQ
-  </sql> 
+  
   <sql id="maxNum">
     select nvl(max(mord_NUM),0) + 1
     from morder
@@ -16,13 +14,9 @@
   
   <insert id="firstRegist">
     insert into MORDER(<include refid="morderColumn"/>)
-    values((<include refid="maxNum"/>),#{memId}, null, #{mordPeople})
+    values((<include refid="maxNum"/>),#{memId}, null,#{mordDate}, #{mordPeople}, null)
   </insert>
-  <insert id="secondRegist">
-    insert into MENU_LIST(MORD_NUM,MORD_DATE)
-    values(#{mordNum}, #{mordDate})
-  </insert>
-  
+ 
   <select id="getOrderNum" parameterType="string" resultMap="resultMorder">
     select max(mord_NUM) mordNum from MORDER
     where mem_id = #{memId}
@@ -32,8 +26,14 @@
 		<id column="mordNum" jdbcType="BIGINT" property="mordNum"/>
 		<result column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
 		<result column="MORD_TABLE" jdbcType="BIGINT" property="mordTable"/>
+		<result column="MORD_DATE" jdbcType="TIMESTAMP" property="mordDate"/>
 		<result column="MORD_PEOPLE" jdbcType="BIGINT" property="mordPeople"/>
-</resultMap>
+  </resultMap>
+   <update id="updateReq">
+      update morder
+      set MENU_REQ = #{menuReq}
+      where mord_num = #{mordNum}
+   </update>
   
 
 

@@ -40,133 +40,50 @@
 			
 			<div class="container">
 						
-				<form th:action="@{/esp/regist}" method="post" name="frm">
+				<form th:action="@{/esp/regist2}" method="post" name="frm">
 				
 				  <div class="make">
 			      <h2 style="text-align: ceter;" >MAKE SOME BOOK</h2>
 				  </div>	
 				  <div class="people">
 				  
-				  <div >
-				  <div style="float:left;">
-				    <div class="divi">
-						<div class="corse">
-							<div class="costext">A코스</div>
-						</div>
-
-					</div>
 				    
-				    <div class="divi">
-						<div class="type">
-							<p class="pp">인원 선택</p>
-							<select name="mordPeople" class="choice_box" required>
-								<option value="0">선택없음</option>
-								<option value="1">1명</option>
-								<option value="2">2명</option>
-								<option value="4">3명</option>
-								<option value="4">4명</option>
-								<option value="6">5명</option>
-								<option value="6">6명</option>
-								<option value="8">7명</option>
-								<option value="8">8명</option>
-								<option value="10">9명</option>
-								<option value="10">10명</option>
-								
-							</select>
-						</div>
-					</div>
-					</div>
-				  <div style="float:left;">
-				    <div class="divi">
-						<div class="corse">
-							<div class="costext">B코스</div>
-						</div>
-
-					</div>
-				    
-				    <div class="divi">
-						<div class="type">
-							<p class="pp">인원 선택</p>
-							<select name="mordPeople" class="choice_box" required>
-								<option value="0">선택없음</option>
-								<option value="1">1명</option>
-								<option value="2">2명</option>
-								<option value="4">3명</option>
-								<option value="4">4명</option>
-								<option value="6">5명</option>
-								<option value="6">6명</option>
-								<option value="8">7명</option>
-								<option value="8">8명</option>
-								<option value="10">9명</option>
-								<option value="10">10명</option>
-							</select>
-						</div>
-					</div>
-					</div>
-				</div>
-				     <div style="float:left;">
-				     <div class="divi">
-						<div class="corse">
-							<div class="costext">예약 날짜 선택</div>
-						</div>
-					</div>
-					<div class="divi" style="margin-top: 15px;">
-						<div class="ckIn">
-							<input type="datetime-local" name="checkIn" value="" class="choice_box"
-								required>
-						</div>
-					</div>
-				   </div>
-				   
-				     <div class="divi">
-						<div class="corse">
-							<div class="costext">요구사항</div>
-						</div>
-					</div>
-					<div class="divi" style="margin-top: 15px;">
-						<textarea style="border: 2px solid #cccccc;" rows="8" cols="30"></textarea>
-					</div>
-				
-				
-				   
-				     <div >
-						<div class="corse">
-							<div class="costext" >애견메뉴 선택</div>
-						</div>
-
-					</div>
-				    
-				    <div class="divi" style="margin-top:15px;" >
+				    <div id="aSel"  class="divi" style="margin-top:15px;" >
 						<div class="type" >
-							<select  name="addMenu" class="choice_box" required>
-							    <option>선택없음</option>
+							<p class="pp">애견메뉴 선택</p>
+							<select  name="menuNum" class="choice_box" required>
+							    <option value="0">선택없음</option>
 								<option th:each="list : ${dogMenu}" th:value="${list.menuNum}" th:text="${list.menuName}"></option>
 							</select>
 						</div>
 					</div>
 					
-					 <div class="divi" style="margin-top:15px;" >
+					 <div id="bSel" class="divi" style="margin-top:31px;" >
 						<div class="type">
 							
 							<select name="mordPeople" class="choice_box" required>
-								<option value="0">수량선택</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="4">3</option>
 								<option value="4">4</option>
-								<option value="6">5</option>
-								<option value="6">6</option>
-								<option value="8">7</option>
-								<option value="8">8</option>
 							</select>
 						</div>
 					</div>
-					 <div class="divi" style="padding-top:5px;">
+					 <div class="divi" style="padding-top:25px;">
 					   <div class="searchBtn" >
-						 <input style="height: 30px; width: 100px;" class="search" type="button" id="btn" value="추가"/>
+						 <input style="height: 30px; width: 100px;" class="search" type="button" id="choo" value="추가"/>
 					   </div>
 					</div>
-					<div id="addMenu"  style="text-align:  left"></div>
+					
+					
+					<div class="divi" style="margin-top: 15px; ">
+						<div class="type">
+							<p class="pp">요구사항</p>
+						<textarea style="border: 2px solid #cccccc;  margin-top:15px;" rows="8" cols="30"
+						 placeholder="코스 및 애견메뉴에 대한 알러지 정보나 기타 요구사항을 기재." name="menuReq"></textarea>
+						 </div>
+					</div>
+					
 		     </div>
 				
 					<div class="divi" style="float: right;">
@@ -187,6 +104,38 @@
 		<footer>
 			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
 		</footer>
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+	
+			$(function(){
+				var arr = /*[[${dogMenu}]]*/;
+				var aSel = $("#aSel");
+				var bSel = $("#bSel");
+				var aHtml;
+				var bHtml = `<select name="mordPeople" class="choice_box">
+								<option value="0">선택없음</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+							</select>`
+				
+				aHtml = '<select  name="menuNum" class="choice_box">';
+			  
+				
+				$(arr).each(function(){
+					aHtml += '<option value="' + $(this)[0].menuNum + '">' + $(this)[0].menuName + '</option>';
+				});
+				aHtml += '</select>';
+				
+				$("#choo").click(function(){
+					aSel.append(aHtml);
+					bSel.append(bHtml);
+				});
+			})
+			
+			/*]]*/
+		</script>
 
 	</div>
 </body>

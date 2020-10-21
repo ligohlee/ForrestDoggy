@@ -12,10 +12,11 @@ import lombok.Data;
 public class MorderCommand {
 	
 	Integer [] mordPeople;
-	
+	Integer [] courseNum;
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
 	LocalDateTime mordDate;
 	Integer mordPrice;
 	String menuReq;
+	String [] menuNum;
 	
 }

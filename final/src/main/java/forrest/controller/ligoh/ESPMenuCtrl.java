@@ -27,8 +27,6 @@ public class ESPMenuCtrl {
 	CourseListService courseListService;
 	
 	
-	
-	
 	@RequestMapping(value = "menu")
 	public String menuOpen(Model model) throws Exception{
 		menuShowService.getMenuList(model);
@@ -40,14 +38,17 @@ public class ESPMenuCtrl {
 		return "thymeleaf/frontPage/html/ligoh/espBook";
 	}
 	@RequestMapping(value ="regist")
-	public String regist(MorderCommand mordCommand, HttpServletRequest request) throws Exception{
-		makeABookService.makeBook(mordCommand, request);
+	public String regist(MorderCommand mordCommand, HttpServletRequest request, Model model) throws Exception{
+		makeABookService.firstRegist(mordCommand, request);
+		makeABookService.secondRegist(mordCommand, request);
+		menuShowService.getMenuList(model);
 		return "thymeleaf/frontPage/html/ligoh/espAdd";
 	}
-	@RequestMapping(value ="menuAdd")
-	public String menuAdd() throws Exception{
-		
-		return "thymeleaf/frontPage/html/ligoh/espAdd";
+	
+	@RequestMapping(value ="regist2")
+	public String regist2(MorderCommand mordCommand, HttpServletRequest request) throws Exception{
+		makeABookService.thirdRegist(mordCommand, request);
+		return "thymeleaf/frontPage/html/ligoh/espMenu";
 	}
 
 }

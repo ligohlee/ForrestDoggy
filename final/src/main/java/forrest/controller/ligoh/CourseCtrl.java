@@ -23,6 +23,8 @@ public class CourseCtrl {
 	CourseListService courseListService;
 	@Autowired
 	CourseDetailService courseDetailService;
+	@Autowired
+	MenuShowService menuShowService;
 	
 	@RequestMapping("list")
 	public String courseOpen(Model model) throws Exception{
@@ -32,7 +34,7 @@ public class CourseCtrl {
 	}
 	@RequestMapping("regist")
 	public String courseRegist(Model model) throws Exception{
-		courseListService.getCourse(model);
+		menuShowService.getMenuList(model);
 		return "thymeleaf/backOfficePage/html/esp_manager/course/course_regist";
 		
 	}

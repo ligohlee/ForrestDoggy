@@ -30,7 +30,7 @@ public class DogVillageBackTicketController {
 	
 	@RequestMapping(value = "ticketList", method = RequestMethod.GET)
 	public String ticketList(Model model) {
-		ticketListService.listTicket(model);
+		ticketListService.listTicketBack(model);
 		return "thymeleaf/backOfficePage/html/dvl_manager/dvl_backTicketList";
 	}
 	@RequestMapping(value = "ticketRegist", method = RequestMethod.GET)

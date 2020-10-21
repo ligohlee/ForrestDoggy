@@ -1,0 +1,324 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Stay Park</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/roomOrderListStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+<script>
+	$(document).ready(function(){
+		
+		
+		// 객실가격*숙박일수
+		var days = $('#days').val();
+		var roomPrice = $('#roomPrice').val();
+		var totalRoom = days*roomPrice;
+		
+		// 선택옵션 가격
+		var optTotal=0;
+		
+		$("input[name=optTotal]").each(function(idx){
+			
+			  var optPrice = parseInt($(this).val());
+			  if(isNaN(optPrice)){
+				  optPrice=0;
+			  }
+			  optTotal=optTotal+optPrice;
+                        	         
+	    });
+		
+		if(isNaN(optTotal)){
+			optTotal=0;
+			alert(optTotal);
+		}
+		
+		
+		
+		var totalPrice=totalRoom;
+		alert(totalPrice);
+		
+		if(parseInt(optTotal) != 0){
+			totalPrice=totalPrice+optTotal
+			alert("optTotal이 0이 아닐 때"+totalPrice);
+		}
+		
+		
+		
+		
+		$('#totalRoom').html(totalPrice+"원");
+		$('#total').html("총 주문금액 "+totalPrice+"원");
+		$('#prePayPrice').val(totalPrice);
+		$('#payTotal').html(totalPrice);
+		
+		$("#memCheck").change(function(){
+	        if($("#memCheck").is(":checked")){
+	            $('#roName').val($('#memName').val());
+	            $('#roPh').val($('#memPh').val());
+	        }else{
+	        	$('#roName').val('');
+	            $('#roPh').val('');
+	        }
+	    });
+		
+		
+		$('input[type="checkbox"][name="payWay"]').click(function(){
+			if($('input[type="checkbox"][name="payWay"]').is(':checked')){			
+				$('input[type="checkbox"][name="payWay"]').prop('checked',false);			
+			}
+			$(this).prop('checked',true);
+		});
+		
+		
+		
+		
+		$("#pointCheck").change(function(){
+	        if($("#pointCheck").is(":checked")){
+	        	
+	        	$('#usePoint').css('display','block');
+	        	var pointOut = parseInt($('#pointOut').val());
+	        	var nowPoint = parseInt($("#nowPoint").val());
+	        	if(isNaN(pointOut)){
+	        		pointOut=0;
+	    			$('#usePointBtn').click(function(){
+	    				pointOut = parseInt($('#pointOut').val());
+	    				$("#nowPoint").val(nowPoint-pointOut);
+	    				$('#payPoint').html(pointOut);
+	    				$('#payReal').html(totalPrice-pointOut)
+	    				$('#payPrice').val(totalPrice-pointOut);
+	    				var pricezz = parseInt($('#payPrice').val(totalPrice-pointOut));
+	    				var pin = pricezz*0.01;
+	    				$('#pointIn').val(pin);
+	    				$('#payPointIn').html(pin);
+	    			});    			
+	    		}	        		            
+	        }else{
+	        	
+	        	var pointOut = parseInt($('#pointOut').val());
+	        	var nowPoint = parseInt($("#nowPoint").val());
+	        	if(isNaN(pointOut)){
+	        		pointOut=0;
+	        		$("#nowPoint").val(nowPoint+pointOut);
+	        		
+	    		}
+	        	$("#nowPoint").val(nowPoint+pointOut);
+	        	$('#pointOut').val(0);
+	        	$('#usePoint').css('display','none');
+	        	
+	        	
+	        }
+	    });
+		
+		
+		if($('#usePoint').css('display','none')){
+			$('#payPoint').html(0);
+			$('#payReal').html(totalPrice);
+			$('#payPrice').val(totalPrice);
+			var priceaa = parseInt($('#payPrice').val(totalPrice));
+			var pinnn = priceaa*0.01;
+			$('#pointIn').val(pinnn);
+			$('#payPointIn').html(pinnn);
+		}
+		
+		 
+		
+		$('#rsvBtn').click(function(){
+			if ($('input[type="checkbox"][name="payWay"]').is(':checked') == false) {
+				  alert('결제수단을 체크하셔야 합니다.');
+				  
+			}else if($('#roName').val()== ''){
+				alert('예약자 성함을 입력해주세요');
+			}else if($('#roPh').val()== ''){
+				alert('예약자 연락처를 입력해주세요');
+			}else{
+				$('#payPage').css('display','block');
+			}
+			
+		});
+		
+		$('#cancleBtn').click(function(){
+			$('#payPage').css('display','none');
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	});
+</script>
+
+
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+	<form th:action="@{/staypark/roomOrderPro}" method="post" name="frm">
+	<div id="payPage">
+					<div id="payBox">
+						<div id="cancle"><input type="button" value="X" id="cancleBtn"/></div>
+						<span id="payOk"></span>
+						<h2 class="payH2">결 제</h2>
+						<table id="payTable">
+							<tr><td class="paytd">총 주문금액</td><td class="paytd"><span id="payTotal"></span></td></tr>
+							<tr><td class="paytd">포인트사용</td><td class="paytd"><span id="payPoint"></span></td></tr>
+							<tr><td class="paytd">포인트적립</td><td class="paytd"><span id="payPointIn"></span></td>
+							<input type="hidden" name="pointIn" value="" id="pointIn"/>
+							</tr>
+							<tr><th class="th paytd payth">결제금액</th><th class="th paytd payth"><span id="payReal"></span></th>
+							<input type="hidden" name="payPrice" value="" id="payPrice"/></tr>
+						</table>
+						<div id="submitBox">
+							<input type="submit" name="submit" class="search" value="결 제 하 기">
+						</div>
+						
+					</div>
+				</div>
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_stayPark.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		<section>
+			
+			<span th:if="${session.authInfo !=null}">
+				<input type="hidden" th:value="${session.authInfo.name}" name="memName" id="memName"/>
+				<input type="hidden" th:value="${session.authInfo.ph}" name="memPh" id="memPh"/>
+				<input type="hidden" th:value="${session.authInfo.id}" name="memId" id="memId"/>
+			</span>
+			<div class="container">
+
+				<table class="roomTable">
+					<tr>
+						<td colspan="5">
+							<h2>객실 주문서</h2>
+
+						</td>
+					</tr>
+					<tr>
+						<th class="th borderleft">번호</th>
+						<th class="th">객실이름</th>
+						<th class="th">숙박요금(1day)</th>
+						<th class="th">숙박일정</th>
+						<th class="th">선택옵션</th>
+						<th class="th borderright">수량</th>
+					</tr>
+					
+					<tr>
+						<td rowspan="2" class="roomTd number borderleft">1</td>
+						<td class="roomTd"><span class="font">[[${room.roomName}]]</span></td>
+						<td class="roomTd">[[${room.roomPrice}]]원
+							<input type="hidden" name="roomPrice" th:value="${room.roomPrice}" id="roomPrice"/>
+						</td>
+						<td class="roomTd">[[${rsvInfo.checkIn}]] ~ [[${rsvInfo.checkOut}]]
+							<input type="hidden" name="days" th:value="${days}" id="days"/>
+						</td>
+						<td class="roomTd">
+						<th:block th:each="optName : ${optName}">
+							<p class="opt">[[${optName}]]</p>														
+						</th:block></td>
+						<td class="roomTd borderright">
+						<th:block th:each="selQty : ${selQty}">
+							<p class="opt">[[${selQty}]]</p>														
+						</th:block>
+						
+						<th:block th:each="optTotal : ${optTotal}">
+							<input type="hidden" name="optTotal" class="optTotal" th:value="${optTotal}"/>																			
+						</th:block>
+						</td>						
+					</tr>
+					<tr>
+						<td colspan="5" class="priceTd borderright" id="totalRoom"></td>
+					</tr>
+
+					<tr>
+						<td colspan="6" class="priceTd borderleft borderright total" id="total"></td>
+					</tr>
+					
+
+				</table>
+				
+				<table class="roInfoTable">
+					<tr>
+						<td class="roInfotd borderleft">
+							<h4>예약자 정보</h4>
+							<div class="optBox">
+								<span class="font">예약자 정보가 회원 정보와 같음</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="member" id="memCheck"/>
+								<p class="roInfo">
+								예약자이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="roName" class="infoinput" id="roName" required/></br>
+								예약자연락처&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="roPh" class="infoinput" id="roPh" required/></p>								
+							</div>
+						</td>
+						<td class="roInfotd borderright">
+							<h4>결제 정보</h4>
+							<div class="optBox">
+								<span class="font">결제수단 선택</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								카드결제 <input type="checkbox" name="payWay" value="credit"/>&nbsp;&nbsp;&nbsp;계좌이체 <input type="checkbox" name="payWay" value="cash"/>&nbsp;&nbsp;&nbsp;포인트 <input type="checkbox" name="point" value="point" id="pointCheck"/>
+								<div class="roInfo">
+								총 결제금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="prePayPrice" class="infoinput" value="" id="prePayPrice" readonly/>원</br>
+								가용 포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointSum" th:value="${point}" class="infoinput" id="nowPoint" readonly/>점
+								<div id="usePoint">포인트 사용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointOut" value="" class="infoinput" id="pointOut" placeholder="0"/>점</br>
+								<button type="button" id="usePointBtn">사용</button>
+								</div></div>
+								
+							</div>
+						</td>
+						
+					</tr>
+					
+				</table>
+				
+				<table class="reqTable">
+					<tr><th class="th borderleft borderright">기타 요청사항</th></tr>
+					<tr><td class="req borderleft borderright"><textarea name="roReq" class="roReq"></textarea></td></tr>
+				</table>
+
+
+
+
+				<div class="final_btn">
+
+					<input type="button" class="search" value="예 약 하 기" id="rsvBtn">
+
+				</div>
+				
+				
+
+
+
+			</div>
+			
+			
+		</section>
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+	</form>
+	</div>
+</body>
+</html>

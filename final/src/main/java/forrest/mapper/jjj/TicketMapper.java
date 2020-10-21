@@ -12,7 +12,7 @@ public interface TicketMapper {
 
 	void insertTicket(TicketDTO dto);
 
-	List<TicketDTO> selectTicketAll();
+	List<TicketDTO> selectTicketAll(TicketDTO dto);
 
 	TicketDTO selectTicket(TicketDTO ticketNum1);
 

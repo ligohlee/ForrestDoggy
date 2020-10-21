@@ -30,6 +30,10 @@
 
 	select TICKET_NUM, TICKET_NAME, TICKET_SEASON , TICKET_TIME , TICKET_GRADE , TICKET_PRICE , TICKET_REGIST , TICKET_QTY
 	from ticket
+	<if test="ticketSeason != null">
+		where TICKET_SEASON = #{ticketSeason}
+	</if>
+	
 </select>
 
 <select id="selectTicket" resultMap="baseTicket" parameterType="forrest.domain.jjj.TicketDTO">

@@ -1,0 +1,140 @@
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <head>
+    <meta charset="UTF-8">
+    <title>Partner BackOffice</title>
+    <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
+    <!-- Bootstrap Styles-->
+    <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link th:href="@{/static/css/font-awesome.css}" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+   <!--   <link th:href="@{/static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
+    <!-- Custom Styles-->
+    <link th:href="@{/static/css/custom-styles.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{/static/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/static/css/newSoyoungStyle.css}" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+
+    </head>
+ 
+  </head>
+  <body>
+
+	<div id="wrapper">
+
+   <!-- stp header 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_header.html"></div>
+		<!-- stp seideNav 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_sideNav.html"></div>
+	
+    <!--페이지래퍼-->
+	<div id="page-wrapper">
+			<div id="page-inner">
+
+				<!--로그인 전 메인 화면-->
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="page-header">정산 정보수정</h1>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-body" style="padding: 100px 0;">
+					<style>
+					.login-area {
+					max-width: 300px;
+					margin: 0 auto;
+					padding: 30px 0;
+					}
+
+					.submit {
+					width: 100%;
+					}	
+					</style>
+					
+					
+					
+                    <form name ="frm" id="frm" method="post" th:action="@{calctmodifyPro}" th:object="${dto}">
+                  	<div class="memberDetail-area">
+                     <div class="form-group">
+        			<span class="bar">정산번호 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="number" id ="calcNum" name ="calcNum" 
+	      			  th:value = "${dto.calcNum}"  class="inputBox"/>
+     				 </div>
+                    <div class="form-group">
+       				<span class="bar">업체번호 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="number" id ="ptNum" name ="ptNum" 
+	     			th:value = "${dto.ptNum}"  class="inputBox"/>
+      				</div>
+                     <div class="form-group">
+        			<span class="bar">직원번호 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="number" id ="workNum" name ="workNum" 
+	     			 th:value="${dto.workNum}"  class="inputBox"/>
+      				</div>
+                     <div class="form-group">
+        			<span class="bar">정산날짜 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="date" id ="calcDate" name ="calcDate" 
+	        		 th:value="${dto.calcDate}"  class="inputBox"/>
+      				</div>
+                     <div class="form-group">
+        			<span class="bar">정산기간 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="calcTerm" name ="calcTerm" 
+	        		 th:value="${dto.calcTerm}"  class="inputBox"/>
+      				</div>
+                   
+                    <div class="form-group">
+        			<span class="bar">정산금액 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="number" id ="calcPrice" name ="calcPrice" 
+	     			 th:value="${dto.calcPrice}"  class="inputBox"/>
+      				</div>
+                      <div class="form-group">
+        			<span class="bar">정산내용 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="calcContent" name ="calcContent" 
+	     			 th:value="${dto.calcContent}"  class="inputBox"/>
+      				</div>
+                 
+                    
+                    <div class="clearfix formBtn">
+        			<input type="submit" name="modify"  id="modify" value="수정" class="btn btn2">
+      				<input type="button" value="취  소" onclick = "javascript:history.back();" />
+      				</div>
+              		<input type="hidden" name="calcNum" th:value="${dto.calcNum}" />
+                    </form>
+                </div>
+			
+
+			<!-- footer 인클루드 영역 -->
+			<div th:include="thymeleaf/backOfficePage/html/commonLayout/backFooter.html"></div>
+
+
+
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+
+
+
+       
+
+      <!-- JS Scripts-->
+        <!-- Bootstrap Js -->
+        <script th:src="@{/static/js/bootstrap.min.js}"></script>
+
+        <!-- Metis Menu Js -->
+        <script th:src="@{/static/js/jquery.metisMenu.js}"></script>
+        <!-- Morris Chart Js -->
+        <script th:src="@{/static/js/morris/raphael-2.1.0.min.js}"></script>
+        <script th:src="@{/static/js/morris/morris.js}"></script>
+
+
+      <script th:src="@{/static/js/easypiechart.js}"></script>
+      <script th:src="@{/static/js/easypiechart-data.js}"></script>
+
+       <script th:src="@{/static/js/Lightweight-Chart/jquery.chart.js}"></script>
+
+        <!-- Custom Js -->
+        <script th:src="@{/static/js/custom-scripts.js}"></script>
+  </body>
+  </html>

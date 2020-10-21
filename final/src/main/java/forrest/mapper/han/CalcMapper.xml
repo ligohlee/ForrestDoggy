@@ -8,4 +8,43 @@
 		insert into CALCULATION (<include refid="calcColum"/>)
 		values(#{calcNum},#{ptNum},#{workNum},#{calcDate},#{calcTerm},#{calcPrice},#{calcContent})
 	</insert>
+	<resultMap type="forrest.domain.han.CalcDTO" id="bascColum">
+	<id column="CALC_NUM" jdbcType="BIGINT" property="calcNum"/>
+	<result column="PT_NUM" jdbcType="BIGINT" property="ptNum"/>
+	<result column="WORK_NUM" jdbcType="BIGINT" property="workNum"/>
+	<result column="CALC_DATE" jdbcType="TIMESTAMP" property="calcDate"/>
+	<result column="CALC_TERM" jdbcType="VARCHAR" property="calcTerm"/>
+	<result column="CALC_PRICE" jdbcType="BIGINT" property="calcPrice"/>
+	<result column="CALC_CONTENT" jdbcType="VARCHAR" property="calcContent"/>
+	</resultMap>
+	<resultMap type="forrest.domain.han.ChartDTO" id="chartColum">
+	<result column="cdate1" jdbcType="VARCHAR" property="calcDate"/>
+	<result column="CPRICE" jdbcType="VARCHAR" property="calcPrice"/>
+	</resultMap>
+	<select id="chartview1" resultMap="chartColum">
+	select to_char(CALC_DATE,'yy-MM') cdate1, sum(CALC_PRICE) CPRICE 
+	from CALCULATION
+	group by to_char(CALC_DATE,'yy-MM')
+	order by to_char(CALC_DATE,'yy-MM')
+	</select>
+	<select id="callistView" resultMap="bascColum">
+	select CALC_NUM,PT_NUM,WORK_NUM,CALC_DATE,CALC_TERM,CALC_PRICE,CALC_CONTENT from CALCULATION
+	</select>
+	<select id="calcDetail" resultMap="bascColum">
+	select CALC_NUM,PT_NUM,WORK_NUM,CALC_DATE,CALC_TERM,CALC_PRICE,CALC_CONTENT from CALCULATION
+	where CALC_NUM = #{calcNum}
+	</select>
+	<update id="calaModify" parameterType="forrest.domain.han.CalcDTO">
+	update CALCULATION
+	set PT_NUM = #{ptNum}, WORK_NUM = #{workNum}, CALC_DATE = #{calcDate}, CALC_TERM = #{calcTerm}, CALC_PRICE = #{calcPrice}, CALC_CONTENT = #{calcContent}
+	where CALC_NUM = #{calcNum}
+	</update>
+	<delete id="calDel" parameterType="forrest.domain.han.CalcDTO">
+	delete from CALCULATION
+	where CALC_NUM = #{calcNum}
+	
+	</delete>
+	<select id="chartview" resultMap="bascColum">
+	select CALC_NUM,PT_NUM,WORK_NUM,CALC_DATE,CALC_TERM,CALC_PRICE,CALC_CONTENT from CALCULATION
+	</select>
 </mapper>

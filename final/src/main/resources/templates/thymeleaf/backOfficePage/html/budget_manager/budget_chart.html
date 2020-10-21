@@ -19,8 +19,31 @@
 <!-- Google Fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    	var lists = /*[[${lists}]];*/
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
 
+      function drawChart() {
+        var data = [[${googleList}]];
+        var start1 = eval("("+data+")");
+        console.log(start1);
+        var data = google.visualization.arrayToDataTable(start1);
+						var options = {
+							chart : {
+								title : '년도별 예산내역 현황',
+								subtitle : '인건비 ~ 기타계획예산, Profit: 2014-2020',
+							}
+						};
+
+		var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+		chart.draw(data, google.charts.Bar.convertOptions(options));
+					}
+      /*]]>*/
+				</script>
 </head>
 <body>
 
@@ -38,7 +61,7 @@
 				<!--로그인 전 메인 화면-->
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="page-header">정산 목록</h1>
+						<h1 class="page-header">예산 내역</h1>
 					</div>
 				</div>
 
@@ -73,34 +96,13 @@ td {
 	border: 1px solid #ddd;
 }
 </style>
-							<table class="table">
-								<tr>
-									<th>정산번호</th>
-									<th>업체번호</th>
-									<th>직원번호</th>
-									<th>정산날짜</th>
-									<th>정산금액</th>
-									
-								</tr>
-								<th:block th:each="dto : ${lists}">
-									<tr>
-										<td><a th:href="@{calcuDetail(calcNum=${dto.calcNum})}">[[${dto.calcNum}]]</a></td>
-										<td>[[${dto.ptNum}]]</td>
-										<td>[[${dto.workNum}]]</td>
-										<td>[[${dto.calcDate}]]</td>
-										<td>[[${dto.calcPrice}]]</td>
-									</tr>
-								</th:block>
-								<tr>
-									<td colspan="11">
-										<a href="calculationWrite">정산보고서 등록</a>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="gogleChart1">월별예산내역 비교</a>
-									</td>
-										
-								</tr>
+					
+										<div id="columnchart_material" style="width: 80%; height: 500px;"></div>
 							
-							</table>
-							</div>
+							<div id="columnchart_material"></div>
+							
+ <div id="columnchart_material" style="width: 80%; height: 500px"></div>
+							
 							<!-- JS Scripts-->
 							<!-- Bootstrap Js -->
 							<script th:src="@{/static/js/bootstrap.min.js}"></script>

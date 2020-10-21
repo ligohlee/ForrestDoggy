@@ -5,15 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class AuthInfo {
-	
-	String id;
-	String ph;
-	String name;
+public class AuthInfoHeadOffice {
+	Integer id;
 	String pw;
-
-	
-
-	}
- 
-
+}

@@ -57,62 +57,156 @@
 					.submit {
 					width: 100%;
 					}	
+				
+					table{
+					    		    width: 50%;
+					    		    text-align: center;
+					    		    margin: 0 auto;
+					   	 }
+					th{
+					    		    text-align: center;
+					    		    border: 1px solid #ddd;
+					    }
+					td{ 
+					    		    font-size: 15px;
+					    		    border: 1px solid #ddd;
+					    }
 					</style>
 					
 					
 					
                     <form name ="frm" id="frm" method="post" th:action="@{/worker/workerModify}" th:object="${dto}">
+                  	<table>
                   	<div class="memberDetail-area">
+                  	<tr>
+                  	<td>
                      <div class="form-group">
-        			<span class="bar">직원이름 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="workNamd" name ="workName" 
+        			<span class="bar1">직원이름 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        			</td>
+        			<td>
+        			<input type ="text" id ="workNamd" name ="workName" 
 	      			  th:value = "${dto.workName}"  class="inputBox"/>
+     				 </td>
      				 </div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
                     <div class="form-group">
-       				<span class="bar">연락처 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="workPh" name ="workPh" 
+       				<span class="bar1">연락처 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+       				</td>
+       				<td>
+       				<input type ="text" id ="workPh" name ="workPh" 
 	     			th:value = "${dto.workPh}"  class="inputBox"/>
       				</div>
+                  	</td>
+                  	</tr>
+                  	<tr>
+                  	<td>
                      <div class="form-group">
-        			<span class="bar">이메일 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="workEmail" name ="workEmail" 
+        			<span class="bar1">이메일 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        			</td>
+        			<td>
+        			<input type ="text" id ="workEmail" name ="workEmail" 
 	     			 th:value="${dto.workEmail}"  class="inputBox"/>
       				</div>
+                   	</td>
+                   	</tr>
+                   	<tr>
+                   	<td>
                      <div class="form-group">
-        			<span class="bar">생년월일 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="date" id ="hireDate" name ="hireDate" 
+        			<span class="bar1">생년월일 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        			</td>
+        			<td>
+        			<input type ="date" id ="hireDate" name ="hireDate" 
 	        		 th:value="${dto.hireDate}"  class="inputBox"/>
       				</div>
+                   	</td>
+                   	</tr>
+                   	<tr>
+                   	<td>
                      <div class="form-group">
-        			<span class="bar">입사일 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="date" id ="workBorn" name ="workBorn" 
+        			<span class="bar1">입사일 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        			</td>
+        			<td>
+        			<input type ="date" id ="workBorn" name ="workBorn" 
 	        		 th:value="${dto.workBorn}"  class="inputBox"/>
       				</div>
-                   
+                   </td>
+                   </tr>
+                   <tr>
+                   <td>
                     <div class="form-group">
-        			<span class="bar">직책 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="position" name ="position" 
+        			<span class="bar1">직책 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        			</td>
+        			<td>
+        			<input type ="text" id ="position" name ="position" 
 	     			 th:value="${dto.position}"  class="inputBox"/>
       				</div>
+                     </td>
+                     </tr>
+                     <tr>
+                     <td> 
                       <div class="form-group">
-        			<span class="bar">직무 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="job" name ="job" 
+        			<span class="bar1">직무 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        			</td>
+        			<td>
+        			<input type ="text" id ="job" name ="job" 
 	     			 th:value="${dto.job}"  class="inputBox"/>
       				</div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
                      <div class="form-group">
-        			<span class="bar">직무 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="number" id ="workHoli" name ="workHoli" 
+        			<span class="bar1">직무 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        			</td>
+        			<td>
+        			<input type ="number" id ="workHoli" name ="workHoli" 
 	     			 th:value="${dto.workHoli}"  class="inputBox"/>
       				</div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
                        <div class="form-group">
-        			<span class="bar">주소 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="text" id ="workAddr" name ="workAddr" 
+        			<span class="bar1">주소 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        			</td>
+        			<td>
+        			<input type ="text" id ="workAddr" name ="workAddr" 
 	     			 th:value="${dto.workAddr}"  class="inputBox"/>
       				</div>
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>
                       <div class="form-group">
         			<span th:text="${dto.workImg}">원본사진 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
       				</div>
+                   </td>
+                   </tr>
+                   <tr>
+                   <td>
                      <div class="form-group">
-                    <span class="bar">직원사진 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;<input type ="file" id ="workImg" name ="workImg" 
+                    <span class="bar1" style="text-align: center;">직원사진 &nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>
+                    <input type ="file" id ="workImg" name ="workImg" 
 	     			  multiple="multiple"  class="inputBox"/>
 	     			  </div>
-                    
+                    </td>
+                    </tr>
+                    <tr>
+                    <td colspan="2">
                     <div class="clearfix formBtn">
-        			<input type="submit" name="modify"  id = "modify" value="수정" class="btn btn2">
-      				<input type="button" value="취  소" onclick = "javascript:history.back();" />
+        			<input type="submit"  name="modify"  id = "modify" value="수정" class="btn btn2">
+      				<input type="button" value="취  소" onclick = "javascript:history.back();" class="btn btn2"/>
       				</div>
               		<input type="hidden" name="workNum" th:value="${dto.workNum }" />
+                   	</td>
+                   	</tr>
+                   	
+                   	</table>
                     </form>
                 </div>
 			

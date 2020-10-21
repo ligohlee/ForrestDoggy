@@ -20,6 +20,21 @@
 	<result column="BUD_ETC" jdbcType="BIGINT" property="budEtc"/>
 	</resultMap>
 	
+	<resultMap type="forrest.domain.han.GoogleDTO" id="googlechart">
+	<result column="gyear" jdbcType="VARCHAR" property="budYear"/>
+	<result column="GSALARY" jdbcType="VARCHAR" property="budSalary"/>
+	<result column="GFACILITY" jdbcType="VARCHAR" property="budFacility"/>
+	<result column="GBASIC" jdbcType="VARCHAR" property="budBasic"/>
+	<result column="GSUP" jdbcType="VARCHAR" property="budSup"/>
+	<result column="GETC" jdbcType="VARCHAR" property="budEtc"/>
+	</resultMap>
+	
+	<select id="googleview" resultMap="googlechart">
+	select to_char(BUD_YEAR, 'yyyy') gyear, sum(BUD_SALARY) GSALARY, sum(BUD_FACILITY)GFACILITY,sum(BUD_BASIC)GBASIC,sum(BUD_SUP)GSUP, sum(BUD_ETC)GETC from BUDGET
+	group by to_char(BUD_YEAR, 'yyyy')
+	order by to_char(BUD_YEAR, 'yyyy')
+	
+	</select>
 	<select id="budlistview" resultMap="columnBasc">
 	select DEPT_NUM,BUD_NUM,BUD_YEAR,BUD_SALARY,BUD_FACILITY,BUD_BASIC,BUD_SUP,BUD_ETC
 	from BUDGET 

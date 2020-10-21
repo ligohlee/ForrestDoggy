@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.han.HolidayMapper">
+	<insert id="holiInsert" parameterType="forrest.domain.han.HolidayDTO">
+	insert into HOLIDAY (WORK_NUM, HOLI_DATE, HOLI_SORT)
+	values(#{workNum},#{holiDate},#{holiSort})
+	</insert>
+	<resultMap type="forrest.domain.han.HolidayDTO" id="tablebasce">
+	<id column="WORK_NUM" jdbcType="BIGINT" property="workNum"/>
+	<result column="HOLI_DATE" jdbcType="TIMESTAMP" property="holiDate"/>
+	<result column="HOLI_SORT" jdbcType="VARCHAR" property="holiSort"/>
+	</resultMap>
+	
+	<select id="Listview" resultMap="tablebasce">
+	select WORK_NUM, HOLI_DATE, HOLI_SORT from HOLIDAY
+	</select>
+	<select id="viewDetail" resultMap="tablebasce">
+	select WORK_NUM, HOLI_DATE, HOLI_SORT from HOLIDAY
+	where WORK_NUM = #{workNum}
+	
+	</select>
+</mapper>

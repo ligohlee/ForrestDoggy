@@ -1,5 +1,7 @@
 package forrest.controller.han.budget;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,6 +42,11 @@ public class BudgetController {
 	public String Detail(@RequestParam(value = "budNum")Integer budNum,Model model) throws Exception{
 		budgetDetailService.Detailbudget(budNum,model);
 		return "thymeleaf/backOfficePage/html/budget_manager/budget_view";
+	}
+	@RequestMapping("googleChart")
+	public String chartlist(@RequestParam(value = "budNum")Integer budNum,Model model, HttpServletResponse response)throws Exception{
+		budgetlistService.googleview(model, response,budNum);
+		return "thymeleaf/backOfficePage/html/budget_manager/budget_chart";
 	}
 	
 

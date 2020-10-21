@@ -14,6 +14,8 @@ public class MenuDTO {
 	 String recipe;
 	 String menuIntro;
 	 String allergy; 
+	 String menuType;
+	 Integer menuSeq;
 	 String menuImage;
 
 }

@@ -3,7 +3,7 @@
  
     <head>
     <meta charset="UTF-8">
-    <title>Menu Registration</title>
+    <title>Course Registration</title>
     <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
     <!-- Bootstrap Styles-->
     <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -23,7 +23,7 @@
      <script type="text/javascript">
     
      function goBack(){
-    	 location.href="menuList";
+    	 location.href="list";
      }
      
      </script>
@@ -80,7 +80,7 @@
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                                                    메뉴등록
+                                                    코스등록
                         </h1>
                     </div>
                 </div>
@@ -92,67 +92,61 @@
 					    	<div>
 					    	
 					    	
-					    	<form th:action='@{/espback/menu/menuInsert}' method="post" 
+					    	<form th:action='@{/espback/course/insert}' method="post" 
 					    	 enctype="multipart/form-data">
 					    	   <table>
 					    	    <colgroup>
-                               <col width="10%">
                                <col width="20%">
-                               <col width="10%">
-                               <col width="20%">
-                               <col width="10%">
-                               <col width="30%">
+                               <col width="80%">
+                               
                               
                                </colgroup>
                                  <tr>
-                                   <td>메뉴이름</td> 
-					    	       <td colspan="3" style="text-align: left;" >
-					    	       <input type="text"  name="menuName">
-					    	       </td> 
-                                   <td>메뉴금액</td> 
-					    	       <td   style="text-align: left;" >
-					    	       <input type="number" step="0.1" name="menuPrice" placeholder="ex)18,500원 = 18.5">
+                                   <td>코스이름</td> 
+					    	       <td style="text-align: left;" >
+					    	       <input type="text"  name="courseName">
 					    	       </td> 
                                  </tr>
                                
 					    	     <tr>
-					    	       <td >레시피</td> 
-					               <td colspan="3">
-					    	       <textarea  name="recipe" rows="8" cols="50"></textarea>
-					               </td>
-					    	       <td >메뉴이미지</td> 
+					               <td>코스설명</td>
 					    	       <td >
-					    	      <input type="file" name="report" multiple="multiple">
-					    	       </td> 
-					    	     </tr>
-					    	     
-					    	     <tr>
-					               <td>메뉴설명</td>
-					    	       <td colspan="5">
-					    	       <textarea rows="4" cols="50" name="menuIntro"></textarea>
+					    	       <textarea rows="4" cols="50" name="courseContent"></textarea>
 					               </td>
 					    	     </tr>
 					    	       
 					    	     <tr>
-					    	       <td>메뉴구분</td>
-					    	       <td style="text-align:left"> 
-					    	            <select name="menuType" >
-					    	              <option>스프</option>
-					    	              <option>샐러드 </option>
-					    	              <option>메인메뉴 </option>
-					    	              <option>디저트 </option>
-					    	              <option>음료</option>
-					    	              <option>애견메뉴 </option>
-					    	            </select> 
+					    	       <td>
+					    	               메뉴설정
 					    	       </td>
-					               <td>메뉴순서</td>
-					    	       <td ><input type="number" name="menuSeq"/> </td>
-					               <td>알러지</td>
-					    	       <td ><input type="text" name="allergy"/> </td>
+					    	       <td style="text-align:left">
+					    	         <select name="menuNum">
+					    	            <option value="0">스프</option>
+					    	            <option  th:each="list : ${soup}" th:text="${list.menuName}" th:value="${list.menuNum}"></option>
+					    	         </select>
+					    	         <select name="menuNum">
+					    	            <option value="0">샐러드</option>
+					    	            <option  th:each="list : ${salad}" th:text="${list.menuName}" th:value="${list.menuNum}"></option>
+					    	         </select>
+					    	         <select name="menuNum">
+					    	            <option value="0">메인메뉴</option>
+					    	            <option  th:each="list : ${main}" th:text="${list.menuName}" th:value="${list.menuNum}"></option>
+					    	         </select>
+					    	         <select name="menuNum">
+					    	            <option value="0">음료</option>
+					    	            <option  th:each="list : ${drink}" th:text="${list.menuName}" th:value="${list.menuNum}"></option>
+					    	         </select>
+					    	         <select name="menuNum">
+					    	            <option value="0">디저트</option>
+					    	            <option  th:each="list : ${dessert}" th:text="${list.menuName}" th:value="${list.menuNum}"></option>
+					    	         </select>
+					    	       </td>
+					    	       
 					    	     </tr>
 					    	    
 					    	     <tr>
-					    	       <td colspan="6" style="text-align:right">
+					    	       <td colspan="2" style="text-align:right">
+					    	       
 					    	       <button type="submit">등록</button> 
 					    	       <button type="button" onclick="javascript:goBack()">취소</button>
 					    	       </td> 
@@ -166,6 +160,8 @@
 						</div>
 					</div>
 				</div>
+			
+                <!--로그인 후 메인화면-->
                 <!--로그인 후 메인화면-->
 
                 <!--<c:if test="${ !empty logId }">
@@ -191,7 +187,7 @@
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
-
+     </div> 
 
 
        

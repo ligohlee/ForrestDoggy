@@ -15,7 +15,7 @@ public class MenuDetailService {
     @Autowired
     MenuMapper menuMapper; 
 
-	public void menuDetail(String menuNum, Model model) {
+	public void menuDetail(String menuNum, Model model) throws Exception {
 		StartEndPageDTO startEndPageDTO = new StartEndPageDTO(1l, 1l, null, menuNum);
         MenuDTO dto = menuMapper.getMenu(startEndPageDTO).get(0);
 		

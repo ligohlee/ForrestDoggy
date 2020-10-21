@@ -1,0 +1,139 @@
+section{
+	
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+
+}
+.searchBtn{
+	text-align: right;
+	
+}
+
+.area{
+	margin: 50px;
+	
+}
+
+.bg{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 1800px;
+	opacity:0.6;
+	z-index:-1;
+}
+.bg-img{
+	width: 100%;
+	object-fit: cover;
+}
+
+
+.container{
+	width: 60%;
+	margin: 0 auto;
+	height: 650px;
+	position: relative;
+
+	}
+.people{
+	border: 5px solid rgb(23, 69, 84) ;
+	float:left;
+	height: auto;
+	width: 100%;
+	margin-top: 20px;
+	vertical-align: middle;
+	padding: 20px;
+}	
+h2{
+	padding-top: 20px;
+	margin: 10px;
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	color: rgb(23, 69, 84);
+}
+	
+.divi{
+	margin-left: 10px;
+	float:left;
+	
+}	
+	
+.rsv {
+	width: 70%;
+	height: 100px;
+	position: absolute;
+	bottom: 250px;
+	left: 0;
+	border: 1px solid #000;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.costext{
+	text-align: center;
+	width: 150px;
+
+	margin-top: 40px;
+	height: 45px;
+	
+	color: rgb(23, 69, 84);
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+	
+}
+
+
+
+
+.ckIn {
+	border-right: 1px dotted #ddd;
+}
+
+.ckOut {
+	border-right: 1px dotted #ddd;
+}
+
+.type {
+	border-right: 1px dotted #ddd;
+}
+
+.choice_box {
+	width: 220px;
+	margin: 0 auto;
+	height: 25px;
+	margin-top: 20px;
+	font-family: 'Nanum Gothic', sans-serif;
+	border: 1px solid #000;
+	padding-left:5px;
+}
+
+.make{
+	border: 5px solid rgb(23, 69, 84) ;
+	width: 100%;
+	height: 100px;
+	margin-top: 50px;
+	vertical-align: middle;
+	padding: 20px;
+}
+
+
+.search {
+	text-align: center;
+	width: 240px;
+
+	margin-top: 25px;
+	height: 45px;
+	background-color: rgb(23, 69, 84);
+	color: #fff;
+	font-size: 16px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+}
+.pp{
+	font-family: 'Noto Sans KR', sans-serif;
+	color: #000;
+}

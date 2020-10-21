@@ -9,8 +9,21 @@ public interface MenuMapper {
 
 	public void menuInsert(MenuDTO dto) throws Exception;
 
-	public List<MenuDTO> getMenu(StartEndPageDTO dto);
+	public List<MenuDTO> getMenu(StartEndPageDTO dto) throws Exception;
 
-	public int getMenuCount();
+	public int getMenuCount() throws Exception;
+
+
+	public List<MenuDTO> getSoup()throws Exception;
+
+	public List<MenuDTO> getSalad()throws Exception;
+
+	public List<MenuDTO> getMainMenu()throws Exception;
+
+	public List<MenuDTO> getDessert()throws Exception;
+
+	public List<MenuDTO> getDogMenu()throws Exception;
+
+	public List<MenuDTO> getDrink()throws Exception;
 
 }

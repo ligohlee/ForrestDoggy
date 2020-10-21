@@ -1,0 +1,163 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>EATsomePlace</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/ESPBook.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/header_eatSomePlace.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		<section>
+			
+			<div class="container">
+						
+				<form th:action="@{/esp/regist}" method="post" name="frm">
+				
+				  <div class="make">
+			      <h2 style="text-align: ceter;" >MAKE SOME BOOK</h2>
+				  </div>	
+				  <div class="people">
+				  
+				  <div  >
+				  <div style="float:left;">
+				    <div class="divi" id="aSel" style="max-width:220px;">
+				      <div class="type">
+							<p class="pp">코스 선택</p>
+						<select  name="courseNum" class="choice_box" required>
+							    <option>선택없음</option>
+								<option th:each="list: ${lists}" th:value="${list.courseNum}" th:text="${list.courseName}"></option>
+							</select>
+					  </div>
+					</div>
+				    
+				    <div class="divi" id="bSel" style="max-width:220px;">
+						<div class="type">
+							<p class="pp">인원 선택</p>
+							<select name="mordPeople" class="choice_box" required>
+								<option value="0">선택없음</option>
+								<option value="1">1명</option>
+								<option value="2">2명</option>
+								<option value="4">3명</option>
+								<option value="4">4명</option>
+								<option value="6">5명</option>
+								<option value="6">6명</option>
+								<option value="8">7명</option>
+								<option value="8">8명</option>
+								<option value="10">9명</option>
+								<option value="10">10명</option>
+							</select>
+						</div>
+					</div>
+					   <div class="divi" style="float: left; padding-top:8px; width:120px;">
+						 <div class="searchBtn" style="">
+							<input id="choo" style="width:100px; height:30px; " 
+							type="button" value="추가" class="search">
+						 </div>
+					   </div>
+				</div>
+				
+				      
+					</div>
+				
+				
+				     <div style="float:right;">
+				    
+					<div class="divi" >
+						<div class="ckIn">
+						    <div class="type">
+							<p class="pp">날짜 선택</p>
+							<input type="datetime-local" name="mordDate" class="choice_box" required>
+						   </div>
+						</div>
+					</div>
+				   </div>
+				   
+		     </div>
+				
+					<div class="divi" style="float: right;">
+						<div class="searchBtn">
+							<input type="submit" value="다음" class="search">
+						</div>
+
+					</div>
+				
+				</form>
+
+              
+			</div>
+		</section>
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+		
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+	
+			$(function(){
+				var arr = /*[[${lists}]]*/;
+				var aSel = $("#aSel");
+				var bSel = $("#bSel");
+				var aHtml;
+				var bHtml = `<select name="mordPeople" class="choice_box">
+								<option value="0">선택없음</option>
+								<option value="1">1명</option>
+								<option value="2">2명</option>
+								<option value="4">3명</option>
+								<option value="4">4명</option>
+								<option value="6">5명</option>
+								<option value="6">6명</option>
+								<option value="8">7명</option>
+								<option value="8">8명</option>
+								<option value="10">9명</option>
+								<option value="10">10명</option>
+							</select>`
+				
+				aHtml = '<select  name="courseNum" class="choice_box">';
+				aHtml += '<option>선택없음</option>';
+				
+				$(arr).each(function(){
+					aHtml += '<option value="' + $(this)[0].courseNum + '">' + $(this)[0].courseName + '</option>';
+				});
+				aHtml += '</select>';
+				
+				$("#choo").click(function(){
+					aSel.append(aHtml);
+					bSel.append(bHtml);
+				});
+			})
+			
+			/*]]*/
+		</script>
+
+	</div>
+</body>
+</html>

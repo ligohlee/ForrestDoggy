@@ -29,6 +29,8 @@ public class MenuWriteService {
          dto.setMenuName(mc.getMenuName());
          dto.setMenuPrice(mc.getMenuPrice());
          dto.setRecipe(mc.getRecipe());
+         dto.setMenuType(mc.getMenuType());
+         dto.setMenuSeq(mc.getMenuSeq());
          
 			String location = "";
 		

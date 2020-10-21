@@ -17,7 +17,6 @@
 
 <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 <script th:src="@{/static/js/jquery.js}"></script>
-<script th:src="@{/static/js/slide.js}"></script>
 
 
 </head>
@@ -30,40 +29,140 @@
 
 		<!-- header인클루드 영역 -->
 		<header>
-			<div
-				th:include="thymeleaf/frontPage/html/commonLayout/header_eatSomePlace.html"></div>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/header_eatSomePlace.html"></div>
 		</header>
 
 		<!--메인콘텐츠 영역-->
 		<section>
-			<div class=bg><img width="100%" height="auto" th:src="@{/static/images/ligoh/menuInt4.jpg}" id="bg-img"/></div>
-			<div class="container" style="width: 50%;">
+			<div id=bg><img th:src="@{/static/images/ligoh/menuInt12.jpg}" id="bg-img"/></div>
+			<div class="container" style="width: 60%;">
 				
 				
-				<div style="text-align:left; margin:0 ;">			
-				<h2 style="text-align:left; margin:0 ;">MENU</h2>
+				<div style="">			
 				
-				</div>	
+				
 				<br>
 					
-				<div class="imageSet clearfix">
-                    <div th:each="list : ${lists}" style="overflow: hidden; width:800px; height: 581px; ">
-
-                       <div style="  float:left;" >
+				<div class="imageSet clearfix" style="margin-top:-140px;">
+				
+				<h2 class="qui" style="text-align:left; margin:0 ; ">&emsp;EAT SOME MENU</h2>
+				 <div>
+				   <h1 class="qui" style="text-align:left; margin:0 ; padding-left: 40px;">SOUP</h1>
+				</div>
+                    <div th:each="list : ${soup}" style="overflow: hidden; width:800px; height:auto; margin: auto; ">
+                       <div style="float:left; border: 4px solid #fff" >
                           <img width="300px" height="200px" th:src="@{'/static/upload/menu/'+${list.menuImage}}">
                        </div>
-                       
-                       <div style=" vertical-align:middle; display:table-cell;  background-color:  rgb(23, 69, 84); ">
-                         <span class="quickBtn_a">[[${list.menuIntro}]]</span>
+                     
+                       <div class="menuInt" style="padding: 20; text-align: left; border: 4px solid #fff" >
+                          
+                          <div class="quickBtn_a" >
+                          <span style="font-size: 18px;"> [[${list.menuName}]]</span> <br> <br>
+                          [[${list.menuIntro}]] &nbsp; <br> <br> 
+                          <span th:text="${#numbers.formatDecimal(list.menuPrice, 1,1)}"></span> won
+                          </div> 
                        </div>
-
-
-
+                      
                     </div>
-
-
-					
-					
+                    
+                    <div>
+				   <h1 class="qui" style="text-align:left; margin:0 ; padding-left: 40px;">SALAD</h1>
+				   </div>
+                    <div th:each="list : ${salad}" style="overflow: hidden; width:800px; height:auto; margin: auto; ">
+                       <div style="float:left; border: 4px solid #fff" >
+                          <img width="300px" height="200px" th:src="@{'/static/upload/menu/'+${list.menuImage}}">
+                       </div>
+                     
+                       <div class="menuInt" style="padding: 20; text-align: left; border: 4px solid #fff" >
+                          <div class="quickBtn_a" >
+                           <span style="font-size: 18px;"> [[${list.menuName}]]</span> <br> <br>
+                          [[${list.menuIntro}]] &nbsp; <br> <br> 
+                          <span th:text="${#numbers.formatDecimal(list.menuPrice, 1,1)}"></span> won
+                          </div> 
+                       </div>
+                    </div>
+                    
+                    <div>
+				   <h1 class="qui" style="text-align:left; margin:0 ; padding-left: 40px;">MAIN DISH</h1>
+				  </div> 
+                    <div th:each="list : ${main}" style="overflow: hidden; width:800px; height:auto; margin: auto; ">
+                       <div style="float:left; border: 4px solid #fff" >
+                          <img width="300px" height="200px" th:src="@{'/static/upload/menu/'+${list.menuImage}}">
+                       </div>
+                     
+                       <div class="menuInt" style="padding: 20; text-align: left; border: 4px solid #fff" >
+                          <div class="quickBtn_a" >
+                           <span style="font-size: 18px;"> [[${list.menuName}]]</span> <br> <br>
+                          [[${list.menuIntro}]] &nbsp; <br> <br> 
+                          <span th:text="${#numbers.formatDecimal(list.menuPrice, 1,1)}"></span> won
+                          </div> 
+                       </div>
+                    </div>
+                    
+                    
+                    <div>
+				   <h1 class="qui" style="text-align:left; margin:0 ; padding-left: 40px;">DRINK</h1>
+				   </div>  
+                    <div th:each="list : ${drink}" style="overflow: hidden; width:800px; height:auto; margin: auto; ">
+                       <div style="float:left; border: 4px solid #fff" >
+                          <img width="300px" height="200px" th:src="@{'/static/upload/menu/'+${list.menuImage}}">
+                       </div>
+                     
+                       <div class="menuInt" style="padding: 20; text-align: left; border: 4px solid #fff" >
+                          <div class="quickBtn_a" >
+                           <span style="font-size: 18px;"> [[${list.menuName}]]</span> <br> <br>
+                          [[${list.menuIntro}]] &nbsp; <br> <br> 
+                          <span th:text="${#numbers.formatDecimal(list.menuPrice, 1,1)}"></span> won
+                          </div> 
+                       </div>
+                    </div>
+                    
+                    <div>
+				   <h1 class="qui" style="text-align:left; margin:0 ; padding-left: 40px;">DESSERT</h1>
+				   </div>  
+                    <div th:each="list : ${dessert}" style="overflow: hidden; width:800px; height:auto; margin: auto; ">
+                       <div style="float:left; border: 4px solid #fff" >
+                          <img width="300px" height="200px" th:src="@{'/static/upload/menu/'+${list.menuImage}}">
+                       </div>
+                     
+                       <div class="menuInt" style="padding: 20; text-align: left; border: 4px solid #fff" >
+                          <div class="quickBtn_a" >
+                           <span style="font-size: 18px;"> [[${list.menuName}]]</span> <br> <br>
+                          [[${list.menuIntro}]] &nbsp; <br> <br> 
+                          <span th:text="${#numbers.formatDecimal(list.menuPrice, 1,1)}"></span> won
+                          </div> 
+                       </div>
+                    </div>
+                    
+                  <div>
+				   <h1 class="qui" style="text-align:left; margin:0 ; padding-left: 40px;">DOG MENU</h1>
+				  </div> 
+                    <div th:each="list : ${dogMenu}" style="overflow: hidden; width:800px; height:auto; margin: auto; ">
+                       <div style="float:left; border: 4px solid #fff" >
+                          <img width="300px" height="200px" th:src="@{'/static/upload/menu/'+${list.menuImage}}">
+                       </div>
+                     
+                       <div class="menuInt" style="padding: 20;  text-align: left; border: 4px solid #fff" >
+                          <div class="quickBtn_a" >
+                           <span style="font-size: 18px;"> [[${list.menuName}]]</span> <br> <br>
+                          [[${list.menuIntro}]] &nbsp; <br> <br> 
+                          <span th:text="${#numbers.formatDecimal(list.menuPrice, 1,1)}"></span> won
+                          </div> 
+                       </div>
+                      
+                    </div>
+                           
+                          
+				</div>	
+				<br>
+					             
+			   <div id="quickSet"  style="text-align: right;">
+				   <div class="quickBtn_b" >
+					 <span ><a href="book" class="quickBtn_a">예 약 하 기</a></span>
+				   </div>
+				</div>
+					             
+					             
 				</div>
 
 			</div>

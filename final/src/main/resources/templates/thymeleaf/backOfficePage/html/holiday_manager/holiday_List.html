@@ -4,7 +4,7 @@
 <title></title>
 <head>
 <meta charset="UTF-8">
-<title>Member BackOffice</title>
+<title>holiday BackOffice</title>
 <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
 <!-- Bootstrap Styles-->
 <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -20,7 +20,11 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
 
+</head>
 </head>
 <body>
 
@@ -38,7 +42,7 @@
 				<!--로그인 전 메인 화면-->
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="page-header">정산 목록</h1>
+						<h1 class="page-header">휴가 목록</h1>
 					</div>
 				</div>
 
@@ -75,32 +79,26 @@ td {
 </style>
 							<table class="table">
 								<tr>
-									<th>정산번호</th>
-									<th>업체번호</th>
 									<th>직원번호</th>
-									<th>정산날짜</th>
-									<th>정산금액</th>
+									<th>휴무일</th>
+									<th>휴무구분</th>
 									
 								</tr>
 								<th:block th:each="dto : ${lists}">
 									<tr>
-										<td><a th:href="@{calcuDetail(calcNum=${dto.calcNum})}">[[${dto.calcNum}]]</a></td>
-										<td>[[${dto.ptNum}]]</td>
-										<td>[[${dto.workNum}]]</td>
-										<td>[[${dto.calcDate}]]</td>
-										<td>[[${dto.calcPrice}]]</td>
+										<td><a th:href="@{holidayDetail(workNum=${dto.workNum})}">[[${dto.workNum}]]</a></td>
+										<td>[[${dto.holiDate}]]</td>
+										<td>[[${dto.holiSort}]]</td>
+										
 									</tr>
 								</th:block>
 								<tr>
 									<td colspan="11">
-										<a href="calculationWrite">정산보고서 등록</a>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="gogleChart1">월별예산내역 비교</a>
+										<a href="holidayWrite">휴가 등록</a>
 									</td>
 										
 								</tr>
-							
 							</table>
-							</div>
 							<!-- JS Scripts-->
 							<!-- Bootstrap Js -->
 							<script th:src="@{/static/js/bootstrap.min.js}"></script>

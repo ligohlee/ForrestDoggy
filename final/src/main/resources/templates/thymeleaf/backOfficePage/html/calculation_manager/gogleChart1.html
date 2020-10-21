@@ -1,10 +1,8 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<title></title>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Member BackOffice</title>
+<title>Insert title here</title>
 <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
 <!-- Bootstrap Styles-->
 <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -21,10 +19,39 @@
 	rel='stylesheet' type='text/css' />
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+
+	var lists = /*[[${lists}]];*/
+	
+	google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    
+    function drawChart() {
+      var data = [[${chartList}]];
+	  var str1 = eval("("+data+")");
+	  console.log(str1);
+      var data = google.visualization.arrayToDataTable(str1);
+
+      var options = {
+        title: '월별 정산내역',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+      };
+      var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+      chart.draw(data, options);
+     
+      
+
+      
+    }
+
+/*]]>*/
+</script>
 </head>
 <body>
-
-	<div id="wrapper">
+<div id="wrapper">
 
 		<!-- stp header 인클루드 영역 -->
 		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_header.html"></div>
@@ -38,70 +65,23 @@
 				<!--로그인 전 메인 화면-->
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="page-header">정산 목록</h1>
+						<h1 class="page-header">월별 정산 목록</h1>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="panel panel-default">
 						<div class="panel-body" style="padding: 100px 0;">
-
-						<style>
-.login-area {
-	max-width: 300px;
-	margin: 0 auto;
-	padding: 30px 0;
-}
-
-.submit {
-	width: 100%;
-}
-
-.table {
-	width: 80%;
-	text-align: center;
-	margin: 0 auto;
-}
-
-th {
-	text-align: center;
-	border: 1px solid #ddd;
-}
-
-td {
-	font-size: 14px;
-	border: 1px solid #ddd;
-}
-</style>
-							<table class="table">
-								<tr>
-									<th>정산번호</th>
-									<th>업체번호</th>
-									<th>직원번호</th>
-									<th>정산날짜</th>
-									<th>정산금액</th>
-									
-								</tr>
-								<th:block th:each="dto : ${lists}">
-									<tr>
-										<td><a th:href="@{calcuDetail(calcNum=${dto.calcNum})}">[[${dto.calcNum}]]</a></td>
-										<td>[[${dto.ptNum}]]</td>
-										<td>[[${dto.workNum}]]</td>
-										<td>[[${dto.calcDate}]]</td>
-										<td>[[${dto.calcPrice}]]</td>
-									</tr>
-								</th:block>
-								<tr>
-									<td colspan="11">
-										<a href="calculationWrite">정산보고서 등록</a>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="gogleChart1">월별예산내역 비교</a>
-									</td>
-										
-								</tr>
-							
-							</table>
-							</div>
-							<!-- JS Scripts-->
+	<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-body" style="padding: 100px 0;">
+   </div>
+   <div id="curve_chart" style="width: 900px; height: 500px">
+   
+   </div>
+  </div>
+  </div>
+   	<!-- JS Scripts-->
 							<!-- Bootstrap Js -->
 							<script th:src="@{/static/js/bootstrap.min.js}"></script>
 

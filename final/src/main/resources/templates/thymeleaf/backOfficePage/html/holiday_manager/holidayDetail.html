@@ -26,12 +26,10 @@
     <script>
 $(function(){
 	workNum = '[[${dto.workNum}]]';
-	$("#workmodify").click(function(){
-		location.href="workerModifyPro?workNum="+workNum;
+	$("#holimodify").click(function(){
+		location.href="holidayModifyPro?workNum="+workNum;
 		});
-	$("#workerDel").click(function(){
-		location.href="workerDel?workNum="+workNum;
-		});
+	
 	});
 
 	
@@ -42,11 +40,10 @@ $(function(){
 
 	<div id="wrapper">
 
-    <!-- worker header 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_header.html"></div>
-    <!-- worker seideNav 인클루드 영역 -->
-	<div th:include="thymeleaf/backOfficePage/html/layout_worker/back_work_sideNav.html"></div>
-	
+  		<!-- stp header 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_header.html"></div>
+		<!-- stp seideNav 인클루드 영역 -->
+		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_sideNav.html"></div>
     <!--페이지래퍼-->
 		<div id="page-wrapper">
             <div id="page-inner">
@@ -55,7 +52,7 @@ $(function(){
             	<div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                        	직원등록
+                        	휴가일정 수정목록
                         </h1>
                     </div>
                 </div>
@@ -86,25 +83,15 @@ $(function(){
 					    		    border: 1px solid #ddd;
 					    		}
 					    		input{
-					    		   width: 50%;
+					    		   width: 10%;
 					    		}
 					    		textarea{
 					    		   width: 100%;
 					    		}
-					    		#workmodify{
-					    			width: 10%;
-					    		}
-					    		#workerDel{
-					    			width: 10%;
-					    		}
-					    		#workerback{
-					    			width: 10%;
-					    		}
 					    	</style>
 					    	<div>
 					    	
-					    	<form action="workerModifyPro" method="post" name="workerModifyPro" 
-	                           enctype="multipart/form-data">
+					    	<form action="holidayModifyPro" method="post" name="holidayModifyPro" >
 					    	   <table>
 					    	    <colgroup>
                                <col width="10%">
@@ -117,49 +104,21 @@ $(function(){
                                
 					    	     <tr>
 					    	       <td>직원번호</td> 
-					    	       <td> <!-- th:text="*{workNum}" -->[[${dto.workNum}]]</td> 
-					    	       <td >부서번호</td>
-					    	       <td colspan="3">[[${dto.deptNum}]]</td> 
-					    	    	<td>직원명</td>
-					    	    	<td>[[${dto.workName}]]</td> 
-					    	     </tr>
-					    	     
-					    	     <tr>
-					                <td>연락처</td> 
-					                <td>[[${dto.workPh}]]</td>  
-					                <td>이메일</td> 
-					                <td>[[${dto.workEmail}]]</td>
-					                <td>생년월일</td>
-					    	        <td>[[${dto.hireDate}]]</td>
-					    	        <td>입사일</td>
-					    	        <td>[[${dto.workBorn}]]</td>
-					    	          
-					    	     </tr>
-					    	       <tr>
-					                <td>직책</td> 
-					                <td>[[${dto.position}]]</td>  
-					                <td>직무</td> 
-					                <td>[[${dto.job}]]</td>
-					                <td>휴가일수</td>
-					    	        <td>[[${dto.workHoli}]]</td>
-					    	        <td>주소</td>
-					    	        <td>[[${dto.workAddr}]]</td>
-					    	     </tr>
-					    	     <tr>
-					    	       <td>직원 이미지</td>  
-					    	       <td colspan="7"><img width="150px" height="150px" th:src="@{'/static/upload/worker/'+${dto.workImg}}"></td> 
-					    	       
-					    	     </tr>
+					    	       <td> [[${dto.workNum}]]</td> 
+					                <td>휴가일</td> 
+					                <td>[[${dto.holiDate}]]</td>
+					                <td>휴가구분</td>
+					                <td>[[${dto.holiSort}]]</td>
+					               
+					    	    </tr>
 					    	     <tr>
 					    	        
-					    	       <td colspan="8" style="text-align:center;">
-					    	   		<input type="button" name="workmodify" id="workmodify" value="수 정">
-					    	       <input type="button" name="workerDel" id="workerDel" value="삭 제">
-					    	       <button id="workerback" style="text-align:center;" onclick="javascript:history.back()">취소</button>
-					    	       </td>
-					    	    
+					    	       <td colspan="6" style="text-align:center;">
+					    	       <input type="button" name="holimodify" id="holimodify" value="수 정">
+					    	       <a href="javascript:history.go(-1)">[뒤로]</a>&nbsp;&nbsp;
+					    	   </td>
 					    	     </tr>
-					    	   </table>
+					    	   </table>	
 					    	      </form>
 					    	</div>
 						</div>

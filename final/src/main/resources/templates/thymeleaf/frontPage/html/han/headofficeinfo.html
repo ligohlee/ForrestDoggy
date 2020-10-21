@@ -25,38 +25,19 @@
 		<!--topMenu인클루드 영역 -->
 		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
 
-		<!-- header인클루드 영역 -->
-		<header>
-			<div
-				th:include="thymeleaf/frontPage/html/commonLayout/header_stayPark.html"></div>
-		</header>
 
 		<!--메인콘텐츠 영역-->
 		<section>
 			<div class=bg><img th:src="@{/static/images/stp_bg.jpg}" id="bg-img"/></div>
 			<div class="container">
-				<div class="quickSet">
-					<div class="quickBtn"><a href="" class="quickBtn_a">빠 른 예 약</a></div>
-					<div class="quickBtn"><a href="" class="quickBtn_a">룸 서 비 스</a></div>
-				</div>
+				
 				<div class="scroll-back">
-					<div class="scroll-icon"><img th:src="@{/static/images/scroll.png}" id="scroll-image"/></div>
 				</div>
 				<h2>스테이파크 소개</h2>
-				<p class="textBox">Lorem Ipsum is simply dummy text of the
-					printing and typesetting industry. Lorem Ipsum has been the
-					industry's standard dummy text ever since the 1500s, when an
-					unknown printer took a galley of type and scrambled it to make a
-					type specimen book. It has survived not only five centuries, but
-					also the leap into electronic typesetting, remaining essentially
-					unchanged. It was popularised in the 1960s with the release of
-					Letraset sheets containing Lorem Ipsum passages, and more recently
-					with desktop publishing software like Aldus PageMaker including
-					versions of Lorem Ipsum.</p>
+				<p class="textBox">임시소개란 입니다.</p>
 					
 				<div class="imageSet clearfix">
-					<div class="image img1"></div>
-					<div class="image img2"></div>
+					<div style="text-align : center;"><img style="width: 100%;" th:src="@{/static/images/stpbilding.jpg}" ></div>
 				</div>
 
 			</div>

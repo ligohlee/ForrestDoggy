@@ -12,6 +12,7 @@ import forrest.domain.jm.StartEndPageDTO;
 @Repository
 public interface WorkerMapper {
 	public void workerInsert(WorkerDTO workerDTO)throws Exception;
+	public WorkerDTO SelectWorker(Integer workNum);
 	public WorkerDTO getdetailview(Integer workNum)throws Exception;
 	public void getinsertModi(WorkerDTO workerDTO)throws Exception;
 	public void getupdatefile(WorkerDTO dto)throws Exception;

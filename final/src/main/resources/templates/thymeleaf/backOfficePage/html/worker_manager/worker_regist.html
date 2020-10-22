@@ -5,7 +5,7 @@
 <title></title>
 <head>
 <meta charset="UTF-8">
-<title>Partner BackOffice</title>
+<title>WORKER BackOffice</title>
 <link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
 <!-- Bootstrap Styles-->
 <link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
@@ -112,7 +112,7 @@ textarea {
 											<td style="font-family: 돋음; font-size: 12" height="16">
 												<div align="center">직원명</div>
 											</td>
-											<td><input name="workName" id="workName" type="password" />
+											<td><input name="workName" id="workName" type="text" />
 											</td>
 										</tr>
 										<tr>
@@ -183,13 +183,7 @@ textarea {
 											<td><input name="workAddr" id="workAddr" type="text" />
 											</td>
 										</tr>
-										<tr>
-											<td style="font-family: 돋음; font-size: 12" height="16">
-												<div align="center">휴가일수</div>
-											</td>
-											<td><input name="workHoli" id="workHoli" type="number" />
-											</td>
-										</tr>
+										
 										<tr>
 											<td style="font-family: 돋음; font-size: 12" height="16">
 												<div align="center">직원 이미지</div>
@@ -204,8 +198,9 @@ textarea {
 											<td colspan="2">&nbsp;</td>
 										</tr>
 										<tr align="center" valign="middle">
-											<td colspan="5"><a href="javascript:addboard()">[등록]</a>&nbsp;&nbsp;
+											<td colspan="5"> <button type="submit">[등록]</button>&nbsp;&nbsp;
 												<a href="javascript:history.go(-1)">[뒤로]</a></td>
+												
 										</tr>
 									</table>
 								</form>

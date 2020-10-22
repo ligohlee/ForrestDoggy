@@ -48,10 +48,12 @@ public class BudgetController {
 		budgetDetailService.Detailbudget(budNum,model);
 		return "thymeleaf/backOfficePage/html/budget_manager/budget_view";
 	}
+
 	@RequestMapping("goolechart")
 	public String chartlist(@RequestParam(value = "deptNum")Integer deptNum,Model model, HttpServletResponse response)throws Exception{
 		budgetlistService.googleview(deptNum, model, response);
 		return "thymeleaf/backOfficePage/html/budget_manager/budget_chart";  
+
 	}
 	
 

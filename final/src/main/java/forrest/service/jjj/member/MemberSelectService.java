@@ -1,7 +1,8 @@
 package forrest.service.jjj.member;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+
+import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,9 @@ public class MemberSelectService {
 	
 	AuthInfo authInfo;
 	
-	public String selectMember(LoginCommand lc, HttpSession session,HttpServletResponse response) {
+
+	public String selectMember(String memId, String memPass, HttpSession session, String backpath, HttpServletRequest request) {
+
 		
 		MemberDTO dto = memberMapper.selectMember(lc.getMemId());	
 		
@@ -61,11 +64,15 @@ public class MemberSelectService {
 				response.addCookie(cookie);
 			}
 			
-			return "redirect:/main";
+		    String contextPath = "http://localhost:9090";
+		    String command = backpath.substring(contextPath.length());
+			
+			System.out.println(contextPath);
+			System.out.println(command);
+			
+			return "redirect:"+command;
 		}else {
 			return "thymeleaf/frontPage/html/login";
 		}
 	}
-	
-	
 }

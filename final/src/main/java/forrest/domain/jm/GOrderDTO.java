@@ -1,4 +1,4 @@
-package forrest.command.jm;
+package forrest.domain.jm;
 
 import java.sql.Timestamp;
 
@@ -9,17 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GOrderCommand {
+public class GOrderDTO {
 	Integer gorderNum;
 	String memId;
 	Timestamp gorderRegist;
 	Integer goodsNum;
 	Integer gorderPrice;
 	Integer gorderQty;
-	Integer dyPrice;
-	String dyMemName;
-	String dyMemAddr;
-	String addr1;
-	String addr2;
 	
 }

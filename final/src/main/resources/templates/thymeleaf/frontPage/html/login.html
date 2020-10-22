@@ -25,6 +25,7 @@
 
     <div class="login-area">
 				<form th:action="@{/loginPro}" method="post" name="frm" id="frm">
+				<input type="hidden" name="backpath" th:value="${backpath}">
 					<div class="inner">
 						<div class="form-group">
 							<input type="text" class="input" name="memId" id="" value="" placeholder="ID" />

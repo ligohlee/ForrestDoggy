@@ -29,9 +29,7 @@
 .card-list .item .thumb .over .payment:after{content:''; position:absolute; left:50%; top:50%; margin-left:-11px; margin-top:-9px; display:block; width:22px; height:18px; background-image:url("/static/image/renewal2019/shop/icon_payment.png"); background-size:22px auto;}
 .card-list .item .thumb:hover .over{-webkit-transform:translate(0, 0); transform:translate(0, 0);}
 .card-list .item .thumb + .info ul .tit{position:relative; margin-bottom:8px; min-height:24px;}
-.card-list .item .thumb + .info ul .tit:before{content:''; position:absolute; left:0; bottom:4px; display:block; width:100%; height:1px; background-color:#000; opacity:0;}
-.card-list .item .thumb:hover + .info ul .tit:before{opacity:1;}
-.card-list .item .thumb + .info ul .tit span{position:absolute; left:calc(100% + 5px); top:0; font-family:"campton"; font-weight:100; color:#aaa; letter-spacing:0; white-space: nowrap;}
+/*.card-list .item .thumb + .info ul .tit span{position:absolute; left:calc(100% + 5px); top:0; font-family:"campton"; font-weight:100; color:#aaa; letter-spacing:0; white-space: nowrap;}*/
 .card-list .item .ea {min-width:55px; font-family:"campton"; font-size:13px; color:#111; letter-spacing:0;}
 .card-list .item .ea p{font-family:"campton"; color:#111; letter-spacing:0;}
 .card-list .item .ea .select{margin-left:-5px; padding-left:5px; padding-right:16px; background:url("/static/image/renewal2019/main/card_arr_01.png") 100% 45% no-repeat; font-family:"campton"; font-size: 12px; color:#111; border:0; -webkit-appearance:none; -moz-appearance:none; appearance:none; cursor:pointer;}
@@ -76,12 +74,13 @@
 .card-list.type2 .item .thumb{position:relative; overflow:hidden;}
 .card-list.type2 .item .thumb .img a{position:relative; display:block; height:270px;}
 .card-list.type2 .item .thumb .img .pos{position:absolute; left:0; top:0; right:0; bottom:0;}
+.card-list.type2 .item .thumb .img .pos .tb{display:flex; width:100%; height:100%; justify-content:center; align-items:center;}
 .card-list.type2 .item .thumb .img .cell{position:relative;}
 .card-list.type2 .item .thumb .img .cell img{max-width:100%; max-height:270px;}
 .card-list.type2 .item .info{margin-top:15px; text-align:left;}
 .card-list.type2 .item .info > ul{*zoom:1; display:block;}
 .card-list.type2 .item .info > ul:after{content:''; display:block; clear:both;}
-.card-list.type2 .item .info > ul > li{position:relative; float:left; margin-left:30px; font-family:"Nanum Barun Gothic"; font-size: 13px; line-height:24px; color:#000;}
+.card-list.type2 .item .info > ul > li{position:relative; margin-left:30px; font-family:"Nanum Barun Gothic"; font-size: 15px; line-height:24px; color:#000;}
 .card-list.type2 .item .info > ul > li:first-child{margin-left:0;}
 .card-list.type2 .item .info > ul > li:after{content:''; position:absolute; left:-15px; top:6px; display:block; width:1px; height:10px; background:#ddd;}
 .card-list.type2 .item .info > ul > li:first-child:after{display:none;}
@@ -91,7 +90,7 @@
 .card-list.type2 .item .info > ul > .price .parsent{margin-left:5px; color:#5b1eaa;}
 .card-list.type2 .item .info ul .spec{margin-left:0; margin-top:-8px; margin-bottom:8px; width:100%;}
 .card-list.type2 .item .info ul .spec:after{display:none;}
-.card-list.type2 .item .info ul .spec span{position:relative; display:inline-block; vertical-align:top; margin-left:21px; font-family:"Nanum Barun Gothic"; font-size:12px; line-height:24px; color:#999;}
+.card-list.type2 .item .info ul .spec span{position:relative; display:inline-block; vertical-align:top; margin-left:21px; font-family:"Nanum Barun Gothic"; font-size:15px; line-height:24px; color:#999;}
 .card-list.type2 .item .info ul .spec span:after{content:''; position:absolute; left:-11px; top:7px; display:block; width:1px; height:10px; background:#ddd;}
 .card-list.type2 .item .info ul .spec span:first-of-type{margin-left:0;}
 .card-list.type2 .item .info ul .spec span:first-of-type:after{display:none;}

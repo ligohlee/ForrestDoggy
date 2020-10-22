@@ -20,7 +20,10 @@
 <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 <script th:src="@{/static/js/jquery.js}"></script>
 
-<script>
+
+ 
+<script type="text/javascript">
+
 			function submitFunc(actionUrl) {
 				var form = $("[name='frm']");
 					form.attr('action', actionUrl);
@@ -35,9 +38,10 @@
 				var y = Number($("#"+id+"").val()) + num;		
 				if(y < 1) y = 1;
 				$("#"+id+"").val(y);
-				var price = ${ list.bookPrice } * y;
+				var price = [[${dto.goodsPrice}]] * y;
 				$("#bPrice").text(numberWithCommas(price));
 			}
+
 		</script>
 
 </head>

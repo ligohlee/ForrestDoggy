@@ -32,6 +32,7 @@ public class MemberSelectService {
 	public String selectMember(String memId, String memPass, HttpSession session, String backpath, HttpServletRequest request, LoginCommand lc, HttpServletResponse response) {
 
 		
+		
 		MemberDTO dto = memberMapper.selectMember(lc.getMemId());	
 		
 		if (passwordEncoder.matches(lc.getMemPass(),dto.getMemPass())) {

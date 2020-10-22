@@ -59,7 +59,7 @@ public class RoomOrderService {
 		
 	}
 	
-	public void selectList(Model model, int roNum) {
+	public void selectList(Model model, Integer roNum) {
 		// TODO Auto-generated method stub
 		RorderDTO dto = new RorderDTO();
 		
@@ -69,12 +69,17 @@ public class RoomOrderService {
 		
 		List<RorderDTO> rorderList = roomOrderMapper.selectList(dto);
 		model.addAttribute("orderList", rorderList);
+		System.out.println(rorderList);
 		
+		//예약 상세
+		
+		/*
 		if(rorderList.get(0).getMemId() == null) {
 			rorderList.get(0).setMemId("비회원예약");
 		}
+		*/
 		
-		model.addAttribute("orderDetail", rorderList.get(0));
+		model.addAttribute("orderDetail", rorderList.get(0)); 
 	}
 
 	public void selectMyRsv(Model model, HttpSession session) {
@@ -83,7 +88,7 @@ public class RoomOrderService {
 		RorderDTO dto = new RorderDTO();
 		AuthInfo info = (AuthInfo)session.getAttribute("authInfo");
 		dto.setMemId(info.getId());
-		
+		System.out.println("아이디"+info.getId());
 		List<RorderDTO> myList = roomOrderMapper.selectList(dto);
 		model.addAttribute("myList", myList);
 		

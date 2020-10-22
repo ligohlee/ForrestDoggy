@@ -7,4 +7,6 @@ public interface PointMapper {
 
 	void insertPoint(PointDTO dto);
 
+	public PointDTO getSomePoint(String memId) throws Exception;
+
 }

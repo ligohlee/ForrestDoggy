@@ -26,7 +26,7 @@
 	
 		
 		
-		
+		$('#payTotal').html([[${sump}]]*1000);
 		
 		
 		$("#memCheck").change(function(){
@@ -67,8 +67,8 @@
 	    				}
 	    				$("#nowPoint").val(nowPoint-pointOut);
 	    				$('#payPoint').html(pointOut);
-	    				$('#payReal').html(totalPrice-pointOut)
-	    				$('#payPrice').val(totalPrice-pointOut);
+	    				$('#payReal').html([[${sump}]]*1000-pointOut)
+	    				$('#payPrice').val([[${sump}]]*1000-pointOut);
 	    				
 	    			});    			
 	    		}	        		            
@@ -93,8 +93,8 @@
 		
 		if($('#usePoint').css('display','none')){
 			$('#payPoint').html(0);
-			$('#payReal').html(totalPrice);
-			$('#payPrice').val(totalPrice);
+			$('#payReal').html([[${sump}]]*1000);
+			$('#payPrice').val([[${sump}]]*1000);
 			
 			
 		}
@@ -113,7 +113,7 @@
 				$('#payPage').css('display','block');
 				var payWay = $('input[type="checkbox"][name="payWay"]:checked').val();
 				$('.payH2').html(payWay+" 결제");
-				var pointIn = totalPrice*0.01;
+				var pointIn = [[${sump}]]*10;
 				$('#payPointIn').html(pointIn);
 				$('#pointIn').val(pointIn);
 			}
@@ -124,13 +124,7 @@
 			$('#payPage').css('display','none');
 		});
 		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		
 	});
@@ -142,7 +136,7 @@
 <body>
 
 	<div class="main clearfix" id="main">
-	<form th:action="@{/staypark/roomOrderPro}" method="post" name="frm" id="formStyle">
+	<form th:action="@{/esp/pay}" method="post" name="frm" id="formStyle">
 	<div id="payPage">
 					<div id="payBox">
 						<div id="cancle"><input type="button" value="X" id="cancleBtn"/></div>
@@ -241,9 +235,9 @@
 								<span class="font">결제수단 선택</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								카드결제 <input type="checkbox" name="payWay" value="신용카드"/>&nbsp;&nbsp;&nbsp;계좌이체 <input type="checkbox" name="payWay" value="계좌이체"/>&nbsp;&nbsp;&nbsp;포인트 <input type="checkbox" name="point" value="point" id="pointCheck"/>
 								<div class="roInfo">
-								총 결제금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="prePayPrice" class="infoinput" value="" id="prePayPrice" readonly/>원</br>
-								가용 포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointSum"  class="infoinput" id="nowPoint" readonly/>점
-								<div id="usePoint">포인트 사용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointOut" value="0" class="infoinput" id="pointOut" />점</br>
+								총 결제금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="prePayPrice" style="text-align:right" class="infoinput" th:value="${sump} + '.000  '" id="prePayPrice" readonly/>원</br>
+								가용 포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointSum" style="text-align:right" th:value="${sumPoint} +'  '" class="infoinput" id="nowPoint" readonly/>점
+								<div id="usePoint">포인트 사용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="text-align:right" name="pointOut" value="" class="infoinput" id="pointOut" />점</br>
 								<button type="button" id="usePointBtn">사용</button>
 								
 								</div></div>

@@ -51,7 +51,7 @@
 								룸넘버&nbsp;&nbsp;&nbsp;<select id="roomNum" name="roomNum"
 									class="selectOrder">
 									<th:block th:each="dto,aaa:${rsvRoom}">
-										<option>[[${dto.roomNum}]] [[${dto.roomName}]]</option>
+										<option>[[${dto.roomNum}]] [[${dto.roomName}]] 고객</option>
 									</th:block>
 								</select>&nbsp;<input type="button" id="login" class="buttons" value="접속" />
 							</div>
@@ -61,9 +61,9 @@
 							<div class="orderRoom">
 								메&nbsp;&nbsp;&nbsp;뉴&nbsp;&nbsp;&nbsp; <select name="menuNum"
 									id="menu" class="selectOrder">
-									<option value="1`지렁이스파게티">지렁이스파게티 30000</option>
-									<option value="2`파인애플주스">파인애플주스 5000</option>
-									<option value="3`계란보끔밥">계란보끔밥 10000</option>
+									<option value="1`지렁이스파게티 `30000">1`지렁이스파게티 `30000</option>
+									<option value="2`파인애플주스 `5000">2`파인애플주스 `5000</option>
+									<option value="3`계란보끔밥 `10000">3`계란보끔밥 `10000</option>
 								</select> <input type="button" value="전송" class="buttons"
 									onClick="sendMenu()" />
 
@@ -137,6 +137,9 @@
 				webSocket.onclose = function(e) {
 					if (e.type == "close") {
 						monitor.innerHTML += "접속이 종료 되었습니다.<br/>";
+						setTimeout(function(){
+							location.href="/staypark/main";
+						}, 1000);
 					}
 				}
 				//메시지 수신(client <- server)

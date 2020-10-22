@@ -44,7 +44,7 @@ public class PointService {
 		
 		if (pointSum0 == null) {			
 			pointSum=0;
-			System.out.println("코맨드 포인트썸이 null일 떄 pointSum: "+pointSum);
+			System.out.println("코맨드 포인트썸이 null일 때 pointSum: "+pointSum);
 		}else {
 			pointSum = Integer.parseInt(pointCommand.getPointSum());
 			System.out.println("코맨드 포인트썸이 null이 아닐 때 pointSum: "+pointSum);

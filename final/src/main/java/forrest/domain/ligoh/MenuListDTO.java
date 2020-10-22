@@ -11,7 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MenuListDTO {
 	Integer mordNum;
+	Integer courseNum;
+	String courseName;
 	Integer menuNum;
+	String menuName;
 	Integer mordQty; 
 	Timestamp mordTime;
+	Integer coursePrice;
+	Integer eachTotal;
 }

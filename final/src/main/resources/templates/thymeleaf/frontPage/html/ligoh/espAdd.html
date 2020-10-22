@@ -46,7 +46,8 @@
 			      <h2 style="text-align: ceter;" >MAKE SOME BOOK</h2>
 				  </div>	
 				  <div class="people">
-				  
+				  <input type="hidden" name="courseNum" th:value="${courses}"/> 
+				  <input type="hidden" name="mordPeople" th:value="${mordPeople}"/> 
 				    
 				    <div id="aSel"  class="divi" style="margin-top:15px;" >
 						<div class="type" >
@@ -61,7 +62,7 @@
 					 <div id="bSel" class="divi" style="margin-top:31px;" >
 						<div class="type">
 							
-							<select name="mordPeople" class="choice_box" required>
+							<select name="dogMenuQty" class="choice_box" required>
 								<option value="1">1</option>
 								<option value="2">2</option>
 								<option value="4">3</option>
@@ -112,7 +113,7 @@
 				var aSel = $("#aSel");
 				var bSel = $("#bSel");
 				var aHtml;
-				var bHtml = `<select name="mordPeople" class="choice_box">
+				var bHtml = `<select name="dogMenuQty" class="choice_box">
 								<option value="0">선택없음</option>
 								<option value="1">1</option>
 								<option value="2">2</option>

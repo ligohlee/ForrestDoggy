@@ -1,4 +1,4 @@
-package forrest.service.ligoh.menu;
+package forrest.service.ligoh.morder;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -46,6 +46,7 @@ public class MakeABookService {
 		dto.setMemId(authInfo.getId());
 		dto.setMordPeople(sumPeople);
 		dto.setMordDate(date);
+		dto.setMenuReq(mc.getMenuReq());
 		
 		morderMapper.firstRegist(dto);
 		
@@ -59,40 +60,40 @@ public class MakeABookService {
          
 		HttpSession session = request.getSession();
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
-		Integer [] peopleCount = mc.getMordPeople();
-		
-		Integer [] courseMulti = mc.getCourseNum();
-		
 		MorderDTO getNumber = morderMapper.getOrderNum(authInfo.getId());
 		
-		for (int i = 0; i < courseMulti.length; i++) {
-			List<MenuListDTO> mdto = morderListMapper.getMenu(courseMulti[i]);
+		Integer [] peopleCount = mc.getMordPeople();
+		Integer [] courses = mc.getCourseNum();
+		
+	    MenuListDTO mdto = new MenuListDTO();
+	    mdto.setMordNum(getNumber.getMordNum());
+	    
+		for (int i = 0; i < courses.length; i++) {
 			
-			for (int j = 0; j < mdto.size(); j++) {
-				mdto.get(j).setMordNum(getNumber.getMordNum());
-				mdto.get(j).setMordQty(peopleCount[i]);
+				mdto.setCourseNum(courses[i]);
+				mdto.setMordQty(peopleCount[i]);
 				if (peopleCount[i]>0) {
-					morderListMapper.insertMenu(mdto.get(j));
+					morderListMapper.insertCourse(mdto);
 				  }
 				
 			  }
-			
-		  }
-	
-	}
-
-
-	public void thirdRegist(MorderCommand mc, HttpServletRequest request) throws Exception {
-		HttpSession session = request.getSession();
-		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
-		MorderDTO getNumber = morderMapper.getOrderNum(authInfo.getId());
 		
-		getNumber.setMenuReq(mc.getMenuReq());
-		if (mc.getMenuReq() != null) {
-			morderMapper.updateReq(getNumber);
+		Integer [] menues = mc.getMenuNum();
+		Integer [] qty = mc.getDogMenuQty();
+		
+		 for (int i = 0; i < menues.length; i++) {
+	    	  mdto.setMordQty(qty[i]);
+	    	  mdto.setMenuNum(menues[i]);
+	    	  if (menues[i]>0) {
+	    		  morderListMapper.insertMenu(mdto);
+			}
+	    	  
 		}
 		
 		
-	}
+		
+			
+    }
+	
 
 }

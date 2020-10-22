@@ -53,6 +53,8 @@
 		$("#pointCheck").change(function(){
 	        if($("#pointCheck").is(":checked")){
 	        	
+	        	
+	        	
 	        	$('#usePoint').css('display','block');
 	        	var pointOut = parseInt($('#pointOut').val());
 	        	var nowPoint = parseInt($("#nowPoint").val());
@@ -71,7 +73,8 @@
 	    				$('#payPrice').val([[${sump}]]*1000-pointOut);
 	    				
 	    			});    			
-	    		}	        		            
+	    		}
+	        	     		            
 	        }else{
 	        	
 	        	var pointOut = parseInt($('#pointOut').val());
@@ -237,7 +240,7 @@
 								<div class="roInfo">
 								총 결제금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="prePayPrice" style="text-align:right" class="infoinput" th:value="${sump} + '.000  '" id="prePayPrice" readonly/>원</br>
 								가용 포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointSum" style="text-align:right" th:value="${sumPoint} +'  '" class="infoinput" id="nowPoint" readonly/>점
-								<div id="usePoint">포인트 사용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="text-align:right" name="pointOut" value="" class="infoinput" id="pointOut" />점</br>
+								<div id="usePoint">포인트 사용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="text-align:right" name="pointOut" value=""   class="infoinput" id="pointOut" />점</br>
 								<button type="button" id="usePointBtn">사용</button>
 								
 								</div></div>

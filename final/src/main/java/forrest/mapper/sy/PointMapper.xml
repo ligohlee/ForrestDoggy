@@ -18,6 +18,7 @@
 	<result column="POINT_OUT" jdbcType="VARCHAR" property="pointOut"/>
 	<result column="POINT_REGIST" jdbcType="TIMESTAMP" property="pointRegist"/>
 	<result column="POINT_SUM" jdbcType="VARCHAR" property="pointSum"/>
+	<result column="sumpoint" jdbcType="VARCHAR" property="sumPoint"/>
 </resultMap>
 
 <select id="selectPointSum" resultMap="resultmap" parameterType="string">
@@ -26,6 +27,13 @@
     where point_regist = (select MAX(point_regist) from point where mem_id=#{memId})
 </select>
 
+
+<select id="getSomePoint" resultMap="resultmap">
+      select sum(point_in) - SUM(POINT_OUT) sumpoint
+      FROM POINT
+      WHERE MEM_ID = #{memId}
+      GROUP BY mem_id
+</select>
 
 
 </mapper>

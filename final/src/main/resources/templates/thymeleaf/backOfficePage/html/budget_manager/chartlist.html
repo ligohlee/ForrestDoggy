@@ -1,5 +1,4 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
 <meta charset="utf-8">
 <title></title>
 <head>
@@ -20,7 +19,45 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+	<script type="text/javascript">
+	function goBack(){
+		location.href="budget";
+	}
+	
+	$(function(){
+		$("#btn").click(function(){
+			var value = document.getElementById("btn").value;
+		if(value == "월별 예산 내역비교"){
+			$.ajax({
+				type : "post",
+				url : "goolechart",
+				dataType : "html",
+				data: {"deptNum": "[[${dto.deptNum}]]"},
+				success : function(result){
+					$("#notice").html(result);
+					$("#btn").val("닫기");				
+					},
+					error : function(){
+						alert('에러');
+						return;
+					}
+			});
+			
+			
+		}else{
+			$("#notice").html("");
+			$("#btn").val("월별 예산 내역비교");
+		}
+		});
+	});
+	
+	
+	
+	
+	</script>
 </head>
 <body>
 
@@ -38,7 +75,7 @@
 				<!--로그인 전 메인 화면-->
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="page-header">정산 목록</h1>
+						<h1 class="page-header">예산내역 목록</h1>
 					</div>
 				</div>
 
@@ -75,34 +112,38 @@ td {
 </style>
 							<table class="table">
 								<tr>
-									<th>정산번호</th>
-									<th>업체번호</th>
-									<th>직원번호</th>
-									<th>정산날짜</th>
-									<th>정산금액</th>
-									<th>그래프 차트 보기</th>
-									
+									<th>부서번호</th>
+									<th>예산내역번호</th>
+									<th>집행년도</th>
+									<th>인건비</th>
+									<th>시설관리예산</th>
+									<th>기본운영예산</th>
+									<th>비품운영예산</th>
+									<th>기타계획예산</th>
 								</tr>
-								<th:block th:each="dto : ${lists}">
+								<th:block th:each="dto : ${dto}">
 									<tr>
-										<td><a th:href="@{calcuDetail(calcNum=${dto.calcNum})}">[[${dto.calcNum}]]</a></td>
-										<td>[[${dto.ptNum}]]</td>
-										<td>[[${dto.workNum}]]</td>
-										<td>[[${dto.calcDate}]]</td>
-										<td>[[${dto.calcPrice}]]</td>
-										<td><a th:href="@{gogleChart1(workNum=${dto.workNum})}">월별예산내역 비교</a></td>
+										<td>[[${dto.deptNum}]]</td>
+										<td>[[${dto.budNum}]]</td>
+										<td>[[${dto.budYear}]]</td>
+										<td>[[${dto.budSalary}]]</td>
+										<td>[[${dto.budFacility}]]</td>
+										<td>[[${dto.budBasic}]]</td>
+										<td>[[${dto.budSup}]]</td>
+										<td>[[${dto.budEtc}]]</td>
 									</tr>
+									
 								</th:block>
 								<tr>
+									
 									<td colspan="11">
-										<a href="calculationWrite">정산보고서 등록</a>&nbsp;&nbsp;&nbsp;&nbsp;
-										
+										<button type="button" onclick="javascript:goBack()">목록으로 가기</button>
+										<input style="widows: 50%" type="button" id="btn" value="월별 예산 내역비교">
+										<span id ="notice"></span>
 									</td>
 										
 								</tr>
-							
 							</table>
-							</div>
 							<!-- JS Scripts-->
 							<!-- Bootstrap Js -->
 							<script th:src="@{/static/js/bootstrap.min.js}"></script>

@@ -22,8 +22,8 @@ public class BudgetlistService {
 		List<BudgetDTO> lists = budgetMapper.budlistview();
 		model.addAttribute("lists", lists);
 	}
-	public void googleview(Integer budNum, Model model,HttpServletResponse response)throws Exception{
-		List<GoogleDTO> google = budgetMapper.googleview();
+	public void googleview(Integer deptNum, Model model,HttpServletResponse response)throws Exception{
+		List<GoogleDTO> google = budgetMapper.googleview(deptNum);
 		String googleList = "[['년도','인건비','시설관리예산','기본운영예산','비품운영예산','기타계획예산'] ";
 		for (int i = 0; i < google.size(); i++) {
 			googleList += ",['"+google.get(i).getBudYear()+"',"+google.get(i).getBudSalary()+","+google.get(i).getBudFacility()+","+google.get(i).getBudBasic()+","+google.get(i).getBudSup()+","+google.get(i).getBudEtc()+ "]";

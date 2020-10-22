@@ -1,9 +1,13 @@
 package forrest.service.sy;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
+import forrest.command.AuthInfo;
 import forrest.command.sy.PointCommand;
 import forrest.domain.sy.PointDTO;
 import forrest.mapper.sy.PointMapper;
@@ -44,7 +48,7 @@ public class PointService {
 		
 		if (pointSum0 == null) {			
 			pointSum=0;
-			System.out.println("코맨드 포인트썸이 null일 떄 pointSum: "+pointSum);
+			System.out.println("코맨드 포인트썸이 null일 때 pointSum: "+pointSum);
 		}else {
 			pointSum = Integer.parseInt(pointCommand.getPointSum());
 			System.out.println("코맨드 포인트썸이 null이 아닐 때 pointSum: "+pointSum);
@@ -59,6 +63,14 @@ public class PointService {
 		mapper.insertPoint(dto);
 		System.out.println(dto);
 				
+	}
+	public void selectPointSum(HttpSession session, Model model) {
+		// TODO Auto-generated method stub
+		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+		PointDTO dto = new PointDTO();
+		dto = mapper.selectPointSum(authInfo.getId());
+		System.out.println(dto);
+		model.addAttribute("pointSum", dto.getPointSum());
 	}
 
 }

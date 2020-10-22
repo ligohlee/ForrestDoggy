@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GoogleDTO {
+	Integer deptNum;
 	String budYear;
 	String budSalary;
 	String budFacility;

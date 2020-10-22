@@ -62,8 +62,8 @@ public String delPro(@RequestParam(value = "calcNum")Integer calcNum)throws Exce
 	return "redirect:/calculation";
 }
 @RequestMapping("gogleChart1")
-public String chart(Model model, HttpServletResponse response)throws Exception {
-	calcListService.chartview(model, response);
-	return "thymeleaf/backOfficePage/html/calculation_manager/gogleChart1";
+public String chart(@RequestParam(value = "workNum")Integer workNum,Model model)throws Exception {
+	calcDetailService.chartlistview(workNum,model);
+	return "thymeleaf/backOfficePage/html/calculation_manager/chartview";
 }
 }

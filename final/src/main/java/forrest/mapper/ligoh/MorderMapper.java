@@ -8,6 +8,7 @@ public interface MorderMapper {
 
 	public MorderDTO getOrderNum(String id)throws Exception;
 
-	public void updateReq(MorderDTO dto) throws Exception;
+	public MorderDTO getDateReq(Integer mordNum)throws Exception;
+
 
 }

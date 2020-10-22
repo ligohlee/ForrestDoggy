@@ -21,5 +21,6 @@ public class GOrderCommand {
 	String dyMemAddr;
 	String addr1;
 	String addr2;
+	Integer qty;
 	
 }

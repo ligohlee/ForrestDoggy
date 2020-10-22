@@ -6,4 +6,8 @@ import lombok.Data;
 public class TicketOrderCommand {
 	
 	Integer ticketNum[];
+	String memId;
+	Integer torderPrice;
+	Integer tolistQty[];
+	
 }

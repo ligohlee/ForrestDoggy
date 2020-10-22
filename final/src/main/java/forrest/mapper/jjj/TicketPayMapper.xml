@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.jjj.TicketPayMapper">
+
+<sql id="basecolumn">
+	pay_num, torder_num
+</sql>
+
+<insert id="insertTicketPay" parameterType="forrest.domain.jjj.TicketPayDTO">
+	insert into ticket_pay(<include refid="basecolumn"/>)
+	values((select max(pay_num) from payment where pay_price = #{payPrice} and pay_way=#{payWay}),
+	(select max(torder_num) from torder where mem_id=#{memId}))
+		
+</insert>
+</mapper>

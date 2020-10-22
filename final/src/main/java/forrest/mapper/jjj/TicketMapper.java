@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import forrest.domain.jjj.TicketDTO;
+import forrest.domain.jjj.TicketOrderDTO;
 @Repository
 @Component
 public interface TicketMapper {
@@ -19,5 +20,7 @@ public interface TicketMapper {
 	void updateTicket(TicketDTO dto);
 
 	void deleteTicket(int ticketNum);
+
+	void updateQty(TicketOrderDTO dto);
 
 }

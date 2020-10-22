@@ -68,6 +68,15 @@ h2{
 	border: 1px solid #ddd;
 	line-height: 1.5;
 }
+.buttons1{
+	margin-left: 5px;
+	text-align: center;
+	width: 80px;
+	height: 25px;
+	border: 1px solid #ddd;
+	line-height: 1;
+	background-color: #f0f0f0;
+}
 
 .btnsBox{
 	width: 370px;

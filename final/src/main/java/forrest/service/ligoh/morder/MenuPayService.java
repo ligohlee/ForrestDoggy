@@ -29,7 +29,7 @@ public class MenuPayService {
 		  mdto.setMordNum(getNumber.getMordNum());
 		  MenuPayDTO dto = paymentMapper.getPayNum();
 		  mdto.setPayNum(dto.getPayNum());
-		  paymentMapper.menuPayInsert(dto);
+		  paymentMapper.menuPayInsert(mdto);
 		   
 	}
 

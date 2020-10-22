@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title>Stay Park</title>
+<title>DogViliage</title>
 
 <link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
 
@@ -24,7 +24,7 @@ $(document).ready(function(){
 	
 	
 	
-	
+		// 수량 체크 후 총 결제 가격 뽑기
 		
 		$("select[name='torderQty']").change(function(){
 			qty = $(this).val();
@@ -34,8 +34,10 @@ $(document).ready(function(){
 			
 		});
 		
+		
+		var totalPrice = 0;
 		$('#qtybtn').click(function(){
-			var totalPrice = 0;
+			
 			$('input[name="torderPrice"]').each(function(idx){
 				var tPrice = parseInt($(this).val());			
 				totalPrice = totalPrice + tPrice;
@@ -43,9 +45,16 @@ $(document).ready(function(){
 			});
 			$('.totalPrice111').html("총 주문금액 "+totalPrice+"원");
 			$('#prePayPrice').val(totalPrice);
+			$('#payTotal').html(totalPrice);
+			$('#payPoint').html(0);
+			$('#payPointIn').html(totalPrice*0.01);
+			$('#payReal').html(totalPrice);
+			$('#payPrice').val(totalPrice);
+			
 		});
 		
-
+		
+		// 결제수단 하나만 체크되게 하기
 
 		$('input[type="checkbox"][name="payWay"]').click(function(){
 			if($('input[type="checkbox"][name="payWay"]').is(':checked')){			
@@ -53,61 +62,63 @@ $(document).ready(function(){
 			}
 			$(this).prop('checked',true);
 		});
-/*
-		$("#pointCheck").change(function(){
-		    if($("#pointCheck").is(":checked")){
-		    	
-		    	$('#usePoint').css('display','block');
-		    	var pointOut = parseInt($('#pointOut').val());
-		    	var nowPoint = parseInt($("#nowPoint").val());
-		    	if(isNaN(pointOut)){
-		    		pointOut=0;
-					$('#usePointBtn').click(function(){
-						pointOut = parseInt($('#pointOut').val());
-						$("#nowPoint").val(nowPoint-pointOut);
-						$('#payPoint').html(pointOut);
-						$('#payReal').html(totalPrice-pointOut)
-						$('#payPrice').val(totalPrice-pointOut);
-						var pricezz = parseInt($('#payPrice').val(totalPrice-pointOut));
-						var pin = pricezz*0.01;
-						$('#pointIn').val(pin);
-						$('#payPointIn').html(pin);
-					});    			
-				}	        		            
-		    }else{
-		    	
-		    	var pointOut = parseInt($('#pointOut').val());
-		    	var nowPoint = parseInt($("#nowPoint").val());
-		    	if(isNaN(pointOut)){
-		    		pointOut=0;
-		    		$("#nowPoint").val(nowPoint+pointOut);
-		    		
-				}
-		    	$("#nowPoint").val(nowPoint+pointOut);
-		    	$('#pointOut').val(0);
-		    	$('#usePoint').css('display','none');
-		    	
-		    	
-		    }
+		
+		
+		// 포인트 사용하기 위해 체크박스 체크 시 이벤트
+
+		$('input[type="checkbox"][name="point"]').change(function(){
+			if($(this).is(':checked')){
+				// 사용할 포인트 입력 input창 보이게
+				$('#usePoint').css('display','block');
+				$('#payPointIn').html(totalPrice*0.01);
+				$('#payReal').html(totalPrice);
+				$('#payPrice').val(totalPrice);
+			}else{
+				// 체크를 해지 했을 때 결제금액에서 빠졌던 포인트 금액을 다시 더해주고 0으로 만들어서 숨기기
+				var ppoint = parseInt($('#pointOut').val());
+				var ttotal = ppoint+totalPrice;
+				$('.totalPrice111').html("총 주문금액 "+ttotal+"원");
+				$('#prePayPrice').val(ttotal);
+				$('#payTotal').html(ttotal);
+				$('#pointOut').val(0);
+				$('#payPoint').html(0);
+				$('#payPointIn').html(ttotal*0.01);
+				$('#usePoint').css('display','none');
+				$('#payReal').html(ttotal);
+				$('#payPrice').val(ttotal);
+			}
+		});
+		
+		// 사용할 포인트 입력하고 사용 버튼 눌렀을 때 해당 포인트만큼 결제 금액 마이너스 되게 & 가용 포인트보다 크게 적었을 때
+		// 얼럿 창으로 가능한 포인트 안내 후 0으로 바뀌게
+		var payWon;
+		$('#usePointBtn').click(function(){
+			var usePoint = parseInt($('#pointOut').val());
+			if(usePoint> parseInt($('#nowPoint').val())){
+				alert("현재 사용 가능한 포인트는 "+$('#nowPoint').val()+"점 입니다.");
+				$('#pointOut').val(0);
+				$('#payPoint').html(0);
+			}else{
+				payWon = totalPrice-usePoint;
+				$('#prePayPrice').val(payWon);
+				$('#payPoint').html(usePoint);
+				$('#payReal').html(payWon);
+				$('#payPointIn').html(payWon*0.01);
+				$('#payReal').html(payWon);
+				$('#payPrice').val(payWon);
+				
+			}			
+			
 		});
 
 
-		if($('#usePoint').css('display','none')){
-			$('#payPoint').html(0);
-			$('#payReal').html(totalPrice);
-			$('#payPrice').val(totalPrice);
-			var priceaa = parseInt($('#payPrice').val(totalPrice));
-			var pinnn = priceaa*0.01;
-			$('#pointIn').val(pinnn);
-			$('#payPointIn').html(pinnn);
-		}
-
- */
-
+        
 		$('#rsvBtn').click(function(){
 			if ($('input[type="checkbox"][name="payWay"]').is(':checked') == false) {
 				  alert('결제수단을 체크하셔야 합니다.');				  
 			}else{
+				var way = $("input:checkbox[name='payWay']:checked").val();
+				$('.payH2').html(way+" 결제");
 				$('#payPage').css('display','block');
 			}
 			
@@ -116,6 +127,7 @@ $(document).ready(function(){
 		$('#cancleBtn').click(function(){
 			$('#payPage').css('display','none');
 		});
+		
 
 });
 </script>
@@ -130,7 +142,7 @@ $(document).ready(function(){
 					<div id="payBox">
 						<div id="cancle"><input type="button" value="X" id="cancleBtn"/></div>
 						<span id="payOk"></span>
-						<h2 class="payH2">결 제</h2>
+						<h2 class="payH2"></h2>
 						<table id="payTable">
 							<tr><td class="paytd">총 주문금액</td><td class="paytd"><span id="payTotal"></span></td></tr>
 							<tr><td class="paytd">포인트사용</td><td class="paytd"><span id="payPoint"></span></td></tr>
@@ -217,11 +229,11 @@ $(document).ready(function(){
 							<h4>결제 정보</h4>
 							<div class="optBox">
 								<span class="font">결제수단 선택</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								카드결제 <input type="checkbox" name="payWay" value="credit"/>&nbsp;&nbsp;&nbsp;계좌이체 <input type="checkbox" name="payWay" value="cash"/>&nbsp;&nbsp;&nbsp;포인트 <input type="checkbox" name="point" value="point" id="pointCheck"/>
+								카드결제 <input type="checkbox" name="payWay" value="신용카드"/>&nbsp;&nbsp;&nbsp;계좌이체 <input type="checkbox" name="payWay" value="계좌이체"/>&nbsp;&nbsp;&nbsp;포인트 <input type="checkbox" name="point" value="point" id="pointCheck"/>
 								<div class="roInfo">
 								총 결제금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="prePayPrice" class="infoinput" value="" id="prePayPrice" readonly/>원</br>
-								가용 포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointSum" th:value="${point}" class="infoinput" id="nowPoint" readonly/>점
-								<div id="usePoint">포인트 사용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointOut" value="" class="infoinput" id="pointOut" placeholder="0"/>점</br>
+								가용 포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointSum" th:value="${pointSum}" class="infoinput" id="nowPoint" readonly/>점
+								<div id="usePoint">포인트 사용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointOut" value="0" class="infoinput" id="pointOut"/>점</br>
 								<button type="button" id="usePointBtn">사용</button>
 								</div></div>
 								

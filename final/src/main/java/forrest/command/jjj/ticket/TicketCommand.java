@@ -21,7 +21,6 @@ public class TicketCommand {
 		String ticketName;
 		@DateTimeFormat(pattern = "yyyy-MM-dd")
 		Date ticketSeason;
-		
 		String ticketTime;
 		String ticketGrade;
 		Integer ticketPrice;	   		

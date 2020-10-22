@@ -22,6 +22,7 @@ public class CalcListService {
 		List <CalcDTO> lists = calcMapper.callistView();
 		model.addAttribute("lists", lists);
 	}
+	
 	public void chartview(Model model, HttpServletResponse response)throws Exception{
 		List<ChartDTO> chart = calcMapper.chartview1();
 		String chartList = "[['월', '매출']";

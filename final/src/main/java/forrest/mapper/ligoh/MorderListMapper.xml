@@ -3,20 +3,68 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="forrest.mapper.ligoh.MorderListMapper">
   <sql id="menuList">
-     MORD_NUM, MENU_NUM, MORD_TIME, MORD_QTY
+     MORD_NUM, COURSE_NUM, MENU_NUM, MORD_TIME, MORD_QTY
   </sql>
   <select id="getMenu" resultMap="menuResult">
     select menu_num
     from course_list
     where course_num = #{courseNum}
   </select>
+  <select id="getCourse" resultMap="courseResult">
+    select  MORD_NUM, l.COURSE_NUM course, MORD_QTY, course_price, course_price*mord_qty each_total, course_name
+    from menu_list l 
+    join (select sum(menu_price) course_price, course_num
+    from menu m join course_list c
+    on m.menu_num = c.menu_num
+    group by course_num)  s
+    on l.course_num = s.course_num
+    join course r
+    on r.course_num = l.course_num
+    where MORD_NUM = #{mordNum}
+    and l.course_num is not null
+  </select>
+  <select id="getDogMenu" resultMap="dogResult">
+    select mord_num, l.menu_num menu, mord_qty, menu_price, l.mord_qty * menu_price each_total, menu_name 
+    from menu_list l join menu m
+    on l.menu_num = m.menu_num
+    where MORD_NUM = #{mordNum}
+    and l.menu_num is not null
+  </select>
+  
+  
+  
   <resultMap type="forrest.domain.ligoh.MenuListDTO" id="menuResult">
 		<result column="MENU_NUM" jdbcType="BIGINT" property="menuNum"/>
   </resultMap>
   
+  <resultMap type="forrest.domain.ligoh.MenuListDTO" id="courseResult">
+		<result column="MORD_NUM" jdbcType="BIGINT" property="mordNum"/>
+		<result column="course" jdbcType="BIGINT" property="courseNum"/>
+		<result column="MORD_QTY" jdbcType="BIGINT" property="mordQty"/>
+		<result column="course_price" jdbcType="BIGINT" property="coursePrice"/>
+		<result column="each_total" jdbcType="BIGINT" property="eachTotal"/>
+		<result column="COURSE_NAME" jdbcType="VARCHAR" property="courseName"/>
+  </resultMap>
+  <resultMap type="forrest.domain.ligoh.MenuListDTO" id="dogResult">
+		<result column="MORD_NUM" jdbcType="BIGINT" property="mordNum"/>
+		<result column="menu" jdbcType="BIGINT" property="menuNum"/>
+		<result column="MORD_QTY" jdbcType="BIGINT" property="mordQty"/>
+		<result column="menu_price" jdbcType="BIGINT" property="coursePrice"/>
+		<result column="each_total" jdbcType="BIGINT" property="eachTotal"/>
+		<result column="menu_NAME" jdbcType="VARCHAR" property="menuName"/>
+  </resultMap>
+  
+  <insert id="insertCourse">
+    insert into menu_list(<include refid="menuList"/>)
+    values(#{mordNum}, #{courseNum}, null, null, #{mordQty})
+  </insert>
+ 
   <insert id="insertMenu">
     insert into menu_list(<include refid="menuList"/>)
-    values(#{mordNum}, #{menuNum}, null, #{mordQty})
+    values(#{mordNum}, null, #{menuNum}, null, #{mordQty})
   </insert>
+  
+  
+ 
  
 </mapper>

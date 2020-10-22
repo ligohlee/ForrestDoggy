@@ -80,6 +80,7 @@ td {
 									<th>직원번호</th>
 									<th>정산날짜</th>
 									<th>정산금액</th>
+									<th>그래프 차트 보기</th>
 									
 								</tr>
 								<th:block th:each="dto : ${lists}">
@@ -89,12 +90,13 @@ td {
 										<td>[[${dto.workNum}]]</td>
 										<td>[[${dto.calcDate}]]</td>
 										<td>[[${dto.calcPrice}]]</td>
+										<td><a th:href="@{gogleChart1(workNum=${dto.workNum})}">월별예산내역 비교</a></td>
 									</tr>
 								</th:block>
 								<tr>
 									<td colspan="11">
 										<a href="calculationWrite">정산보고서 등록</a>&nbsp;&nbsp;&nbsp;&nbsp;
-										<a href="gogleChart1">월별예산내역 비교</a>
+										
 									</td>
 										
 								</tr>

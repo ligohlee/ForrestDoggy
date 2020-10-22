@@ -13,11 +13,29 @@
 
 	<insert id="insertPay"
 		parameterType="forrest.domain.sy.PaymentDTO">
-		
 		insert into payment(<include refid="basecolumn"/>)
-		values(pay_seq.nextval, sysdate, #{payPrice}, #{payWay},null)
-
+		values((<include refid="maxNum"/>), sysdate, #{payPrice}, #{payWay},null)
 	</insert>
+	
+	<sql id="maxNum">
+    select nvl(max(pay_num),0) + 1
+    from payment
+    </sql>
+    
+    <resultMap type="forrest.domain.ligoh.MenuPayDTO" id="resultPay">
+        <id column="PAY_NUM" jdbcType="BIGINT" property="payNum"/>
+    
+    </resultMap>
+	
+	<select id="getPayNum" resultMap="resultPay">
+	 select * from payment
+     where pay_num = (select MAX(pay_num) from payment)
+	</select>
+	<insert id="menuPayInsert">
+	  insert into menu_pay(pay_num ,mord_num)
+	  values(#{payNum},#{mordNum})
+	</insert>
+	
 
 
 </mapper>

@@ -25,6 +25,7 @@
 
     <div class="login-area">
 				<form th:action="@{/loginPro}" method="post" name="frm" id="frm">
+				<input type="hidden" name="backpath" th:value="${backpath}">
 					<div class="inner">
 						<div class="form-group">
 							<input type="text" class="input" name="memId" id="" value="" placeholder="ID" />
@@ -36,7 +37,10 @@
 							<input type="submit" class="submit" value="로그인"/>
 						</div>
 						<label for="ic1">아이디저장</label>
-						<input type="checkbox" name="saveId" id="ic1" class="checkbox" value="" />
+						<input type="checkbox" name="idStore"  id="ic1"
+	                         th:attr="checked = ${isId != null} ? 'true': 'false'"> &emsp;
+	                    <label for="ic1">자동로그인</label>
+	                    <input type="checkbox" name="autoLogin" >
 						<a href="memberAgree.html" class="login-link">회원가입</a>
 					</div>
 				</form>

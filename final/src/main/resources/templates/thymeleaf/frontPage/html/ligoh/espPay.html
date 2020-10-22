@@ -1,0 +1,278 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>EATsomePlace</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/roomOrderListStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+<script>
+	$(document).ready(function(){
+		
+		
+
+		
+	
+		
+		
+		$('#payTotal').html([[${sump}]]*1000);
+		
+		
+		$("#memCheck").change(function(){
+	        if($("#memCheck").is(":checked")){
+	            $('#roName').val($('#memName').val());
+	            $('#roPh').val($('#memPh').val());
+	        }else{
+	        	$('#roName').val('');
+	            $('#roPh').val('');
+	        }
+	    });
+		
+		
+		$('input[type="checkbox"][name="payWay"]').click(function(){
+			if($('input[type="checkbox"][name="payWay"]').is(':checked')){			
+				$('input[type="checkbox"][name="payWay"]').prop('checked',false);			
+			}
+			$(this).prop('checked',true);
+		});
+		
+		
+		
+		
+		$("#pointCheck").change(function(){
+	        if($("#pointCheck").is(":checked")){
+	        	
+	        	$('#usePoint').css('display','block');
+	        	var pointOut = parseInt($('#pointOut').val());
+	        	var nowPoint = parseInt($("#nowPoint").val());
+	        	if(isNaN(pointOut)){
+	        		pointOut=0;
+	    			$('#usePointBtn').click(function(){
+	    				pointOut = parseInt($('#pointOut').val());
+	    				if(pointOut > nowPoint){
+	    					pointOut = 0;
+	    					alert("사용 가능한 포인트는 "+nowPoint+"점 입니다.");
+	    					$('#pointOut').val(pointOut);    					
+	    				}
+	    				$("#nowPoint").val(nowPoint-pointOut);
+	    				$('#payPoint').html(pointOut);
+	    				$('#payReal').html([[${sump}]]*1000-pointOut)
+	    				$('#payPrice').val([[${sump}]]*1000-pointOut);
+	    				
+	    			});    			
+	    		}	        		            
+	        }else{
+	        	
+	        	var pointOut = parseInt($('#pointOut').val());
+	        	var nowPoint = parseInt($("#nowPoint").val());
+	        	if(isNaN(pointOut)){
+	        		pointOut=0;
+	        		$("#nowPoint").val(nowPoint+pointOut);
+	        		
+	    		}
+	        	$("#nowPoint").val(nowPoint+pointOut);
+	        	$('#pointOut').val(0);
+	        	$('#usePoint').css('display','none');
+	        	
+	        	
+	        	
+	        }
+	    });
+		
+		
+		if($('#usePoint').css('display','none')){
+			$('#payPoint').html(0);
+			$('#payReal').html([[${sump}]]*1000);
+			$('#payPrice').val([[${sump}]]*1000);
+			
+			
+		}
+		
+		 
+		
+		$('#rsvBtn').click(function(){
+			if ($('input[type="checkbox"][name="payWay"]').is(':checked') == false) {
+				  alert('결제수단을 체크하셔야 합니다.');
+				  
+			}else if($('#roName').val()== ''){
+				alert('예약자 성함을 입력해주세요');
+			}else if($('#roPh').val()== ''){
+				alert('예약자 연락처를 입력해주세요');
+			}else{
+				$('#payPage').css('display','block');
+				var payWay = $('input[type="checkbox"][name="payWay"]:checked').val();
+				$('.payH2').html(payWay+" 결제");
+				var pointIn = [[${sump}]]*10;
+				$('#payPointIn').html(pointIn);
+				$('#pointIn').val(pointIn);
+			}
+			
+		});
+		
+		$('#cancleBtn').click(function(){
+			$('#payPage').css('display','none');
+		});
+		
+
+		
+		
+	});
+</script>
+
+
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+	<form th:action="@{/esp/pay}" method="post" name="frm" id="formStyle">
+	<div id="payPage">
+					<div id="payBox">
+						<div id="cancle"><input type="button" value="X" id="cancleBtn"/></div>
+						<span id="payOk"></span>
+						<h2 class="payH2"></h2>
+						<table id="payTable">
+							<tr><td class="paytd">총 주문금액</td><td class="paytd"><span id="payTotal"></span></td></tr>
+							<tr><td class="paytd">포인트사용</td><td class="paytd"><span id="payPoint"></span></td></tr>
+							<tr><td class="paytd">포인트적립</td><td class="paytd"><span id="payPointIn"></span></td>
+							<input type="hidden" name="pointIn" value="" id="pointIn"/>
+							</tr>
+							<tr><th class="th paytd payth">결제금액</th><th class="th paytd payth"><span id="payReal"></span></th>
+							<input type="hidden" name="payPrice" value="" id="payPrice"/></tr>
+						</table>
+						<div id="submitBox">
+							<input type="submit" name="submit" class="search" value="결 제 하 기">
+						</div>
+						
+					</div>
+				</div>
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_eatSomePlace.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		<section>
+			
+			<span th:if="${session.authInfo !=null}">
+				<input type="hidden" th:value="${session.authInfo.name}" name="memName" id="memName"/>
+				<input type="hidden" th:value="${session.authInfo.ph}" name="memPh" id="memPh"/>
+				<input type="hidden" th:value="${session.authInfo.id}" name="memId" id="memId"/>
+			</span>
+			<div class="container">
+
+				<table class="roomTable" >
+					<tr>
+						<td colspan="3" style="text-align:left ; padding-left:30px;">
+							<h2>예약 내용 확인</h2>
+
+						</td>
+					</tr>
+					
+					<tr>
+						<th class="th borderleft">메뉴이름</th>
+						<th class="th">가격</th>
+						<th class="th borderright">수량</th>
+					</tr>
+					
+					<tr th:each="course : ${courseInfo}" >
+						<td class="roomTd number borderleft" th:text=${course.courseName}></td>
+						<td class="roomTd" style="border-bottom: 1px solid #000000" th:text="${course.coursePrice} + '.000원'"></td>
+						<td class="roomTd borderright" style="border-bottom: 1px solid #000000" th:text=${course.mordQty}></td>						
+					</tr>
+					<tr th:each="menu : ${menuInfo}" >
+						<td class="roomTd number borderleft" th:text="${menu.menuName} + '(애견메뉴)'"></td>
+						<td class="roomTd" style="border-bottom: 1px solid #000000" th:text="${menu.coursePrice} + '.000원'"></td>
+						<td class="roomTd borderright" style="border-bottom: 1px solid #000000" th:text=${menu.mordQty}></td>						
+					</tr>
+					
+					<tr>
+						<td colspan="3" class="priceTd borderleft borderright total" id="total">합계 &ensp;&ensp;[[${sump}]].000원</td>
+					</tr>
+					<tr>
+						<th class="th borderleft" style="text-align:right">예약일시</th>
+						<th class="th" style="text-align:center" th:text="${#dates.format(date.mordDate, 'yyyy-MM-dd HH:mm')}"></th>
+						<th  class="th borderright" > </th>
+					</tr>
+					<tr>
+						<th class="th borderleft" style="text-align:right">요청사항</th>
+						<th class="th" style="text-align:center" th:text="${date.menuReq}"></th>
+						<th  class="th borderright" > </th>
+					</tr>
+
+				</table>
+				
+				<table class="roInfoTable">
+					<tr>
+						<td class="roInfotd borderleft">
+							<h4>예약자 정보</h4>
+							<div class="optBox">
+								<span class="font">예약자 정보가 회원 정보와 같음</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="member" id="memCheck"/>
+								<p class="roInfo">
+								예약자이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"  class="infoinput" id="roName" required/></br>
+								예약자연락처&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"  class="infoinput" id="roPh" required/></p>								
+							</div>
+						</td>
+						<td class="roInfotd borderright">
+							<h4>결제 정보</h4>
+							<div class="optBox">
+								<span class="font">결제수단 선택</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								카드결제 <input type="checkbox" name="payWay" value="신용카드"/>&nbsp;&nbsp;&nbsp;계좌이체 <input type="checkbox" name="payWay" value="계좌이체"/>&nbsp;&nbsp;&nbsp;포인트 <input type="checkbox" name="point" value="point" id="pointCheck"/>
+								<div class="roInfo">
+								총 결제금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="prePayPrice" style="text-align:right" class="infoinput" th:value="${sump} + '.000  '" id="prePayPrice" readonly/>원</br>
+								가용 포인트&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="pointSum" style="text-align:right" th:value="${sumPoint} +'  '" class="infoinput" id="nowPoint" readonly/>점
+								<div id="usePoint">포인트 사용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="text-align:right" name="pointOut" value="" class="infoinput" id="pointOut" />점</br>
+								<button type="button" id="usePointBtn">사용</button>
+								
+								</div></div>
+								
+							</div>
+						</td>
+						
+					</tr>
+					
+				</table>
+				
+
+
+
+				<div class="final_btn">
+
+					<input type="button" class="search" value="예 약 하 기" id="rsvBtn">
+
+				</div>
+				
+				
+
+
+
+			</div>
+			
+			
+		</section>
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+	</form>
+	</div>
+</body>
+</html>

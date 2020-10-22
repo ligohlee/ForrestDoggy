@@ -23,8 +23,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
 	rel="stylesheet">
+<script type="text/javascript"></script>
 
-</head>
 </head>
 <body>
 
@@ -87,7 +87,7 @@ td {
 									<th>기본운영예산</th>
 									<th>비품운영예산</th>
 									<th>기타계획예산</th>
-									<th>월별 예산내역 비교</th>
+									<th>월별예산내역 비교</th>
 								</tr>
 								<th:block th:each="dto : ${lists}">
 									<tr>
@@ -99,13 +99,13 @@ td {
 										<td>[[${dto.budBasic}]]</td>
 										<td>[[${dto.budSup}]]</td>
 										<td>[[${dto.budEtc}]]</td>
-										<td><a th:href="@{googleChart(budNum=${dto.budNum})}">월별예산내역 비교</a></td>
+										<td><a th:href="@{googleChartPage(deptNum=${dto.deptNum})}">각 부서 월별예산 내역 비교</a>
 									</tr>
+									
 								</th:block>
 								<tr>
 									<td colspan="11">
 										<a href="budgetWrite">예산내역 등록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										
 									</td>
 										
 								</tr>

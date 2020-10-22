@@ -14,12 +14,17 @@
   
   <insert id="firstRegist">
     insert into MORDER(<include refid="morderColumn"/>)
-    values((<include refid="maxNum"/>),#{memId}, null,#{mordDate}, #{mordPeople}, null)
+    values((<include refid="maxNum"/>),#{memId}, null,#{mordDate}, #{mordPeople}, #{menuReq})
   </insert>
  
   <select id="getOrderNum" parameterType="string" resultMap="resultMorder">
     select max(mord_NUM) mordNum from MORDER
     where mem_id = #{memId}
+  </select>
+  
+  <select id="getDateReq"  resultMap="resultMorder">
+    select MORD_DATE, menu_req from MORDER
+    where mord_num = #{mordNum}
   </select>
   
   <resultMap type="forrest.domain.ligoh.MorderDTO" id="resultMorder">
@@ -28,13 +33,9 @@
 		<result column="MORD_TABLE" jdbcType="BIGINT" property="mordTable"/>
 		<result column="MORD_DATE" jdbcType="TIMESTAMP" property="mordDate"/>
 		<result column="MORD_PEOPLE" jdbcType="BIGINT" property="mordPeople"/>
+		<result column="MENU_REQ" jdbcType="VARCHAR" property="menuReq"/>
   </resultMap>
-   <update id="updateReq">
-      update morder
-      set MENU_REQ = #{menuReq}
-      where mord_num = #{mordNum}
-   </update>
-  
+
 
 
 </mapper>

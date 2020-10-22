@@ -16,6 +16,7 @@ public class PointDTO {
 	String pointOut;
 	Timestamp pointRegist;
 	String pointSum;
+	String sumPoint;
 
 	
 }

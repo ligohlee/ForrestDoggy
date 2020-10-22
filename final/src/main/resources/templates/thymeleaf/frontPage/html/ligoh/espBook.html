@@ -42,9 +42,9 @@
 				  <div class="make">
 			      <h2 style="text-align: ceter;" >MAKE SOME BOOK</h2>
 				  </div>	
-				  <div class="people">
+				  <div class="people" style="">
 				  
-				  <div  >
+				  <div  style="margin-left:120px; margin-top: 20px;">
 				  <div style="float:left;">
 				    <div class="divi" id="aSel" style="max-width:220px;">
 				      <div class="type">
@@ -74,13 +74,41 @@
 					   </div>
 				</div>
 				
-				      
 					</div>
 				
 				
-				     <div style="float:right;">
-				    
-					<div class="divi" >
+				    <div style="margin-right:100px; margin-left:120px; margin-top: 20px;">
+				   <div id="cSel"  class="divi" style="margin-top:15px;max-width:220px;" >
+						<div class="type" >
+							<p class="pp">애견메뉴 선택</p>
+							<select  name="menuNum" class="choice_box" required>
+							    <option value="0">선택없음</option>
+								<option th:each="list : ${dogMenu}" th:value="${list.menuNum}" th:text="${list.menuName}"></option>
+							</select>
+						</div>
+					</div>
+					
+					 <div id="dSel" class="divi" style="margin-top:31px; max-width:220px;" >
+						<div class="type">
+							
+							<select name="dogMenuQty" class="choice_box" required>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="4">3</option>
+								<option value="4">4</option>
+							</select>
+						</div>
+					</div>
+					 <div class="divi" style="padding-top:25px; padding-left:20px">
+					   <div class="searchBtn" >
+						 <input style="height: 30px; width: 100px;" class="search" type="button" id="boo" value="추가"/>
+					   </div>
+					</div>
+					
+				</div>
+					
+					
+					<div class="divi" style="margin-right:500px; margin-top:30px; margin-left:130px;" >
 						<div class="ckIn">
 						    <div class="type">
 							<p class="pp">날짜 선택</p>
@@ -88,13 +116,20 @@
 						   </div>
 						</div>
 					</div>
-				   </div>
+					
+					<div class="divi" style="margin-top: 30px; margin-left:130px;">
+						<div class="type">
+							<p class="pp">요구사항</p>
+						<textarea style="border: 2px solid #cccccc;  margin-top:15px;" rows="8" cols="60"
+						 placeholder="코스 및 애견메뉴에 대한 알러지 정보나 기타 요구사항을 기재." name="menuReq"></textarea>
+						 </div>
+					</div>
 				   
 		     </div>
 				
-					<div class="divi" style="float: right;">
+					<div class="divi" style="float: right; margin-bottom:40px;">
 						<div class="searchBtn">
-							<input type="submit" value="다음" class="search">
+							<input type="submit" value="결제" class="search">
 						</div>
 
 					</div>
@@ -139,6 +174,32 @@
 					aSel.append(aHtml);
 					bSel.append(bHtml);
 				});
+				
+				var brr = /*[[${dogMenu}]]*/;
+				var cSel = $("#cSel");
+				var dSel = $("#dSel");
+				var cHtml;
+				var dHtml = `<select name="dogMenuQty" class="choice_box">
+								<option value="0">선택없음</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+							</select>`
+				
+				cHtml = '<select  name="menuNum" class="choice_box">';
+			  
+				
+				$(brr).each(function(){
+					cHtml += '<option value="' + $(this)[0].menuNum + '">' + $(this)[0].menuName + '</option>';
+				});
+				cHtml += '</select>';
+				
+				$("#boo").click(function(){
+					cSel.append(cHtml);
+					dSel.append(dHtml);
+				});
+				
 			})
 			
 			/*]]*/

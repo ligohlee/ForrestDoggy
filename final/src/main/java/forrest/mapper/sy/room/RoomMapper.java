@@ -20,4 +20,6 @@ public interface RoomMapper {
 
 	List<OptionsDTO> selectRoptions(Integer roomNum);
 
+	List<RoomDTO> selectRoomBack(RoomDTO dto);
+
 }

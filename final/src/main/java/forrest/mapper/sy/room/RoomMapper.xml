@@ -43,8 +43,14 @@
 		</if>
 	</trim>
 	
-		
-	
+</select>
+
+<select id="selectRoomBack" resultMap="resultmap" parameterType="forrest.domain.sy.room.RoomDTO">
+	select <include refid="basecolumn"/>
+	from room
+	<if test="roomNum != null">		
+		  where room_num = #{roomNum}
+	</if>
 </select>
 
 

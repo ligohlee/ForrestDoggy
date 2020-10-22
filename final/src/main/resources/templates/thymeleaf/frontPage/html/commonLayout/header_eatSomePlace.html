@@ -8,9 +8,9 @@
       <div class="headerMenu">
         <ul class="headerUl clearfix">
 
-          <li class="headerLi"><a href="/staypark/main" >StayPark</a></li>
-          <li class="headerLi"><a href="dogVillageMain.html">DogVillage</a></li>
-          <li class="headerLi select"><a href="/esp/main" class="select">EatSomePlace</a>
+          <li class="headerLi"><a th:href="@{/staypark/main}" >StayPark</a></li>
+          <li class="headerLi"><a th:href="@{/dogVillage/main}">DogVillage</a></li>
+          <li class="headerLi select"><a th:href="@{/esp/main}" class="select">EatSomePlace</a>
 
             <div class="menu">
               <ul class="clearfix menuUl">
@@ -19,7 +19,7 @@
                 <li class="menu_li"><a href="" class="menu_li_a">메뉴3</a></li>
               </ul>
             </div></li>
-          <li class="headerLi"><a href="dogMallMain.html">DogMall</a></li>
+          <li class="headerLi"><a th:href="@{/dogmall/main}">DogMall</a></li>
         </ul>
       </div>
     </header>

@@ -40,7 +40,7 @@ public class StayParKBackRoomController {
 	
 	@RequestMapping(value = "roomList", method = RequestMethod.GET)
 	public String roomList(Model model) {
-		roomListService.selectRoom(null, null, null, model);
+		roomListService.selectRoomAll(model);
 		return "thymeleaf/backOfficePage/html/stp_manager/stp_backRoom";
 	}
 	

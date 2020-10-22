@@ -15,6 +15,7 @@ public interface BudgetMapper {
 	public void getbudInsert(BudgetDTO dto)throws Exception;
 	public List<BudgetDTO> budlistview();
 	public BudgetDTO buddetailview(Integer budNum)throws Exception;
-	public List<GoogleDTO> googleview();
+	public List<GoogleDTO> googleview(Integer deptNum);
+	public BudgetDTO budchartListview(Integer deptNum)throws Exception;
 	
 }

@@ -17,4 +17,8 @@ public class CalcDetailService {
 		CalcDTO dto = calcMapper.calcDetail(calcNum);
 		model.addAttribute("dto", dto);
 	}
+	public void chartlistview(Integer workNum, Model model)throws Exception{
+		CalcDTO dto = calcMapper.calcDetail(workNum);
+		model.addAttribute("dto", dto);
+	}
 }

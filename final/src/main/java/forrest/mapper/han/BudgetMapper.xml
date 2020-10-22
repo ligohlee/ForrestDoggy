@@ -21,6 +21,7 @@
 	</resultMap>
 	
 	<resultMap type="forrest.domain.han.GoogleDTO" id="googlechart">
+	<result column="DEPT_NUM" jdbcType="BIGINT" property="deptNum"/>
 	<result column="gyear" jdbcType="VARCHAR" property="budYear"/>
 	<result column="GSALARY" jdbcType="VARCHAR" property="budSalary"/>
 	<result column="GFACILITY" jdbcType="VARCHAR" property="budFacility"/>
@@ -31,9 +32,16 @@
 	
 	<select id="googleview" resultMap="googlechart">
 	select to_char(BUD_YEAR, 'yyyy') gyear, sum(BUD_SALARY) GSALARY, sum(BUD_FACILITY)GFACILITY,sum(BUD_BASIC)GBASIC,sum(BUD_SUP)GSUP, sum(BUD_ETC)GETC from BUDGET
+	where DEPT_NUM = #{deptNum}
 	group by to_char(BUD_YEAR, 'yyyy')
 	order by to_char(BUD_YEAR, 'yyyy')
 	
+	</select>
+	
+	<select id="budchartListview" resultMap="columnBasc">
+	select DEPT_NUM,BUD_NUM,BUD_YEAR,BUD_SALARY,BUD_FACILITY,BUD_BASIC,BUD_SUP,BUD_ETC
+	from BUDGET 
+	where DEPT_NUM = #{deptNum}
 	</select>
 	<select id="budlistview" resultMap="columnBasc">
 	select DEPT_NUM,BUD_NUM,BUD_YEAR,BUD_SALARY,BUD_FACILITY,BUD_BASIC,BUD_SUP,BUD_ETC

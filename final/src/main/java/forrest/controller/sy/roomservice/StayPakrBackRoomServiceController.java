@@ -1,7 +1,10 @@
+
 package forrest.controller.sy.roomservice;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import forrest.command.LoginCommand;
 import forrest.command.sy.room.ChatNameCommand;
-import forrest.service.jjj.member.MemberSelectService;
+import forrest.service.jjj.member.MemberSelectService2;
+
+import forrest.command.sy.room.ChatNameCommand;
+
+
 import forrest.service.sy.roomservice.RoomServiceOrderService;
 
 @Controller
@@ -23,7 +31,9 @@ public class StayPakrBackRoomServiceController {
 	@Autowired
 	RoomServiceOrderService rsoService;
 	@Autowired
-	MemberSelectService memberSelectService;
+	MemberSelectService2 memberSelectService2;
+
+
 	@Autowired
 	RoomServiceOrderService roomServiceOrderService;
 	
@@ -36,11 +46,14 @@ public class StayPakrBackRoomServiceController {
 	
 	@RequestMapping(value = "chatRegi", method = RequestMethod.POST)
 	public String chatRegi(@RequestParam(value="memId")String memId, @RequestParam(value="memPass")String memPass,
-			 String backpath, Model model, HttpSession session, ChatNameCommand command,LoginCommand lc, HttpServletRequest request , HttpServletResponse response) {
-		memberSelectService.selectMember(memId , memPass ,session, backpath, request , lc, response);
+			Model model, HttpSession session, ChatNameCommand command) {
+
+		memberSelectService2.selectMember(memId , memPass ,session);
+
 		String path = roomServiceOrderService.orderRoomService(session, model, command);		
 		return path;
 		
 	}
 	
 }
+

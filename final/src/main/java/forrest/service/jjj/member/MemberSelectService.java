@@ -33,6 +33,7 @@ public class MemberSelectService {
 			LoginCommand lc, HttpServletResponse response) {
 
 		
+		
 		MemberDTO dto = memberMapper.selectMember(lc.getMemId());	
 		
 		if (passwordEncoder.matches(lc.getMemPass(),dto.getMemPass())) {

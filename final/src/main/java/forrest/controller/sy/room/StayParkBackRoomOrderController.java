@@ -22,7 +22,7 @@ public class StayParkBackRoomOrderController {
 	
 	@RequestMapping(value = "roomOrderList", method = RequestMethod.GET)
 	public String roomOrderList(Model model) {
-		roomOrderService.selectList(model,0);
+		roomOrderService.selectList(model,null);
 		return "thymeleaf/backOfficePage/html/stp_manager/stp_backRoomOrderList";
 	}
 	@RequestMapping(value = "roomOrderDetail", method = RequestMethod.GET)

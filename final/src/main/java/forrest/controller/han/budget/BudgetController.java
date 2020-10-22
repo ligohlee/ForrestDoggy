@@ -38,15 +38,20 @@ public class BudgetController {
 		budgetService.budInsert(budgetCommand);
 		return "redirect:budget";
 	}
+	@RequestMapping("googleChartPage")
+	public String chartmain(@RequestParam(value = "deptNum")Integer deptNum,Model model)throws Exception{
+		budgetDetailService.Detaillist(deptNum,model);
+		return "thymeleaf/backOfficePage/html/budget_manager/chartlist";
+	}
 	@RequestMapping("budgetDetail")
 	public String Detail(@RequestParam(value = "budNum")Integer budNum,Model model) throws Exception{
 		budgetDetailService.Detailbudget(budNum,model);
 		return "thymeleaf/backOfficePage/html/budget_manager/budget_view";
 	}
-	@RequestMapping("googleChart")
-	public String chartlist(@RequestParam(value = "budNum")Integer budNum,Model model, HttpServletResponse response)throws Exception{
-		budgetlistService.googleview(model, response,budNum);
-		return "thymeleaf/backOfficePage/html/budget_manager/budget_chart";
+	@RequestMapping("goolechart")
+	public String chartlist(@RequestParam(value = "deptNum")Integer deptNum,Model model, HttpServletResponse response)throws Exception{
+		budgetlistService.googleview(deptNum, model, response);
+		return "thymeleaf/backOfficePage/html/budget_manager/budget_chart";  
 	}
 	
 

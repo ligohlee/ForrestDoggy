@@ -21,6 +21,11 @@
 	<result column="cdate1" jdbcType="VARCHAR" property="calcDate"/>
 	<result column="CPRICE" jdbcType="VARCHAR" property="calcPrice"/>
 	</resultMap>
+	<select id="chartlistview" resultMap="bascColum">
+	select CALC_NUM,PT_NUM,WORK_NUM,CALC_DATE,CALC_TERM,CALC_PRICE,CALC_CONTENT from CALCULATION
+	where WORK_NUM = #{workNum}
+	
+	</select>
 	<select id="chartview1" resultMap="chartColum">
 	select to_char(CALC_DATE,'yy-MM') cdate1, sum(CALC_PRICE) CPRICE 
 	from CALCULATION

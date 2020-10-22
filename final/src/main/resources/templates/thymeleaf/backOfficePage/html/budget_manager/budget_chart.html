@@ -5,21 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Member BackOffice</title>
-<link rel="stylesheet" th:href="@{/static/css/notosanskr.css}" />
-<!-- Bootstrap Styles-->
-<link th:href="@{/static/css/bootstrap.css}" rel="stylesheet" />
-<!-- FontAwesome Styles-->
-<link th:href="@{/static/css/font-awesome.css}" rel="stylesheet" />
-<!-- Morris Chart Styles-->
-<!--   <link th:href="@{/static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />-->
-<!-- Custom Styles-->
-<link th:href="@{/static/css/custom-styles.css}" rel="stylesheet" />
-<link rel="stylesheet" th:href="@{/static/css/common.css}" />
-<link rel="stylesheet" th:href="@{/static/css/newSoyoungStyle.css}" />
+
 <!-- Google Fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
-       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
     	var lists = /*[[${lists}]];*/
@@ -44,19 +34,10 @@
 					}
       /*]]>*/
 				</script>
+
+			
 </head>
 <body>
-
-	<div id="wrapper">
-
-		<!-- stp header 인클루드 영역 -->
-		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_header.html"></div>
-		<!-- stp seideNav 인클루드 영역 -->
-		<div th:include="thymeleaf/backOfficePage/html/layout_department/back_dpt_sideNav.html"></div>
-
-		<!--페이지래퍼-->
-		<div id="page-wrapper">
-			<div id="page-inner">
 
 				<!--로그인 전 메인 화면-->
 				<div class="row">
@@ -97,29 +78,7 @@ td {
 }
 </style>
 					
-										<div id="columnchart_material" style="width: 80%; height: 500px;"></div>
-							
-							<div id="columnchart_material"></div>
-							
- <div id="columnchart_material" style="width: 80%; height: 500px"></div>
-							
-							<!-- JS Scripts-->
-							<!-- Bootstrap Js -->
-							<script th:src="@{/static/js/bootstrap.min.js}"></script>
+ <div id="columnchart_material" style="width: 78%; height: 500px"></div>
 
-							<!-- Metis Menu Js -->
-							<script th:src="@{/static/js/jquery.metisMenu.js}"></script>
-							<!-- Morris Chart Js -->
-							<script th:src="@{/static/js/morris/raphael-2.1.0.min.js}"></script>
-							<script th:src="@{/static/js/morris/morris.js}"></script>
-
-
-							<script th:src="@{/static/js/easypiechart.js}"></script>
-							<script th:src="@{/static/js/easypiechart-data.js}"></script>
-
-							<script th:src="@{/static/js/Lightweight-Chart/jquery.chart.js}"></script>
-
-							<!-- Custom Js -->
-							<script th:src="@{/static/js/custom-scripts.js}"></script>
 </body>
 </html>

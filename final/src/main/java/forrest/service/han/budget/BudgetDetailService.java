@@ -17,4 +17,8 @@ public class BudgetDetailService {
 		BudgetDTO dto = budgetMapper.buddetailview(budNum);
 		model.addAttribute("dto", dto);
 	}
+	public void Detaillist(Integer deptNum, Model model)throws Exception{
+		BudgetDTO dto = budgetMapper.budchartListview(deptNum);
+		model.addAttribute("dto", dto);
+	}
 }

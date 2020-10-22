@@ -20,6 +20,39 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+	function goBack(){
+		location.href="budget";
+	}
+	
+	$(function(){
+		$("#btn").click(function(){
+			var value = document.getElementById("btn").value;
+		if(value == "월별 정산그래프 보기"){
+			$.ajax({
+				type : "post",
+				url : "gogleChart1",
+				dataType : "html",
+				data: {"workNum": "[[${dto.workNum}]]"},
+				success : function(result){
+					$("#list").html(result);
+					$("#btn").val("닫기");				
+					},
+					error : function(){
+						alert('에러');
+						return;
+					}
+			});
+			
+			
+		}else{
+			$("#list").html("");
+			$("#btn").val("월별 정산그래프 보기");
+		}
+		});
+	});
+	
+</script>
 
 </head>
 <body>
@@ -80,23 +113,24 @@ td {
 									<th>직원번호</th>
 									<th>정산날짜</th>
 									<th>정산금액</th>
-									<th>그래프 차트 보기</th>
+									<th>월별 정산그래프 보기</th>
 									
 								</tr>
 								<th:block th:each="dto : ${lists}">
 									<tr>
-										<td><a th:href="@{calcuDetail(calcNum=${dto.calcNum})}">[[${dto.calcNum}]]</a></td>
+										<td>[[${dto.calcNum}]]</td>
 										<td>[[${dto.ptNum}]]</td>
 										<td>[[${dto.workNum}]]</td>
 										<td>[[${dto.calcDate}]]</td>
 										<td>[[${dto.calcPrice}]]</td>
-										<td><a th:href="@{gogleChart1(workNum=${dto.workNum})}">월별예산내역 비교</a></td>
 									</tr>
 								</th:block>
 								<tr>
 									<td colspan="11">
 										<a href="calculationWrite">정산보고서 등록</a>&nbsp;&nbsp;&nbsp;&nbsp;
-										
+										<button type="button" onclick="javascript:goBack()">목록으로 가기</button>
+										<input style="widows: 50%" type="button" id="btn" value="월별 예산 내역비교">
+										<span id ="list"></span>
 									</td>
 										
 								</tr>

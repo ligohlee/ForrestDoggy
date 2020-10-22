@@ -1,8 +1,9 @@
 package forrest.service.jjj.member;
 
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class MemberSelectService {
 	AuthInfo authInfo;
 	
 
-	public String selectMember(String memId, String memPass, HttpSession session, String backpath, HttpServletRequest request) {
+	public String selectMember(String memId, String memPass, HttpSession session, String backpath, HttpServletRequest request, LoginCommand lc, HttpServletResponse response) {
 
 		
 		MemberDTO dto = memberMapper.selectMember(lc.getMemId());	

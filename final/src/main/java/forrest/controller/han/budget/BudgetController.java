@@ -45,7 +45,7 @@ public class BudgetController {
 	}
 	@RequestMapping("googleChart")
 	public String chartlist(@RequestParam(value = "budNum")Integer budNum,Model model, HttpServletResponse response)throws Exception{
-		budgetlistService.googleview(model, response,budNum);
+		budgetlistService.googleview(budNum,model, response);
 		return "thymeleaf/backOfficePage/html/budget_manager/budget_chart";
 	}
 	

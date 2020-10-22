@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<title>DogViliage</title>
+<title>Dog Viliage</title>
 
 <link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
 
@@ -16,46 +16,62 @@
 
 <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 <script th:src="@{/static/js/jquery.js}"></script>
-	
 <script>
-
-$(document).ready(function(){
-	
-	
-	
-	
-		// 수량 체크 후 총 결제 가격 뽑기
+	$(document).ready(function(){
 		
-		$("select[name='torderQty']").change(function(){
-			qty = $(this).val();
-			var tprice = $(this).siblings('input[name="tPrice1"]').val();
-			var ttprice = qty*tprice;
-			$(this).siblings('input[name="torderPrice"]').val(ttprice);
+		var qty = 1;
+		var totalPrice = 0;
+		var eachTotal;
+		$('input[name="eachPrice"]').each(function(idx){
+			
+			eachTotal = parseInt($(this).val());
+			totalPrice = totalPrice+eachTotal;
 			
 		});
 		
+		// 초기 총 금액, 결제금액 등
+		$('.totalPrice111').html("총 주문금액 "+totalPrice+"원");
+		$('#payTotal').html(totalPrice);
+		$('#payPrice').val(totalPrice);
+		$('#payReal').html(totalPrice);
+		$('#prePayPrice').val(totalPrice);
+		$('#torderPrice').val(totalPrice);
+		// 초기 포인트 사용, 포인트 적립
+		$('#payPoint').html(0);
+		$('#payPointIn').html(totalPrice*0.01);
+		$('#pointIn').val(totalPrice*0.01);
 		
-		var totalPrice = 0;
-		$('#qtybtn').click(function(){
+		$("select[name='tolistQty']").change(function(){
+			qty = $(this).val();
+			var eachPrice = $(this).siblings('input[name="eachPrice"]').val();
+			var eachTotal = qty*eachPrice;
+			$(this).siblings('input[name="eachTotal"]').val(eachTotal);
 			
-			$('input[name="torderPrice"]').each(function(idx){
-				var tPrice = parseInt($(this).val());			
-				totalPrice = totalPrice + tPrice;
+			// 시도시도
+			totalPrice=0;
+			$('input[name="eachTotal"]').each(function(idx){
 				
+				eachTotal = parseInt($(this).val());
+				totalPrice = totalPrice+eachTotal;
+			
 			});
+			
+			// 수량변경 총 금액, 결제금액
 			$('.totalPrice111').html("총 주문금액 "+totalPrice+"원");
-			$('#prePayPrice').val(totalPrice);
 			$('#payTotal').html(totalPrice);
+			$('#payPrice').val(totalPrice);
+			$('#payReal').html(totalPrice);
+			$('#prePayPrice').val(totalPrice);
+			$('#torderPrice').val(totalPrice);
+			// 수량변경 포인트 사용, 포인트 적립
 			$('#payPoint').html(0);
 			$('#payPointIn').html(totalPrice*0.01);
-			$('#payReal').html(totalPrice);
-			$('#payPrice').val(totalPrice);
+			$('#pointIn').val(totalPrice*0.01);
 			
 		});
 		
 		
-		// 결제수단 하나만 체크되게 하기
-
+		
 		$('input[type="checkbox"][name="payWay"]').click(function(){
 			if($('input[type="checkbox"][name="payWay"]').is(':checked')){			
 				$('input[type="checkbox"][name="payWay"]').prop('checked',false);			
@@ -63,34 +79,18 @@ $(document).ready(function(){
 			$(this).prop('checked',true);
 		});
 		
-		
-		// 포인트 사용하기 위해 체크박스 체크 시 이벤트
-
 		$('input[type="checkbox"][name="point"]').change(function(){
 			if($(this).is(':checked')){
-				// 사용할 포인트 입력 input창 보이게
 				$('#usePoint').css('display','block');
-				$('#payPointIn').html(totalPrice*0.01);
-				$('#payReal').html(totalPrice);
-				$('#payPrice').val(totalPrice);
-			}else{
-				// 체크를 해지 했을 때 결제금액에서 빠졌던 포인트 금액을 다시 더해주고 0으로 만들어서 숨기기
-				var ppoint = parseInt($('#pointOut').val());
-				var ttotal = ppoint+totalPrice;
-				$('.totalPrice111').html("총 주문금액 "+ttotal+"원");
-				$('#prePayPrice').val(ttotal);
-				$('#payTotal').html(ttotal);
+			}else{				
 				$('#pointOut').val(0);
 				$('#payPoint').html(0);
-				$('#payPointIn').html(ttotal*0.01);
+				totalPrice = parseIn($('#torderPrice').val());
+				$('#payPointIn').html(totalPrice*0.01);
 				$('#usePoint').css('display','none');
-				$('#payReal').html(ttotal);
-				$('#payPrice').val(ttotal);
 			}
 		});
 		
-		// 사용할 포인트 입력하고 사용 버튼 눌렀을 때 해당 포인트만큼 결제 금액 마이너스 되게 & 가용 포인트보다 크게 적었을 때
-		// 얼럿 창으로 가능한 포인트 안내 후 0으로 바뀌게
 		var payWon;
 		$('#usePointBtn').click(function(){
 			var usePoint = parseInt($('#pointOut').val());
@@ -104,15 +104,13 @@ $(document).ready(function(){
 				$('#payPoint').html(usePoint);
 				$('#payReal').html(payWon);
 				$('#payPointIn').html(payWon*0.01);
+				$('#pointIn').html(payWon*0.01);
 				$('#payReal').html(payWon);
 				$('#payPrice').val(payWon);
-				
-			}			
+			}
 			
 		});
-
-
-        
+		
 		$('#rsvBtn').click(function(){
 			if ($('input[type="checkbox"][name="payWay"]').is(':checked') == false) {
 				  alert('결제수단을 체크하셔야 합니다.');				  
@@ -128,10 +126,10 @@ $(document).ready(function(){
 			$('#payPage').css('display','none');
 		});
 		
-
-});
+		
+		
+	});
 </script>
-
 
 </head>
 <body>
@@ -144,7 +142,8 @@ $(document).ready(function(){
 						<span id="payOk"></span>
 						<h2 class="payH2"></h2>
 						<table id="payTable">
-							<tr><td class="paytd">총 주문금액</td><td class="paytd"><span id="payTotal"></span></td></tr>
+							<tr><td class="paytd">총 주문금액</td><td class="paytd"><span id="payTotal"></span>
+							<input type="hidden" name="torderPrice" value="" id="torderPrice"/></td></tr>
 							<tr><td class="paytd">포인트사용</td><td class="paytd"><span id="payPoint"></span></td></tr>
 							<tr><td class="paytd">포인트적립</td><td class="paytd"><span id="payPointIn"></span></td>
 							<input type="hidden" name="pointIn" value="" id="pointIn"/>
@@ -155,8 +154,7 @@ $(document).ready(function(){
 						<div id="submitBox">
 							<input type="submit" name="submit" class="search" value="결 제 하 기">
 						</div>
-						
-					</div>
+				</div>
 				</div>
 
 		<!--topMenu인클루드 영역 -->
@@ -204,19 +202,21 @@ $(document).ready(function(){
 						</td>
 						<td class="roomTd">[[${dto.ticketGrade}]]</td>
 						<td class="roomTd borderright">
-							<select name="torderQty" class="selectbox">
+							<select name="tolistQty" class="selectbox">
 									<th:block th:each="num : ${#numbers.sequence(1,dto.ticketQty)}">		 			
 										<option>[[${num}]]</option>
 									</th:block>						 									
 							</select>
-							<input type="hidden" name="torderPrice" th:value="${dto.ticketPrice}"/>
-							<input type="hidden" name="tPrice1" th:value="${dto.ticketPrice}"/>
+							<input type="hidden" name="eachPrice" th:value="${dto.ticketPrice}"/>
+							<input type="hidden" name="tQty" value="1"/>
+							<input type="hidden" name="eachTotal" th:value="${dto.ticketPrice}"/>
+							<input type="hidden" name="ticketNum" th:value="${dto.ticketNum}"/>
 						</td>						
 					</tr>
 					</th:block>
 
 					<tr>
-						<td colspan="7" class="priceTd borderleft borderright total" id="total"><span class="totalPrice111"></span>&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="수량확인" id="qtybtn" name="qtybtn"/></td>
+						<td colspan="7" class="priceTd borderleft borderright total" id="total"><span class="totalPrice111"></span></td>
 					</tr>
 					
 

@@ -1,0 +1,78 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>EATsoemPLACE</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/roomPaymentStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+	
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_eatSomePlace.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+		<section>
+			
+			<div class="container">
+
+				<table class="roomTable">
+					<tr>
+						<td colspan="5">
+							<h2>예약 완료</h2>
+						</td>
+					</tr>
+					<tr>
+						<th class="th">객실이름</th><th class="th">숙박일수</th><th class="th">체크인</th><th class="th">체크아웃</th>
+					</tr>
+					<tr>
+						<td class="roomTd"></td><td class="roomTd"></td><td class="roomTd"></td><td class="roomTd"></td>
+					</tr>
+					
+				</table>	
+
+
+
+
+				<div class="final_btn">
+
+					<a th:href="@{/staypark/main}"><input type="button" class="search" value="메 인 으 로"></a>
+
+				</div>
+
+
+
+			</div>
+			
+		</section>
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+
+	</div>
+</body>
+</html>

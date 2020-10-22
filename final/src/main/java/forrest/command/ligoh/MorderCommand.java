@@ -17,6 +17,7 @@ public class MorderCommand {
 	LocalDateTime mordDate;
 	Integer mordPrice;
 	String menuReq;
-	String [] menuNum;
+	Integer [] menuNum;
+	Integer [] dogMenuQty;
 	
 }

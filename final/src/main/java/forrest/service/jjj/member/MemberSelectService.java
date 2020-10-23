@@ -29,7 +29,8 @@ public class MemberSelectService {
 	AuthInfo authInfo;
 	
 
-	public String selectMember(String memId, String memPass, HttpSession session, String backpath, HttpServletRequest request, LoginCommand lc, HttpServletResponse response) {
+	public String selectMember(String memId, String memPass, HttpSession session, String backpath, 
+			HttpServletRequest request, LoginCommand lc, HttpServletResponse response) {
 
 		
 		
@@ -66,13 +67,13 @@ public class MemberSelectService {
 				response.addCookie(cookie);
 			}
 			
-		    String contextPath = "http://localhost:9090";
-		    String command = backpath.substring(contextPath.length());
-			
-			System.out.println(contextPath);
-			System.out.println(command);
-			
-			return "redirect:"+command;
+//		    String contextPath = "http://localhost:9090";
+//		    String command = backpath.substring(contextPath.length());
+//			
+//			System.out.println(contextPath);
+//			System.out.println(command);
+//			
+			return "redirect:main";
 		}else {
 			return "thymeleaf/frontPage/html/login";
 		}

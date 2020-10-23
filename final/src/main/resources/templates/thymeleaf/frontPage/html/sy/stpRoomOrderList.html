@@ -22,7 +22,7 @@
 	$(document).ready(function(){
 		// 객실가격*숙박일수
 		var days = $('#days').val();
-		alert(days);
+
 		var roomPrice = $('#roomPrice').val();
 		var totalRoom = days*roomPrice;
 		
@@ -35,20 +35,19 @@
 				  optPrice=0;
 			  }
 			  optTotal=optTotal+optPrice;
-	          alert(optTotal);        	         
+	                	         
 	    });
 		
 		if(isNaN(optTotal)){
 			optTotal=0;
-			alert(optTotal);
+			
 		}
 		
 		var totalPrice=totalRoom;
-		alert(totalPrice);
+		
 		
 		if(parseInt(optTotal) != 0){
-			totalPrice=totalPrice+optTotal
-			alert("optTotal이 0이 아닐 때"+totalPrice);
+			totalPrice=totalPrice+optTotal			
 		}
 		
 		$('#totalRoom').html("객실 " + totalRoom +" + 옵션 " + optTotal +"원");

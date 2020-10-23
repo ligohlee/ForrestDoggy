@@ -32,6 +32,12 @@
 					}
 				}).open();
 			}
+			(function totalPrice(){
+				console.log([[${qty}]]);
+				var totalPrice = [[${goodsdto.goodsPrice}]] * [[${qty}]];
+				$("#totalPrice").val(totalPrice);
+			});
+			
 		</script>
 
 </head>
@@ -225,10 +231,10 @@
 											 <div class="my-price"><span th:text="@{${ goodsdto.goodsPrice }}" />원</div>
                                         </td>
                                         <td class="my-qty">
-	                                    		<span>-개</span>
+	                                    		<strong><span th:text="@{${ qty }}" name="gorderQty" /></strong>
                                         </td>
                                         <td class="amount">
-                                        	<strong>개</strong>
+                                        	<strong><span th:text="@{${ totalPrice }}"  /></strong>
                                         </td>
                                     </tr>
                                     </c:forEach>
@@ -327,7 +333,7 @@
                                     <tr>
                                         <th scope="row">결제금액</th>
                                         <td>
-                                        	<strong>원</strong>
+                                        	<strong><span th:text="@{${ totalPrice }}" name="gorderPrice" />원</strong>
                                         </td>
                                     </tr>
                                     <tr>

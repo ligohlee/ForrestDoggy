@@ -35,6 +35,36 @@
 		<result column="MORD_PEOPLE" jdbcType="BIGINT" property="mordPeople"/>
 		<result column="MENU_REQ" jdbcType="VARCHAR" property="menuReq"/>
   </resultMap>
+  
+  <resultMap type="forrest.domain.ligoh.MorderDTO" id="resultMorder2">
+		<id column="MORD_NUM" jdbcType="BIGINT" property="mordNum"/>
+		<result column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
+		<result column="MORD_TABLE" jdbcType="BIGINT" property="mordTable"/>
+		<result column="MORD_DATE" jdbcType="TIMESTAMP" property="mordDate"/>
+		<result column="MORD_PEOPLE" jdbcType="BIGINT" property="mordPeople"/>
+		<result column="MENU_REQ" jdbcType="VARCHAR" property="menuReq"/>
+  </resultMap>
+  
+  <select id="getOrderCount"  resultType="int" >
+   select count(*) from morder
+  </select>
+  
+  <select id="getOrderList" resultMap="resultMorder2">
+     select rn,<include refid="morderColumn" /> 
+     from
+     (select rownum rn, <include refid="morderColumn" /> 
+     from(select <include refid="morderColumn" /> 
+     from morder
+      <trim prefix="where" prefixOverrides="AND | OR">
+						<if test="num != null ">
+							and mord_num = #{num}
+						</if>
+	  </trim>
+     order by mord_num desc))
+     where
+     rn &gt;= #{startPage} and rn &lt;= #{endPage}
+  
+  </select>
 
 
 

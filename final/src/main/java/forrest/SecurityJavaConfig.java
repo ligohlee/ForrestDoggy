@@ -18,9 +18,12 @@ public class SecurityJavaConfig
 			.csrf().disable() //csrf방지
 			.formLogin().disable()
 			.headers().frameOptions().disable();
+			
 	}
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+
 }

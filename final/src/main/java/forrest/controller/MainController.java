@@ -11,4 +11,9 @@ public class MainController {
 		
 		return "thymeleaf/frontPage/html/main";
 	}
+	@RequestMapping(value = "/")
+	public String home2() {
+		
+		return "thymeleaf/frontPage/html/main";
+	}
 }

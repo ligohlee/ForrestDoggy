@@ -54,6 +54,7 @@ public class ESPMenuCtrl {
 	public String book(Model model) throws Exception{
 		courseListService.getCourse(model);
 		menuShowService.getMenuList(model);
+		
 		return "thymeleaf/frontPage/html/ligoh/espBook";
 	}
 	

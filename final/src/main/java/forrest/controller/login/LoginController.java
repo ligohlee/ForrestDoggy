@@ -1,5 +1,6 @@
 package forrest.controller.login;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -27,8 +28,13 @@ public class LoginController {
 		return memberSelectService.selectMember(lc ,session, response );
 	}
 	@RequestMapping(value = "logout")
-	public String logout() {
-		
-		return "thymeleaf/frontPage/html/login";
+	public String logout(HttpSession session,
+			HttpServletResponse response) {
+		Cookie autoLoginCookie = new Cookie("autoLogin","");
+		autoLoginCookie.setPath("/");
+		autoLoginCookie.setMaxAge(0);
+		response.addCookie(autoLoginCookie);
+		session.invalidate();
+		return "thymeleaf/frontPage/html/main";
 	}
 }

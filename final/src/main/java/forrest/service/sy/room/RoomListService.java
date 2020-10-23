@@ -53,5 +53,11 @@ public class RoomListService {
 		System.out.println(list);
 		
 	}
+	public void selectRoomAll(Model model) {
+		// TODO Auto-generated method stub
+		
+		List<RoomDTO> list = roomMapper.selectRoomBack(null);
+		model.addAttribute("roomList", list);
+	}
 
 }

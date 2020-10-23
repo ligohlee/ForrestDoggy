@@ -13,4 +13,13 @@ public class GOrderCommand {
 	Integer gorderNum;
 	String memId;
 	Timestamp gorderRegist;
+	Integer goodsNum;
+	Integer gorderPrice;
+	Integer gorderQty;
+	Integer dyPrice;
+	String dyMemName;
+	String dyMemAddr;
+	String addr1;
+	String addr2;
+	
 }

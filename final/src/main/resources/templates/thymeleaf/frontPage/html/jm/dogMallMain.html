@@ -37,10 +37,10 @@
 		<!--메인콘텐츠 영역-->
 				
 		<div class="goods-area">
-				<div class="card-list">
-					<ul>
-						<h2>신상품</h2>
-						<div th:each="goods : ${ lists }">
+				<div class="card-list type2">
+					<ul style="margin-top:0;">
+						<h2 style="margin-bottom:10px;">신상품</h2>
+						<th:block th:each="goods : ${ lists }">
 						<li class="item">
 							<div class="thumb">
 								<div class="img">
@@ -53,11 +53,7 @@
 											</div>
 										</div>
 									</a>
-								</div>											
-								<div class="over">
-									<a href="javascript:void(0);" onclick="getGalleryPop('');" class="zoom">확대보기</a>
-									<a href="javascript:void(0);" onclick="" class="cart">장바구니</a>
-								</div>
+								</div>		
 							</div>
 							<div class="info">
 								<ul>
@@ -69,7 +65,7 @@
 								</ul>
 							</div>
 						</li>
-						
+						</th:block>
 					</ul>
 				</div>
 			</div>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="forrest.mapper.jjj.TicketOrderMapper">
+
+<sql id="basecolumn1">
+	TORDER_NUM, MEM_ID
+</sql>
+<sql id="basecolumn2">
+	TORDER_NUM,TICKET_NUM,TORDER_PRICE,TOLIST_QTY
+</sql>
+
+<insert id="insertOrder" parameterType="forrest.domain.jjj.TicketOrderDTO">
+	insert into torder(<include refid="basecolumn1"/>)
+	values(torder_SEQ.nextval,#{memId})	
+</insert>
+<insert id="insertOrderList" parameterType="forrest.domain.jjj.TicketOrderDTO">
+	insert into torder_list(<include refid="basecolumn2"/>)
+	values((select Max(torder_num) from torder where mem_Id=#{memId}), #{ticketNum}, #{torderPrice}, #{tolistQty})	
+</insert>
+<resultMap type="forrest.domain.jjj.TicketOrderDTO" id="resultmap">		
+	<result column="TORDER_NUM" jdbcType="BIGINT" property="torderNum"/>
+	<result column="TICKET_NUM" jdbcType="BIGINT" property="ticketNum"/>
+	<result column="TORDER_PRICE" jdbcType="BIGINT" property="torderPrice"/>
+	<result column="TOLIST_QTY" jdbcType="BIGINT" property="tolistQty"/>
+	<result column="TICKET_NAME" jdbcType="VARCHAR" property="ticketName"/>
+	<result column="TICKET_SEASON" jdbcType="TIMESTAMP" property="ticketSeason"/>
+	<result column="TICKET_TIME" jdbcType="VARCHAR" property="ticketTime"/>
+	<result column="TICKET_GRADE" jdbcType="VARCHAR" property="ticketGrade"/>
+</resultMap>
+
+<select id="selectNowOrder" parameterType="forrest.domain.jjj.TicketOrderDTO" resultMap="resultmap">
+	select t.TICKET_NAME, t.TICKET_SEASON, t.TICKET_TIME, t.TICKET_GRADE, tl.TOLIST_QTY
+	from torder_list tl
+	join ticket t
+	on tl.ticket_num=t.ticket_Num
+	where torder_num = (select max(torder_num)
+	                    from torder
+	                    where mem_id=#{memId})
+</select>
+
+
+</mapper>

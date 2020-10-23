@@ -9,9 +9,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GorderDTO {
-	Integer gorderNum;
-	String memId;
-	Timestamp gorderRegist;
-
+public class DeliveryDTO {
+	Integer dyNum;
+	Integer orderNum;
+	Integer ptNum;
+	Integer ctNum;
+	Timestamp dyRegist;
+	Integer dyPrice;
+	String dyMemName;
+	String dyMemAddr;
+	
+	
+	
 }

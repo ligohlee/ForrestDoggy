@@ -31,6 +31,7 @@ public class CategoryListService {
 		
 		int count = goodsmapper.getGoodsCount();
 		
+		model.addAttribute("num", num);
 		model.addAttribute("count", count);
 		model.addAttribute("lists", lists);
 		PageAction pageAction = new PageAction();

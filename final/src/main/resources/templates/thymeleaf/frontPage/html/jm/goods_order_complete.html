@@ -1,0 +1,94 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Dog Mall</title>
+
+<link rel="stylesheet" th:href="@{/static/css/topMenuStyle.css}">
+
+<link rel="stylesheet" th:href="@{/static/css/headerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/sectionStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/footerStyle.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/layout.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/shop.css}">
+<link rel="stylesheet" th:href="@{/static/css/dogMall/reset.css}">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@500;700;900&family=Quicksand:wght@600&display=swap"
+	rel="stylesheet">
+
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+<script th:src="@{/static/js/jquery.js}"></script>
+
+</head>
+<body>
+
+	<div class="main clearfix" id="main">
+
+		<!--topMenu인클루드 영역 -->
+		<div th:include="thymeleaf/frontPage/html/commonLayout/topMenu.html"></div>
+
+		<!-- header인클루드 영역 -->
+		<header>
+			<div
+				th:include="thymeleaf/frontPage/html/commonLayout/header_dogMall.html"></div>
+		</header>
+
+		<!--메인콘텐츠 영역-->
+				
+		<main id="container">
+			
+			<style>
+				.order { width:1140px; margin:0 auto; overflow:hidden; }
+				
+				.order{position:relative;}
+				.order h3{padding-bottom:30px; margin-bottom:0; font-family:"Noto Sans KR"; font-size:30px; font-weight:400; line-height:1.1; color:#111; letter-spacing:-0.025em;}
+				
+				.btn-pack{display:inline-block; vertical-align:top; min-width:70px; height:36px; padding:0 12px; background-color:#fff; border:1px solid #ddd; font-family:"Nanum Barun Gothic"; font-size:13px; font-weight:400; line-height:36px; color:#111; text-align:center; box-sizing:border-box;}
+				.btn-pack.dark{background-color:#444; border-color:#444; color:#fff}
+				.btn-pack.purple{background-color:#591ea6; border-color:#591ea6; color:#fff;}
+				
+				
+				.order-complete {
+					display:flex;
+					justify-content:center;
+					align-items:center;
+					height: 400px;
+					border: 1px solid #ddd;	
+				}
+				
+				.order-complete h4 {
+					font-size: 20px;
+				}
+				
+			</style>
+			
+			<div class="order">
+				<form action="#" name="frm" method="post">
+					<div class="section_order_mticket">
+						<h3>주문완료</h3>
+						
+                        <div class="order-complete">
+                        	<h4>정상적으로 주문이 완료되었습니다.</h4>
+                        </div>
+                        
+						<div class="buttons tc">
+							<a href="/dgm/main" class="btn btn02 btn-over purple">메인으로</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			
+		</main>
+		
+		
+
+
+		<!--footer인클루드 영역-->
+		<footer>
+			<div th:include="thymeleaf/frontPage/html/commonLayout/footer.html"></div>
+		</footer>
+
+	</div>
+</body>
+</html>

@@ -178,11 +178,10 @@ h4{
 }
 
 #usePoint{
-	diplay: none;
+	display: none;
 	position: relative;
 }
-#usePointBtn{
-	
+#usePointBtn{	
 	padding: 5px;
 	padding-left: 15px;
 	padding-right: 15px;

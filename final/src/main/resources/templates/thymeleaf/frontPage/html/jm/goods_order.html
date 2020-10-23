@@ -20,6 +20,20 @@
 <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 <script th:src="@{/static/js/jquery.js}"></script>
 
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+		<script>
+		
+			function openZipSearch() {
+				new daum.Postcode({
+					oncomplete: function(data) {
+						$('[name=zip]').val(data.zonecode); // 우편번호 (5자리)
+						$('[name=addr1]').val(data.address);
+						$('[name=addr2]').val(data.buildingName);
+					}
+				}).open();
+			}
+		</script>
+
 </head>
 <body>
 
@@ -169,16 +183,10 @@
 			</style>
 			
 			<div class="order">
-				<form action="/dgm/orderWrite" name="frm" method="post">
+				<form action="/dgm/goodsOrderWrite" name="frm" method="post" th:object="${gOrderCommand}">
 					<div class="section_order_mticket">
-						<h3>주문서작성</h3>
-						<div class="order_step">
-							<ol class="list">
-								<li class="step1"><strong>01. 상품선택</strong></li>
-								<li class="step2 active">02. 주문서작성</li>
-								<li class="step3">03. 주문완료</li>
-							</ol>
-						</div>
+						<h3 style="position:static; text-align:center; transform: none;">주문서작성</h3>
+						
 						<div class="table-type-01">
                             <table class="table">
                                 <colgroup>
@@ -196,36 +204,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<c:forEach items="${ goodsList }" var="list" varStatus="cnt">
+                                	<c:forEach items="${ goodsdto }" var="goodsdto" varStatus="cnt">
                                     <tr style="border-bottom: 1px dotted #cdcdcd">
-                                    	<input type="hidden" name="goodsName" value="${ list.goodsName }" />
-                                    	<input type="hidden" name="goodsNum" value="${ list.goodsNum }" />
-                                    	<input type="hidden" name="ptName" value="${ list.ptName }" />
-                                    	<input type="hidden" name="goodsPrice" value="${ list.goodsPrice }" />
+                                    	<input type="hidden" name="goodsName" th:value="@{${ goodsdto.goodsName }}" />
+                                    	<input type="hidden" name="goodsNum" th:value="@{${ goodsdto.goodsNum }}" />
+                                    	<input type="hidden" name="ptName" th:value="@{${ goodsdto.ptName }}" />
+                                    	<input type="hidden" name="goodsPrice" th:value="@{${ goodsdto.goodsPrice }}" />
                                         <td class="product_photo">
                                             <div class="my-goods-summary">
                                                 <div class="thumb sp-thumb">
-                                                    <img th:src="@{'/static/upload/goods/' + ${dto.goodsImg}}" alt="" width="160">
+                                                    <img th:src="@{'/static/upload/goods/' + ${goodsdto.goodsImg}}" alt="" width="160">
                                                 </div>
                                                 <div class="info">
-                                                	<div class="cate">[${ list.goodsCategory }]</div>
-                                                    <div class="tit">${ list.goodsName }</div>
+                                                	<div class="cate">[ <span th:text="@{${ goodsdto.goodsCategory }}" /> ]</div>
+                                                    <div class="tit"><span th:text="@{${ goodsdto.goodsName }}"/></div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="consumer_price">
-											 <div class="my-price"><fmt:formatNumber value="${ gList.bookPrice }" type="number" />원</div>
+											 <div class="my-price"><span th:text="@{${ goodsdto.goodsPrice }}" />원</div>
                                         </td>
                                         <td class="my-qty">
-	                                    		<span>${ gList.bookQty }권</span>
+	                                    		<span>-개</span>
                                         </td>
                                         <td class="amount">
-                                        	<c:if test="${ !empty qty }">
-                                           		<div class="my-order-price"><fmt:formatNumber value="${ gList.bookPrice * qty }" type="number" />원</div>
-	                                    	</c:if>
-	                                    	<c:if test="${ empty qty }">
-	                                    		<div class="my-order-price"><fmt:formatNumber value="${ gList.bookPrice * gList.bookQty }" type="number" />원</div>
-	                                    	</c:if>
+                                        	<strong>개</strong>
                                         </td>
                                     </tr>
                                     </c:forEach>
@@ -245,21 +248,21 @@
                                     <tr>
                                         <th scope="row">주문자명 </th>
                                         <td class="yorn">
-                                            <input type="text" name="userName" class="inorder_txt" style="width: 125px;" maxlength="10" value="${ memberList.userName }">
+                                            <input type="text" name="memName" class="inorder_txt" style="width: 125px;" maxlength="10" th:value="${ memberdto.memName }">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">휴대전화 </th>
                                         <td>
                                             <div class="tel_space">
-                                                <input type="text" maxlength="13" class="inorder_txt" value="${ memberList.userPh1 }" style="width: 270px;" readonly>
+                                                <input type="text" maxlength="13" class="inorder_txt" th:value="${ memberdto.memPh }" style="width: 270px;" readonly>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">이메일 </th>
                                         <td>
-                                            <input type="text" name="userEmail" class="inorder_txt" style="width: 222px;" maxlength="30" value="${ memberList.userEmail }">
+                                            <input type="text" name="memEmail" class="inorder_txt" style="width: 222px;" maxlength="30" th:value="${ memberdto.memEmail }">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -278,7 +281,7 @@
                                     <tr>
                                         <th scope="row">받는사람</th>
                                         <td class="yorn">
-                                            <input type="text" class="inorder_txt" style="width: 125px;" maxlength="10" value="${ memberList.userName }">
+                                            <input type="text" class="inorder_txt" name="dyMemName" style="width: 125px;" maxlength="10" th:value="${ memberdto.memName }">
                                         </td>
                                     </tr>
                                     <tr>
@@ -303,31 +306,11 @@
                                         <th scope="row">휴대전화 </th>
                                         <td>
                                             <div class="tel_space">
-                                            	<input type="text" name="userPh1" maxlength="13" class="inorder_txt" value="${ memberList.userPh1 }" style="width: 270px;">
+                                            	<input type="text" name="memPh" maxlength="13" class="inorder_txt" th:value="${ memberdto.memPh }" style="width: 270px;">
                                             </div>
                                         </td>
                                     </tr>
-                                    <!-- 
-                                    <tr>
-                                        <th scope="row">배송시 유의사항</th>
-                                        <td class="pr20">
-                                            <p class="agreement_privacy_pol">
-                                                <input type="radio" name="mydelmemo" value="N" id="chk_delmemo1" class="inorder_txt radio" onclick="ini.EtcMemo.value = '부재시 경비실에 맡겨주세요';">
-                                                <label for="chk_delmemo1" class="first">
-                                                    <span>부재시 경비실에 맡겨주세요</span>
-                                                </label>
-                                                <input type="radio" name="mydelmemo" value="N" id="chk_delmemo2" class="inorder_txt radio" checked="" onclick="ini.EtcMemo.value = '';">
-                                                <label for="chk_delmemo2">
-                                                    <span>기타</span>
-                                                </label>
-                                                <br>
-                                                </p><div class="email-area" style="padding-top: 5px;">
-                                                    <input type="text" name="EtcMemo" class="inorder_txt" title="배송시유의사항" maxlength="50" style="text-align: left; width: 565px">
-                                                </div>
-                                            <p></p>
-                                        </td>
-                                    </tr>
-                                     -->
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -344,12 +327,7 @@
                                     <tr>
                                         <th scope="row">결제금액</th>
                                         <td>
-                                        	<c:if test="${ !empty qty }">
-                                        		<strong class="total-price"><fmt:formatNumber value="${ goodsList[0].bookPrice * qty }" type="number" /> 원</strong>
-                                            </c:if>
-                                            <c:if test="${ empty qty }">                                            
-                                            	<strong class="total-price"><fmt:formatNumber value="${ goodsList[0].sumTotalPrice }" type="number" /> 원</strong>
-                                            </c:if>
+                                        	<strong>원</strong>
                                         </td>
                                     </tr>
                                     <tr>
@@ -382,8 +360,7 @@
                         </div>
                         
 						<div class="buttons tc">
-							<!-- <a href="/script/card/list_sp.asp" class="btn btn01 btn-over purple">쇼핑계속하기</a> -->
-							<a href="javascript:void(0)" class="btn btn02 btn-over purple" onclick="submitFunc()">결제하기</a>
+							<button type="submit" class="btn btn02 btn-over purple">결제하기</button>
 						</div>
 					</div>
 				</form>

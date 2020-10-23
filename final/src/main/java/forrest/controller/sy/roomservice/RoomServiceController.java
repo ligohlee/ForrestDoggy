@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import forrest.command.sy.room.ChatNameCommand;
 import forrest.service.sy.roomservice.RoomServiceOrderService;
 
 
@@ -22,8 +24,8 @@ public class RoomServiceController {
 	RoomServiceOrderService roomServiceOrderService;
 	
 	@RequestMapping(value = "roomService", method = RequestMethod.GET)
-	public String roomService(HttpSession session, Model model) {
-		String path = roomServiceOrderService.orderRoomService(session, model);		
+	public String roomService(HttpSession session, Model model,ChatNameCommand command){
+		String path = roomServiceOrderService.orderRoomService(session, model, command);		
 		return path;
 	}
 }

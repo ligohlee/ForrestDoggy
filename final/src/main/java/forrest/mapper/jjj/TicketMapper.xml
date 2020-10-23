@@ -31,7 +31,7 @@
 	select TICKET_NUM, TICKET_NAME, TICKET_SEASON , TICKET_TIME , TICKET_GRADE , TICKET_PRICE , TICKET_REGIST , TICKET_QTY
 	from ticket
 	<if test="ticketSeason != null">
-		where TICKET_SEASON = #{ticketSeason}
+		where TICKET_SEASON = #{ticketSeason} and ticket_qty &gt; 0
 	</if>
 	
 </select>
@@ -55,6 +55,12 @@
 	delete ticket
 	where ticket_num = #{ticketNum}
 </delete>
+
+<update id="updateQty" parameterType="forrest.domain.jjj.TicketOrderDTO">
+	update ticket
+	set ticket_qty = (select ticket_qty from ticket where ticket_num=#{ticketNum})-#{tolistQty}
+	where ticket_num = #{ticketNum}
+</update>
 
 
 </mapper>

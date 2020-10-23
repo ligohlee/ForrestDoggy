@@ -2,6 +2,7 @@
 package forrest.controller.login;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -24,9 +25,9 @@ public class LoginController {
 		return "thymeleaf/frontPage/html/login";
 	}
 	@RequestMapping(value="loginPro", method = RequestMethod.POST)
-	public String loginPro(LoginCommand lc, HttpSession session,HttpServletResponse response ) {
+	public String loginPro(String memId, String memPass, HttpSession session, String backpath, HttpServletRequest request, LoginCommand lc, HttpServletResponse response ) {
 				
-		return memberSelectService.selectMember(lc ,session, response );
+		return memberSelectService.selectMember( memId, memPass, session, backpath, request, lc, response );
 	}
 	@RequestMapping(value = "logout")
 	public String logout(HttpSession session,

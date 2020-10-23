@@ -29,7 +29,8 @@ public class MemberSelectService {
 	AuthInfo authInfo;
 	
 
-	public String selectMember(String memId, String memPass, HttpSession session, String backpath, HttpServletRequest request, LoginCommand lc, HttpServletResponse response) {
+	public String selectMember(String memId, String memPass, HttpSession session, String backpath, HttpServletRequest request, 
+			LoginCommand lc, HttpServletResponse response) {
 
 		
 		

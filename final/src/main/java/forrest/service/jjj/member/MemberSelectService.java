@@ -26,6 +26,7 @@ public class MemberSelectService {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
+	
 	AuthInfo authInfo;
 	
 
@@ -67,13 +68,13 @@ public class MemberSelectService {
 				response.addCookie(cookie);
 			}
 			
-//		    String contextPath = "http://localhost:9090";
-//		    String command = backpath.substring(contextPath.length());
-//			
-//			System.out.println(contextPath);
-//			System.out.println(command);
-//			
-			return "redirect:main";
+		    String contextPath = "http://localhost:9090";
+	        String command = backpath.substring(contextPath.length());
+		
+			System.out.println(contextPath);
+		    System.out.println(command);
+			
+			return "redirect:"+ command;
 		}else {
 			return "thymeleaf/frontPage/html/login";
 		}

@@ -24,10 +24,8 @@
  
 <script type="text/javascript">
 
-			function submitFunc(actionUrl) {
-				var form = $("[name='frm']");
-					form.attr('action', actionUrl);
-					form.submit();
+			function addboard(){
+				frm.submit();
 			}
 		
 			function numberWithCommas(x) {
@@ -92,11 +90,11 @@
 											<tr class="tr_select pb16">
 												<th scope="row">주문수량</th>
 												<td>
-													<form action="#" name="frm" method="post">
-														<input type="hidden" name="goodsNum" th:value="${dto.goodsNum}" /> 
+													<form th:action="@{/dgm/goodsOrder}" name="frm" method="post" th:object="${gOrderCommand}">
+														<input type="hidden" name="goodsNum" th:value="@{${dto.goodsNum}}" /> 
 													<div class="qty-wrap">
 														<a href="javascript:onchangeQtyClick('StyleQty1',-1);" class="btn minus">-</a>
-														<input type="text" name="Qty" id="StyleQty1" class="inorder_txt cmp" style="width:52px;" value="1" readonly="">
+														<input type="text" name="qty" id="StyleQty1" class="inorder_txt cmp" style="width:52px;" value="1" readonly="">
 														<a href="javascript:onchangeQtyClick('StyleQty1',1)" class="btn plus">+</a>
 													</div>
 													</form>
@@ -107,8 +105,7 @@
 								</div>
 								
 								<div class="v-button col-2">
-									<a th:href="@{'/dgm/goodsCart/' + ${dto.goodsNum}}">장바구니</a>
-									<a th:href="@{'/dgm/goodsOrder/' + ${dto.goodsNum}}">주문하기</a>
+									<a href="javascript:addboard()" class="btn btn02 btn-over purple">주문하기</a>
 								</div>
 							</div>
 							<div class="row">

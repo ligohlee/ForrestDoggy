@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import forrest.command.AuthInfo;
+import forrest.command.jm.GOrderCommand;
 import forrest.domain.jjj.MemberDTO;
 import forrest.domain.jm.GoodsDTO;
 import forrest.domain.jm.StartEndPageDTO;
@@ -26,7 +27,7 @@ public class GoodsOrderService {
 	@Autowired
 	MemberMapper memberMapper;
 	
-	public String goodsOrder(String goodsNum, Model model, HttpSession session) throws Exception{
+	public String goodsOrder(GOrderCommand gOrderCommand, Model model, HttpSession session) throws Exception{
 	
 		String path;
 		if (session.getAttribute("authInfo") == null) {
@@ -34,14 +35,21 @@ public class GoodsOrderService {
 		}else {
 			AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 			
-			StartEndPageDTO startEndPageDTO = new StartEndPageDTO(1L, 1L, null, goodsNum);
+			String num = Integer.toString(gOrderCommand.getGoodsNum());
+			
+			StartEndPageDTO startEndPageDTO = new StartEndPageDTO(1L, 1L, null, num);
 			GoodsDTO goodsdto = goodsMapper.getGoodsList(startEndPageDTO).get(0);
 			model.addAttribute("goodsdto", goodsdto);
 			
 			MemberDTO memberdto = memberMapper.selectMember(authInfo.getId());
 			model.addAttribute("memberdto", memberdto);
 			
-			System.out.println(memberdto.getMemName());
+			Integer qty = gOrderCommand.getQty();
+			model.addAttribute("qty", qty);
+			
+			Integer price = goodsdto.getGoodsPrice();
+			Integer totalPrice = qty * price;
+			model.addAttribute("totalPrice", totalPrice);
 			
 			PointDTO dto = new PointDTO();
 			dto = pointMapper.selectPointSum(authInfo.getId());

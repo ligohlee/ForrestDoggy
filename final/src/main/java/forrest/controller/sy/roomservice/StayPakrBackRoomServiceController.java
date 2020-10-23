@@ -47,7 +47,6 @@ public class StayPakrBackRoomServiceController {
 			Model model, HttpSession session, ChatNameCommand command) {
 
 		memberSelectService2.selectMember(memId , memPass ,session);
-
 		String path = roomServiceOrderService.orderRoomService(session, model, command);		
 		return path;
 		

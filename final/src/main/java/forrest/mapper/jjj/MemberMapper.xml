@@ -27,7 +27,6 @@
 
 
 <select id="selectMember" parameterType="string" resultMap="baseMember" >
-
 	select MEM_ID, MEM_NAME, MEM_PASS , MEM_ADDR , MEM_EMAIL , MEM_PH  
 	from member
 	where mem_id = #{memId}

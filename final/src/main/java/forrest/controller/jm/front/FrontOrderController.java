@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import forrest.command.jm.GOrderCommand;
@@ -28,9 +27,9 @@ public class FrontOrderController {
 		return new GOrderCommand();
 	}
 	
-	@RequestMapping("goodsOrder/{goodsNum}")
-	public String goodsOrder(@PathVariable(value="goodsNum") String goodsNum, Model model, HttpSession session) throws Exception{
-		String path = goodsOrderService.goodsOrder(goodsNum, model, session);
+	@RequestMapping("goodsOrder")
+	public String goodsOrder(GOrderCommand gOrderCommand, Model model, HttpSession session) throws Exception{
+		String path = goodsOrderService.goodsOrder(gOrderCommand, model, session);
 		return path;
 	}
 	@RequestMapping(value="goodsOrderWrite")

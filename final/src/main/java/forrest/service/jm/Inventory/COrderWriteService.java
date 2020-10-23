@@ -23,7 +23,11 @@ public class COrderWriteService {
 		
 		StartEndPageDTO startEndPageDTO = new StartEndPageDTO(1L, 1L, null, goodsNum);
 		GoodsDTO goodsdto = goodsMapper.getGoodsList(startEndPageDTO).get(0);
+		
+		String ptNum = Integer.toString(goodsdto.getPtNum());
+		startEndPageDTO = new StartEndPageDTO(1L, 1L, null, ptNum);
 		PartnerDTO ptdto = partnerMapper.getPartnerList(startEndPageDTO).get(0);
+		
 		model.addAttribute("goodsdto", goodsdto);
 		model.addAttribute("ptdto", ptdto);
 		

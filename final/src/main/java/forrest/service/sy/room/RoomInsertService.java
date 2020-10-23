@@ -42,7 +42,7 @@ public class RoomInsertService {
 		String storeTotal = "";
 		String fileSizeTotal = "";
 		String filePath =
-				"C:/Users/soldesk/Desktop/springBoot1/ForrestDoggy/final/src/main/resources/static/staypark/room/upload";
+				"C:\\Users\\hogil\\git\\ForrestDoggy\\final\\src\\main\\resources\\static\\staypark\\room\\upload";
 		for(MultipartFile mf : command.getRoomImg()) {
 			String original = mf.getOriginalFilename(); // 전송된 파일명 
 			String originalFileExtension = // 전송된 파일명으로 부터 확장자만 자라옴   

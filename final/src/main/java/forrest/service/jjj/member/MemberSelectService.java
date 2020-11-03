@@ -70,13 +70,7 @@ public class MemberSelectService {
 				response.addCookie(cookie);
 			}
 			
-		    String contextPath = "http://localhost:9090";
-	        String command = backpath.substring(contextPath.length());
-		
-			System.out.println(contextPath);
-		    System.out.println(command);
-			
-			return "redirect:"+ command;
+			return "redirect:"+ backpath;
 		}else {
 			return "thymeleaf/frontPage/html/login";
 		}

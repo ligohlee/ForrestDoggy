@@ -11,11 +11,12 @@ import org.springframework.ui.Model;
 public class LoginBackService {
 	public void loginBack(HttpServletRequest request, Model model) throws Exception{
 		
-		String path = "/";
+		String path = "/main";
 		if (request.getHeader("referer") != null) {
-			path = request.getHeader("referer");
+			int hostLength = request.getHeader("referer").indexOf(request.getHeader("host")) + request.getHeader("host").length();
+			path = request.getHeader("referer").substring(hostLength);
 		}
-		
+		System.out.println(path);
 		model.addAttribute("backpath", path);
 		
 	}

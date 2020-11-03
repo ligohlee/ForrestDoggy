@@ -30,7 +30,7 @@ public class FacilityInsertService {
 			String store = UUID.randomUUID().toString().replace("-","")
 					+ originalFileExtension;
 			dto.setFacImg(store);
-			String path = "C:\\Users\\goott\\git\\ForrestDoggy\\final\\src\\main\\resources\\static\\upload\\facility";
+			String path = "C:\\Users\\hogil\\git\\ForrestDoggy\\final\\src\\main\\resources\\static\\upload\\facility";
 			File file = new File(path + "/" + store);
 			mf.transferTo(file);
 		}catch(Exception e) {
